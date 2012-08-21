@@ -8,17 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import "SMKContentSource.h"
+#import "SMKArtist.h"
 
 @protocol SMKAlbum <NSObject>
 @required
 /*
- @return The name of the artist.
+ @return The name of the album
  */
 - (NSString *)name;
+
 /*
- @return The name of the album artist.
+ @return The artist of the album
  */
-- (NSString *)artist;
+- (id<SMKArtist>)artist;
 
 /**
  @return The SMKContentSource object that this album was retrieved from.
@@ -27,13 +29,20 @@
 
 /**
  @return an array of objects conforming to the SMKTrack protocol.
+ @discussion This method is synchronous, and will block until the tracks have been fetched
  */
 - (NSArray *)tracks;
 
 /**
- @return The number of tracks in the album.
+ This method will fetch the tracks asynchronously and call the completion handler when finished
+ @discussion This method is asynchronous and will return immediately
  */
-- (NSUInteger)numberOfTracks;
+- (void)fetchTracksWithCompletionHandler:(void(^)(NSArray *tracks))handler;
+
+/**
+ @return A unique identifier string for the album
+ */
+- (NSString *)uniqueIdentifier;
 
 @optional
 /**

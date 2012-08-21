@@ -16,6 +16,17 @@ The code and API will be as modern as possible, making use of blocks, GCD, and n
 
 Once the project is under way, I'd love contributions via pull requests. If you intend on making large additions or changes to the code, you may want to consult with me before beginning to ensure that we both agree that it is suitable for this library. 
 
+#### Compiling
+
+Clone the git repository, and download the submodules using the following commands:
+
+```
+cd <repository path>
+git submodule init
+git submodule update
+```
+SFBAudioEngine requires some additional frameworks and libraries to compile that are not included in the repository but can be downloaded [here](https://github.com/sbooth/SFBAudioEngine/downloads).
+
 #### What's done so far?
 
 I'll try to update this section as frequently as possible. At the moment: **Nothing**. I'm currently preparing for a public beta of Sonora 2, so work on this will only truly begin after that is underway. Right now I've set up a basic Xcode template with targets to create a Mac framework and an iOS static library along with some Core Data boilerplate.
