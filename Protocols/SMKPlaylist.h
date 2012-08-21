@@ -84,6 +84,13 @@
 - (void)moveTracksAtIndexes:(NSIndexSet*)indexes toIndex:(NSUInteger)index completionHandler:(void(^)NSError *error))handler;
 
 /**
+ @param tracks The tracks to move
+ @param index The index to move the tracks to.
+ @param handler A handler block to be called when the operation completes
+ */
+- (void)moveTracks:(NSArray*)tracks toIndex:(NSUInteger)index completionHandler:(void(^)NSError *error))handler;
+
+/**
  @param track The tracks to add to the playlist.
  @param index The index to add the tracks to.
  @param handler A handler block to be called when the operation completes
