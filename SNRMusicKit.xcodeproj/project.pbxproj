@@ -60,6 +60,8 @@
 		03F7955315E426ED00C9F652 /* SMKAlbum.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F7955215E426ED00C9F652 /* SMKAlbum.h */; };
 		03F7955615E4282800C9F652 /* SMKContentSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F7955515E4282800C9F652 /* SMKContentSource.h */; };
 		03F7955815E42BE800C9F652 /* SMKArtist.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F7955715E42BE800C9F652 /* SMKArtist.h */; };
+		03F7955A15E434FC00C9F652 /* SMKTrack.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F7955915E434FC00C9F652 /* SMKTrack.h */; };
+		03F7957E15E43ACD00C9F652 /* SMKPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F7957D15E43ACD00C9F652 /* SMKPlayer.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,6 +186,8 @@
 		03F7955215E426ED00C9F652 /* SMKAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKAlbum.h; path = Protocols/SMKAlbum.h; sourceTree = "<group>"; };
 		03F7955515E4282800C9F652 /* SMKContentSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKContentSource.h; path = Protocols/SMKContentSource.h; sourceTree = "<group>"; };
 		03F7955715E42BE800C9F652 /* SMKArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKArtist.h; path = Protocols/SMKArtist.h; sourceTree = "<group>"; };
+		03F7955915E434FC00C9F652 /* SMKTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKTrack.h; path = Protocols/SMKTrack.h; sourceTree = "<group>"; };
+		03F7957D15E43ACD00C9F652 /* SMKPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKPlayer.h; path = Protocols/SMKPlayer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -398,6 +402,8 @@
 				03F7955215E426ED00C9F652 /* SMKAlbum.h */,
 				03F7955715E42BE800C9F652 /* SMKArtist.h */,
 				03F7955515E4282800C9F652 /* SMKContentSource.h */,
+				03F7955915E434FC00C9F652 /* SMKTrack.h */,
+				03F7957D15E43ACD00C9F652 /* SMKPlayer.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -423,6 +429,8 @@
 				03F7955315E426ED00C9F652 /* SMKAlbum.h in Headers */,
 				03F7955615E4282800C9F652 /* SMKContentSource.h in Headers */,
 				03F7955815E42BE800C9F652 /* SMKArtist.h in Headers */,
+				03F7955A15E434FC00C9F652 /* SMKTrack.h in Headers */,
+				03F7957E15E43ACD00C9F652 /* SMKPlayer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,13 +12,13 @@
 
 @protocol SMKAlbum <NSObject>
 @required
-/*
- @return The name of the album
+/**
+ @return The name of the album.
  */
 - (NSString *)name;
 
-/*
- @return The artist of the album
+/**
+ @return The artist of the album.
  */
 - (id<SMKArtist>)artist;
 
@@ -29,15 +29,15 @@
 
 /**
  @return an array of objects conforming to the SMKTrack protocol.
- @discussion This method is synchronous, and will block until the tracks have been fetched
+ @discussion This method is synchronous, and will block until the tracks have been fetched.
  */
 - (NSArray *)tracks;
 
 /**
- This method will fetch the tracks asynchronously and call the completion handler when finished
- @discussion This method is asynchronous and will return immediately
+ This method will fetch the tracks asynchronously and call the completion handler when finished.
+ @discussion This method is asynchronous and will return immediately.
  */
-- (void)fetchTracksWithCompletionHandler:(void(^)(NSArray *tracks))handler;
+- (void)fetchTracksWithCompletionHandler:(void(^)(NSArray *tracks, NSError *error))handler;
 
 /**
  @return A unique identifier string for the album
@@ -73,7 +73,7 @@
 - (NSURL *)webURL;
 
 /**
- @return Whether the album is a compilation
+ @return Whether the album is a compilation.
  */
 - (BOOL)isCompilation;
 
@@ -91,4 +91,11 @@
  @return Whether the album can be streamed from the content source.
  */
 - (BOOL)canStream;
+
+/**
+ Plays the album
+ @return Whether the album was successfully played.
+ @param error An NSError object with error information if it was unsuccessful.
+ */
+- (BOOL)playWithError:(NSError **)error;
 @end
