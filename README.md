@@ -12,6 +12,15 @@ All local databases will be **Core Data** SQL databases, in addition to other pe
 
 The code and API will be as modern as possible, making use of blocks, GCD, and new Objective-C syntax.  The current goal is to target **OS X 10.7+ and iOS 5.0+** but that may change.
 
+#### Dependencies
+SNRMusicKit has several dependencies. To build succelfully you have to install these dependencies and include them in your search path
+
+* flac
+* wavpack
+* taglib
+* libvorbis
+* mp4v2
+
 #### Contributing
 
 Once the project is under way, I'd love contributions via pull requests. If you intend on making large additions or changes to the code, you may want to consult with me before beginning to ensure that we both agree that it is suitable for this library. 
