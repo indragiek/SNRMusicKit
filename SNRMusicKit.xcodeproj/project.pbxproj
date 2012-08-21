@@ -64,6 +64,8 @@
 		036994CB15E3F3EB003BCCBE /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 036994A415E3F3EB003BCCBE /* AFXMLRequestOperation.m */; };
 		036994CC15E3F3EB003BCCBE /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 036994A515E3F3EB003BCCBE /* UIImageView+AFNetworking.h */; };
 		036994CF15E3F3EB003BCCBE /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 036994A615E3F3EB003BCCBE /* UIImageView+AFNetworking.m */; };
+		036994D015E3F461003BCCBE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036991F615E3EAE1003BCCBE /* CoreData.framework */; };
+		036994D215E3F475003BCCBE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036994D115E3F475003BCCBE /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,6 +186,7 @@
 		036994A415E3F3EB003BCCBE /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFXMLRequestOperation.m; path = External/AFNetworking/AFNetworking/AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		036994A515E3F3EB003BCCBE /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "External/AFNetworking/AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		036994A615E3F3EB003BCCBE /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "External/AFNetworking/AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		036994D115E3F475003BCCBE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +202,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				036994D015E3F461003BCCBE /* CoreData.framework in Frameworks */,
 				0369948D15E3F3C5003BCCBE /* SFBAudioEngine.framework in Frameworks */,
 				0369924D15E3F382003BCCBE /* AVFoundation.framework in Frameworks */,
 				0369921815E3EB0B003BCCBE /* Cocoa.framework in Frameworks */,
@@ -209,6 +213,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				036994D215E3F475003BCCBE /* CoreData.framework in Frameworks */,
 				0369948A15E3F3B9003BCCBE /* libSFBAudioEngine.a in Frameworks */,
 				0369924715E3F341003BCCBE /* AVFoundation.framework in Frameworks */,
 				0369923B15E3EB44003BCCBE /* Foundation.framework in Frameworks */,
@@ -328,6 +333,7 @@
 		0369924815E3F347003BCCBE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				036994D115E3F475003BCCBE /* CoreData.framework */,
 				0369924615E3F341003BCCBE /* AVFoundation.framework */,
 			);
 			name = Frameworks;
