@@ -20,7 +20,96 @@
 		0369923B15E3EB44003BCCBE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0369923A15E3EB44003BCCBE /* Foundation.framework */; };
 		0369924015E3EB44003BCCBE /* SNRMusicKitiOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0369923F15E3EB44003BCCBE /* SNRMusicKitiOS.h */; };
 		0369924215E3EB44003BCCBE /* SNRMusicKitiOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369924115E3EB44003BCCBE /* SNRMusicKitiOS.m */; };
+		0369924715E3F341003BCCBE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0369924615E3F341003BCCBE /* AVFoundation.framework */; };
+		0369924D15E3F382003BCCBE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0369924C15E3F382003BCCBE /* AVFoundation.framework */; };
+		0369948A15E3F3B9003BCCBE /* libSFBAudioEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0369948515E3F3AA003BCCBE /* libSFBAudioEngine.a */; };
+		0369948D15E3F3C5003BCCBE /* SFBAudioEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0369948115E3F3AA003BCCBE /* SFBAudioEngine.framework */; };
+		0369948F15E3F3D1003BCCBE /* SFBAudioEngine.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0369948115E3F3AA003BCCBE /* SFBAudioEngine.framework */; };
+		036994A715E3F3EB003BCCBE /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 0369949215E3F3EB003BCCBE /* AFHTTPClient.h */; };
+		036994A815E3F3EB003BCCBE /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369949315E3F3EB003BCCBE /* AFHTTPClient.m */; };
+		036994A915E3F3EB003BCCBE /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369949315E3F3EB003BCCBE /* AFHTTPClient.m */; };
+		036994AA15E3F3EB003BCCBE /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369949315E3F3EB003BCCBE /* AFHTTPClient.m */; };
+		036994AB15E3F3EB003BCCBE /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 0369949415E3F3EB003BCCBE /* AFHTTPRequestOperation.h */; };
+		036994AC15E3F3EB003BCCBE /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369949515E3F3EB003BCCBE /* AFHTTPRequestOperation.m */; };
+		036994AD15E3F3EB003BCCBE /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369949515E3F3EB003BCCBE /* AFHTTPRequestOperation.m */; };
+		036994AE15E3F3EB003BCCBE /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369949515E3F3EB003BCCBE /* AFHTTPRequestOperation.m */; };
+		036994AF15E3F3EB003BCCBE /* AFImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 0369949615E3F3EB003BCCBE /* AFImageRequestOperation.h */; };
+		036994B015E3F3EB003BCCBE /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369949715E3F3EB003BCCBE /* AFImageRequestOperation.m */; };
+		036994B115E3F3EB003BCCBE /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369949715E3F3EB003BCCBE /* AFImageRequestOperation.m */; };
+		036994B215E3F3EB003BCCBE /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369949715E3F3EB003BCCBE /* AFImageRequestOperation.m */; };
+		036994B315E3F3EB003BCCBE /* AFJSONRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 0369949815E3F3EB003BCCBE /* AFJSONRequestOperation.h */; };
+		036994B415E3F3EB003BCCBE /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369949915E3F3EB003BCCBE /* AFJSONRequestOperation.m */; };
+		036994B515E3F3EB003BCCBE /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369949915E3F3EB003BCCBE /* AFJSONRequestOperation.m */; };
+		036994B615E3F3EB003BCCBE /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369949915E3F3EB003BCCBE /* AFJSONRequestOperation.m */; };
+		036994B715E3F3EB003BCCBE /* AFJSONUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 0369949A15E3F3EB003BCCBE /* AFJSONUtilities.h */; };
+		036994B815E3F3EB003BCCBE /* AFJSONUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369949B15E3F3EB003BCCBE /* AFJSONUtilities.m */; };
+		036994B915E3F3EB003BCCBE /* AFJSONUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369949B15E3F3EB003BCCBE /* AFJSONUtilities.m */; };
+		036994BA15E3F3EB003BCCBE /* AFJSONUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369949B15E3F3EB003BCCBE /* AFJSONUtilities.m */; };
+		036994BB15E3F3EB003BCCBE /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0369949C15E3F3EB003BCCBE /* AFNetworkActivityIndicatorManager.h */; };
+		036994BC15E3F3EB003BCCBE /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369949D15E3F3EB003BCCBE /* AFNetworkActivityIndicatorManager.m */; };
+		036994BD15E3F3EB003BCCBE /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369949D15E3F3EB003BCCBE /* AFNetworkActivityIndicatorManager.m */; };
+		036994BE15E3F3EB003BCCBE /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369949D15E3F3EB003BCCBE /* AFNetworkActivityIndicatorManager.m */; };
+		036994BF15E3F3EB003BCCBE /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 0369949E15E3F3EB003BCCBE /* AFNetworking.h */; };
+		036994C015E3F3EB003BCCBE /* AFPropertyListRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 0369949F15E3F3EB003BCCBE /* AFPropertyListRequestOperation.h */; };
+		036994C115E3F3EB003BCCBE /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 036994A015E3F3EB003BCCBE /* AFPropertyListRequestOperation.m */; };
+		036994C215E3F3EB003BCCBE /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 036994A015E3F3EB003BCCBE /* AFPropertyListRequestOperation.m */; };
+		036994C315E3F3EB003BCCBE /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 036994A015E3F3EB003BCCBE /* AFPropertyListRequestOperation.m */; };
+		036994C415E3F3EB003BCCBE /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 036994A115E3F3EB003BCCBE /* AFURLConnectionOperation.h */; };
+		036994C515E3F3EB003BCCBE /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 036994A215E3F3EB003BCCBE /* AFURLConnectionOperation.m */; };
+		036994C615E3F3EB003BCCBE /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 036994A215E3F3EB003BCCBE /* AFURLConnectionOperation.m */; };
+		036994C715E3F3EB003BCCBE /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 036994A215E3F3EB003BCCBE /* AFURLConnectionOperation.m */; };
+		036994C815E3F3EB003BCCBE /* AFXMLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 036994A315E3F3EB003BCCBE /* AFXMLRequestOperation.h */; };
+		036994C915E3F3EB003BCCBE /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 036994A415E3F3EB003BCCBE /* AFXMLRequestOperation.m */; };
+		036994CA15E3F3EB003BCCBE /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 036994A415E3F3EB003BCCBE /* AFXMLRequestOperation.m */; };
+		036994CB15E3F3EB003BCCBE /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 036994A415E3F3EB003BCCBE /* AFXMLRequestOperation.m */; };
+		036994CC15E3F3EB003BCCBE /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 036994A515E3F3EB003BCCBE /* UIImageView+AFNetworking.h */; };
+		036994CF15E3F3EB003BCCBE /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 036994A615E3F3EB003BCCBE /* UIImageView+AFNetworking.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0369948015E3F3AA003BCCBE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0369947415E3F3AA003BCCBE /* SFBAudioEngine.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 32C212D51091116D00BA2493;
+			remoteInfo = SFBAudioEngine.framework;
+		};
+		0369948215E3F3AA003BCCBE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0369947415E3F3AA003BCCBE /* SFBAudioEngine.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3252E83B10CC9E4500F1AA23;
+			remoteInfo = SimplePlayer;
+		};
+		0369948415E3F3AA003BCCBE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0369947415E3F3AA003BCCBE /* SFBAudioEngine.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 32AEB2701409AC30001F9A60;
+			remoteInfo = SFBAudioEngine;
+		};
+		0369948615E3F3AA003BCCBE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0369947415E3F3AA003BCCBE /* SFBAudioEngine.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 32AEB3041409BE48001F9A60;
+			remoteInfo = "SimplePlayer-iOS";
+		};
+		0369948815E3F3B6003BCCBE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0369947415E3F3AA003BCCBE /* SFBAudioEngine.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 32AEB26F1409AC30001F9A60;
+			remoteInfo = SFBAudioEngine;
+		};
+		0369948B15E3F3C2003BCCBE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0369947415E3F3AA003BCCBE /* SFBAudioEngine.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 32C212D41091116D00BA2493;
+			remoteInfo = SFBAudioEngine.framework;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		0369923715E3EB44003BCCBE /* CopyFiles */ = {
@@ -30,6 +119,16 @@
 			dstSubfolderSpec = 16;
 			files = (
 				0369924015E3EB44003BCCBE /* SNRMusicKitiOS.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0369948E15E3F3C9003BCCBE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0369948F15E3F3D1003BCCBE /* SFBAudioEngine.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +160,30 @@
 		0369923E15E3EB44003BCCBE /* SNRMusicKitiOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SNRMusicKitiOS-Prefix.pch"; sourceTree = "<group>"; };
 		0369923F15E3EB44003BCCBE /* SNRMusicKitiOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRMusicKitiOS.h; sourceTree = "<group>"; };
 		0369924115E3EB44003BCCBE /* SNRMusicKitiOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRMusicKitiOS.m; sourceTree = "<group>"; };
+		0369924615E3F341003BCCBE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		0369924C15E3F382003BCCBE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		0369947415E3F3AA003BCCBE /* SFBAudioEngine.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SFBAudioEngine.xcodeproj; path = External/SFBAudioEngine/SFBAudioEngine.xcodeproj; sourceTree = "<group>"; };
+		0369949215E3F3EB003BCCBE /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPClient.h; path = External/AFNetworking/AFNetworking/AFHTTPClient.h; sourceTree = "<group>"; };
+		0369949315E3F3EB003BCCBE /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPClient.m; path = External/AFNetworking/AFNetworking/AFHTTPClient.m; sourceTree = "<group>"; };
+		0369949415E3F3EB003BCCBE /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = External/AFNetworking/AFNetworking/AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		0369949515E3F3EB003BCCBE /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = External/AFNetworking/AFNetworking/AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		0369949615E3F3EB003BCCBE /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFImageRequestOperation.h; path = External/AFNetworking/AFNetworking/AFImageRequestOperation.h; sourceTree = "<group>"; };
+		0369949715E3F3EB003BCCBE /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFImageRequestOperation.m; path = External/AFNetworking/AFNetworking/AFImageRequestOperation.m; sourceTree = "<group>"; };
+		0369949815E3F3EB003BCCBE /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFJSONRequestOperation.h; path = External/AFNetworking/AFNetworking/AFJSONRequestOperation.h; sourceTree = "<group>"; };
+		0369949915E3F3EB003BCCBE /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFJSONRequestOperation.m; path = External/AFNetworking/AFNetworking/AFJSONRequestOperation.m; sourceTree = "<group>"; };
+		0369949A15E3F3EB003BCCBE /* AFJSONUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFJSONUtilities.h; path = External/AFNetworking/AFNetworking/AFJSONUtilities.h; sourceTree = "<group>"; };
+		0369949B15E3F3EB003BCCBE /* AFJSONUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFJSONUtilities.m; path = External/AFNetworking/AFNetworking/AFJSONUtilities.m; sourceTree = "<group>"; };
+		0369949C15E3F3EB003BCCBE /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityIndicatorManager.h; path = External/AFNetworking/AFNetworking/AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		0369949D15E3F3EB003BCCBE /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = External/AFNetworking/AFNetworking/AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		0369949E15E3F3EB003BCCBE /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = External/AFNetworking/AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
+		0369949F15E3F3EB003BCCBE /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFPropertyListRequestOperation.h; path = External/AFNetworking/AFNetworking/AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
+		036994A015E3F3EB003BCCBE /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFPropertyListRequestOperation.m; path = External/AFNetworking/AFNetworking/AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
+		036994A115E3F3EB003BCCBE /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFURLConnectionOperation.h; path = External/AFNetworking/AFNetworking/AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		036994A215E3F3EB003BCCBE /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLConnectionOperation.m; path = External/AFNetworking/AFNetworking/AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		036994A315E3F3EB003BCCBE /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFXMLRequestOperation.h; path = External/AFNetworking/AFNetworking/AFXMLRequestOperation.h; sourceTree = "<group>"; };
+		036994A415E3F3EB003BCCBE /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFXMLRequestOperation.m; path = External/AFNetworking/AFNetworking/AFXMLRequestOperation.m; sourceTree = "<group>"; };
+		036994A515E3F3EB003BCCBE /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "External/AFNetworking/AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		036994A615E3F3EB003BCCBE /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "External/AFNetworking/AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +199,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0369948D15E3F3C5003BCCBE /* SFBAudioEngine.framework in Frameworks */,
+				0369924D15E3F382003BCCBE /* AVFoundation.framework in Frameworks */,
 				0369921815E3EB0B003BCCBE /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,6 +209,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0369948A15E3F3B9003BCCBE /* libSFBAudioEngine.a in Frameworks */,
+				0369924715E3F341003BCCBE /* AVFoundation.framework in Frameworks */,
 				0369923B15E3EB44003BCCBE /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,11 +221,13 @@
 		036991E315E3EAE1003BCCBE = {
 			isa = PBXGroup;
 			children = (
+				0369949015E3F3D8003BCCBE /* External */,
 				036991F815E3EAE1003BCCBE /* SNRMusicKit */,
 				0369921915E3EB0B003BCCBE /* SNRMusicKitMac */,
 				0369923C15E3EB44003BCCBE /* SNRMusicKitiOS */,
 				036991F115E3EAE1003BCCBE /* Frameworks */,
 				036991EF15E3EAE1003BCCBE /* Products */,
+				0369947415E3F3AA003BCCBE /* SFBAudioEngine.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,6 +290,7 @@
 			children = (
 				0369922015E3EB0B003BCCBE /* SNRMusicKitMac.h */,
 				0369922115E3EB0B003BCCBE /* SNRMusicKitMac.m */,
+				0369924E15E3F38A003BCCBE /* Frameworks */,
 				0369921A15E3EB0B003BCCBE /* Supporting Files */,
 			);
 			path = SNRMusicKitMac;
@@ -181,6 +311,7 @@
 			children = (
 				0369923F15E3EB44003BCCBE /* SNRMusicKitiOS.h */,
 				0369924115E3EB44003BCCBE /* SNRMusicKitiOS.m */,
+				0369924815E3F347003BCCBE /* Frameworks */,
 				0369923D15E3EB44003BCCBE /* Supporting Files */,
 			);
 			path = SNRMusicKitiOS;
@@ -194,6 +325,69 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0369924815E3F347003BCCBE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0369924615E3F341003BCCBE /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0369924E15E3F38A003BCCBE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0369924C15E3F382003BCCBE /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0369947515E3F3AA003BCCBE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0369948115E3F3AA003BCCBE /* SFBAudioEngine.framework */,
+				0369948315E3F3AA003BCCBE /* SimplePlayer.app */,
+				0369948515E3F3AA003BCCBE /* libSFBAudioEngine.a */,
+				0369948715E3F3AA003BCCBE /* SimplePlayer-iOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0369949015E3F3D8003BCCBE /* External */ = {
+			isa = PBXGroup;
+			children = (
+				0369949115E3F3DD003BCCBE /* AFNetworking */,
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
+		0369949115E3F3DD003BCCBE /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				0369949215E3F3EB003BCCBE /* AFHTTPClient.h */,
+				0369949315E3F3EB003BCCBE /* AFHTTPClient.m */,
+				0369949415E3F3EB003BCCBE /* AFHTTPRequestOperation.h */,
+				0369949515E3F3EB003BCCBE /* AFHTTPRequestOperation.m */,
+				0369949615E3F3EB003BCCBE /* AFImageRequestOperation.h */,
+				0369949715E3F3EB003BCCBE /* AFImageRequestOperation.m */,
+				0369949815E3F3EB003BCCBE /* AFJSONRequestOperation.h */,
+				0369949915E3F3EB003BCCBE /* AFJSONRequestOperation.m */,
+				0369949A15E3F3EB003BCCBE /* AFJSONUtilities.h */,
+				0369949B15E3F3EB003BCCBE /* AFJSONUtilities.m */,
+				0369949C15E3F3EB003BCCBE /* AFNetworkActivityIndicatorManager.h */,
+				0369949D15E3F3EB003BCCBE /* AFNetworkActivityIndicatorManager.m */,
+				0369949E15E3F3EB003BCCBE /* AFNetworking.h */,
+				0369949F15E3F3EB003BCCBE /* AFPropertyListRequestOperation.h */,
+				036994A015E3F3EB003BCCBE /* AFPropertyListRequestOperation.m */,
+				036994A115E3F3EB003BCCBE /* AFURLConnectionOperation.h */,
+				036994A215E3F3EB003BCCBE /* AFURLConnectionOperation.m */,
+				036994A315E3F3EB003BCCBE /* AFXMLRequestOperation.h */,
+				036994A415E3F3EB003BCCBE /* AFXMLRequestOperation.m */,
+				036994A515E3F3EB003BCCBE /* UIImageView+AFNetworking.h */,
+				036994A615E3F3EB003BCCBE /* UIImageView+AFNetworking.m */,
+			);
+			name = AFNetworking;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -201,6 +395,17 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				036994A715E3F3EB003BCCBE /* AFHTTPClient.h in Headers */,
+				036994AB15E3F3EB003BCCBE /* AFHTTPRequestOperation.h in Headers */,
+				036994AF15E3F3EB003BCCBE /* AFImageRequestOperation.h in Headers */,
+				036994B315E3F3EB003BCCBE /* AFJSONRequestOperation.h in Headers */,
+				036994B715E3F3EB003BCCBE /* AFJSONUtilities.h in Headers */,
+				036994BB15E3F3EB003BCCBE /* AFNetworkActivityIndicatorManager.h in Headers */,
+				036994BF15E3F3EB003BCCBE /* AFNetworking.h in Headers */,
+				036994C015E3F3EB003BCCBE /* AFPropertyListRequestOperation.h in Headers */,
+				036994C415E3F3EB003BCCBE /* AFURLConnectionOperation.h in Headers */,
+				036994C815E3F3EB003BCCBE /* AFXMLRequestOperation.h in Headers */,
+				036994CC15E3F3EB003BCCBE /* UIImageView+AFNetworking.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,10 +437,12 @@
 				0369921315E3EB0B003BCCBE /* Frameworks */,
 				0369921415E3EB0B003BCCBE /* Headers */,
 				0369921515E3EB0B003BCCBE /* Resources */,
+				0369948E15E3F3C9003BCCBE /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0369948C15E3F3C2003BCCBE /* PBXTargetDependency */,
 			);
 			name = SNRMusicKitMac;
 			productName = SNRMusicKitMac;
@@ -253,6 +460,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0369948915E3F3B6003BCCBE /* PBXTargetDependency */,
 			);
 			name = SNRMusicKitiOS;
 			productName = SNRMusicKitiOS;
@@ -279,6 +487,12 @@
 			mainGroup = 036991E315E3EAE1003BCCBE;
 			productRefGroup = 036991EF15E3EAE1003BCCBE /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0369947515E3F3AA003BCCBE /* Products */;
+					ProjectRef = 0369947415E3F3AA003BCCBE /* SFBAudioEngine.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				036991ED15E3EAE1003BCCBE /* SNRMusicKit */,
@@ -287,6 +501,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		0369948115E3F3AA003BCCBE /* SFBAudioEngine.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SFBAudioEngine.framework;
+			remoteRef = 0369948015E3F3AA003BCCBE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0369948315E3F3AA003BCCBE /* SimplePlayer.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = SimplePlayer.app;
+			remoteRef = 0369948215E3F3AA003BCCBE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0369948515E3F3AA003BCCBE /* libSFBAudioEngine.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSFBAudioEngine.a;
+			remoteRef = 0369948415E3F3AA003BCCBE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0369948715E3F3AA003BCCBE /* SimplePlayer-iOS.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "SimplePlayer-iOS.app";
+			remoteRef = 0369948615E3F3AA003BCCBE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		036991EC15E3EAE1003BCCBE /* Resources */ = {
@@ -317,6 +562,15 @@
 				036991FF15E3EAE1003BCCBE /* main.m in Sources */,
 				0369920615E3EAE1003BCCBE /* SMKAppDelegate.m in Sources */,
 				0369920C15E3EAE1003BCCBE /* SNRMusicKit.xcdatamodeld in Sources */,
+				036994A815E3F3EB003BCCBE /* AFHTTPClient.m in Sources */,
+				036994AC15E3F3EB003BCCBE /* AFHTTPRequestOperation.m in Sources */,
+				036994B015E3F3EB003BCCBE /* AFImageRequestOperation.m in Sources */,
+				036994B415E3F3EB003BCCBE /* AFJSONRequestOperation.m in Sources */,
+				036994B815E3F3EB003BCCBE /* AFJSONUtilities.m in Sources */,
+				036994BC15E3F3EB003BCCBE /* AFNetworkActivityIndicatorManager.m in Sources */,
+				036994C115E3F3EB003BCCBE /* AFPropertyListRequestOperation.m in Sources */,
+				036994C515E3F3EB003BCCBE /* AFURLConnectionOperation.m in Sources */,
+				036994C915E3F3EB003BCCBE /* AFXMLRequestOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,6 +579,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0369922215E3EB0B003BCCBE /* SNRMusicKitMac.m in Sources */,
+				036994A915E3F3EB003BCCBE /* AFHTTPClient.m in Sources */,
+				036994AD15E3F3EB003BCCBE /* AFHTTPRequestOperation.m in Sources */,
+				036994B115E3F3EB003BCCBE /* AFImageRequestOperation.m in Sources */,
+				036994B515E3F3EB003BCCBE /* AFJSONRequestOperation.m in Sources */,
+				036994B915E3F3EB003BCCBE /* AFJSONUtilities.m in Sources */,
+				036994BD15E3F3EB003BCCBE /* AFNetworkActivityIndicatorManager.m in Sources */,
+				036994C215E3F3EB003BCCBE /* AFPropertyListRequestOperation.m in Sources */,
+				036994C615E3F3EB003BCCBE /* AFURLConnectionOperation.m in Sources */,
+				036994CA15E3F3EB003BCCBE /* AFXMLRequestOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,10 +596,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				0369924215E3EB44003BCCBE /* SNRMusicKitiOS.m in Sources */,
+				036994AA15E3F3EB003BCCBE /* AFHTTPClient.m in Sources */,
+				036994AE15E3F3EB003BCCBE /* AFHTTPRequestOperation.m in Sources */,
+				036994B215E3F3EB003BCCBE /* AFImageRequestOperation.m in Sources */,
+				036994B615E3F3EB003BCCBE /* AFJSONRequestOperation.m in Sources */,
+				036994BA15E3F3EB003BCCBE /* AFJSONUtilities.m in Sources */,
+				036994BE15E3F3EB003BCCBE /* AFNetworkActivityIndicatorManager.m in Sources */,
+				036994C315E3F3EB003BCCBE /* AFPropertyListRequestOperation.m in Sources */,
+				036994C715E3F3EB003BCCBE /* AFURLConnectionOperation.m in Sources */,
+				036994CB15E3F3EB003BCCBE /* AFXMLRequestOperation.m in Sources */,
+				036994CF15E3F3EB003BCCBE /* UIImageView+AFNetworking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0369948915E3F3B6003BCCBE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SFBAudioEngine;
+			targetProxy = 0369948815E3F3B6003BCCBE /* PBXContainerItemProxy */;
+		};
+		0369948C15E3F3C2003BCCBE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SFBAudioEngine.framework;
+			targetProxy = 0369948B15E3F3C2003BCCBE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		036991FB15E3EAE1003BCCBE /* InfoPlist.strings */ = {

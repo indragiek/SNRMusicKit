@@ -1,0 +1,6 @@
+[submodule "External/SFBAudioEngine"]
+	path = External/SFBAudioEngine
+	url = git://github.com/sbooth/SFBAudioEngine.git
+[submodule "External/AFNetworking"]
+	path = External/AFNetworking
+	url = git://github.com/AFNetworking/AFNetworking.git
