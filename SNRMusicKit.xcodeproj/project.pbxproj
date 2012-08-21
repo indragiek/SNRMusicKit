@@ -14,7 +14,26 @@
 		0369920615E3EAE1003BCCBE /* SMKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369920515E3EAE1003BCCBE /* SMKAppDelegate.m */; };
 		0369920915E3EAE1003BCCBE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0369920715E3EAE1003BCCBE /* MainMenu.xib */; };
 		0369920C15E3EAE1003BCCBE /* SNRMusicKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0369920A15E3EAE1003BCCBE /* SNRMusicKit.xcdatamodeld */; };
+		0369921815E3EB0B003BCCBE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036991F215E3EAE1003BCCBE /* Cocoa.framework */; };
+		0369921E15E3EB0B003BCCBE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0369921C15E3EB0B003BCCBE /* InfoPlist.strings */; };
+		0369922215E3EB0B003BCCBE /* SNRMusicKitMac.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369922115E3EB0B003BCCBE /* SNRMusicKitMac.m */; };
+		0369923B15E3EB44003BCCBE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0369923A15E3EB44003BCCBE /* Foundation.framework */; };
+		0369924015E3EB44003BCCBE /* SNRMusicKitiOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0369923F15E3EB44003BCCBE /* SNRMusicKitiOS.h */; };
+		0369924215E3EB44003BCCBE /* SNRMusicKitiOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369924115E3EB44003BCCBE /* SNRMusicKitiOS.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0369923715E3EB44003BCCBE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+				0369924015E3EB44003BCCBE /* SNRMusicKitiOS.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		036991EE15E3EAE1003BCCBE /* SNRMusicKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNRMusicKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -31,6 +50,17 @@
 		0369920515E3EAE1003BCCBE /* SMKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMKAppDelegate.m; sourceTree = "<group>"; };
 		0369920815E3EAE1003BCCBE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		0369920B15E3EAE1003BCCBE /* SNRMusicKit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SNRMusicKit.xcdatamodel; sourceTree = "<group>"; };
+		0369921715E3EB0B003BCCBE /* SNRMusicKitMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SNRMusicKitMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0369921B15E3EB0B003BCCBE /* SNRMusicKitMac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SNRMusicKitMac-Info.plist"; sourceTree = "<group>"; };
+		0369921D15E3EB0B003BCCBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0369921F15E3EB0B003BCCBE /* SNRMusicKitMac-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SNRMusicKitMac-Prefix.pch"; sourceTree = "<group>"; };
+		0369922015E3EB0B003BCCBE /* SNRMusicKitMac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRMusicKitMac.h; sourceTree = "<group>"; };
+		0369922115E3EB0B003BCCBE /* SNRMusicKitMac.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRMusicKitMac.m; sourceTree = "<group>"; };
+		0369923915E3EB44003BCCBE /* libSNRMusicKitiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSNRMusicKitiOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0369923A15E3EB44003BCCBE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0369923E15E3EB44003BCCBE /* SNRMusicKitiOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SNRMusicKitiOS-Prefix.pch"; sourceTree = "<group>"; };
+		0369923F15E3EB44003BCCBE /* SNRMusicKitiOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRMusicKitiOS.h; sourceTree = "<group>"; };
+		0369924115E3EB44003BCCBE /* SNRMusicKitiOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRMusicKitiOS.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +72,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0369921315E3EB0B003BCCBE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0369921815E3EB0B003BCCBE /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0369923615E3EB44003BCCBE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0369923B15E3EB44003BCCBE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -49,6 +95,8 @@
 			isa = PBXGroup;
 			children = (
 				036991F815E3EAE1003BCCBE /* SNRMusicKit */,
+				0369921915E3EB0B003BCCBE /* SNRMusicKitMac */,
+				0369923C15E3EB44003BCCBE /* SNRMusicKitiOS */,
 				036991F115E3EAE1003BCCBE /* Frameworks */,
 				036991EF15E3EAE1003BCCBE /* Products */,
 			);
@@ -58,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				036991EE15E3EAE1003BCCBE /* SNRMusicKit.app */,
+				0369921715E3EB0B003BCCBE /* SNRMusicKitMac.framework */,
+				0369923915E3EB44003BCCBE /* libSNRMusicKitiOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				036991F215E3EAE1003BCCBE /* Cocoa.framework */,
+				0369923A15E3EB44003BCCBE /* Foundation.framework */,
 				036991F415E3EAE1003BCCBE /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -105,7 +156,55 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0369921915E3EB0B003BCCBE /* SNRMusicKitMac */ = {
+			isa = PBXGroup;
+			children = (
+				0369922015E3EB0B003BCCBE /* SNRMusicKitMac.h */,
+				0369922115E3EB0B003BCCBE /* SNRMusicKitMac.m */,
+				0369921A15E3EB0B003BCCBE /* Supporting Files */,
+			);
+			path = SNRMusicKitMac;
+			sourceTree = "<group>";
+		};
+		0369921A15E3EB0B003BCCBE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0369921B15E3EB0B003BCCBE /* SNRMusicKitMac-Info.plist */,
+				0369921C15E3EB0B003BCCBE /* InfoPlist.strings */,
+				0369921F15E3EB0B003BCCBE /* SNRMusicKitMac-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0369923C15E3EB44003BCCBE /* SNRMusicKitiOS */ = {
+			isa = PBXGroup;
+			children = (
+				0369923F15E3EB44003BCCBE /* SNRMusicKitiOS.h */,
+				0369924115E3EB44003BCCBE /* SNRMusicKitiOS.m */,
+				0369923D15E3EB44003BCCBE /* Supporting Files */,
+			);
+			path = SNRMusicKitiOS;
+			sourceTree = "<group>";
+		};
+		0369923D15E3EB44003BCCBE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0369923E15E3EB44003BCCBE /* SNRMusicKitiOS-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0369921415E3EB0B003BCCBE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		036991ED15E3EAE1003BCCBE /* SNRMusicKit */ = {
@@ -124,6 +223,41 @@
 			productName = SNRMusicKit;
 			productReference = 036991EE15E3EAE1003BCCBE /* SNRMusicKit.app */;
 			productType = "com.apple.product-type.application";
+		};
+		0369921615E3EB0B003BCCBE /* SNRMusicKitMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0369922315E3EB0B003BCCBE /* Build configuration list for PBXNativeTarget "SNRMusicKitMac" */;
+			buildPhases = (
+				0369921215E3EB0B003BCCBE /* Sources */,
+				0369921315E3EB0B003BCCBE /* Frameworks */,
+				0369921415E3EB0B003BCCBE /* Headers */,
+				0369921515E3EB0B003BCCBE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SNRMusicKitMac;
+			productName = SNRMusicKitMac;
+			productReference = 0369921715E3EB0B003BCCBE /* SNRMusicKitMac.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		0369923815E3EB44003BCCBE /* SNRMusicKitiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0369924315E3EB44003BCCBE /* Build configuration list for PBXNativeTarget "SNRMusicKitiOS" */;
+			buildPhases = (
+				0369923515E3EB44003BCCBE /* Sources */,
+				0369923615E3EB44003BCCBE /* Frameworks */,
+				0369923715E3EB44003BCCBE /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SNRMusicKitiOS;
+			productName = SNRMusicKitiOS;
+			productReference = 0369923915E3EB44003BCCBE /* libSNRMusicKitiOS.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -148,6 +282,8 @@
 			projectRoot = "";
 			targets = (
 				036991ED15E3EAE1003BCCBE /* SNRMusicKit */,
+				0369921615E3EB0B003BCCBE /* SNRMusicKitMac */,
+				0369923815E3EB44003BCCBE /* SNRMusicKitiOS */,
 			);
 		};
 /* End PBXProject section */
@@ -163,6 +299,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0369921515E3EB0B003BCCBE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0369921E15E3EB0B003BCCBE /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -173,6 +317,22 @@
 				036991FF15E3EAE1003BCCBE /* main.m in Sources */,
 				0369920615E3EAE1003BCCBE /* SMKAppDelegate.m in Sources */,
 				0369920C15E3EAE1003BCCBE /* SNRMusicKit.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0369921215E3EB0B003BCCBE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0369922215E3EB0B003BCCBE /* SNRMusicKitMac.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0369923515E3EB44003BCCBE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0369924215E3EB44003BCCBE /* SNRMusicKitiOS.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +361,14 @@
 				0369920815E3EAE1003BCCBE /* en */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		0369921C15E3EB0B003BCCBE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0369921D15E3EB0B003BCCBE /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -281,6 +449,65 @@
 			};
 			name = Release;
 		};
+		0369922415E3EB0B003BCCBE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SNRMusicKitMac/SNRMusicKitMac-Prefix.pch";
+				INFOPLIST_FILE = "SNRMusicKitMac/SNRMusicKitMac-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		0369922515E3EB0B003BCCBE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SNRMusicKitMac/SNRMusicKitMac-Prefix.pch";
+				INFOPLIST_FILE = "SNRMusicKitMac/SNRMusicKitMac-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		0369924415E3EB44003BCCBE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/SNRMusicKitiOS.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SNRMusicKitiOS/SNRMusicKitiOS-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		0369924515E3EB44003BCCBE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/SNRMusicKitiOS.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SNRMusicKitiOS/SNRMusicKitiOS-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -298,6 +525,22 @@
 			buildConfigurations = (
 				0369921015E3EAE1003BCCBE /* Debug */,
 				0369921115E3EAE1003BCCBE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		0369922315E3EB0B003BCCBE /* Build configuration list for PBXNativeTarget "SNRMusicKitMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0369922415E3EB0B003BCCBE /* Debug */,
+				0369922515E3EB0B003BCCBE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		0369924315E3EB44003BCCBE /* Build configuration list for PBXNativeTarget "SNRMusicKitiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0369924415E3EB44003BCCBE /* Debug */,
+				0369924515E3EB44003BCCBE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
