@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SMKTrack.h"
 #import "SMKContentSource.h"
+#import "SMKUser.h"
 
 @protocol SMKPlaylist <NSObject>
 @required
@@ -44,6 +45,11 @@
 - (BOOL)isEditable;
 
 @optional
+
+/**
+ @return The user this playlist belongs to
+ */
+- (id<SMKUser>)user;
 
 /** 
  @return An optional extended description for the playlist.
