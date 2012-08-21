@@ -66,6 +66,8 @@
 		036994CF15E3F3EB003BCCBE /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 036994A615E3F3EB003BCCBE /* UIImageView+AFNetworking.m */; };
 		036994D015E3F461003BCCBE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036991F615E3EAE1003BCCBE /* CoreData.framework */; };
 		036994D215E3F475003BCCBE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036994D115E3F475003BCCBE /* CoreData.framework */; };
+		03F7955315E426ED00C9F652 /* SMKAlbum.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F7955215E426ED00C9F652 /* SMKAlbum.h */; };
+		03F7955615E4282800C9F652 /* SMKContentSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F7955515E4282800C9F652 /* SMKContentSource.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,6 +189,8 @@
 		036994A515E3F3EB003BCCBE /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "External/AFNetworking/AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		036994A615E3F3EB003BCCBE /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "External/AFNetworking/AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		036994D115E3F475003BCCBE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
+		03F7955215E426ED00C9F652 /* SMKAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKAlbum.h; path = Protocols/SMKAlbum.h; sourceTree = "<group>"; };
+		03F7955515E4282800C9F652 /* SMKContentSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKContentSource.h; path = Protocols/SMKContentSource.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +230,7 @@
 		036991E315E3EAE1003BCCBE = {
 			isa = PBXGroup;
 			children = (
+				03F7955015E426A500C9F652 /* Protocols */,
 				0369949015E3F3D8003BCCBE /* External */,
 				036991F815E3EAE1003BCCBE /* SNRMusicKit */,
 				0369921915E3EB0B003BCCBE /* SNRMusicKitMac */,
@@ -394,6 +399,15 @@
 			name = AFNetworking;
 			sourceTree = "<group>";
 		};
+		03F7955015E426A500C9F652 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				03F7955215E426ED00C9F652 /* SMKAlbum.h */,
+				03F7955515E4282800C9F652 /* SMKContentSource.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -412,6 +426,8 @@
 				036994C415E3F3EB003BCCBE /* AFURLConnectionOperation.h in Headers */,
 				036994C815E3F3EB003BCCBE /* AFXMLRequestOperation.h in Headers */,
 				036994CC15E3F3EB003BCCBE /* UIImageView+AFNetworking.h in Headers */,
+				03F7955315E426ED00C9F652 /* SMKAlbum.h in Headers */,
+				03F7955615E4282800C9F652 /* SMKContentSource.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -819,6 +835,7 @@
 				0369921115E3EAE1003BCCBE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0369922315E3EB0B003BCCBE /* Build configuration list for PBXNativeTarget "SNRMusicKitMac" */ = {
 			isa = XCConfigurationList;
@@ -827,6 +844,7 @@
 				0369922515E3EB0B003BCCBE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0369924315E3EB44003BCCBE /* Build configuration list for PBXNativeTarget "SNRMusicKitiOS" */ = {
 			isa = XCConfigurationList;
@@ -835,6 +853,7 @@
 				0369924515E3EB44003BCCBE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
