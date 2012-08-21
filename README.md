@@ -10,7 +10,7 @@ SNRMusicKit is an open source project that will become the backbone for [Sonora]
 
 All local databases will be **Core Data** SQL databases, in addition to other persistent caching of artwork, etc. All networking code will be built on top of [AFNetworking](https://github.com/AFNetworking/AFNetworking), specifically subclasses of **AFHTTPClient**.
 
-The code and API will be as modern as possible, making use of blocks, GCD, and new Objective-C syntax. 
+The code and API will be as modern as possible, making use of blocks, GCD, and new Objective-C syntax.  The current goal is to target **OS X 10.7+ and iOS 5.0+** but that may change.
 
 #### Contributing
 
