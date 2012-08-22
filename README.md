@@ -29,7 +29,10 @@ SFBAudioEngine requires some additional frameworks and libraries to compile that
 
 #### What's done so far?
 
-I'll try to update this section as frequently as possible. At the moment: **Nothing**. I'm currently preparing for a public beta of Sonora 2, so work on this will only truly begin after that is underway. Right now I've set up a basic Xcode template with targets to create a Mac framework and an iOS static library along with some Core Data boilerplate.
+I'll try to update this section as frequently as possible:
+
+* Protocols for some of the basic types (Song, Album, Artist, Playlist, Player)
+* A wrapper of SFBAudioEngine's AudioPlayer that conforms to SMKPlayer
 
 #### License
 
