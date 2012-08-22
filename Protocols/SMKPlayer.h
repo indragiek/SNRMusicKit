@@ -7,29 +7,29 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SMKPlayerDelegate.h"
 #import "SMKTrack.h"
 
+@protocol SMKPlayerDelegate;
 @protocol SMKPlayer <NSObject>
 /**
- @return An array of class names containing the names of content sources that this player can play.
+ @return An set of class names containing the names of content sources that this player can play.
  */
-+ (NSArray *)supportedContentSourceClasses;
++ (NSSet *)supportedContentSourceClasses;
 
 /**
  @return Whether the player supports preloading tracks.
  */
-+ (BOOL)supportsPreloading;
+- (BOOL)supportsPreloading;
 
 /**
  @return Whether the play supports streaming via AirPlay.
  */
-+ (BOOL)supportsAirPlay;
+- (BOOL)supportsAirPlay;
 
 /**
  @return Whether the player supports seeking.
  */
-+ (BOOL)supportsSeeking;
+- (BOOL)supportsSeeking;
 
 /**
  @return The delegate of this player.
@@ -61,14 +61,19 @@
 /**
  Play the specified track.
  @param track The track to play.
- @param handler Completion handler called with an NSError if playing failed.
+ @param handler Completion handler called with an NSError if playing failed and nil if successful.
  */
-- (void)playTrack:(id<SMKTrack>)track completionHandler:(void(^)NSError *error))handler;
+- (void)playTrack:(id<SMKTrack>)track completionHandler:(void(^)(NSError *error))handler;
 
 /**
  Pause playback.
  */
 - (void)pause;
+
+/**
+ Resume playback.
+ */
+- (void)resume;
 
 /**
  @return Whether the player is playing.
@@ -121,8 +126,9 @@
 
 /**
  Preload the specified track (if the player supports preloading)
+ @param handler Completion handler called with an NSError if preloading failed and nil if successful.
  */
-- (void)preloadTrack:(id<SMKTrack>)track;
+- (void)preloadTrack:(id<SMKTrack>)track completionHandler:(void(^)(NSError *error))handler;
 
 /**
  @return The currently preloaded track if there is one
@@ -133,4 +139,14 @@
  Skips to the track that the player has preloaded.
  */
 - (void)skipToPreloadedTrack;
+@end
+
+@protocol SMKPlayerDelegate <NSObject>
+@optional
+/** Called immediately before the player starts playing a track */
+- (void)playerWillStartPlaying:(id<SMKPlayer>)player;
+/** Called immediately after the player finishes playing a track */
+- (void)playerDidFinishPlaying:(id<SMKPlayer>)player;
+/** This is called by the player to update your user interface (e.g. for scrubbing bar) */
+- (void)playerUpdateUserInteface:(id<SMKPlayer>)player;
 @end

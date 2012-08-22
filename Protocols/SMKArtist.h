@@ -24,7 +24,7 @@
  @return An array of objects conforming to the SMKAlbum protocol.
  @discussion This method is synchronous, and will block until the albums have been fetched.
  */
-- (NSArray *)albums
+- (NSArray *)albums;
 
 /**
  This method will fetch the albums asynchronously and call the completion handler when finished.

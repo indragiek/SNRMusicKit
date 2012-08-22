@@ -43,6 +43,12 @@
  */
 - (NSString *)uniqueIdentifier;
 
+/**
+ @return The URL to play the track from
+ @discussion This URL could be local or remote (for streaming services)
+ */
+- (NSURL *)playbackURL;
+
 @optional
 
 /**
@@ -63,7 +69,7 @@
 /**
  @return The number of times the track has been played.
  */
-- (NSUInteger)playCounts
+- (NSUInteger)playCounts;
 
 /**
  @return The popularity index for the track.
