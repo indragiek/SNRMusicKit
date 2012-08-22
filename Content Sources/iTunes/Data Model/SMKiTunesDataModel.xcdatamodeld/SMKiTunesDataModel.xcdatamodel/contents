@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1807" systemVersion="12A269" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="SNRiTunesAlbum" representedClassName="SNRITunesAlbum" parentEntity="SNRiTunesObject" syncable="YES">
+        <relationship name="artist" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SNRiTunesArtist" inverseName="albums" inverseEntity="SNRiTunesArtist" syncable="YES"/>
+        <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SNRiTunesTrack" inverseName="album" inverseEntity="SNRiTunesTrack" syncable="YES"/>
+    </entity>
+    <entity name="SNRiTunesArtist" representedClassName="SNRiTunesArtist" parentEntity="SNRiTunesObject" syncable="YES">
+        <relationship name="albums" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SNRiTunesAlbum" inverseName="artist" inverseEntity="SNRiTunesAlbum" syncable="YES"/>
+    </entity>
+    <entity name="SNRiTunesKeyword" representedClassName="SNRiTunesKeyword" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="objects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNRiTunesObject" inverseName="keywords" inverseEntity="SNRiTunesObject" syncable="YES"/>
+    </entity>
+    <entity name="SNRiTunesObject" representedClassName="SNRiTunesObject" syncable="YES">
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="keywords" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNRiTunesKeyword" inverseName="objects" inverseEntity="SNRiTunesKeyword" syncable="YES"/>
+    </entity>
+    <entity name="SNRiTunesPlaylist" representedClassName="SNRiTunesPlaylist" parentEntity="SNRiTunesObject" syncable="YES">
+        <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNRiTunesTrack" inverseName="playlists" inverseEntity="SNRiTunesTrack" syncable="YES"/>
+    </entity>
+    <entity name="SNRiTunesTrack" representedClassName="SNRiTunesTrack" parentEntity="SNRiTunesObject" syncable="YES">
+        <attribute name="albumArtistName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="artistName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bookmark" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="compilation" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="composer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateAdded" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="discNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="discTotal" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="lyrics" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="releaseYear" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="trackNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="trackTotal" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="album" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SNRiTunesAlbum" inverseName="tracks" inverseEntity="SNRiTunesAlbum" syncable="YES"/>
+        <relationship name="playlists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNRiTunesPlaylist" inverseName="tracks" inverseEntity="SNRiTunesPlaylist" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="SNRiTunesAlbum" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="SNRiTunesArtist" positionX="160" positionY="192" width="128" height="60"/>
+        <element name="SNRiTunesObject" positionX="160" positionY="192" width="128" height="90"/>
+        <element name="SNRiTunesKeyword" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="SNRiTunesTrack" positionX="160" positionY="192" width="128" height="270"/>
+        <element name="SNRiTunesPlaylist" positionX="160" positionY="192" width="128" height="60"/>
+    </elements>
+</model>

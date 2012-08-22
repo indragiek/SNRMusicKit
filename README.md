@@ -18,14 +18,15 @@ Once the project is under way, I'd love contributions via pull requests. If you 
 
 #### Compiling
 
-Clone the git repository, and download the submodules using the following commands:
+* Clone the git repository, and download the submodules using the following commands:
 
 ```
 cd <repository path>
 git submodule init
 git submodule update
 ```
-SFBAudioEngine requires some additional frameworks and libraries to compile that are not included in the repository but can be downloaded [here](https://github.com/sbooth/SFBAudioEngine/downloads).
+* **SFBAudioEngine** requires some additional frameworks and libraries to compile that are not included in the repository but can be downloaded **[here](https://github.com/sbooth/SFBAudioEngine/downloads)**.
+* **[mogenerator](https://github.com/rentzsch/mogenerator)** needs to be installed to successfully compile.
 
 #### What's done so far?
 
