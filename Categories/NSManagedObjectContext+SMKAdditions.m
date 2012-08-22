@@ -30,7 +30,7 @@ static void* const SMKContentSourceKey = @"SMKContentSource";
                                error:(NSError **)error
 {
     __block NSArray *results = nil;
-    [self performBlock:^{
+    [self performBlockAndWait:^{
         NSFetchRequest *request = [self SMK_fetchRequestWithEntityName:entityName
                                                        sortDescriptors:sortDescriptors
                                                              predicate:predicate
@@ -48,7 +48,7 @@ static void* const SMKContentSourceKey = @"SMKContentSource";
                           fetchLimit:(NSUInteger)fetchLimit
                    completionHandler:(void(^)(NSArray *results, NSError *error))handler
 {
-    [self performBlockAndWait:^{
+    [self performBlock:^{
         NSFetchRequest *request = [self SMK_fetchRequestWithEntityName:entityName
                                                        sortDescriptors:sortDescriptors
                                                              predicate:predicate

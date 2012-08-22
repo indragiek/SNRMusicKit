@@ -10,7 +10,7 @@
         <relationship name="albums" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SMKiTunesAlbum" inverseName="artist" inverseEntity="SMKiTunesAlbum" syncable="YES"/>
     </entity>
     <entity name="SMKiTunesKeyword" representedClassName="SMKiTunesKeyword" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="objects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SMKiTunesObject" inverseName="keywords" inverseEntity="SMKiTunesObject" syncable="YES"/>
     </entity>
     <entity name="SMKiTunesObject" representedClassName="SMKiTunesObject" syncable="YES">
