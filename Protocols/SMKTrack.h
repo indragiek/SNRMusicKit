@@ -11,13 +11,11 @@
 #import "SMKArtist.h"
 #import "SMKContentSource.h"
 
-@protocol SMKTrack <NSObject>
-@required
-/**
- @return The name of the track.
- */
-- (NSString *)name;
+#import "SMKContentObject.h"
+#import "SMKWebObject.h"
 
+@protocol SMKTrack <NSObject, SMKContentObject, SMKWebObject>
+@required
 /**
  @return The artist of the track.
  */
@@ -32,16 +30,6 @@
  @return The duration of the track in seconds.
  */
 - (NSTimeInterval)duration;
-
-/**
- @return The SMKContentSource object that this track belongs to.
- */
-- (id<SMKContentSource>)contentSource;
-
-/**
- @return A unique identifier string for the track.
- */
-- (NSString *)uniqueIdentifier;
 
 /**
  @return The URL to play the track from
@@ -93,11 +81,6 @@
  @return Whether the track can be streamed from the content source.
  */
 - (BOOL)canStream;
-
-/**
- @return The URL to the content page for this track.
- */
-- (NSURL *)webURL;
 
 /**
  Plays the tracks

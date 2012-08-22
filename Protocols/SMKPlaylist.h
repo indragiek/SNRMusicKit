@@ -11,18 +11,12 @@
 #import "SMKContentSource.h"
 #import "SMKUser.h"
 
-@protocol SMKPlaylist <NSObject>
+#import "SMKContentObject.h"
+#import "SMKArtworkSource.h"
+#import "SMKWebObject.h"
+
+@protocol SMKPlaylist <NSObject, SMKContentObject, SMKArtworkSource, SMKWebObject>
 @required
-/**
- @return The name of the playlist.
- */
-- (NSString *)name;
-
-/**
- @return The SMKContentSource object that this album was retrieved from.
- */
-- (id<SMKContentSource>)contentSource;
-
 /**
  @return An array of tracks conforming to SMKTrack
  */
@@ -33,11 +27,6 @@
  @discussion This method is asynchronous and will return immediately.
  */
 - (void)fetchTracksWithCompletionHandler:(void(^)(NSArray *tracks, NSError *error))handler;
-
-/**
- @return A unique identifier string for the playlist
- */
-- (NSString *)uniqueIdentifier;
 
 /**
  @return Whether the playlist is editable
@@ -55,23 +44,6 @@
  @return An optional extended description for the playlist.
  */
 - (NSString *)extendedDescription;
-
-/**
- @return URL to retrieve the thumbnail artwork image from.
- @discussion This could be a local or remote URL.
- */
-- (NSURL *)smallCoverArtURL;
-
-/**
- @return URL to retrieve the large artwork from.
- @discussion This could be a local or remote URL.
- */
-- (NSURL *)largeCoverArtURL;
-
-/**
- @return The URL to the content page for this playlist.
- */
-- (NSURL *)webURL;
 
 /* These are methods for editing that will only be called if -isEditable returns YES.
  All indexes are relative to the state of the playlist before any changes */

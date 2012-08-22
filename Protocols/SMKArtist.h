@@ -7,19 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SMKContentObject.h"
+#import "SMKArtworkSource.h"
+#import "SMKWebObject.h"
 
-@protocol SMKArtist <NSObject>
+@protocol SMKArtist <NSObject, SMKContentObject, SMKArtworkSource, SMKWebObject>
 @required
-/**
- @return The name of the artist.
- */
-- (NSString *)name;
-
-/**
- @return The SMKContentSource object that this album was retrieved from.
- */
-- (id<SMKContentSource>)contentSource;
-
 /**
  @return An array of objects conforming to the SMKAlbum protocol.
  @discussion This method is synchronous, and will block until the albums have been fetched.
@@ -32,32 +25,9 @@
 */
 - (void)fetchAlbumsWithCompletionHandler:(void(^)(NSArray *albums, NSError *error))handler;
 
-/**
- @return A unique identifier string for the album.
-*/
-- (NSString *)uniqueIdentifier;
-
-
 @optional
 /**
  @return The number of tracks that the artist has.
 */
 - (NSUInteger)numberOfTracks;
-
-/**
- @return URL to retrieve the thumbnail artist art from.
- @discussion This could be a local or remote URL.
- */
-- (NSURL *)smallArtworkURL;
-
-/**
- @return URL to retrieve the large artist art from.
- @discussion This could be a local or remote URL.
- */
-- (NSURL *)largeCoverArtURL;
-
-/**
- @return The URL to the content page for this artist.
- */
-- (NSURL *)webURL;
 @end

@@ -10,22 +10,16 @@
 #import "SMKContentSource.h"
 #import "SMKArtist.h"
 
-@protocol SMKAlbum <NSObject>
-@required
-/**
- @return The name of the album.
- */
-- (NSString *)name;
+#import "SMKContentObject.h"
+#import "SMKArtworkSource.h"
+#import "SMKWebObject.h"
 
+@protocol SMKAlbum <NSObject, SMKContentObject, SMKArtworkSource, SMKWebObject>
+@required
 /**
  @return The artist of the album.
  */
 - (id<SMKArtist>)artist;
-
-/**
- @return The SMKContentSource object that this album was retrieved from.
- */
-- (id<SMKContentSource>)contentSource;
 
 /**
  @return an array of objects conforming to the SMKTrack protocol.
@@ -39,11 +33,6 @@
  */
 - (void)fetchTracksWithCompletionHandler:(void(^)(NSArray *tracks, NSError *error))handler;
 
-/**
- @return A unique identifier string for the album
- */
-- (NSString *)uniqueIdentifier;
-
 @optional
 /**
  @return The release date of the album.
@@ -54,23 +43,6 @@
  @return The duration of the album in seconds.
  */
 - (NSTimeInterval)duration;
-
-/**
- @return URL to retrieve the thumbnail cover art image from.
- @discussion This could be a local or remote URL.
- */
-- (NSURL *)smallCoverArtURL;
-
-/**
- @return URL to retrieve the large cover art image from.
-@discussion This could be a local or remote URL.
- */
-- (NSURL *)largeCoverArtURL;
-
-/**
- @return The URL to the content page for this album.
- */
-- (NSURL *)webURL;
 
 /**
  @return Whether the album is a compilation.

@@ -57,6 +57,9 @@
 		036994CF15E3F3EB003BCCBE /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 036994A615E3F3EB003BCCBE /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		036994D015E3F461003BCCBE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036991F615E3EAE1003BCCBE /* CoreData.framework */; };
 		036994D215E3F475003BCCBE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036994D115E3F475003BCCBE /* CoreData.framework */; };
+		03E22DAA15E4A87B008351DD /* SMKContentObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 03E22DA915E4A87B008351DD /* SMKContentObject.h */; };
+		03E22DAC15E4A9C1008351DD /* SMKArtworkSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 03E22DAB15E4A9C1008351DD /* SMKArtworkSource.h */; };
+		03E22DAE15E4AA7D008351DD /* SMKWebObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 03E22DAD15E4AA7D008351DD /* SMKWebObject.h */; };
 		03F7955315E426ED00C9F652 /* SMKAlbum.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F7955215E426ED00C9F652 /* SMKAlbum.h */; };
 		03F7955615E4282800C9F652 /* SMKContentSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F7955515E4282800C9F652 /* SMKContentSource.h */; };
 		03F7955815E42BE800C9F652 /* SMKArtist.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F7955715E42BE800C9F652 /* SMKArtist.h */; };
@@ -203,6 +206,9 @@
 		036994A515E3F3EB003BCCBE /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "External/AFNetworking/AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		036994A615E3F3EB003BCCBE /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "External/AFNetworking/AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		036994D115E3F475003BCCBE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
+		03E22DA915E4A87B008351DD /* SMKContentObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKContentObject.h; path = Protocols/SMKContentObject.h; sourceTree = "<group>"; };
+		03E22DAB15E4A9C1008351DD /* SMKArtworkSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKArtworkSource.h; path = Protocols/SMKArtworkSource.h; sourceTree = "<group>"; };
+		03E22DAD15E4AA7D008351DD /* SMKWebObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKWebObject.h; path = Protocols/SMKWebObject.h; sourceTree = "<group>"; };
 		03F7955215E426ED00C9F652 /* SMKAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKAlbum.h; path = Protocols/SMKAlbum.h; sourceTree = "<group>"; };
 		03F7955515E4282800C9F652 /* SMKContentSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKContentSource.h; path = Protocols/SMKContentSource.h; sourceTree = "<group>"; };
 		03F7955715E42BE800C9F652 /* SMKArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKArtist.h; path = Protocols/SMKArtist.h; sourceTree = "<group>"; };
@@ -454,6 +460,9 @@
 				03F7957D15E43ACD00C9F652 /* SMKPlayer.h */,
 				03F7957F15E4451000C9F652 /* SMKPlaylist.h */,
 				03F7958115E447AE00C9F652 /* SMKUser.h */,
+				03E22DA915E4A87B008351DD /* SMKContentObject.h */,
+				03E22DAB15E4A9C1008351DD /* SMKArtworkSource.h */,
+				03E22DAD15E4AA7D008351DD /* SMKWebObject.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -490,10 +499,26 @@
 		03F795DF15E48F2A00C9F652 /* Content Sources */ = {
 			isa = PBXGroup;
 			children = (
+				03F795E415E4933500C9F652 /* iTunes */,
+			);
+			name = "Content Sources";
+			sourceTree = "<group>";
+		};
+		03F795E415E4933500C9F652 /* iTunes */ = {
+			isa = PBXGroup;
+			children = (
+				03F795E515E4934700C9F652 /* Data Model */,
 				03F795E015E48FB500C9F652 /* SMKiTunesContentSource.h */,
 				03F795E115E48FB500C9F652 /* SMKiTunesContentSource.m */,
 			);
-			name = "Content Sources";
+			name = iTunes;
+			sourceTree = "<group>";
+		};
+		03F795E515E4934700C9F652 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Data Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -526,6 +551,9 @@
 				03F795C615E47AD300C9F652 /* NSError+SMKAdditions.h in Headers */,
 				03F795CE15E4843A00C9F652 /* SMKAVAudioPlayer.h in Headers */,
 				03F795E215E48FB500C9F652 /* SMKiTunesContentSource.h in Headers */,
+				03E22DAA15E4A87B008351DD /* SMKContentObject.h in Headers */,
+				03E22DAC15E4A9C1008351DD /* SMKArtworkSource.h in Headers */,
+				03E22DAE15E4AA7D008351DD /* SMKWebObject.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

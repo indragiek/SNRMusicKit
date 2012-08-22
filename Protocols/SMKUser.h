@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "SMKContentSource.h"
+#import "SMKContentObject.h"
+#import "SMKArtworkSource.h"
+#import "SMKWebObject.h"
 
-@protocol SMKUser <NSObject>
+@protocol SMKUser <NSObject, SMKContentObject, SMKArtworkSource, SMKWebObject>
 @required
 
 /**
@@ -23,21 +26,4 @@
  @return The display name of the user (real name)
  */
 - (NSString *)displayName;
-
-/**
- @return The URL to the profile page for this user
- */
-- (NSURL *)webURL;
-
-/**
- @return URL to retrieve the user's thumbnail avatar image from
- @discussion This could be a local or remote URL.
- */
-- (NSURL *)smallAvatarURL;
-
-/**
- @return URL to retrieve the user's full size avatar image from
- @discussion This could be a local or remote URL.
- */
-- (NSURL *)largeAvatarURL;
 @end
