@@ -22,7 +22,11 @@
  @return An array of objects conforming to the SMKAlbum protocol.
  @discussion This method is synchronous, and will block until the albums have been fetched.
  */
-- (NSArray *)albumsWithSortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate *)predicate batchSize:(NSUInteger)batchSize fetchLimit:(NSUInteger)fetchLimit error:(NSError **)error;
+- (NSArray *)albumsWithSortDescriptors:(NSArray *)sortDescriptors
+                             predicate:(NSPredicate *)predicate
+                             batchSize:(NSUInteger)batchSize
+                            fetchLimit:(NSUInteger)fetchLimit
+                                 error:(NSError **)error;
 
 /**
  This method will fetch the albums asynchronously and call the completion handler when finished.
@@ -32,7 +36,11 @@
  @param fetchLimit A limit on the number of objects to return
  @discussion This method is asynchronous and will return immediately.
 */
-- (void)fetchAlbumsWithSortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate *)predicate batchSize:(NSUInteger)batchSize fetchLimit:(NSUInteger)fetchLimit completionHandler:(void(^)(NSArray *albums, NSError *error))handler;
+- (void)fetchAlbumsWithSortDescriptors:(NSArray *)sortDescriptors
+                             predicate:(NSPredicate *)predicate
+                             batchSize:(NSUInteger)batchSize
+                            fetchLimit:(NSUInteger)fetchLimit
+                     completionHandler:(void(^)(NSArray *albums, NSError *error))handler;
 
 @optional
 /**

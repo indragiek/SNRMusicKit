@@ -30,7 +30,11 @@
  @return an array of objects conforming to the SMKTrack protocol.
  @discussion This method is synchronous, and will block until the tracks have been fetched.
  */
-- (NSArray *)tracksWithSortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate *)predicate batchSize:(NSUInteger)batchSize fetchLimit:(NSUInteger)fetchLimit error:(NSError **)error;
+- (NSArray *)tracksWithSortDescriptors:(NSArray *)sortDescriptors
+                             predicate:(NSPredicate *)predicate
+                             batchSize:(NSUInteger)batchSize
+                            fetchLimit:(NSUInteger)fetchLimit
+                                 error:(NSError **)error;
 
 /**
  This method will fetch the tracks asynchronously and call the completion handler when finished.
@@ -40,7 +44,11 @@
  @param fetchLimit A limit on the number of objects to return
  @discussion This method is asynchronous and will return immediately.
  */
-- (void)fetchTracksWithSortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate *)predicate batchSize:(NSUInteger)batchSize fetchLimit:(NSUInteger)fetchLimit completionHandler:(void(^)(NSArray *tracks, NSError *error))handler;
+- (void)fetchTracksWithSortDescriptors:(NSArray *)sortDescriptors
+                             predicate:(NSPredicate *)predicate
+                             batchSize:(NSUInteger)batchSize
+                            fetchLimit:(NSUInteger)fetchLimit
+                     completionHandler:(void(^)(NSArray *tracks, NSError *error))handler;
 
 @optional
 /**

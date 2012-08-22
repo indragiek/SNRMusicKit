@@ -27,7 +27,12 @@
  @param error Error pointer for an NSError if something goes wrong
  @return The fetched results
  */
-- (NSArray *)SMK_fetchWithEntityName:(NSString *)entityName sortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate *)predicate batchSize:(NSUInteger)batchSize fetchLimit:(NSUInteger)fetchLimit error:(NSError **)error;
+- (NSArray *)SMK_fetchWithEntityName:(NSString *)entityName
+                     sortDescriptors:(NSArray *)sortDescriptors
+                           predicate:(NSPredicate *)predicate
+                           batchSize:(NSUInteger)batchSize
+                          fetchLimit:(NSUInteger)fetchLimit
+                               error:(NSError **)error;
 
 /**
  @param entityName The name of the Core Data entity to fetch
@@ -38,5 +43,24 @@
  @param handler Completion handler to be called upon completion of the fetch
  @return The fetched results
  */
-- (void)SMK_asyncFetchWithEntityName:(NSString *)entityName sortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate *)predicate batchSize:(NSUInteger)batchSize fetchLimit:(NSUInteger)fetchLimit completionHandler:(void(^)(NSArray *results, NSError *error))handler;
+- (void)SMK_asyncFetchWithEntityName:(NSString *)entityName
+                     sortDescriptors:(NSArray *)sortDescriptors
+                           predicate:(NSPredicate *)predicate
+                           batchSize:(NSUInteger)batchSize
+                          fetchLimit:(NSUInteger)fetchLimit
+                   completionHandler:(void(^)(NSArray *results, NSError *error))handler;
+
+/**
+ @param entityName The name of the Core Data entity to fetch
+ @param sortDescriptors Array of NSSortDescriptor's used to sort the results
+ @param predicate A predicate used to filter the results
+ @param batchSize The batch size to use for fetching
+ @param fetchLimit The maximum number of objects to fetch
+ @return A fetch request with the specified parameters
+ */
+- (NSFetchRequest *)SMK_fetchRequestWithEntityName:(NSString *)entityName
+                               sortDescriptors:(NSArray *)sortDescriptors
+                                     predicate:(NSPredicate *)predicate
+                                     batchSize:(NSUInteger)batchSize
+                                    fetchLimit:(NSUInteger)fetchLimit;
 @end

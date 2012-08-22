@@ -46,14 +46,30 @@
 
 + (BOOL)supportsBatching { return YES; }
 
-- (NSArray *)playlistsWithSortDescriptors:(NSArray *)sortDescriptors batchSize:(NSUInteger)batchSize fetchLimit:(NSUInteger)fetchLimit predicate:(NSPredicate *)predicate withError:(NSError **)error
+- (NSArray *)playlistsWithSortDescriptors:(NSArray *)sortDescriptors
+                                batchSize:(NSUInteger)batchSize
+                               fetchLimit:(NSUInteger)fetchLimit
+                                predicate:(NSPredicate *)predicate
+                                withError:(NSError **)error
 {
-    return [self.managedObjectContext SMK_fetchWithEntityName:SMKiTunesEntityNamePlaylist sortDescriptors:sortDescriptors predicate:predicate batchSize:batchSize fetchLimit:fetchLimit error:error];
+    return [self.managedObjectContext SMK_fetchWithEntityName:SMKiTunesEntityNamePlaylist
+                                              sortDescriptors:sortDescriptors
+                                                    predicate:predicate
+                                                    batchSize:batchSize
+                                                   fetchLimit:fetchLimit error:error];
 }
 
-- (void)fetchPlaylistsWithSortDescriptors:(NSArray *)sortDescriptors batchSize:(NSUInteger)batchSize fetchLimit:(NSUInteger)fetchLimit predicate:(NSPredicate *)predicate CompletionHandler:(void(^)(NSArray *playlists, NSError *error))handler
+- (void)fetchPlaylistsWithSortDescriptors:(NSArray *)sortDescriptors
+                                batchSize:(NSUInteger)batchSize
+                               fetchLimit:(NSUInteger)fetchLimit
+                                predicate:(NSPredicate *)predicate
+                        completionHandler:(void(^)(NSArray *playlists, NSError *error))handler
 {
-    return [self.managedObjectContext SMK_asyncFetchWithEntityName:SMKiTunesEntityNamePlaylist sortDescriptors:sortDescriptors predicate:predicate batchSize:batchSize fetchLimit:fetchLimit completionHandler:handler];
+    return [self.managedObjectContext SMK_asyncFetchWithEntityName:SMKiTunesEntityNamePlaylist
+                                                   sortDescriptors:sortDescriptors
+                                                         predicate:predicate batchSize:batchSize
+                                                        fetchLimit:fetchLimit
+                                                 completionHandler:handler];
 }
 
 #pragma mark - Notifications
