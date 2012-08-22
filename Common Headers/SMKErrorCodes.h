@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Indragie Karunaratne. All rights reserved.
 //
 
-extern NSInteger const SKPlayerErrorFailedToCreateInputSource;
-extern NSInteger const SKPlayerErrorFailedToCreateDecoder;
-extern NSInteger const SKPlayerErrorFailedToEnqueueTrack;
+extern NSInteger const SMKPlayerErrorFailedToCreateInputSource;
+extern NSInteger const SMKPlayerErrorFailedToCreateDecoder;
+extern NSInteger const SMKPlayerErrorFailedToEnqueueTrack;
+extern NSInteger const SMKPlayerErrorTrackAlreadyPreloaded;

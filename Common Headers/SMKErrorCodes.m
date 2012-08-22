@@ -8,6 +8,7 @@
 
 #import "SMKErrorCodes.h"
 
-NSInteger const SKPlayerErrorFailedToCreateInputSource     = 0;
-NSInteger const SKPlayerErrorFailedToCreateDecoder         = 1;
-NSInteger const SKPlayerErrorFailedToEnqueueTrack          = 2;
+NSInteger const SMKPlayerErrorFailedToCreateInputSource     = 0;
+NSInteger const SMKPlayerErrorFailedToCreateDecoder         = 1;
+NSInteger const SMKPlayerErrorFailedToEnqueueTrack          = 2;
+NSInteger const SMKPlayerErrorTrackAlreadyPreloaded         = 3;

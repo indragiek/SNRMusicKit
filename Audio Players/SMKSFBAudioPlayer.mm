@@ -42,12 +42,12 @@ static AudioObjectPropertyAddress _outputAudioAddress = {
 
 static void renderingStarted(void *context, const AudioDecoder *decoder)
 {
-	OSAtomicTestAndSetBarrier(7 /* SMKPlayerFlagRenderingStarted */, &_playerFlags);
+    OSAtomicTestAndSetBarrier(7 /* SMKPlayerFlagRenderingStarted */, &_playerFlags);
 }
 
 static void renderingFinished(void *context, const AudioDecoder *decoder)
 {
-	OSAtomicTestAndSetBarrier(6 /* SMKPlayerFlagRenderingFinished */, &_playerFlags);
+    OSAtomicTestAndSetBarrier(6 /* SMKPlayerFlagRenderingFinished */, &_playerFlags);
 }
 
 static void decodingStarted(void *context, const AudioDecoder *decoder)
@@ -98,9 +98,9 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
         _player = new AudioPlayer;
         _player->AddEffect(kAudioUnitSubType_GraphicEQ, kAudioUnitManufacturer_Apple, 0, 0, &_equalizer);
         AudioUnitSetParameter(_equalizer, 10000, kAudioUnitScope_Global, 0, 0.0, 0); // 10 band EQ
-        #if TARGET_OS_MAC
+#if TARGET_OS_MAC
         AudioObjectAddPropertyListener(kAudioObjectSystemObject, &_outputAudioAddress, systemOutputDeviceDidChange, (__bridge void*)self);
-        #endif
+#endif
         AudioDecoder::SetAutomaticallyOpenDecoders(true);
         _renderTimer = [NSTimer timerWithTimeInterval:0.5f target:self selector:@selector(_renderTimerFired:) userInfo:nil repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:_renderTimer forMode:NSRunLoopCommonModes];
@@ -152,26 +152,26 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
     NSURL *url = [track playbackURL];
     InputSource *inputSource = InputSource::CreateInputSourceForURL((__bridge CFURLRef)url, self.loadFilesInMemory ? InputSourceFlagLoadFilesInMemory : 0, nullptr);
     if (inputSource == nullptr) {
-        handler([NSError SMK_errorWithCode:SKPlayerErrorFailedToCreateInputSource description:[NSString stringWithFormat:@"Failed to create input source for track: %@", track]]);
+        handler([NSError SMK_errorWithCode:SMKPlayerErrorFailedToCreateInputSource description:[NSString stringWithFormat:@"Failed to create input source for track: %@", track]]);
         return;
     }
 	AudioDecoder *decoder = AudioDecoder::CreateDecoderForInputSource(inputSource);
 	if (decoder == nullptr) {
         delete inputSource, inputSource = nullptr;
-        handler([NSError SMK_errorWithCode:SKPlayerErrorFailedToCreateDecoder description:[NSString stringWithFormat:@"Failed to create decoder for track: %@", track]]);
+        handler([NSError SMK_errorWithCode:SMKPlayerErrorFailedToCreateDecoder description:[NSString stringWithFormat:@"Failed to create decoder for track: %@", track]]);
         return;
     }
-	decoder->SetRenderingStartedCallback(renderingStarted, (__bridge void*)self);
-	decoder->SetRenderingFinishedCallback(renderingFinished, (__bridge void*)self);
+    decoder->SetRenderingStartedCallback(renderingStarted, (__bridge void*)self);
+    decoder->SetRenderingFinishedCallback(renderingFinished, (__bridge void*)self);
     decoder->SetDecodingStartedCallback(decodingStarted, (__bridge void*)self);
     decoder->SetDecodingFinishedCallback(decodingFinished, (__bridge void*)self);
     _playWhenReady = YES;
-	if ((_player->Enqueue(decoder)) == false) {
-		delete decoder, decoder = nullptr;
+    if ((_player->Enqueue(decoder)) == false) {
+        delete decoder, decoder = nullptr;
         _playWhenReady = NO;
-        handler([NSError SMK_errorWithCode:SKPlayerErrorFailedToEnqueueTrack description:[NSString stringWithFormat:@"Failed to create decoder for track: %@", track]]);
+        handler([NSError SMK_errorWithCode:SMKPlayerErrorFailedToEnqueueTrack description:[NSString stringWithFormat:@"Failed to create decoder for track: %@", track]]);
         return;
-	}
+    }
     handler(nil);
 }
 
@@ -215,7 +215,9 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
 
 - (void)preloadTrack:(id<SMKTrack>)track completionHandler:(void (^)(NSError *))handler
 {
-    _preloadedTrack = track;
+    if (_preloadedTrack) {
+        handler([NSError SMK_errorWithCode:SMKPlayerErrorTrackAlreadyPreloaded description:[NSString stringWithFormat:@"The following track is already preloaded: %@. This track must begin playing before you can preload another one.", _preloadedTrack]]);
+    }
     [self playTrack:track completionHandler:^(NSError *error) {
         if (!error) {
             _preloadedTrack = track;
@@ -264,16 +266,18 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
 - (void)_renderTimerFired:(NSTimer*)timer
 {
     if (SMKPlayerFlagRenderingStarted & _playerFlags) {
-		OSAtomicTestAndClearBarrier(7 /* SMKPlayerFlagRenderingStarted */, &_playerFlags);
-		if ([self.delegate respondsToSelector:@selector(playerWillStartPlaying:)]) {
+        OSAtomicTestAndClearBarrier(7 /* SMKPlayerFlagRenderingStarted */, &_playerFlags);
+        if ([self.delegate respondsToSelector:@selector(playerWillStartPlaying:)]) {
             [self.delegate playerWillStartPlaying:self];
         }
-	} else if (SMKPlayerFlagRenderingFinished & _playerFlags) {
-		OSAtomicTestAndClearBarrier(6 /* SMKPlayerFlagRenderingFinished */, &_playerFlags);
-		if ([self.delegate respondsToSelector:@selector(playerDidFinishPlaying:)]) {
+    } else if (SMKPlayerFlagRenderingFinished & _playerFlags) {
+        OSAtomicTestAndClearBarrier(6 /* SMKPlayerFlagRenderingFinished */, &_playerFlags);
+        if ([self.delegate respondsToSelector:@selector(playerDidFinishPlaying:)]) {
             [self.delegate playerDidFinishPlaying:self];
         }
-	} else if (SMKPlayerFlagDecodingStarted & _playerFlags) {
+        _currentTrack = _preloadedTrack;
+        _preloadedTrack = nil;
+    } else if (SMKPlayerFlagDecodingStarted & _playerFlags) {
         OSAtomicTestAndClearBarrier(5 /* SMKPlayerFlagDecodingStarted */, &_playerFlags);
         if (_playWhenReady) {
             [self resume];
