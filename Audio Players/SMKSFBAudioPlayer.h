@@ -18,6 +18,7 @@
 @property (nonatomic, assign) NSTimeInterval seekTimeInterval;
 
 #pragma mark - Player Specific API
+
 @property (nonatomic, assign) float preGain;
 
 /** 

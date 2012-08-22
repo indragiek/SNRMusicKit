@@ -63,6 +63,7 @@ static void decodingFinished(void *context, const AudioDecoder *decoder)
 @interface SMKSFBAudioPlayer ()
 - (void)_setOutputDeviceID:(AudioDeviceID)deviceID;
 - (void)_renderTimerFired:(NSTimer*)timer;
+- (void)_enqueueTrack:(id<SMKTrack>)track completionHandler:(void(^)(NSError *error))handler;
 @end
 
 #if TARGET_OS_MAC
@@ -149,30 +150,10 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
 
 - (void)playTrack:(id<SMKTrack>)track completionHandler:(void(^)(NSError *error))handler
 {
-    NSURL *url = [track playbackURL];
-    InputSource *inputSource = InputSource::CreateInputSourceForURL((__bridge CFURLRef)url, self.loadFilesInMemory ? InputSourceFlagLoadFilesInMemory : 0, nullptr);
-    if (inputSource == nullptr) {
-        handler([NSError SMK_errorWithCode:SMKPlayerErrorFailedToCreateInputSource description:[NSString stringWithFormat:@"Failed to create input source for track: %@", track]]);
-        return;
-    }
-	AudioDecoder *decoder = AudioDecoder::CreateDecoderForInputSource(inputSource);
-	if (decoder == nullptr) {
-        delete inputSource, inputSource = nullptr;
-        handler([NSError SMK_errorWithCode:SMKPlayerErrorFailedToCreateDecoder description:[NSString stringWithFormat:@"Failed to create decoder for track: %@", track]]);
-        return;
-    }
-    decoder->SetRenderingStartedCallback(renderingStarted, (__bridge void*)self);
-    decoder->SetRenderingFinishedCallback(renderingFinished, (__bridge void*)self);
-    decoder->SetDecodingStartedCallback(decodingStarted, (__bridge void*)self);
-    decoder->SetDecodingFinishedCallback(decodingFinished, (__bridge void*)self);
-    _playWhenReady = YES;
-    if ((_player->Enqueue(decoder)) == false) {
-        delete decoder, decoder = nullptr;
-        _playWhenReady = NO;
-        handler([NSError SMK_errorWithCode:SMKPlayerErrorFailedToEnqueueTrack description:[NSString stringWithFormat:@"Failed to create decoder for track: %@", track]]);
-        return;
-    }
-    handler(nil);
+    _player->Stop();
+    _player->ClearQueuedDecoders();
+    _playWhenReady = NO;
+    [self _enqueueTrack:track completionHandler:handler];
 }
 
 - (void)pause
@@ -218,7 +199,7 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
     if (_preloadedTrack) {
         handler([NSError SMK_errorWithCode:SMKPlayerErrorTrackAlreadyPreloaded description:[NSString stringWithFormat:@"The following track is already preloaded: %@. This track must begin playing before you can preload another one.", _preloadedTrack]]);
     }
-    [self playTrack:track completionHandler:^(NSError *error) {
+    [self _enqueueTrack:track completionHandler:^(NSError *error) {
         if (!error) {
             _preloadedTrack = track;
         } else {
@@ -257,6 +238,34 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
 }
 
 #pragma mark - Private
+
+- (void)_enqueueTrack:(id<SMKTrack>)track completionHandler:(void(^)(NSError *error))handler
+{
+    NSURL *url = [track playbackURL];
+    InputSource *inputSource = InputSource::CreateInputSourceForURL((__bridge CFURLRef)url, self.loadFilesInMemory ? InputSourceFlagLoadFilesInMemory : 0, nullptr);
+    if (inputSource == nullptr) {
+        handler([NSError SMK_errorWithCode:SMKPlayerErrorFailedToCreateInputSource description:[NSString stringWithFormat:@"Failed to create input source for track: %@", track]]);
+        return;
+    }
+	AudioDecoder *decoder = AudioDecoder::CreateDecoderForInputSource(inputSource);
+	if (decoder == nullptr) {
+        delete inputSource, inputSource = nullptr;
+        handler([NSError SMK_errorWithCode:SMKPlayerErrorFailedToCreateDecoder description:[NSString stringWithFormat:@"Failed to create decoder for track: %@", track]]);
+        return;
+    }
+    decoder->SetRenderingStartedCallback(renderingStarted, (__bridge void*)self);
+    decoder->SetRenderingFinishedCallback(renderingFinished, (__bridge void*)self);
+    decoder->SetDecodingStartedCallback(decodingStarted, (__bridge void*)self);
+    decoder->SetDecodingFinishedCallback(decodingFinished, (__bridge void*)self);
+    _playWhenReady = YES;
+    if ((_player->Enqueue(decoder)) == false) {
+        delete decoder, decoder = nullptr;
+        _playWhenReady = NO;
+        handler([NSError SMK_errorWithCode:SMKPlayerErrorFailedToEnqueueTrack description:[NSString stringWithFormat:@"Failed to create decoder for track: %@", track]]);
+        return;
+    }
+    handler(nil);
+}
 
 - (void)_setOutputDeviceID:(AudioDeviceID)deviceID
 {

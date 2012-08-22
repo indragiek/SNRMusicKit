@@ -77,6 +77,11 @@
 		03F795C815E47AD300C9F652 /* NSError+SMKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F795C515E47AD300C9F652 /* NSError+SMKAdditions.m */; };
 		03F795CA15E47BC400C9F652 /* SMKErrorCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F795C915E47BC400C9F652 /* SMKErrorCodes.m */; };
 		03F795CB15E47BC400C9F652 /* SMKErrorCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F795C915E47BC400C9F652 /* SMKErrorCodes.m */; };
+		03F795CE15E4843A00C9F652 /* SMKAVAudioPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F795CC15E4843A00C9F652 /* SMKAVAudioPlayer.h */; };
+		03F795CF15E4843A00C9F652 /* SMKAVAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F795CD15E4843A00C9F652 /* SMKAVAudioPlayer.m */; };
+		03F795D015E4843A00C9F652 /* SMKAVAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F795CD15E4843A00C9F652 /* SMKAVAudioPlayer.m */; };
+		03F795E215E48FB500C9F652 /* SMKiTunesContentSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F795E015E48FB500C9F652 /* SMKiTunesContentSource.h */; };
+		03F795E315E48FB500C9F652 /* SMKiTunesContentSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F795E115E48FB500C9F652 /* SMKiTunesContentSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -215,6 +220,10 @@
 		03F795C415E47AD300C9F652 /* NSError+SMKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSError+SMKAdditions.h"; path = "Categories/NSError+SMKAdditions.h"; sourceTree = "<group>"; };
 		03F795C515E47AD300C9F652 /* NSError+SMKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSError+SMKAdditions.m"; path = "Categories/NSError+SMKAdditions.m"; sourceTree = "<group>"; };
 		03F795C915E47BC400C9F652 /* SMKErrorCodes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKErrorCodes.m; path = "Common Headers/SMKErrorCodes.m"; sourceTree = "<group>"; };
+		03F795CC15E4843A00C9F652 /* SMKAVAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKAVAudioPlayer.h; path = "Audio Players/SMKAVAudioPlayer.h"; sourceTree = "<group>"; };
+		03F795CD15E4843A00C9F652 /* SMKAVAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKAVAudioPlayer.m; path = "Audio Players/SMKAVAudioPlayer.m"; sourceTree = "<group>"; };
+		03F795E015E48FB500C9F652 /* SMKiTunesContentSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKiTunesContentSource.h; path = "Content Sources/SMKiTunesContentSource.h"; sourceTree = "<group>"; };
+		03F795E115E48FB500C9F652 /* SMKiTunesContentSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKiTunesContentSource.m; path = "Content Sources/SMKiTunesContentSource.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +269,7 @@
 			children = (
 				03F795C315E47AB900C9F652 /* Categories */,
 				03F795C015E47A1F00C9F652 /* Common Headers */,
+				03F795DF15E48F2A00C9F652 /* Content Sources */,
 				03F795B115E473ED00C9F652 /* Audio Players */,
 				03F7955015E426A500C9F652 /* Protocols */,
 				0369949015E3F3D8003BCCBE /* External */,
@@ -453,6 +463,8 @@
 			children = (
 				03F795B215E4740900C9F652 /* SMKSFBAudioPlayer.h */,
 				03F795B315E4740900C9F652 /* SMKSFBAudioPlayer.mm */,
+				03F795CC15E4843A00C9F652 /* SMKAVAudioPlayer.h */,
+				03F795CD15E4843A00C9F652 /* SMKAVAudioPlayer.m */,
 			);
 			name = "Audio Players";
 			sourceTree = "<group>";
@@ -473,6 +485,15 @@
 				03F795C515E47AD300C9F652 /* NSError+SMKAdditions.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		03F795DF15E48F2A00C9F652 /* Content Sources */ = {
+			isa = PBXGroup;
+			children = (
+				03F795E015E48FB500C9F652 /* SMKiTunesContentSource.h */,
+				03F795E115E48FB500C9F652 /* SMKiTunesContentSource.m */,
+			);
+			name = "Content Sources";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -503,6 +524,8 @@
 				03F795B415E4740900C9F652 /* SMKSFBAudioPlayer.h in Headers */,
 				03F795C215E47A3C00C9F652 /* SMKErrorCodes.h in Headers */,
 				03F795C615E47AD300C9F652 /* NSError+SMKAdditions.h in Headers */,
+				03F795CE15E4843A00C9F652 /* SMKAVAudioPlayer.h in Headers */,
+				03F795E215E48FB500C9F652 /* SMKiTunesContentSource.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,6 +702,8 @@
 				03F795B515E4740900C9F652 /* SMKSFBAudioPlayer.mm in Sources */,
 				03F795C715E47AD300C9F652 /* NSError+SMKAdditions.m in Sources */,
 				03F795CA15E47BC400C9F652 /* SMKErrorCodes.m in Sources */,
+				03F795CF15E4843A00C9F652 /* SMKAVAudioPlayer.m in Sources */,
+				03F795E315E48FB500C9F652 /* SMKiTunesContentSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,6 +725,7 @@
 				03F795B615E4740900C9F652 /* SMKSFBAudioPlayer.mm in Sources */,
 				03F795C815E47AD300C9F652 /* NSError+SMKAdditions.m in Sources */,
 				03F795CB15E47BC400C9F652 /* SMKErrorCodes.m in Sources */,
+				03F795D015E4843A00C9F652 /* SMKAVAudioPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
