@@ -1,32 +1,32 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to SNRiTunesKeyword.h instead.
+// Make changes to SMKiTunesKeyword.h instead.
 
 #import <CoreData/CoreData.h>
 
 
-extern const struct SNRiTunesKeywordAttributes {
+extern const struct SMKiTunesKeywordAttributes {
 	__unsafe_unretained NSString *name;
-} SNRiTunesKeywordAttributes;
+} SMKiTunesKeywordAttributes;
 
-extern const struct SNRiTunesKeywordRelationships {
+extern const struct SMKiTunesKeywordRelationships {
 	__unsafe_unretained NSString *objects;
-} SNRiTunesKeywordRelationships;
+} SMKiTunesKeywordRelationships;
 
-extern const struct SNRiTunesKeywordFetchedProperties {
-} SNRiTunesKeywordFetchedProperties;
+extern const struct SMKiTunesKeywordFetchedProperties {
+} SMKiTunesKeywordFetchedProperties;
 
-@class SNRiTunesObject;
+@class SMKiTunesObject;
 
 
 
-@interface SNRiTunesKeywordID : NSManagedObjectID {}
+@interface SMKiTunesKeywordID : NSManagedObjectID {}
 @end
 
-@interface _SNRiTunesKeyword : NSManagedObject {}
+@interface _SMKiTunesKeyword : NSManagedObject {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-- (SNRiTunesKeywordID*)objectID;
+- (SMKiTunesKeywordID*)objectID;
 
 
 
@@ -50,16 +50,16 @@ extern const struct SNRiTunesKeywordFetchedProperties {
 
 @end
 
-@interface _SNRiTunesKeyword (CoreDataGeneratedAccessors)
+@interface _SMKiTunesKeyword (CoreDataGeneratedAccessors)
 
 - (void)addObjects:(NSSet*)value_;
 - (void)removeObjects:(NSSet*)value_;
-- (void)addObjectsObject:(SNRiTunesObject*)value_;
-- (void)removeObjectsObject:(SNRiTunesObject*)value_;
+- (void)addObjectsObject:(SMKiTunesObject*)value_;
+- (void)removeObjectsObject:(SMKiTunesObject*)value_;
 
 @end
 
-@interface _SNRiTunesKeyword (CoreDataGeneratedPrimitiveAccessors)
+@interface _SMKiTunesKeyword (CoreDataGeneratedPrimitiveAccessors)
 
 
 - (NSString*)primitiveName;

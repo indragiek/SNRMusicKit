@@ -16,14 +16,15 @@
 - (NSString *)name;
 
 /**
- @return An array of objects conforming to the SMKAlbum protocol.
- @discussion This method is synchronous, and will block until the albums have been fetched.
+ @param error An NSError object with error information if it was unsuccessful.
+ @return An array of objects conforming to the SMKPlaylist
+ @discussion This method is synchronous, and will block until the playlists have been fetched.
  */
-- (NSArray *)albums;
+- (NSArray *)playlistsWithError:(NSError **)error;
 
 /**
- This method will fetch the albums asynchronously and call the completion handler when finished.
+ This method will fetch the playlists asynchronously and call the completion handler when finished.
  @discussion This method is asynchronous and will return immediately.
  */
-- (void)fetchAlbumsWithCompletionHandler:(void(^)(NSArray *albums, NSError *error))handler;
+- (void)fetchPlaylistsWithCompletionHandler:(void(^)(NSArray *playlists, NSError *error))handler;
 @end

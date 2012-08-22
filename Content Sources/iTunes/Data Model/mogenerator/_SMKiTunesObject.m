@@ -1,41 +1,41 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to SNRiTunesObject.m instead.
+// Make changes to SMKiTunesObject.m instead.
 
-#import "_SNRiTunesObject.h"
+#import "_SMKiTunesObject.h"
 
-const struct SNRiTunesObjectAttributes SNRiTunesObjectAttributes = {
+const struct SMKiTunesObjectAttributes SMKiTunesObjectAttributes = {
 	.identifier = @"identifier",
 	.name = @"name",
 };
 
-const struct SNRiTunesObjectRelationships SNRiTunesObjectRelationships = {
+const struct SMKiTunesObjectRelationships SMKiTunesObjectRelationships = {
 	.keywords = @"keywords",
 };
 
-const struct SNRiTunesObjectFetchedProperties SNRiTunesObjectFetchedProperties = {
+const struct SMKiTunesObjectFetchedProperties SMKiTunesObjectFetchedProperties = {
 };
 
-@implementation SNRiTunesObjectID
+@implementation SMKiTunesObjectID
 @end
 
-@implementation _SNRiTunesObject
+@implementation _SMKiTunesObject
 
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
 	NSParameterAssert(moc_);
-	return [NSEntityDescription insertNewObjectForEntityForName:@"SNRiTunesObject" inManagedObjectContext:moc_];
+	return [NSEntityDescription insertNewObjectForEntityForName:@"SMKiTunesObject" inManagedObjectContext:moc_];
 }
 
 + (NSString*)entityName {
-	return @"SNRiTunesObject";
+	return @"SMKiTunesObject";
 }
 
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_ {
 	NSParameterAssert(moc_);
-	return [NSEntityDescription entityForName:@"SNRiTunesObject" inManagedObjectContext:moc_];
+	return [NSEntityDescription entityForName:@"SMKiTunesObject" inManagedObjectContext:moc_];
 }
 
-- (SNRiTunesObjectID*)objectID {
-	return (SNRiTunesObjectID*)[super objectID];
+- (SMKiTunesObjectID*)objectID {
+	return (SMKiTunesObjectID*)[super objectID];
 }
 
 + (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {

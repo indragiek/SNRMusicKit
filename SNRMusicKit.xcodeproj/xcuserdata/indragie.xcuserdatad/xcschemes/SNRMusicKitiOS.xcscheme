@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0369922915E3EB27003BCCBE"
+               BlueprintIdentifier = "0369923815E3EB44003BCCBE"
                BuildableName = "libSNRMusicKitiOS.a"
                BlueprintName = "SNRMusicKitiOS"
                ReferencedContainer = "container:SNRMusicKit.xcodeproj">

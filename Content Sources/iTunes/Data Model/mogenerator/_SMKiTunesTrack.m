@@ -1,9 +1,9 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to SNRiTunesTrack.m instead.
+// Make changes to SMKiTunesTrack.m instead.
 
-#import "_SNRiTunesTrack.h"
+#import "_SMKiTunesTrack.h"
 
-const struct SNRiTunesTrackAttributes SNRiTunesTrackAttributes = {
+const struct SMKiTunesTrackAttributes SMKiTunesTrackAttributes = {
 	.albumArtistName = @"albumArtistName",
 	.artistName = @"artistName",
 	.bookmark = @"bookmark",
@@ -19,35 +19,35 @@ const struct SNRiTunesTrackAttributes SNRiTunesTrackAttributes = {
 	.trackTotal = @"trackTotal",
 };
 
-const struct SNRiTunesTrackRelationships SNRiTunesTrackRelationships = {
+const struct SMKiTunesTrackRelationships SMKiTunesTrackRelationships = {
 	.album = @"album",
 	.playlists = @"playlists",
 };
 
-const struct SNRiTunesTrackFetchedProperties SNRiTunesTrackFetchedProperties = {
+const struct SMKiTunesTrackFetchedProperties SMKiTunesTrackFetchedProperties = {
 };
 
-@implementation SNRiTunesTrackID
+@implementation SMKiTunesTrackID
 @end
 
-@implementation _SNRiTunesTrack
+@implementation _SMKiTunesTrack
 
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
 	NSParameterAssert(moc_);
-	return [NSEntityDescription insertNewObjectForEntityForName:@"SNRiTunesTrack" inManagedObjectContext:moc_];
+	return [NSEntityDescription insertNewObjectForEntityForName:@"SMKiTunesTrack" inManagedObjectContext:moc_];
 }
 
 + (NSString*)entityName {
-	return @"SNRiTunesTrack";
+	return @"SMKiTunesTrack";
 }
 
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_ {
 	NSParameterAssert(moc_);
-	return [NSEntityDescription entityForName:@"SNRiTunesTrack" inManagedObjectContext:moc_];
+	return [NSEntityDescription entityForName:@"SMKiTunesTrack" inManagedObjectContext:moc_];
 }
 
-- (SNRiTunesTrackID*)objectID {
-	return (SNRiTunesTrackID*)[super objectID];
+- (SMKiTunesTrackID*)objectID {
+	return (SMKiTunesTrackID*)[super objectID];
 }
 
 + (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {

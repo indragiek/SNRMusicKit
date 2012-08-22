@@ -14,10 +14,11 @@
 @protocol SMKArtist <NSObject, SMKContentObject, SMKArtworkSource, SMKWebObject>
 @required
 /**
+@param error An NSError object with error information if it was unsuccessful.
  @return An array of objects conforming to the SMKAlbum protocol.
  @discussion This method is synchronous, and will block until the albums have been fetched.
  */
-- (NSArray *)albums;
+- (NSArray *)albumsWithError:(NSError **)error;
 
 /**
  This method will fetch the albums asynchronously and call the completion handler when finished.

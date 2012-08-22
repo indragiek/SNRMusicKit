@@ -7,6 +7,7 @@
 //
 
 #import "SMKAppDelegate.h"
+#import <SNRMusicKitMac/SMKiTunesContentSource.h>
 
 @implementation SMKAppDelegate
 
@@ -16,7 +17,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
+    SMKiTunesContentSource *source = [[SMKiTunesContentSource alloc] init];
 }
 
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "com.indragie.SNRMusicKit" in the user's Application Support directory.

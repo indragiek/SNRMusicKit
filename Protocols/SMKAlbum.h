@@ -22,10 +22,11 @@
 - (id<SMKArtist>)artist;
 
 /**
+ @param error An NSError object with error information if it was unsuccessful.
  @return an array of objects conforming to the SMKTrack protocol.
  @discussion This method is synchronous, and will block until the tracks have been fetched.
  */
-- (NSArray *)tracks;
+- (NSArray *)tracksWithError:(NSError **)error;
 
 /**
  This method will fetch the tracks asynchronously and call the completion handler when finished.

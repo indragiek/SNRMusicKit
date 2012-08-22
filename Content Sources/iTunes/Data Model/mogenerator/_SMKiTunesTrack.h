@@ -1,10 +1,10 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to SNRiTunesTrack.h instead.
+// Make changes to SMKiTunesTrack.h instead.
 
 #import <CoreData/CoreData.h>
-#import "SNRiTunesObject.h"
+#import "SMKiTunesObject.h"
 
-extern const struct SNRiTunesTrackAttributes {
+extern const struct SMKiTunesTrackAttributes {
 	__unsafe_unretained NSString *albumArtistName;
 	__unsafe_unretained NSString *artistName;
 	__unsafe_unretained NSString *bookmark;
@@ -18,20 +18,18 @@ extern const struct SNRiTunesTrackAttributes {
 	__unsafe_unretained NSString *releaseYear;
 	__unsafe_unretained NSString *trackNumber;
 	__unsafe_unretained NSString *trackTotal;
-} SNRiTunesTrackAttributes;
+} SMKiTunesTrackAttributes;
 
-extern const struct SNRiTunesTrackRelationships {
+extern const struct SMKiTunesTrackRelationships {
 	__unsafe_unretained NSString *album;
 	__unsafe_unretained NSString *playlists;
-} SNRiTunesTrackRelationships;
+} SMKiTunesTrackRelationships;
 
-extern const struct SNRiTunesTrackFetchedProperties {
-} SNRiTunesTrackFetchedProperties;
+extern const struct SMKiTunesTrackFetchedProperties {
+} SMKiTunesTrackFetchedProperties;
 
-@class SNRITunesAlbum;
-@class SNRiTunesPlaylist;
-
-
+@class SMKITunesAlbum;
+@class SMKiTunesPlaylist;
 
 
 
@@ -45,14 +43,16 @@ extern const struct SNRiTunesTrackFetchedProperties {
 
 
 
-@interface SNRiTunesTrackID : NSManagedObjectID {}
+
+
+@interface SMKiTunesTrackID : NSManagedObjectID {}
 @end
 
-@interface _SNRiTunesTrack : SNRiTunesObject {}
+@interface _SMKiTunesTrack : SMKiTunesObject {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-- (SNRiTunesTrackID*)objectID;
+- (SMKiTunesTrackID*)objectID;
 
 
 
@@ -190,7 +190,7 @@ extern const struct SNRiTunesTrackFetchedProperties {
 
 
 
-@property (nonatomic, strong) SNRITunesAlbum* album;
+@property (nonatomic, strong) SMKITunesAlbum* album;
 
 //- (BOOL)validateAlbum:(id*)value_ error:(NSError**)error_;
 
@@ -207,16 +207,16 @@ extern const struct SNRiTunesTrackFetchedProperties {
 
 @end
 
-@interface _SNRiTunesTrack (CoreDataGeneratedAccessors)
+@interface _SMKiTunesTrack (CoreDataGeneratedAccessors)
 
 - (void)addPlaylists:(NSSet*)value_;
 - (void)removePlaylists:(NSSet*)value_;
-- (void)addPlaylistsObject:(SNRiTunesPlaylist*)value_;
-- (void)removePlaylistsObject:(SNRiTunesPlaylist*)value_;
+- (void)addPlaylistsObject:(SMKiTunesPlaylist*)value_;
+- (void)removePlaylistsObject:(SMKiTunesPlaylist*)value_;
 
 @end
 
-@interface _SNRiTunesTrack (CoreDataGeneratedPrimitiveAccessors)
+@interface _SMKiTunesTrack (CoreDataGeneratedPrimitiveAccessors)
 
 
 - (NSString*)primitiveAlbumArtistName;
@@ -319,8 +319,8 @@ extern const struct SNRiTunesTrackFetchedProperties {
 
 
 
-- (SNRITunesAlbum*)primitiveAlbum;
-- (void)setPrimitiveAlbum:(SNRITunesAlbum*)value;
+- (SMKITunesAlbum*)primitiveAlbum;
+- (void)setPrimitiveAlbum:(SMKITunesAlbum*)value;
 
 
 

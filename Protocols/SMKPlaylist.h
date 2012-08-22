@@ -18,9 +18,10 @@
 @protocol SMKPlaylist <NSObject, SMKContentObject, SMKArtworkSource, SMKWebObject>
 @required
 /**
+ @param error An NSError object with error information if it was unsuccessful.
  @return An array of tracks conforming to SMKTrack
  */
-- (NSArray *)tracks;
+- (NSArray *)tracksWithError:(NSError **)error;
 
 /**
  This method will fetch the tracks asynchronously and call the completion handler when finished.

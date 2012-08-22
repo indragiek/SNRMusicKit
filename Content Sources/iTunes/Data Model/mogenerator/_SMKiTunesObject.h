@@ -1,34 +1,34 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to SNRiTunesObject.h instead.
+// Make changes to SMKiTunesObject.h instead.
 
 #import <CoreData/CoreData.h>
 
 
-extern const struct SNRiTunesObjectAttributes {
+extern const struct SMKiTunesObjectAttributes {
 	__unsafe_unretained NSString *identifier;
 	__unsafe_unretained NSString *name;
-} SNRiTunesObjectAttributes;
+} SMKiTunesObjectAttributes;
 
-extern const struct SNRiTunesObjectRelationships {
+extern const struct SMKiTunesObjectRelationships {
 	__unsafe_unretained NSString *keywords;
-} SNRiTunesObjectRelationships;
+} SMKiTunesObjectRelationships;
 
-extern const struct SNRiTunesObjectFetchedProperties {
-} SNRiTunesObjectFetchedProperties;
+extern const struct SMKiTunesObjectFetchedProperties {
+} SMKiTunesObjectFetchedProperties;
 
-@class SNRiTunesKeyword;
-
-
+@class SMKiTunesKeyword;
 
 
-@interface SNRiTunesObjectID : NSManagedObjectID {}
+
+
+@interface SMKiTunesObjectID : NSManagedObjectID {}
 @end
 
-@interface _SNRiTunesObject : NSManagedObject {}
+@interface _SMKiTunesObject : NSManagedObject {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-- (SNRiTunesObjectID*)objectID;
+- (SMKiTunesObjectID*)objectID;
 
 
 
@@ -60,16 +60,16 @@ extern const struct SNRiTunesObjectFetchedProperties {
 
 @end
 
-@interface _SNRiTunesObject (CoreDataGeneratedAccessors)
+@interface _SMKiTunesObject (CoreDataGeneratedAccessors)
 
 - (void)addKeywords:(NSSet*)value_;
 - (void)removeKeywords:(NSSet*)value_;
-- (void)addKeywordsObject:(SNRiTunesKeyword*)value_;
-- (void)removeKeywordsObject:(SNRiTunesKeyword*)value_;
+- (void)addKeywordsObject:(SMKiTunesKeyword*)value_;
+- (void)removeKeywordsObject:(SMKiTunesKeyword*)value_;
 
 @end
 
-@interface _SNRiTunesObject (CoreDataGeneratedPrimitiveAccessors)
+@interface _SMKiTunesObject (CoreDataGeneratedPrimitiveAccessors)
 
 
 - (NSString*)primitiveIdentifier;
