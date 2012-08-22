@@ -19,14 +19,17 @@
 
 - (id)init
 {
-    NSURL *libraryURL = [[self class] iTunesLibraryURL];
-    if (!libraryURL) { return nil; }
-    NSData *data = [NSData dataWithContentsOfURL:libraryURL];
-    NSError *error = nil;
-    _iTunesDictionary = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:NULL error:&error];
-    if (error) {
-        NSLog(@"Error reading iTunes Music Library.xml: %@, %@", error, [error userInfo]);
+    if ((self = [super init])) {
+        NSURL *libraryURL = [self iTunesLibraryURL];
+        if (!libraryURL) { return nil; }
+        NSData *data = [NSData dataWithContentsOfURL:libraryURL];
+        NSError *error = nil;
+        _iTunesDictionary = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:NULL error:&error];
+        if (error) {
+            NSLog(@"Error reading iTunes Music Library.xml: %@, %@", error, [error userInfo]);
+        }
     }
+    return self;
 }
 
 - (void)main

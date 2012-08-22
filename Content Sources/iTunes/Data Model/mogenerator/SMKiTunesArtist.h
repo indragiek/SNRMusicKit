@@ -1,5 +1,5 @@
 #import "_SMKiTunesArtist.h"
+#import "SMKArtist.h"
 
-@interface SMKiTunesArtist : _SMKiTunesArtist {}
-// Custom logic goes here.
+@interface SMKiTunesArtist : _SMKiTunesArtist <SMKArtist> {}
 @end

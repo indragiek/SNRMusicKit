@@ -11,12 +11,10 @@ const struct SMKiTunesTrackAttributes SMKiTunesTrackAttributes = {
 	.composer = @"composer",
 	.dateAdded = @"dateAdded",
 	.discNumber = @"discNumber",
-	.discTotal = @"discTotal",
 	.duration = @"duration",
 	.lyrics = @"lyrics",
-	.releaseYear = @"releaseYear",
+	.playCounts = @"playCounts",
 	.trackNumber = @"trackNumber",
-	.trackTotal = @"trackTotal",
 };
 
 const struct SMKiTunesTrackRelationships SMKiTunesTrackRelationships = {
@@ -61,24 +59,16 @@ const struct SMKiTunesTrackFetchedProperties SMKiTunesTrackFetchedProperties = {
 		NSSet *affectingKey = [NSSet setWithObject:@"discNumber"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
-	if ([key isEqualToString:@"discTotalValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"discTotal"];
-		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-	}
 	if ([key isEqualToString:@"durationValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"duration"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
-	if ([key isEqualToString:@"releaseYearValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"releaseYear"];
+	if ([key isEqualToString:@"playCountsValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"playCounts"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
 	if ([key isEqualToString:@"trackNumberValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"trackNumber"];
-		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-	}
-	if ([key isEqualToString:@"trackTotalValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"trackTotal"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
 
@@ -175,32 +165,6 @@ const struct SMKiTunesTrackFetchedProperties SMKiTunesTrackFetchedProperties = {
 
 
 
-@dynamic discTotal;
-
-
-
-- (int32_t)discTotalValue {
-	NSNumber *result = [self discTotal];
-	return [result intValue];
-}
-
-- (void)setDiscTotalValue:(int32_t)value_ {
-	[self setDiscTotal:[NSNumber numberWithInt:value_]];
-}
-
-- (int32_t)primitiveDiscTotalValue {
-	NSNumber *result = [self primitiveDiscTotal];
-	return [result intValue];
-}
-
-- (void)setPrimitiveDiscTotalValue:(int32_t)value_ {
-	[self setPrimitiveDiscTotal:[NSNumber numberWithInt:value_]];
-}
-
-
-
-
-
 @dynamic duration;
 
 
@@ -234,26 +198,26 @@ const struct SMKiTunesTrackFetchedProperties SMKiTunesTrackFetchedProperties = {
 
 
 
-@dynamic releaseYear;
+@dynamic playCounts;
 
 
 
-- (int32_t)releaseYearValue {
-	NSNumber *result = [self releaseYear];
+- (int32_t)playCountsValue {
+	NSNumber *result = [self playCounts];
 	return [result intValue];
 }
 
-- (void)setReleaseYearValue:(int32_t)value_ {
-	[self setReleaseYear:[NSNumber numberWithInt:value_]];
+- (void)setPlayCountsValue:(int32_t)value_ {
+	[self setPlayCounts:[NSNumber numberWithInt:value_]];
 }
 
-- (int32_t)primitiveReleaseYearValue {
-	NSNumber *result = [self primitiveReleaseYear];
+- (int32_t)primitivePlayCountsValue {
+	NSNumber *result = [self primitivePlayCounts];
 	return [result intValue];
 }
 
-- (void)setPrimitiveReleaseYearValue:(int32_t)value_ {
-	[self setPrimitiveReleaseYear:[NSNumber numberWithInt:value_]];
+- (void)setPrimitivePlayCountsValue:(int32_t)value_ {
+	[self setPrimitivePlayCounts:[NSNumber numberWithInt:value_]];
 }
 
 
@@ -280,32 +244,6 @@ const struct SMKiTunesTrackFetchedProperties SMKiTunesTrackFetchedProperties = {
 
 - (void)setPrimitiveTrackNumberValue:(int32_t)value_ {
 	[self setPrimitiveTrackNumber:[NSNumber numberWithInt:value_]];
-}
-
-
-
-
-
-@dynamic trackTotal;
-
-
-
-- (int32_t)trackTotalValue {
-	NSNumber *result = [self trackTotal];
-	return [result intValue];
-}
-
-- (void)setTrackTotalValue:(int32_t)value_ {
-	[self setTrackTotal:[NSNumber numberWithInt:value_]];
-}
-
-- (int32_t)primitiveTrackTotalValue {
-	NSNumber *result = [self primitiveTrackTotal];
-	return [result intValue];
-}
-
-- (void)setPrimitiveTrackTotalValue:(int32_t)value_ {
-	[self setPrimitiveTrackTotal:[NSNumber numberWithInt:value_]];
 }
 
 

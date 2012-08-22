@@ -10,5 +10,4 @@
 #import "SMKContentSource.h"
 
 @interface SMKiTunesContentSource : NSObject <SMKContentSource>
-
 @end

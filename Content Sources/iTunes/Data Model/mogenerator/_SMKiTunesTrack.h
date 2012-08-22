@@ -12,12 +12,10 @@ extern const struct SMKiTunesTrackAttributes {
 	__unsafe_unretained NSString *composer;
 	__unsafe_unretained NSString *dateAdded;
 	__unsafe_unretained NSString *discNumber;
-	__unsafe_unretained NSString *discTotal;
 	__unsafe_unretained NSString *duration;
 	__unsafe_unretained NSString *lyrics;
-	__unsafe_unretained NSString *releaseYear;
+	__unsafe_unretained NSString *playCounts;
 	__unsafe_unretained NSString *trackNumber;
-	__unsafe_unretained NSString *trackTotal;
 } SMKiTunesTrackAttributes;
 
 extern const struct SMKiTunesTrackRelationships {
@@ -28,10 +26,8 @@ extern const struct SMKiTunesTrackRelationships {
 extern const struct SMKiTunesTrackFetchedProperties {
 } SMKiTunesTrackFetchedProperties;
 
-@class SMKITunesAlbum;
+@class SMKiTunesAlbum;
 @class SMKiTunesPlaylist;
-
-
 
 
 
@@ -121,18 +117,6 @@ extern const struct SMKiTunesTrackFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber* discTotal;
-
-
-@property int32_t discTotalValue;
-- (int32_t)discTotalValue;
-- (void)setDiscTotalValue:(int32_t)value_;
-
-//- (BOOL)validateDiscTotal:(id*)value_ error:(NSError**)error_;
-
-
-
-
 @property (nonatomic, strong) NSNumber* duration;
 
 
@@ -153,14 +137,14 @@ extern const struct SMKiTunesTrackFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber* releaseYear;
+@property (nonatomic, strong) NSNumber* playCounts;
 
 
-@property int32_t releaseYearValue;
-- (int32_t)releaseYearValue;
-- (void)setReleaseYearValue:(int32_t)value_;
+@property int32_t playCountsValue;
+- (int32_t)playCountsValue;
+- (void)setPlayCountsValue:(int32_t)value_;
 
-//- (BOOL)validateReleaseYear:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validatePlayCounts:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -177,20 +161,8 @@ extern const struct SMKiTunesTrackFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber* trackTotal;
 
-
-@property int32_t trackTotalValue;
-- (int32_t)trackTotalValue;
-- (void)setTrackTotalValue:(int32_t)value_;
-
-//- (BOOL)validateTrackTotal:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) SMKITunesAlbum* album;
+@property (nonatomic, strong) SMKiTunesAlbum* album;
 
 //- (BOOL)validateAlbum:(id*)value_ error:(NSError**)error_;
 
@@ -267,15 +239,6 @@ extern const struct SMKiTunesTrackFetchedProperties {
 
 
 
-- (NSNumber*)primitiveDiscTotal;
-- (void)setPrimitiveDiscTotal:(NSNumber*)value;
-
-- (int32_t)primitiveDiscTotalValue;
-- (void)setPrimitiveDiscTotalValue:(int32_t)value_;
-
-
-
-
 - (NSNumber*)primitiveDuration;
 - (void)setPrimitiveDuration:(NSNumber*)value;
 
@@ -291,11 +254,11 @@ extern const struct SMKiTunesTrackFetchedProperties {
 
 
 
-- (NSNumber*)primitiveReleaseYear;
-- (void)setPrimitiveReleaseYear:(NSNumber*)value;
+- (NSNumber*)primitivePlayCounts;
+- (void)setPrimitivePlayCounts:(NSNumber*)value;
 
-- (int32_t)primitiveReleaseYearValue;
-- (void)setPrimitiveReleaseYearValue:(int32_t)value_;
+- (int32_t)primitivePlayCountsValue;
+- (void)setPrimitivePlayCountsValue:(int32_t)value_;
 
 
 
@@ -309,18 +272,9 @@ extern const struct SMKiTunesTrackFetchedProperties {
 
 
 
-- (NSNumber*)primitiveTrackTotal;
-- (void)setPrimitiveTrackTotal:(NSNumber*)value;
 
-- (int32_t)primitiveTrackTotalValue;
-- (void)setPrimitiveTrackTotalValue:(int32_t)value_;
-
-
-
-
-
-- (SMKITunesAlbum*)primitiveAlbum;
-- (void)setPrimitiveAlbum:(SMKITunesAlbum*)value;
+- (SMKiTunesAlbum*)primitiveAlbum;
+- (void)setPrimitiveAlbum:(SMKiTunesAlbum*)value;
 
 
 

@@ -14,7 +14,7 @@ extern const struct SMKiTunesArtistRelationships {
 extern const struct SMKiTunesArtistFetchedProperties {
 } SMKiTunesArtistFetchedProperties;
 
-@class SMKITunesAlbum;
+@class SMKiTunesAlbum;
 
 
 @interface SMKiTunesArtistID : NSManagedObjectID {}
@@ -44,8 +44,8 @@ extern const struct SMKiTunesArtistFetchedProperties {
 
 - (void)addAlbums:(NSSet*)value_;
 - (void)removeAlbums:(NSSet*)value_;
-- (void)addAlbumsObject:(SMKITunesAlbum*)value_;
-- (void)removeAlbumsObject:(SMKITunesAlbum*)value_;
+- (void)addAlbumsObject:(SMKiTunesAlbum*)value_;
+- (void)removeAlbumsObject:(SMKiTunesAlbum*)value_;
 
 @end
 

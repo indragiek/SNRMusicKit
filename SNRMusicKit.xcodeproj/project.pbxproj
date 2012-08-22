@@ -10,6 +10,13 @@
 		030CE89715E579EC00AC12BE /* NSManagedObjectContext+SMKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 030CE89515E579EC00AC12BE /* NSManagedObjectContext+SMKAdditions.h */; };
 		030CE89815E579EC00AC12BE /* NSManagedObjectContext+SMKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 030CE89615E579EC00AC12BE /* NSManagedObjectContext+SMKAdditions.m */; };
 		030CE89915E579EC00AC12BE /* NSManagedObjectContext+SMKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 030CE89615E579EC00AC12BE /* NSManagedObjectContext+SMKAdditions.m */; };
+		030CE89C15E57CEF00AC12BE /* SMKiTunesAlbum.h in Headers */ = {isa = PBXBuildFile; fileRef = 030CE89A15E57CEF00AC12BE /* SMKiTunesAlbum.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		030CE89D15E57CEF00AC12BE /* SMKiTunesAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 030CE89B15E57CEF00AC12BE /* SMKiTunesAlbum.m */; };
+		030CE8A015E57CF400AC12BE /* _SMKiTunesAlbum.h in Headers */ = {isa = PBXBuildFile; fileRef = 030CE89E15E57CF400AC12BE /* _SMKiTunesAlbum.h */; };
+		030CE8A115E57CF400AC12BE /* _SMKiTunesAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 030CE89F15E57CF400AC12BE /* _SMKiTunesAlbum.m */; };
+		030CE8A415E57D5200AC12BE /* NSObject+AssociatedObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = 030CE8A215E57D5200AC12BE /* NSObject+AssociatedObjects.h */; };
+		030CE8A515E57D5200AC12BE /* NSObject+AssociatedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 030CE8A315E57D5200AC12BE /* NSObject+AssociatedObjects.m */; };
+		030CE8A615E57D5200AC12BE /* NSObject+AssociatedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 030CE8A315E57D5200AC12BE /* NSObject+AssociatedObjects.m */; };
 		036991F315E3EAE1003BCCBE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036991F215E3EAE1003BCCBE /* Cocoa.framework */; };
 		036991FD15E3EAE1003BCCBE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 036991FB15E3EAE1003BCCBE /* InfoPlist.strings */; };
 		036991FF15E3EAE1003BCCBE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 036991FE15E3EAE1003BCCBE /* main.m */; };
@@ -71,8 +78,6 @@
 		037010B115E572E000FEAF6F /* NSBundle+SMKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 037010AF15E572E000FEAF6F /* NSBundle+SMKAdditions.h */; };
 		037010B215E572E000FEAF6F /* NSBundle+SMKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 037010B015E572E000FEAF6F /* NSBundle+SMKAdditions.m */; };
 		037010B315E572E000FEAF6F /* NSBundle+SMKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 037010B015E572E000FEAF6F /* NSBundle+SMKAdditions.m */; };
-		037010C115E5751100FEAF6F /* _SMKITunesAlbum.h in Headers */ = {isa = PBXBuildFile; fileRef = 037010B515E5751100FEAF6F /* _SMKITunesAlbum.h */; };
-		037010C215E5751100FEAF6F /* _SMKITunesAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 037010B615E5751100FEAF6F /* _SMKITunesAlbum.m */; };
 		037010C315E5751100FEAF6F /* _SMKiTunesArtist.h in Headers */ = {isa = PBXBuildFile; fileRef = 037010B715E5751100FEAF6F /* _SMKiTunesArtist.h */; };
 		037010C415E5751100FEAF6F /* _SMKiTunesArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = 037010B815E5751100FEAF6F /* _SMKiTunesArtist.m */; };
 		037010C515E5751100FEAF6F /* _SMKiTunesKeyword.h in Headers */ = {isa = PBXBuildFile; fileRef = 037010B915E5751100FEAF6F /* _SMKiTunesKeyword.h */; };
@@ -83,8 +88,6 @@
 		037010CA15E5751100FEAF6F /* _SMKiTunesPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 037010BE15E5751100FEAF6F /* _SMKiTunesPlaylist.m */; };
 		037010CB15E5751100FEAF6F /* _SMKiTunesTrack.h in Headers */ = {isa = PBXBuildFile; fileRef = 037010BF15E5751100FEAF6F /* _SMKiTunesTrack.h */; };
 		037010CC15E5751100FEAF6F /* _SMKiTunesTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 037010C015E5751100FEAF6F /* _SMKiTunesTrack.m */; };
-		037010D915E5751800FEAF6F /* SMKITunesAlbum.h in Headers */ = {isa = PBXBuildFile; fileRef = 037010CD15E5751800FEAF6F /* SMKITunesAlbum.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		037010DA15E5751800FEAF6F /* SMKITunesAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 037010CE15E5751800FEAF6F /* SMKITunesAlbum.m */; };
 		037010DB15E5751800FEAF6F /* SMKiTunesArtist.h in Headers */ = {isa = PBXBuildFile; fileRef = 037010CF15E5751800FEAF6F /* SMKiTunesArtist.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		037010DC15E5751800FEAF6F /* SMKiTunesArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = 037010D015E5751800FEAF6F /* SMKiTunesArtist.m */; };
 		037010DD15E5751800FEAF6F /* SMKiTunesKeyword.h in Headers */ = {isa = PBXBuildFile; fileRef = 037010D115E5751800FEAF6F /* SMKiTunesKeyword.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -214,6 +217,12 @@
 /* Begin PBXFileReference section */
 		030CE89515E579EC00AC12BE /* NSManagedObjectContext+SMKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSManagedObjectContext+SMKAdditions.h"; path = "Categories/NSManagedObjectContext+SMKAdditions.h"; sourceTree = "<group>"; };
 		030CE89615E579EC00AC12BE /* NSManagedObjectContext+SMKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObjectContext+SMKAdditions.m"; path = "Categories/NSManagedObjectContext+SMKAdditions.m"; sourceTree = "<group>"; };
+		030CE89A15E57CEF00AC12BE /* SMKiTunesAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKiTunesAlbum.h; path = "Content Sources/iTunes/Data Model/mogenerator/SMKiTunesAlbum.h"; sourceTree = "<group>"; };
+		030CE89B15E57CEF00AC12BE /* SMKiTunesAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKiTunesAlbum.m; path = "Content Sources/iTunes/Data Model/mogenerator/SMKiTunesAlbum.m"; sourceTree = "<group>"; };
+		030CE89E15E57CF400AC12BE /* _SMKiTunesAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _SMKiTunesAlbum.h; path = "Content Sources/iTunes/Data Model/mogenerator/_SMKiTunesAlbum.h"; sourceTree = "<group>"; };
+		030CE89F15E57CF400AC12BE /* _SMKiTunesAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _SMKiTunesAlbum.m; path = "Content Sources/iTunes/Data Model/mogenerator/_SMKiTunesAlbum.m"; sourceTree = "<group>"; };
+		030CE8A215E57D5200AC12BE /* NSObject+AssociatedObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+AssociatedObjects.h"; path = "Categories/NSObject+AssociatedObjects.h"; sourceTree = "<group>"; };
+		030CE8A315E57D5200AC12BE /* NSObject+AssociatedObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+AssociatedObjects.m"; path = "Categories/NSObject+AssociatedObjects.m"; sourceTree = "<group>"; };
 		036991EE15E3EAE1003BCCBE /* SNRMusicKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNRMusicKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		036991F215E3EAE1003BCCBE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		036991F515E3EAE1003BCCBE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -272,8 +281,6 @@
 		037010A315E5700100FEAF6F /* NSURL+SMKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+SMKAdditions.m"; path = "Categories/NSURL+SMKAdditions.m"; sourceTree = "<group>"; };
 		037010AF15E572E000FEAF6F /* NSBundle+SMKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBundle+SMKAdditions.h"; path = "Categories/NSBundle+SMKAdditions.h"; sourceTree = "<group>"; };
 		037010B015E572E000FEAF6F /* NSBundle+SMKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+SMKAdditions.m"; path = "Categories/NSBundle+SMKAdditions.m"; sourceTree = "<group>"; };
-		037010B515E5751100FEAF6F /* _SMKITunesAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _SMKITunesAlbum.h; path = "Content Sources/iTunes/Data Model/mogenerator/_SMKITunesAlbum.h"; sourceTree = "<group>"; };
-		037010B615E5751100FEAF6F /* _SMKITunesAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _SMKITunesAlbum.m; path = "Content Sources/iTunes/Data Model/mogenerator/_SMKITunesAlbum.m"; sourceTree = "<group>"; };
 		037010B715E5751100FEAF6F /* _SMKiTunesArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _SMKiTunesArtist.h; path = "Content Sources/iTunes/Data Model/mogenerator/_SMKiTunesArtist.h"; sourceTree = "<group>"; };
 		037010B815E5751100FEAF6F /* _SMKiTunesArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _SMKiTunesArtist.m; path = "Content Sources/iTunes/Data Model/mogenerator/_SMKiTunesArtist.m"; sourceTree = "<group>"; };
 		037010B915E5751100FEAF6F /* _SMKiTunesKeyword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _SMKiTunesKeyword.h; path = "Content Sources/iTunes/Data Model/mogenerator/_SMKiTunesKeyword.h"; sourceTree = "<group>"; };
@@ -284,8 +291,6 @@
 		037010BE15E5751100FEAF6F /* _SMKiTunesPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _SMKiTunesPlaylist.m; path = "Content Sources/iTunes/Data Model/mogenerator/_SMKiTunesPlaylist.m"; sourceTree = "<group>"; };
 		037010BF15E5751100FEAF6F /* _SMKiTunesTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _SMKiTunesTrack.h; path = "Content Sources/iTunes/Data Model/mogenerator/_SMKiTunesTrack.h"; sourceTree = "<group>"; };
 		037010C015E5751100FEAF6F /* _SMKiTunesTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _SMKiTunesTrack.m; path = "Content Sources/iTunes/Data Model/mogenerator/_SMKiTunesTrack.m"; sourceTree = "<group>"; };
-		037010CD15E5751800FEAF6F /* SMKITunesAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKITunesAlbum.h; path = "Content Sources/iTunes/Data Model/mogenerator/SMKITunesAlbum.h"; sourceTree = "<group>"; };
-		037010CE15E5751800FEAF6F /* SMKITunesAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKITunesAlbum.m; path = "Content Sources/iTunes/Data Model/mogenerator/SMKITunesAlbum.m"; sourceTree = "<group>"; };
 		037010CF15E5751800FEAF6F /* SMKiTunesArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKiTunesArtist.h; path = "Content Sources/iTunes/Data Model/mogenerator/SMKiTunesArtist.h"; sourceTree = "<group>"; };
 		037010D015E5751800FEAF6F /* SMKiTunesArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKiTunesArtist.m; path = "Content Sources/iTunes/Data Model/mogenerator/SMKiTunesArtist.m"; sourceTree = "<group>"; };
 		037010D115E5751800FEAF6F /* SMKiTunesKeyword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKiTunesKeyword.h; path = "Content Sources/iTunes/Data Model/mogenerator/SMKiTunesKeyword.h"; sourceTree = "<group>"; };
@@ -545,8 +550,8 @@
 		03E22DDC15E4AF7F008351DD /* Machine Generated */ = {
 			isa = PBXGroup;
 			children = (
-				037010B515E5751100FEAF6F /* _SMKITunesAlbum.h */,
-				037010B615E5751100FEAF6F /* _SMKITunesAlbum.m */,
+				030CE89E15E57CF400AC12BE /* _SMKiTunesAlbum.h */,
+				030CE89F15E57CF400AC12BE /* _SMKiTunesAlbum.m */,
 				037010B715E5751100FEAF6F /* _SMKiTunesArtist.h */,
 				037010B815E5751100FEAF6F /* _SMKiTunesArtist.m */,
 				037010B915E5751100FEAF6F /* _SMKiTunesKeyword.h */,
@@ -564,8 +569,8 @@
 		03E22DDD15E4AF84008351DD /* Custom Logic */ = {
 			isa = PBXGroup;
 			children = (
-				037010CD15E5751800FEAF6F /* SMKITunesAlbum.h */,
-				037010CE15E5751800FEAF6F /* SMKITunesAlbum.m */,
+				030CE89A15E57CEF00AC12BE /* SMKiTunesAlbum.h */,
+				030CE89B15E57CEF00AC12BE /* SMKiTunesAlbum.m */,
 				037010CF15E5751800FEAF6F /* SMKiTunesArtist.h */,
 				037010D015E5751800FEAF6F /* SMKiTunesArtist.m */,
 				037010D115E5751800FEAF6F /* SMKiTunesKeyword.h */,
@@ -586,9 +591,9 @@
 				03F7955215E426ED00C9F652 /* SMKAlbum.h */,
 				03F7955715E42BE800C9F652 /* SMKArtist.h */,
 				03F7955515E4282800C9F652 /* SMKContentSource.h */,
+				03F7957F15E4451000C9F652 /* SMKPlaylist.h */,
 				03F7955915E434FC00C9F652 /* SMKTrack.h */,
 				03F7957D15E43ACD00C9F652 /* SMKPlayer.h */,
-				03F7957F15E4451000C9F652 /* SMKPlaylist.h */,
 				03F7958115E447AE00C9F652 /* SMKUser.h */,
 				03E22DA915E4A87B008351DD /* SMKContentObject.h */,
 				03E22DAB15E4A9C1008351DD /* SMKArtworkSource.h */,
@@ -628,6 +633,8 @@
 				037010B015E572E000FEAF6F /* NSBundle+SMKAdditions.m */,
 				030CE89515E579EC00AC12BE /* NSManagedObjectContext+SMKAdditions.h */,
 				030CE89615E579EC00AC12BE /* NSManagedObjectContext+SMKAdditions.m */,
+				030CE8A215E57D5200AC12BE /* NSObject+AssociatedObjects.h */,
+				030CE8A315E57D5200AC12BE /* NSObject+AssociatedObjects.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -671,11 +678,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				037010D915E5751800FEAF6F /* SMKITunesAlbum.h in Headers */,
 				037010DB15E5751800FEAF6F /* SMKiTunesArtist.h in Headers */,
 				037010DD15E5751800FEAF6F /* SMKiTunesKeyword.h in Headers */,
 				037010DF15E5751800FEAF6F /* SMKiTunesObject.h in Headers */,
 				037010E115E5751800FEAF6F /* SMKiTunesPlaylist.h in Headers */,
+				030CE89C15E57CEF00AC12BE /* SMKiTunesAlbum.h in Headers */,
 				037010E315E5751800FEAF6F /* SMKiTunesTrack.h in Headers */,
 				03F795B415E4740900C9F652 /* SMKSFBAudioPlayer.h in Headers */,
 				03E22DDA15E4AB92008351DD /* SMKiTunesContentSource.h in Headers */,
@@ -707,13 +714,14 @@
 				037010A015E5630000FEAF6F /* SMKiTunesConstants.h in Headers */,
 				037010A415E5700100FEAF6F /* NSURL+SMKAdditions.h in Headers */,
 				037010B115E572E000FEAF6F /* NSBundle+SMKAdditions.h in Headers */,
-				037010C115E5751100FEAF6F /* _SMKITunesAlbum.h in Headers */,
 				037010C315E5751100FEAF6F /* _SMKiTunesArtist.h in Headers */,
 				037010C515E5751100FEAF6F /* _SMKiTunesKeyword.h in Headers */,
 				037010C715E5751100FEAF6F /* _SMKiTunesObject.h in Headers */,
 				037010C915E5751100FEAF6F /* _SMKiTunesPlaylist.h in Headers */,
 				037010CB15E5751100FEAF6F /* _SMKiTunesTrack.h in Headers */,
 				030CE89715E579EC00AC12BE /* NSManagedObjectContext+SMKAdditions.h in Headers */,
+				030CE8A015E57CF400AC12BE /* _SMKiTunesAlbum.h in Headers */,
+				030CE8A415E57D5200AC12BE /* NSObject+AssociatedObjects.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -915,19 +923,20 @@
 				037010A115E5630000FEAF6F /* SMKiTunesConstants.m in Sources */,
 				037010A515E5700100FEAF6F /* NSURL+SMKAdditions.m in Sources */,
 				037010B215E572E000FEAF6F /* NSBundle+SMKAdditions.m in Sources */,
-				037010C215E5751100FEAF6F /* _SMKITunesAlbum.m in Sources */,
 				037010C415E5751100FEAF6F /* _SMKiTunesArtist.m in Sources */,
 				037010C615E5751100FEAF6F /* _SMKiTunesKeyword.m in Sources */,
 				037010C815E5751100FEAF6F /* _SMKiTunesObject.m in Sources */,
 				037010CA15E5751100FEAF6F /* _SMKiTunesPlaylist.m in Sources */,
 				037010CC15E5751100FEAF6F /* _SMKiTunesTrack.m in Sources */,
-				037010DA15E5751800FEAF6F /* SMKITunesAlbum.m in Sources */,
 				037010DC15E5751800FEAF6F /* SMKiTunesArtist.m in Sources */,
 				037010DE15E5751800FEAF6F /* SMKiTunesKeyword.m in Sources */,
 				037010E015E5751800FEAF6F /* SMKiTunesObject.m in Sources */,
 				037010E215E5751800FEAF6F /* SMKiTunesPlaylist.m in Sources */,
 				037010E415E5751800FEAF6F /* SMKiTunesTrack.m in Sources */,
 				030CE89815E579EC00AC12BE /* NSManagedObjectContext+SMKAdditions.m in Sources */,
+				030CE89D15E57CEF00AC12BE /* SMKiTunesAlbum.m in Sources */,
+				030CE8A115E57CF400AC12BE /* _SMKiTunesAlbum.m in Sources */,
+				030CE8A515E57D5200AC12BE /* NSObject+AssociatedObjects.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -953,6 +962,7 @@
 				037010A615E5700100FEAF6F /* NSURL+SMKAdditions.m in Sources */,
 				037010B315E572E000FEAF6F /* NSBundle+SMKAdditions.m in Sources */,
 				030CE89915E579EC00AC12BE /* NSManagedObjectContext+SMKAdditions.m in Sources */,
+				030CE8A615E57D5200AC12BE /* NSObject+AssociatedObjects.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

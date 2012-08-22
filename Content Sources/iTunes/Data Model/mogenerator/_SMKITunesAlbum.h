@@ -1,32 +1,60 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to SMKITunesAlbum.h instead.
+// Make changes to SMKiTunesAlbum.h instead.
 
 #import <CoreData/CoreData.h>
 #import "SMKiTunesObject.h"
 
-extern const struct SMKITunesAlbumAttributes {
-} SMKITunesAlbumAttributes;
+extern const struct SMKiTunesAlbumAttributes {
+	__unsafe_unretained NSString *isCompilation;
+	__unsafe_unretained NSString *releaseYear;
+} SMKiTunesAlbumAttributes;
 
-extern const struct SMKITunesAlbumRelationships {
+extern const struct SMKiTunesAlbumRelationships {
 	__unsafe_unretained NSString *artist;
 	__unsafe_unretained NSString *tracks;
-} SMKITunesAlbumRelationships;
+} SMKiTunesAlbumRelationships;
 
-extern const struct SMKITunesAlbumFetchedProperties {
-} SMKITunesAlbumFetchedProperties;
+extern const struct SMKiTunesAlbumFetchedProperties {
+} SMKiTunesAlbumFetchedProperties;
 
 @class SMKiTunesArtist;
 @class SMKiTunesTrack;
 
 
-@interface SMKITunesAlbumID : NSManagedObjectID {}
+
+
+@interface SMKiTunesAlbumID : NSManagedObjectID {}
 @end
 
-@interface _SMKITunesAlbum : SMKiTunesObject {}
+@interface _SMKiTunesAlbum : SMKiTunesObject {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-- (SMKITunesAlbumID*)objectID;
+- (SMKiTunesAlbumID*)objectID;
+
+
+
+
+@property (nonatomic, strong) NSNumber* isCompilation;
+
+
+@property BOOL isCompilationValue;
+- (BOOL)isCompilationValue;
+- (void)setIsCompilationValue:(BOOL)value_;
+
+//- (BOOL)validateIsCompilation:(id*)value_ error:(NSError**)error_;
+
+
+
+
+@property (nonatomic, strong) NSNumber* releaseYear;
+
+
+@property int32_t releaseYearValue;
+- (int32_t)releaseYearValue;
+- (void)setReleaseYearValue:(int32_t)value_;
+
+//- (BOOL)validateReleaseYear:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -49,7 +77,7 @@ extern const struct SMKITunesAlbumFetchedProperties {
 
 @end
 
-@interface _SMKITunesAlbum (CoreDataGeneratedAccessors)
+@interface _SMKiTunesAlbum (CoreDataGeneratedAccessors)
 
 - (void)addTracks:(NSSet*)value_;
 - (void)removeTracks:(NSSet*)value_;
@@ -58,7 +86,25 @@ extern const struct SMKITunesAlbumFetchedProperties {
 
 @end
 
-@interface _SMKITunesAlbum (CoreDataGeneratedPrimitiveAccessors)
+@interface _SMKiTunesAlbum (CoreDataGeneratedPrimitiveAccessors)
+
+
+- (NSNumber*)primitiveIsCompilation;
+- (void)setPrimitiveIsCompilation:(NSNumber*)value;
+
+- (BOOL)primitiveIsCompilationValue;
+- (void)setPrimitiveIsCompilationValue:(BOOL)value_;
+
+
+
+
+- (NSNumber*)primitiveReleaseYear;
+- (void)setPrimitiveReleaseYear:(NSNumber*)value;
+
+- (int32_t)primitiveReleaseYearValue;
+- (void)setPrimitiveReleaseYearValue:(int32_t)value_;
+
+
 
 
 

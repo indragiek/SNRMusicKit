@@ -16,15 +16,28 @@
 - (NSString *)name;
 
 /**
+ @return Whether the source supports fetching data in batches.
+ */
++ (BOOL)supportsBatching;
+
+/**
  @param error An NSError object with error information if it was unsuccessful.
+ @param sortDescriptors Array of NSSortDescriptor objects used to sort the content
+ @param predicate A predicate to filter the results with
+ @param batchSize If this is not set to 0, the results will be fetched in batches of this many objects *providing that the source supports batching*
+ @param fetchLimit A limit on the number of objects to return
  @return An array of objects conforming to the SMKPlaylist
  @discussion This method is synchronous, and will block until the playlists have been fetched.
  */
-- (NSArray *)playlistsWithError:(NSError **)error;
+- (NSArray *)playlistsWithSortDescriptors:(NSArray *)sortDescriptors batchSize:(NSUInteger)batchSize fetchLimit:(NSUInteger)fetchLimit predicate:(NSPredicate *)predicate withError:(NSError **)error;
 
 /**
  This method will fetch the playlists asynchronously and call the completion handler when finished.
+ @param sortDescriptors Array of NSSortDescriptor objects used to sort the content
+ @param predicate A predicate to filter the results with
+ @param batchSize If this is not set to 0, the results will be fetched in batches of this many objects *providing that the source supports batching*
+ @param fetchLimit A limit on the number of objects to return
  @discussion This method is asynchronous and will return immediately.
  */
-- (void)fetchPlaylistsWithCompletionHandler:(void(^)(NSArray *playlists, NSError *error))handler;
+- (void)fetchPlaylistsWithSortDescriptors:(NSArray *)sortDescriptors batchSize:(NSUInteger)batchSize fetchLimit:(NSUInteger)fetchLimit predicate:(NSPredicate *)predicate CompletionHandler:(void(^)(NSArray *playlists, NSError *error))handler;
 @end

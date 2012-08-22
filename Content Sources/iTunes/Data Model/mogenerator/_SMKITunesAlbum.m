@@ -1,23 +1,25 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to SMKITunesAlbum.m instead.
+// Make changes to SMKiTunesAlbum.m instead.
 
-#import "_SMKITunesAlbum.h"
+#import "_SMKiTunesAlbum.h"
 
-const struct SMKITunesAlbumAttributes SMKITunesAlbumAttributes = {
+const struct SMKiTunesAlbumAttributes SMKiTunesAlbumAttributes = {
+	.isCompilation = @"isCompilation",
+	.releaseYear = @"releaseYear",
 };
 
-const struct SMKITunesAlbumRelationships SMKITunesAlbumRelationships = {
+const struct SMKiTunesAlbumRelationships SMKiTunesAlbumRelationships = {
 	.artist = @"artist",
 	.tracks = @"tracks",
 };
 
-const struct SMKITunesAlbumFetchedProperties SMKITunesAlbumFetchedProperties = {
+const struct SMKiTunesAlbumFetchedProperties SMKiTunesAlbumFetchedProperties = {
 };
 
-@implementation SMKITunesAlbumID
+@implementation SMKiTunesAlbumID
 @end
 
-@implementation _SMKITunesAlbum
+@implementation _SMKiTunesAlbum
 
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
 	NSParameterAssert(moc_);
@@ -33,16 +35,76 @@ const struct SMKITunesAlbumFetchedProperties SMKITunesAlbumFetchedProperties = {
 	return [NSEntityDescription entityForName:@"SMKiTunesAlbum" inManagedObjectContext:moc_];
 }
 
-- (SMKITunesAlbumID*)objectID {
-	return (SMKITunesAlbumID*)[super objectID];
+- (SMKiTunesAlbumID*)objectID {
+	return (SMKiTunesAlbumID*)[super objectID];
 }
 
 + (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
+	if ([key isEqualToString:@"isCompilationValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"isCompilation"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+	}
+	if ([key isEqualToString:@"releaseYearValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"releaseYear"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+	}
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic isCompilation;
+
+
+
+- (BOOL)isCompilationValue {
+	NSNumber *result = [self isCompilation];
+	return [result boolValue];
+}
+
+- (void)setIsCompilationValue:(BOOL)value_ {
+	[self setIsCompilation:[NSNumber numberWithBool:value_]];
+}
+
+- (BOOL)primitiveIsCompilationValue {
+	NSNumber *result = [self primitiveIsCompilation];
+	return [result boolValue];
+}
+
+- (void)setPrimitiveIsCompilationValue:(BOOL)value_ {
+	[self setPrimitiveIsCompilation:[NSNumber numberWithBool:value_]];
+}
+
+
+
+
+
+@dynamic releaseYear;
+
+
+
+- (int32_t)releaseYearValue {
+	NSNumber *result = [self releaseYear];
+	return [result intValue];
+}
+
+- (void)setReleaseYearValue:(int32_t)value_ {
+	[self setReleaseYear:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveReleaseYearValue {
+	NSNumber *result = [self primitiveReleaseYear];
+	return [result intValue];
+}
+
+- (void)setPrimitiveReleaseYearValue:(int32_t)value_ {
+	[self setPrimitiveReleaseYear:[NSNumber numberWithInt:value_]];
+}
+
 
 
 

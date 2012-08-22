@@ -7,10 +7,11 @@
 //
 
 #import "SMKiTunesContentSource.h"
+#import "SMKiTunesConstants.h"
+
 #import "NSBundle+SMKAdditions.h"
 #import "NSURL+SMKAdditions.h"
 #import "NSError+SMKAdditions.h"
-
 #import "NSManagedObjectContext+SMKAdditions.h"
 
 @interface SMKiTunesContentSource ()
@@ -43,7 +44,17 @@
 
 - (NSString *)name { return @"iTunes"; }
 
++ (BOOL)supportsBatching { return YES; }
 
+- (NSArray *)playlistsWithSortDescriptors:(NSArray *)sortDescriptors batchSize:(NSUInteger)batchSize fetchLimit:(NSUInteger)fetchLimit predicate:(NSPredicate *)predicate withError:(NSError **)error
+{
+    return [self.managedObjectContext SMK_fetchWithEntityName:SMKiTunesEntityNamePlaylist sortDescriptors:sortDescriptors predicate:predicate batchSize:batchSize fetchLimit:fetchLimit error:error];
+}
+
+- (void)fetchPlaylistsWithSortDescriptors:(NSArray *)sortDescriptors batchSize:(NSUInteger)batchSize fetchLimit:(NSUInteger)fetchLimit predicate:(NSPredicate *)predicate CompletionHandler:(void(^)(NSArray *playlists, NSError *error))handler
+{
+    return [self.managedObjectContext SMK_asyncFetchWithEntityName:SMKiTunesEntityNamePlaylist sortDescriptors:sortDescriptors predicate:predicate batchSize:batchSize fetchLimit:fetchLimit completionHandler:handler];
+}
 
 #pragma mark - Notifications
 
@@ -66,9 +77,10 @@
         NSLog(@"Error: %@, %@", error, [error userInfo]);
         return nil;
     }
-    _managedObjectContext = [[NSManagedObjectContext alloc] init];
+    _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     [_managedObjectContext setPersistentStoreCoordinator:coordinator];
-    
+    [_managedObjectContext setUndoManager:nil];
+    [_managedObjectContext setContentSource:self];
     return _managedObjectContext;
 }
 

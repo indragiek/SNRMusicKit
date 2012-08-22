@@ -7,6 +7,9 @@
 //
 
 #import "NSManagedObjectContext+SMKAdditions.h"
+#import "NSObject+AssociatedObjects.h"
+
+static void* const SMKContentSourceKey = @"SMKContentSource";
 
 @implementation NSManagedObjectContext (SMKAdditions)
 - (BOOL)SMK_saveChanges
@@ -17,5 +20,45 @@
         return NO;
     }
     return YES;
+}
+
+- (NSArray *)SMK_fetchWithEntityName:(NSString *)entityName sortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate *)predicate batchSize:(NSUInteger)batchSize fetchLimit:(NSUInteger)fetchLimit error:(NSError **)error
+{
+    __block NSArray *results = nil;
+    [self performBlock:^{
+        NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:entityName];
+        [request setSortDescriptors:sortDescriptors];
+        [request setPredicate:predicate];
+        [request setFetchBatchSize:batchSize];
+        [request setFetchLimit:fetchLimit];
+        results = [self executeFetchRequest:request error:error];
+    }];
+    return results;
+}
+
+- (void)SMK_asyncFetchWithEntityName:(NSString *)entityName sortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate *)predicate batchSize:(NSUInteger)batchSize fetchLimit:(NSUInteger)fetchLimit completionHandler:(void(^)(NSArray *results, NSError *error))handler
+{
+    [self performBlockAndWait:^{
+        NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:entityName];
+        [request setSortDescriptors:sortDescriptors];
+        [request setPredicate:predicate];
+        [request setFetchBatchSize:batchSize];
+        [request setFetchLimit:fetchLimit];
+        NSError *error = nil;
+        NSArray *results = [self executeFetchRequest:request error:&error];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            if (handler) handler(results, error);
+        });
+    }];
+}
+
+- (void)setContentSource:(id<SMKContentSource>)contentSource
+{
+    [self weaklyAssociateValue:contentSource withKey:SMKContentSourceKey];
+}
+
+- (id<SMKContentSource>)contentSource
+{
+    return [self associatedValueForKey:SMKContentSourceKey];
 }
 @end

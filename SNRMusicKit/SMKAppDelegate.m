@@ -17,7 +17,6 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    SMKiTunesContentSource *source = [[SMKiTunesContentSource alloc] init];
 }
 
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "com.indragie.SNRMusicKit" in the user's Application Support directory.

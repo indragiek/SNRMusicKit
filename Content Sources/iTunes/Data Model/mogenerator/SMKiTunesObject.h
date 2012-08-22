@@ -1,5 +1,8 @@
 #import "_SMKiTunesObject.h"
+#import "SMKContentSource.h"
 
 @interface SMKiTunesObject : _SMKiTunesObject {}
-// Custom logic goes here.
+- (NSString *)uniqueIdentifier;
+- (id<SMKContentSource>)contentSource;
++ (NSSet *)supportedSortKeys;
 @end

@@ -25,4 +25,9 @@
  @return The SMKContentSource object that this object belongs to
  */
 - (id<SMKContentSource>)contentSource;
+
+/**
+ @return A set of keys that are supported for sorting
+ */
++ (NSSet *)supportedSortKeys;
 @end
