@@ -168,6 +168,8 @@
     if ([self.delegate respondsToSelector:@selector(playerDidFinishPlaying:)]) {
         [self.delegate playerDidFinishPlaying:self];
     }
+    _currentTrack = nil;
+    self.currentPlayer = nil;
     [self skipToPreloadedTrack];
 }
 
