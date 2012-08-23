@@ -16,6 +16,7 @@
 #import "SMKiTunesSyncOperation.h"
 
 @interface SMKiTunesContentSource ()
+- (void)_createSemaphoreAndWait;
 // Notifications
 - (void)_applicationWillTerminate:(NSNotification *)notification;
 // Locations
@@ -67,16 +68,7 @@
                                 predicate:(NSPredicate *)predicate
                                 withError:(NSError **)error
 {
-    // If the operation is already running, then create a semaphore to force it to wait till it finishes
-    if ([_operationQueue operationCount] != 0 && !_waiter) {
-        _waiter = dispatch_semaphore_create(0);
-        dispatch_semaphore_wait(_waiter, DISPATCH_TIME_FOREVER);
-    }
-    // Release the semaphore after we're done with it
-    if (_waiter) {
-        dispatch_release(_waiter);
-        _waiter = NULL;
-    }
+    [self _createSemaphoreAndWait];
     // Fetch the objects and return
     return [self.mainQueueObjectContext SMK_fetchWithEntityName:SMKiTunesEntityNamePlaylist
                                               sortDescriptors:sortDescriptors
@@ -96,15 +88,7 @@
         SMKiTunesContentSource *strongSelf = weakSelf;
         // Check on the main queue if a sync operation is already running
         // If so, create a semaphore 
-        if ([_operationQueue operationCount] != 0 && !_waiter) {
-            _waiter = dispatch_semaphore_create(0);
-            dispatch_semaphore_wait(_waiter, DISPATCH_TIME_FOREVER);
-        }
-        // Release the semaphore after we're done with it
-        if (_waiter) {
-            dispatch_release(_waiter);
-            _waiter = NULL;
-        }
+        [strongSelf _createSemaphoreAndWait];
         // Once that's done, tell the MOC on the main queue to run an asynchronous fetch
         [strongSelf.backgroundQueueObjectContext SMK_asyncFetchObjectIDsWithEntityName:SMKiTunesEntityNamePlaylist
                                                                        sortDescriptors:sortDescriptors
@@ -135,7 +119,6 @@
 - (void)_applicationWillTerminate:(NSNotification *)notification
 {
     [self.backgroundQueueObjectContext SMK_saveChanges];
-    [self.mainQueueObjectContext SMK_saveChanges];
 }
 
 #pragma mark - Sync
@@ -157,6 +140,22 @@
     [operation setContentSource:self];
     [operation setSyncPlaylists:self.syncPlaylists];
     [_operationQueue addOperation:operation];
+}
+
+#pragma mark - Private
+
+- (void)_createSemaphoreAndWait
+{
+    // Create a semaphore if there's an operation
+    if ([_operationQueue operationCount] != 0 && !_waiter) {
+        _waiter = dispatch_semaphore_create(0);
+        dispatch_semaphore_wait(_waiter, DISPATCH_TIME_FOREVER);
+    }
+    // Release the semaphore after we're done with it
+    if (_waiter) {
+        dispatch_release(_waiter);
+        _waiter = NULL;
+    }
 }
 
 #pragma mark - Core Data Boilerplate
