@@ -71,7 +71,7 @@
                                 predicate:(NSPredicate *)predicate
                         completionHandler:(void(^)(NSArray *playlists, NSError *error))handler
 {
-    __block SMKiTunesContentSource *weakSelf = self;
+    __weak SMKiTunesContentSource *weakSelf = self;
     dispatch_async(_backgroundQueue, ^{
         SMKiTunesContentSource *strongSelf = weakSelf;
         // Check on the main queue if a sync operation is already running
@@ -119,7 +119,7 @@
     if ([_operationQueue operationCount] != 0)
         return;
     
-    __block SMKiTunesContentSource *weakSelf = self;
+    __weak SMKiTunesContentSource *weakSelf = self;
     SMKiTunesSyncOperation *operation = [SMKiTunesSyncOperation new];
     [operation setCompletionBlock:^(SMKiTunesSyncOperation *op, NSUInteger count) {
         SMKiTunesContentSource *strongSelf = weakSelf;
