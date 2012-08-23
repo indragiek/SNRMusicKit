@@ -53,7 +53,6 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
         [self _syncTracksWithDictionaries:tracks];
         if (self.syncPlaylists)
             [self _syncPlaylists];
-        [_context SMK_saveNestedChanges];
         [_context reset];
         if (self.completionBlock) {
             dispatch_sync(dispatch_get_main_queue(), ^{
