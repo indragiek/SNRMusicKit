@@ -18,6 +18,8 @@
 @interface SMKiTunesContentSource ()
 // Notifications
 - (void)_applicationWillTerminate:(NSNotification *)notification;
+// Locations
+- (NSURL *)storeURL;
 @end
 
 @implementation SMKiTunesContentSource {
@@ -101,9 +103,10 @@
             _waiter = NULL;
         }
         // Once that's done, tell the MOC on the main queue to run an asynchronous fetch
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [strongSelf.mainQueueObjectContext SMK_asyncFetchWithEntityName:SMKiTunesEntityNamePlaylist sortDescriptors:sortDescriptors predicate:predicate batchSize:batchSize fetchLimit:fetchLimit completionHandler:handler];
-        });
+        [strongSelf.backgroundQueueObjectContext SMK_asyncFetchObjectIDsWithEntityName:SMKiTunesEntityNamePlaylist sortDescriptors:sortDescriptors predicate:predicate batchSize:batchSize fetchLimit:fetchLimit completionHandler:^(NSArray *results, NSError *error) {
+            NSArray *objects = [strongSelf.mainQueueObjectContext SMK_objectsFromObjectIDs:results];
+            if (handler) handler(objects, error);
+        }];
     });
 }
 
@@ -112,8 +115,7 @@
     _mainQueueObjectContext = nil;
     _backgroundQueueObjectContext = nil;
     _persistentStoreCoordinator = nil;
-    NSURL *applicationFilesDirectory = [NSURL SMK_applicationSupportFolder];
-    NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"SMKiTunesContentSource.storedata"];
+    NSURL *url = [self _storeURL];
     NSError *error = nil;
     [[NSFileManager defaultManager] removeItemAtURL:url error:&error];
     if (error)
@@ -149,6 +151,12 @@
 }
 
 #pragma mark - Core Data Boilerplate
+
+- (NSURL *)_storeURL
+{
+    NSURL *applicationFilesDirectory = [NSURL SMK_applicationSupportFolder];
+    return [applicationFilesDirectory URLByAppendingPathComponent:@"SMKiTunesContentSource.storedata"];
+}
 
 - (NSManagedObjectContext *)mainQueueObjectContext
 {
@@ -233,10 +241,8 @@
             return nil;
         }
     }
-    
-    NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"SMKiTunesContentSource.storedata"];
     NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
-    if (![coordinator addPersistentStoreWithType:NSXMLStoreType configuration:nil URL:url options:nil error:&error]) {
+    if (![coordinator addPersistentStoreWithType:NSXMLStoreType configuration:nil URL:[self _storeURL] options:nil error:&error]) {
         NSLog(@"Error adding persistent store: %@, %@", error, [error userInfo]);
         return nil;
     }

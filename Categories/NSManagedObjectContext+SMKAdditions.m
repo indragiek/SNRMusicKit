@@ -91,6 +91,44 @@ static void* const SMKContentSourceKey = @"SMKContentSource";
     return request;
 }
 
+- (void)SMK_asyncFetchObjectIDsWithEntityName:(NSString *)entityName
+                              sortDescriptors:(NSArray *)sortDescriptors
+                                    predicate:(NSPredicate *)predicate
+                                    batchSize:(NSUInteger)batchSize
+                                   fetchLimit:(NSUInteger)fetchLimit
+                            completionHandler:(void(^)(NSArray *results, NSError *error))handler
+{
+    [self performBlock:^{
+        NSFetchRequest *request = [self SMK_fetchRequestWithEntityName:entityName
+                                                       sortDescriptors:sortDescriptors
+                                                             predicate:predicate
+                                                             batchSize:batchSize
+                                                            fetchLimit:fetchLimit];
+        [request setResultType:NSManagedObjectIDResultType];
+        NSError *error = nil;
+        NSArray *results = [self executeFetchRequest:request error:&error];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (handler) handler(results, error);
+        });
+    }];
+}
+
+- (NSArray *)SMK_objectsFromObjectIDs:(NSArray *)objectIDs
+{
+    NSMutableArray *objects = [NSMutableArray arrayWithCapacity:[objectIDs count]];
+    [self performBlockAndWait:^{
+        for (NSManagedObjectID *objectID in objectIDs) {
+            NSError *error = nil;
+            NSManagedObject *existingObject = [self existingObjectWithID:objectID error:&error];
+            if (error)
+                NSLog(@"Failed to fetch object with ID %@", objectID);
+            if (existingObject)
+                [objects addObject:existingObject];
+        }
+    }];
+    return objects;
+}
+
 - (id)SMK_createObjectOfEntityName:(NSString *)entityName
 {
     return [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:self];

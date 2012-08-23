@@ -84,6 +84,30 @@
                                     fetchLimit:(NSUInteger)fetchLimit;
 
 /**
+ This method fetches objects as NSManagedObjectID's (not the objects themselves)
+ asynchronously, wrapped in a -performBlock call
+ @param entityName The name of the Core Data entity to fetch
+ @param sortDescriptors Array of NSSortDescriptor's used to sort the results
+ @param predicate A predicate used to filter the results
+ @param batchSize The batch size to use for fetching
+ @param fetchLimit The maximum number of objects to fetch
+ @param handler Completion handler to be called upon completion of the fetch
+ @return The fetched results as NSManagedObjectIDs
+ */
+- (void)SMK_asyncFetchObjectIDsWithEntityName:(NSString *)entityName
+                              sortDescriptors:(NSArray *)sortDescriptors
+                                    predicate:(NSPredicate *)predicate
+                                    batchSize:(NSUInteger)batchSize
+                                   fetchLimit:(NSUInteger)fetchLimit
+                            completionHandler:(void(^)(NSArray *results, NSError *error))handler;
+
+/**
+ @param objectIDs The NSManagedObjectID objects to convert into NSManagedObject's
+ @return The array of NSManagedObjects
+ */
+- (NSArray *)SMK_objectsFromObjectIDs:(NSArray *)objectIDs;
+
+/**
  Creates a new object of the specified entity
  @param entityName The name of the entity
  */
