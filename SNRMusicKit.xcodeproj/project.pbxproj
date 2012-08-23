@@ -96,13 +96,13 @@
 		037010E215E5751800FEAF6F /* SMKiTunesPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 037010D615E5751800FEAF6F /* SMKiTunesPlaylist.m */; };
 		037010E315E5751800FEAF6F /* SMKiTunesTrack.h in Headers */ = {isa = PBXBuildFile; fileRef = 037010D715E5751800FEAF6F /* SMKiTunesTrack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		037010E415E5751800FEAF6F /* SMKiTunesTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 037010D815E5751800FEAF6F /* SMKiTunesTrack.m */; };
-		037A599115E6AE180092C6B9 /* InsetTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 037A599015E6AE180092C6B9 /* InsetTextField.m */; };
+		037A599615E6B0910092C6B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 037A599315E6B0910092C6B9 /* AppDelegate.m */; };
+		037A599715E6B0910092C6B9 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037A599415E6B0910092C6B9 /* MainMenu.xib */; };
+		037A599A15E6B09C0092C6B9 /* InsetTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 037A599915E6B09C0092C6B9 /* InsetTextField.m */; };
+		037A59A215E6B0B70092C6B9 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 037A599B15E6B0B70092C6B9 /* Credits.rtf */; };
+		037A59A315E6B0B70092C6B9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 037A599D15E6B0B70092C6B9 /* InfoPlist.strings */; };
+		037A59A515E6B0B70092C6B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 037A59A115E6B0B70092C6B9 /* main.m */; };
 		03927E0215E69ED700E6483E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036991F215E3EAE1003BCCBE /* Cocoa.framework */; };
-		03927E0815E69ED700E6483E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03927E0615E69ED700E6483E /* InfoPlist.strings */; };
-		03927E0A15E69ED700E6483E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03927E0915E69ED700E6483E /* main.m */; };
-		03927E0E15E69ED700E6483E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 03927E0C15E69ED700E6483E /* Credits.rtf */; };
-		03927E1115E69ED700E6483E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03927E1015E69ED700E6483E /* AppDelegate.m */; };
-		03927E1415E69ED700E6483E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03927E1215E69ED700E6483E /* MainMenu.xib */; };
 		03927E1B15E69FB800E6483E /* SNRMusicKitMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0369921715E3EB0B003BCCBE /* SNRMusicKitMac.framework */; };
 		03927E1D15E69FC600E6483E /* SNRMusicKitMac.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0369921715E3EB0B003BCCBE /* SNRMusicKitMac.framework */; };
 		03E22DAA15E4A87B008351DD /* SMKContentObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 03E22DA915E4A87B008351DD /* SMKContentObject.h */; };
@@ -303,17 +303,17 @@
 		037010D615E5751800FEAF6F /* SMKiTunesPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKiTunesPlaylist.m; path = "Content Sources/iTunes/Data Model/mogenerator/SMKiTunesPlaylist.m"; sourceTree = "<group>"; };
 		037010D715E5751800FEAF6F /* SMKiTunesTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKiTunesTrack.h; path = "Content Sources/iTunes/Data Model/mogenerator/SMKiTunesTrack.h"; sourceTree = "<group>"; };
 		037010D815E5751800FEAF6F /* SMKiTunesTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKiTunesTrack.m; path = "Content Sources/iTunes/Data Model/mogenerator/SMKiTunesTrack.m"; sourceTree = "<group>"; };
-		037A598F15E6AE180092C6B9 /* InsetTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InsetTextField.h; path = "User Interface/InsetTextField.h"; sourceTree = "<group>"; };
-		037A599015E6AE180092C6B9 /* InsetTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InsetTextField.m; path = "User Interface/InsetTextField.m"; sourceTree = "<group>"; };
+		037A599215E6B0910092C6B9 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "Example Apps/iTunesExample/AppDelegate.h"; sourceTree = SOURCE_ROOT; };
+		037A599315E6B0910092C6B9 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "Example Apps/iTunesExample/AppDelegate.m"; sourceTree = SOURCE_ROOT; };
+		037A599515E6B0910092C6B9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "Example Apps/iTunesExample/en.lproj/MainMenu.xib"; sourceTree = SOURCE_ROOT; };
+		037A599815E6B09C0092C6B9 /* InsetTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InsetTextField.h; path = "Example Apps/iTunesExample/User Interface/InsetTextField.h"; sourceTree = SOURCE_ROOT; };
+		037A599915E6B09C0092C6B9 /* InsetTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InsetTextField.m; path = "Example Apps/iTunesExample/User Interface/InsetTextField.m"; sourceTree = SOURCE_ROOT; };
+		037A599C15E6B0B70092C6B9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = "Example Apps/iTunesExample/en.lproj/Credits.rtf"; sourceTree = SOURCE_ROOT; };
+		037A599E15E6B0B70092C6B9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "Example Apps/iTunesExample/en.lproj/InfoPlist.strings"; sourceTree = SOURCE_ROOT; };
+		037A599F15E6B0B70092C6B9 /* iTunesExample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "iTunesExample-Info.plist"; path = "Example Apps/iTunesExample/iTunesExample-Info.plist"; sourceTree = SOURCE_ROOT; };
+		037A59A015E6B0B70092C6B9 /* iTunesExample-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "iTunesExample-Prefix.pch"; path = "Example Apps/iTunesExample/iTunesExample-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		037A59A115E6B0B70092C6B9 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Example Apps/iTunesExample/main.m"; sourceTree = SOURCE_ROOT; };
 		03927E0015E69ED700E6483E /* iTunesExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		03927E0515E69ED700E6483E /* iTunesExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iTunesExample-Info.plist"; sourceTree = "<group>"; };
-		03927E0715E69ED700E6483E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		03927E0915E69ED700E6483E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		03927E0B15E69ED700E6483E /* iTunesExample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iTunesExample-Prefix.pch"; sourceTree = "<group>"; };
-		03927E0D15E69ED700E6483E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		03927E0F15E69ED700E6483E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		03927E1015E69ED700E6483E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		03927E1315E69ED700E6483E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		03E22DA915E4A87B008351DD /* SMKContentObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKContentObject.h; path = Protocols/SMKContentObject.h; sourceTree = "<group>"; };
 		03E22DAB15E4A9C1008351DD /* SMKArtworkSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKArtworkSource.h; path = Protocols/SMKArtworkSource.h; sourceTree = "<group>"; };
 		03E22DAD15E4AA7D008351DD /* SMKWebObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKWebObject.h; path = Protocols/SMKWebObject.h; sourceTree = "<group>"; };
@@ -548,8 +548,8 @@
 		037A598E15E6ADF90092C6B9 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
-				037A598F15E6AE180092C6B9 /* InsetTextField.h */,
-				037A599015E6AE180092C6B9 /* InsetTextField.m */,
+				037A599815E6B09C0092C6B9 /* InsetTextField.h */,
+				037A599915E6B09C0092C6B9 /* InsetTextField.m */,
 			);
 			name = "User Interface";
 			sourceTree = "<group>";
@@ -565,9 +565,9 @@
 		03927E0315E69ED700E6483E /* iTunesExample */ = {
 			isa = PBXGroup;
 			children = (
-				03927E0F15E69ED700E6483E /* AppDelegate.h */,
-				03927E1015E69ED700E6483E /* AppDelegate.m */,
-				03927E1215E69ED700E6483E /* MainMenu.xib */,
+				037A599215E6B0910092C6B9 /* AppDelegate.h */,
+				037A599315E6B0910092C6B9 /* AppDelegate.m */,
+				037A599415E6B0910092C6B9 /* MainMenu.xib */,
 				037A598E15E6ADF90092C6B9 /* User Interface */,
 				03927E0415E69ED700E6483E /* Supporting Files */,
 			);
@@ -577,11 +577,11 @@
 		03927E0415E69ED700E6483E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				03927E0515E69ED700E6483E /* iTunesExample-Info.plist */,
-				03927E0615E69ED700E6483E /* InfoPlist.strings */,
-				03927E0915E69ED700E6483E /* main.m */,
-				03927E0B15E69ED700E6483E /* iTunesExample-Prefix.pch */,
-				03927E0C15E69ED700E6483E /* Credits.rtf */,
+				037A599B15E6B0B70092C6B9 /* Credits.rtf */,
+				037A599D15E6B0B70092C6B9 /* InfoPlist.strings */,
+				037A599F15E6B0B70092C6B9 /* iTunesExample-Info.plist */,
+				037A59A015E6B0B70092C6B9 /* iTunesExample-Prefix.pch */,
+				037A59A115E6B0B70092C6B9 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -911,9 +911,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03927E0815E69ED700E6483E /* InfoPlist.strings in Resources */,
-				03927E0E15E69ED700E6483E /* Credits.rtf in Resources */,
-				03927E1415E69ED700E6483E /* MainMenu.xib in Resources */,
+				037A599715E6B0910092C6B9 /* MainMenu.xib in Resources */,
+				037A59A215E6B0B70092C6B9 /* Credits.rtf in Resources */,
+				037A59A315E6B0B70092C6B9 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1010,9 +1010,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03927E0A15E69ED700E6483E /* main.m in Sources */,
-				03927E1115E69ED700E6483E /* AppDelegate.m in Sources */,
-				037A599115E6AE180092C6B9 /* InsetTextField.m in Sources */,
+				037A599615E6B0910092C6B9 /* AppDelegate.m in Sources */,
+				037A599A15E6B09C0092C6B9 /* InsetTextField.m in Sources */,
+				037A59A515E6B0B70092C6B9 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1045,28 +1045,28 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		03927E0615E69ED700E6483E /* InfoPlist.strings */ = {
+		037A599415E6B0910092C6B9 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				03927E0715E69ED700E6483E /* en */,
+				037A599515E6B0910092C6B9 /* en */,
 			);
-			name = InfoPlist.strings;
+			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
-		03927E0C15E69ED700E6483E /* Credits.rtf */ = {
+		037A599B15E6B0B70092C6B9 /* Credits.rtf */ = {
 			isa = PBXVariantGroup;
 			children = (
-				03927E0D15E69ED700E6483E /* en */,
+				037A599C15E6B0B70092C6B9 /* en */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
-		03927E1215E69ED700E6483E /* MainMenu.xib */ = {
+		037A599D15E6B0B70092C6B9 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				03927E1315E69ED700E6483E /* en */,
+				037A599E15E6B0B70092C6B9 /* en */,
 			);
-			name = MainMenu.xib;
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1191,8 +1191,8 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iTunesExample/iTunesExample-Prefix.pch";
-				INFOPLIST_FILE = "iTunesExample/iTunesExample-Info.plist";
+				GCC_PREFIX_HEADER = "Example Apps/iTunesExample/iTunesExample-Prefix.pch";
+				INFOPLIST_FILE = "Example Apps/iTunesExample/iTunesExample-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -1204,8 +1204,8 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iTunesExample/iTunesExample-Prefix.pch";
-				INFOPLIST_FILE = "iTunesExample/iTunesExample-Info.plist";
+				GCC_PREFIX_HEADER = "Example Apps/iTunesExample/iTunesExample-Prefix.pch";
+				INFOPLIST_FILE = "Example Apps/iTunesExample/iTunesExample-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
