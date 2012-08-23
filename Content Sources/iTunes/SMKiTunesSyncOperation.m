@@ -101,7 +101,6 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
                 // so we save and clear the context every few hundred objects
                 if (saveCount == SMKiTunesSyncOperationSaveEvery) {
                     [_context SMK_saveChanges];
-                    [_context reset];
                     saveCount = 0;
                 }
             }
