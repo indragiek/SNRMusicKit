@@ -12,11 +12,11 @@ All local databases will be **Core Data** SQL databases, in addition to other pe
 
 The code and API will be as modern as possible, making use of blocks, GCD, and new Objective-C syntax.  The current goal is to target **OS X 10.7+ and iOS 5.0+** but that may change.
 
-#### Contributing
+### Contributing
 
 Once the project is under way, I'd love contributions via pull requests. If you intend on making large additions or changes to the code, you may want to consult with me before beginning to ensure that we both agree that it is suitable for this library. 
 
-#### Compiling
+### Compiling
 
 * Clone the git repository, and download the submodules using the following commands:
 
@@ -29,16 +29,63 @@ git submodule update
 * **SFBAudioEngine** requires some additional frameworks and libraries to compile that are not included in the repository. Download [this](https://github.com/downloads/sbooth/SFBAudioEngine/Frameworks.tar.bz2) archive, extract it, and put the Frameworks folder inside the SFBAudioEngine folder.
 * **[mogenerator](https://github.com/rentzsch/mogenerator)** needs to be installed to successfully compile.
 
-#### What's done so far?
+### Progress
+
+#### Content Sources
+
+<table>
+  <tr>
+    <th>Name</th><th>iOS</th><th>Mac</th><th>Implemented</th>
+  </tr>
+  <tr>
+    <td>iTunes</td><td>✘</td><td>✔</td><td>✔</td>
+  </tr>
+  <tr>
+    <td>MPMediaLibrary</td><td>✔</td><td>✘</td><td>✘</td>
+  </tr>
+  <tr>
+    <td>Spotify</td><td>✔</td><td>✔</td><td>✘</td>
+  </tr>
+  <tr>
+    <td>Rdio</td><td>✔</td><td>✘</td><td>✘</td>
+  </tr>
+  <tr>
+    <td>8tracks</td><td>✔</td><td>✔</td><td>✘</td>
+  </tr>
+</table>
+
+#### Players
+
+<table>
+  <tr>
+    <th>Name</th><th>iOS</th><th>Mac</th><th>Implemented</th>
+  </tr>
+  <tr>
+    <td>AVAudioPlayer</td><td>✔</td><td>✔</td><td>✔</td>
+  </tr>
+  <tr>
+    <td>SFBAudioEngine</td><td>✔</td><td>✔</td><td>✔</td>
+  </tr>
+  <tr>
+    <td>MPMusicPlayerController</td><td>✔</td><td>✘</td><td>✘</td>
+  </tr>
+  <tr>
+    <td>MPMoviePlayerController^1</td><td>✔</td><td>✘</td><td>✘</td>
+  </tr>
+  <tr>
+    <td>Spotify SDK^2</td><td>✔</td><td>✔</td><td>✘</td>
+  </tr>
+  <tr>
+    <td>Rdio SDK^2</td><td>✔</td><td>✘</td><td>✘</td>
+  </tr>
+</table>
+
+^1 *Implementing MPMoviePlayerController only for its AirPlay functionality*
+
+^2 *Spotify and Rdio have proprietary SDKs and therefore require their own dedicated player classes*
 
 I'll try to update this section as frequently as possible:
 
-* Protocols for some of the basic types (Song, Album, Artist, Playlist, Player)
-* A wrapper of **SFBAudioEngine**'s AudioPlayer that conforms to SMKPlayer
-* A wrapper of **AVAudioPlayer** that conforms to SMKPlayer
-* A full Core Data based implementation of the iTunes content source (**SMKiTunesContentSource**). 
-* The **iTunesExample** project that demonstrates an iTunes browser/player for OS X using **SMKiTunesContentSource** and **SMKAVAudioPlayer**.
-
-#### License
+### License
 
 This library is licensed under the [BSD License](http://opensource.org/licenses/bsd-license.php). All third party libraries used in the project must be licensed under BSD or a similarly unrestrictive license (ie. MIT is acceptable, GPL or any of its variants are not). By making contributions to this project, you are **licensing your own additions under the BSD license as well**. Any contributions licensed under anything else will not be accepted into the master repository (but feel free to keep them in your own fork).
