@@ -38,6 +38,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_applicationWillTerminate:) name:NSApplicationWillTerminateNotification object:[NSApplication sharedApplication]];
         _operationQueue = [NSOperationQueue new];
         _backgroundQueue = dispatch_queue_create("com.indragie.SNRMusicKit.SNRiTunesContentSource", DISPATCH_QUEUE_SERIAL);
+        dispatch_set_target_queue(_backgroundQueue, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0));
         [self sync];
     }
     return self;
@@ -103,7 +104,12 @@
             _waiter = NULL;
         }
         // Once that's done, tell the MOC on the main queue to run an asynchronous fetch
-        [strongSelf.backgroundQueueObjectContext SMK_asyncFetchObjectIDsWithEntityName:SMKiTunesEntityNamePlaylist sortDescriptors:sortDescriptors predicate:predicate batchSize:batchSize fetchLimit:fetchLimit completionHandler:^(NSArray *results, NSError *error) {
+        [strongSelf.backgroundQueueObjectContext SMK_asyncFetchObjectIDsWithEntityName:SMKiTunesEntityNamePlaylist
+                                                                       sortDescriptors:sortDescriptors
+                                                                             predicate:predicate
+                                                                             batchSize:batchSize
+                                                                            fetchLimit:fetchLimit
+                                                                     completionHandler:^(NSArray *results, NSError *error) {
             NSArray *objects = [strongSelf.mainQueueObjectContext SMK_objectsFromObjectIDs:results];
             if (handler) handler(objects, error);
         }];
