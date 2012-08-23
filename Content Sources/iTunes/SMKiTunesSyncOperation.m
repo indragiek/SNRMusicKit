@@ -53,26 +53,12 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
     [_context performBlockAndWait:^{
         NSUInteger saveCount = 0;
         NSUInteger importedCount = 0;
-        
-        // After importing the tracks, we need to create playlists
-        // iTunes has this one big master playlist called "Music" containing all the audio files in the library
-        // During the playlist creation procedure, we find SMKiTunesTrack objects that correspond to the track ID
-        // in the playlist dictionary by fetching with a predicate. This would get extremely expensive for the Music
-        // playlist since it has everything in the library. Therefore, if we're importing all music
-        // (and not just syncing new tracks), we do a little bit of optimization by building the array
-        // beforehand so it can just be set on the Music playlist without all the fetching.
-        
-        NSMutableArray *music = nil;
-        if (!importNew)
-            music = [NSMutableArray arrayWithCapacity:totalTracks];
         for (NSDictionary *trackDict in tracks) {
             @autoreleasepool {
                 NSError *error = nil;
-                SMKiTunesTrack *track = [self _importiTunesFileWithDictionary:trackDict error:&error];
+                [self _importiTunesFileWithDictionary:trackDict error:&error];
                 if (error)
                     SMKGenericErrorLog(@"Error importing track", error);
-                if (track)
-                    [music addObject:track];
                 if (self.progressBlock) {
                     self.progressBlock(self, importedCount, totalTracks, error);
                 }
@@ -82,19 +68,20 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
                 // so we save and clear the context every few hundred objects
                 if (saveCount == SMKiTunesSyncOperationSaveEvery) {
                     [_context SMK_saveNestedChanges];
+                    [_context reset];
                     saveCount = 0;
                 }
             }
         }
         // Remove all the dead objects that no longer exist in iTunes
         [self _removeDeadiTunesTracks];
-        // Remove all the playlists (since we're going to refresh them anyways)
-        [self _removeAllPlaylists];
         // Refresh all the playlist content
         NSArray *playlists = [_iTunesDictionary valueForKey:SMKiTunesKeyPlaylists];
         NSDictionary *tracks = [_iTunesDictionary valueForKey:SMKiTunesKeyTracks];
         // Iterate through all the playlists
         if (self.syncPlaylists) {
+            // Remove all the playlists (since we're going to refresh them anyways)
+            [self _removeAllPlaylists];
             for (NSDictionary *playlist in playlists) {
                 @autoreleasepool {
                     if (![self _validateiTunesPlaylistDictionary:playlist]) { continue; }
@@ -102,13 +89,11 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
                     NSString *name = [playlist valueForKey:SMKiTunesKeyName];
                     SMKiTunesPlaylist *iTunesPlaylist = [_context SMK_createObjectOfEntityName:SMKiTunesEntityNamePlaylist];
                     [iTunesPlaylist setName:name];
-                    // If we're already imported the entire music playlist, then just set those objects
-                    // without any additional fetching
-                    BOOL isMusic = [[playlist valueForKey:SMKiTunesKeyMusic] boolValue];
-                    if (isMusic && !importNew) {
-                        [iTunesPlaylist setTracks:[NSOrderedSet orderedSetWithArray:music]];
-                        music = nil;
-                    } else if (!isMusic || (totalTracks || [_removediTunesTrackPersistentIDs count])) {
+                    if ([[playlist valueForKey:SMKiTunesKeyMusic] boolValue]) {
+                        // Get all the tracks
+                        NSArray *tracks = [_context SMK_noBlockFetchWithEntityName:SMKiTunesEntityNameTrack sortDescriptors:nil predicate:nil batchSize:1 fetchLimit:0 error:nil];
+                        [iTunesPlaylist setTracks:[NSOrderedSet orderedSetWithArray:tracks]];
+                    } else {
                         // Otherwise each track needs to be fetched individually by persistent ID
                         NSArray *items = [playlist valueForKey:SMKiTunesKeyPlaylistItems];
                         NSMutableOrderedSet *playlistTracks = [[NSMutableOrderedSet alloc] initWithCapacity:[items count]];

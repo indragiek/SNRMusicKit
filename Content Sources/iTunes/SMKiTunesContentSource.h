@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "SMKContentSource.h"
+#import "SMKiTunesPlaylist.h"
+#import "SMKiTunesTrack.h"
+#import "SMKiTunesArtist.h"
+#import "SMKiTunesAlbum.h"
+#import "SMKiTunesObject.h"
 
 @interface SMKiTunesContentSource : NSObject <SMKContentSource>
 

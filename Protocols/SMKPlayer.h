@@ -77,11 +77,13 @@
 
 /**
  @return Whether the player is playing.
+ @discussion This is KVO observable.
  */
-- (BOOL)isPlaying;
+- (BOOL)playing;
 
 /**
  @return The current playback time.
+ @discussion This is KVO observable.
  */
 - (NSTimeInterval)playbackTime;
 
@@ -147,6 +149,4 @@
 - (void)playerWillStartPlaying:(id<SMKPlayer>)player;
 /** Called immediately after the player finishes playing a track */
 - (void)playerDidFinishPlaying:(id<SMKPlayer>)player;
-/** This is called by the player to update your user interface (e.g. for scrubbing bar) */
-- (void)playerUpdateUserInteface:(id<SMKPlayer>)player;
 @end

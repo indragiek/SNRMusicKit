@@ -14,8 +14,8 @@
 #import <CoreAudio/CoreAudio.h>
 
 #include "TargetConditionals.h"
-
 #import "NSError+SMKAdditions.h"
+#import "SMKiTunesContentSource.h"
 
 // ========================================
 // Player flags
@@ -84,14 +84,16 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
     AudioPlayer *_player;
     AudioUnit _equalizer;
     NSTimer *_renderTimer;
+    NSTimeInterval _playbackTime;
+    BOOL _playing;
     
     id<SMKTrack> _currentTrack;
     id<SMKTrack> _preloadedTrack;
     
     BOOL _playWhenReady;
 }
-@synthesize delegate = _delegate;
-@synthesize seekTimeInterval = _seekTimeInterval;
+@synthesize playbackTime = _playbackTime;
+@synthesize playing = _playing;
 
 - (id)init
 {
@@ -113,7 +115,7 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
 
 + (NSSet*)supportedContentSourceClasses
 {
-    return nil;
+    return [NSSet setWithObjects:NSStringFromClass([SMKiTunesContentSource class]), nil];
 }
 
 - (BOOL)supportsPreloading
@@ -145,7 +147,9 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
 
 - (void)setVolume:(float)volume
 {
+    [self willChangeValueForKey:@"volume"];
     _player->SetVolume(volume);
+    [self didChangeValueForKey:@"volume"];
 }
 
 - (void)playTrack:(id<SMKTrack>)track completionHandler:(void(^)(NSError *error))handler
@@ -170,13 +174,6 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
 - (BOOL)isPlaying
 {
     return (BOOL)_player->IsPlaying();
-}
-
-- (NSTimeInterval)playbackTime
-{
-    CFTimeInterval time = 0.0;
-    _player->GetCurrentTime(time);
-    return (NSTimeInterval)time;
 }
 
 - (void)seekToPlaybackTime:(NSTimeInterval)time
@@ -293,9 +290,14 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
             _playWhenReady = NO;
         }
     }
-    if ([self.delegate respondsToSelector:@selector(playerUpdateUserInteface:)]) {
-        [self.delegate playerUpdateUserInteface:self];
-    }
+    [self willChangeValueForKey:@"playbackTime"];
+    CFTimeInterval time = 0.0;
+    _player->GetCurrentTime(time);
+    _playbackTime = (NSTimeInterval)time;
+    [self didChangeValueForKey:@"playbackTime"];
+    [self willChangeValueForKey:@"playing"];
+    _playing = (BOOL)_player->IsPlaying();
+    [self didChangeValueForKey:@"playing"];
 }
 
 @end

@@ -19,6 +19,11 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>iTunesExample.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -38,6 +43,11 @@
 			<true/>
 		</dict>
 		<key>0369923815E3EB44003BCCBE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>03927DFF15E69ED700E6483E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

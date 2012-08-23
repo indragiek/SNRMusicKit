@@ -16,6 +16,8 @@
 @property (nonatomic, assign) id<SMKPlayerDelegate> delegate;
 @property (nonatomic, assign) float volume;
 @property (nonatomic, assign) NSTimeInterval seekTimeInterval;
+@property (nonatomic, assign, readonly) NSTimeInterval playbackTime;
+@property (nonatomic, assign, readonly) BOOL playing;
 
 #pragma mark - Player Specific API
 

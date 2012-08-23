@@ -1,8 +1,8 @@
 //
 //  main.m
-//  SNRMusicKit
+//  iTunesExample
 //
-//  Created by Indragie Karunaratne on 2012-08-21.
+//  Created by Indragie Karunaratne on 2012-08-23.
 //  Copyright (c) 2012 Indragie Karunaratne. All rights reserved.
 //
 
