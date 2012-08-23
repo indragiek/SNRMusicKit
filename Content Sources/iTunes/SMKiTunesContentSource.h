@@ -10,4 +10,8 @@
 #import "SMKContentSource.h"
 
 @interface SMKiTunesContentSource : NSObject <SMKContentSource>
+#pragma mark - Content Source Specific API
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
 @end

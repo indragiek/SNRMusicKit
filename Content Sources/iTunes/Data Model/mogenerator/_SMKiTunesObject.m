@@ -6,6 +6,7 @@
 const struct SMKiTunesObjectAttributes SMKiTunesObjectAttributes = {
 	.identifier = @"identifier",
 	.name = @"name",
+	.normalizedName = @"normalizedName",
 };
 
 const struct SMKiTunesObjectRelationships SMKiTunesObjectRelationships = {
@@ -56,6 +57,13 @@ const struct SMKiTunesObjectFetchedProperties SMKiTunesObjectFetchedProperties =
 
 
 @dynamic name;
+
+
+
+
+
+
+@dynamic normalizedName;
 
 
 

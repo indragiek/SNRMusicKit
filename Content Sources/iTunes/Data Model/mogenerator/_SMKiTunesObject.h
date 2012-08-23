@@ -7,6 +7,7 @@
 extern const struct SMKiTunesObjectAttributes {
 	__unsafe_unretained NSString *identifier;
 	__unsafe_unretained NSString *name;
+	__unsafe_unretained NSString *normalizedName;
 } SMKiTunesObjectAttributes;
 
 extern const struct SMKiTunesObjectRelationships {
@@ -17,6 +18,7 @@ extern const struct SMKiTunesObjectFetchedProperties {
 } SMKiTunesObjectFetchedProperties;
 
 @class SMKiTunesKeyword;
+
 
 
 
@@ -45,6 +47,14 @@ extern const struct SMKiTunesObjectFetchedProperties {
 
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
+
+
+
+
+@property (nonatomic, strong) NSString* normalizedName;
+
+
+//- (BOOL)validateNormalizedName:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -80,6 +90,12 @@ extern const struct SMKiTunesObjectFetchedProperties {
 
 - (NSString*)primitiveName;
 - (void)setPrimitiveName:(NSString*)value;
+
+
+
+
+- (NSString*)primitiveNormalizedName;
+- (void)setPrimitiveNormalizedName:(NSString*)value;
 
 
 

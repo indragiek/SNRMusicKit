@@ -40,6 +40,11 @@
 
 - (BOOL)isEditable { return NO; }
 
+- (NSString *)uniqueIdentifier
+{
+    return self.identifier;
+}
+
 #pragma mark - Private
 
 - (NSPredicate *)_compoundTrackPredicateWithPredicate:(NSPredicate *)predicate

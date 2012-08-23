@@ -6,8 +6,11 @@
 //  Copyright (c) 2012 Indragie Karunaratne. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-@protocol SMKMacros <NSObject>
-
-@end
+static inline BOOL SMKObjectIsValid(id object) {
+	return (object == nil)
+    || (object == [NSNull null])
+    || ([object respondsToSelector:@selector(length)]
+        && [(NSData *)object length] == 0)
+    || ([object respondsToSelector:@selector(count)]
+        && [(NSArray *)object count] == 0);
+}

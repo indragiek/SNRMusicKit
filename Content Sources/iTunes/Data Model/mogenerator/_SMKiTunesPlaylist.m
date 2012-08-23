@@ -49,10 +49,10 @@ const struct SMKiTunesPlaylistFetchedProperties SMKiTunesPlaylistFetchedProperti
 @dynamic tracks;
 
 	
-- (NSMutableSet*)tracksSet {
+- (NSMutableOrderedSet*)tracksSet {
 	[self willAccessValueForKey:@"tracks"];
   
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"tracks"];
+	NSMutableOrderedSet *result = (NSMutableOrderedSet*)[self mutableOrderedSetValueForKey:@"tracks"];
   
 	[self didAccessValueForKey:@"tracks"];
 	return result;

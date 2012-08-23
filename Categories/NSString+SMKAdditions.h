@@ -9,5 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (SMKAdditions)
-
+/**
+ @return A normalized string by stripping out case and diacritic characters
+ */
+- (NSString *)SMK_normalizedString;
 @end

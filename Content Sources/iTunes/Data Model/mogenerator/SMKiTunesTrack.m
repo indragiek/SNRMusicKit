@@ -8,6 +8,11 @@
     return [self.album artist];
 }
 
+- (NSString *)uniqueIdentifier
+{
+    return self.identifier;
+}
+
 - (NSURL *)playbackURL
 {
     if (!self.bookmark) { return nil; }

@@ -30,9 +30,9 @@ extern const struct SMKiTunesPlaylistFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSSet* tracks;
+@property (nonatomic, strong) NSOrderedSet* tracks;
 
-- (NSMutableSet*)tracksSet;
+- (NSMutableOrderedSet*)tracksSet;
 
 
 
@@ -42,8 +42,8 @@ extern const struct SMKiTunesPlaylistFetchedProperties {
 
 @interface _SMKiTunesPlaylist (CoreDataGeneratedAccessors)
 
-- (void)addTracks:(NSSet*)value_;
-- (void)removeTracks:(NSSet*)value_;
+- (void)addTracks:(NSOrderedSet*)value_;
+- (void)removeTracks:(NSOrderedSet*)value_;
 - (void)addTracksObject:(SMKiTunesTrack*)value_;
 - (void)removeTracksObject:(SMKiTunesTrack*)value_;
 
@@ -53,8 +53,8 @@ extern const struct SMKiTunesPlaylistFetchedProperties {
 
 
 
-- (NSMutableSet*)primitiveTracks;
-- (void)setPrimitiveTracks:(NSMutableSet*)value;
+- (NSMutableOrderedSet*)primitiveTracks;
+- (void)setPrimitiveTracks:(NSMutableOrderedSet*)value;
 
 
 @end

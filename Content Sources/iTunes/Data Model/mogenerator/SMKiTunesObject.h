@@ -5,4 +5,6 @@
 - (NSString *)uniqueIdentifier;
 - (id<SMKContentSource>)contentSource;
 + (NSSet *)supportedSortKeys;
+
++ (NSString *)sortingNameForName:(NSString *)name;
 @end

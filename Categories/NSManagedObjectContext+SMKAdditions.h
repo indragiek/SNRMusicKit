@@ -19,6 +19,7 @@
 - (BOOL)SMK_saveChanges;
 
 /**
+ This method fetches the objects synchronously, wrapped in a -performBlockAndWait call
  @param entityName The name of the Core Data entity to fetch
  @param sortDescriptors Array of NSSortDescriptor's used to sort the results
  @param predicate A predicate used to filter the results
@@ -35,6 +36,24 @@
                                error:(NSError **)error;
 
 /**
+ This method fetches the objects synchronously, WITHOUT wrapping it in a -performBlock call
+ @param entityName The name of the Core Data entity to fetch
+ @param sortDescriptors Array of NSSortDescriptor's used to sort the results
+ @param predicate A predicate used to filter the results
+ @param batchSize The batch size to use for fetching
+ @param fetchLimit The maximum number of objects to fetch
+ @param error Error pointer for an NSError if something goes wrong
+ @return The fetched results
+ */
+- (NSArray *)SMK_noBlockFetchWithEntityName:(NSString *)entityName
+                     sortDescriptors:(NSArray *)sortDescriptors
+                           predicate:(NSPredicate *)predicate
+                           batchSize:(NSUInteger)batchSize
+                          fetchLimit:(NSUInteger)fetchLimit
+                               error:(NSError **)error;
+
+/**
+ This method fetches objects asynchronously, wrapped in a -performBlock call
  @param entityName The name of the Core Data entity to fetch
  @param sortDescriptors Array of NSSortDescriptor's used to sort the results
  @param predicate A predicate used to filter the results
@@ -63,4 +82,10 @@
                                      predicate:(NSPredicate *)predicate
                                      batchSize:(NSUInteger)batchSize
                                     fetchLimit:(NSUInteger)fetchLimit;
+
+/**
+ Creates a new object of the specified entity
+ @param entityName The name of the entity
+ */
+- (id)SMK_createObjectOfEntityName:(NSString *)entityName;
 @end

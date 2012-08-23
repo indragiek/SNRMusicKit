@@ -16,10 +16,11 @@
     <entity name="SMKiTunesObject" representedClassName="SMKiTunesObject" syncable="YES">
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="normalizedName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="keywords" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SMKiTunesKeyword" inverseName="objects" inverseEntity="SMKiTunesKeyword" syncable="YES"/>
     </entity>
     <entity name="SMKiTunesPlaylist" representedClassName="SMKiTunesPlaylist" parentEntity="SMKiTunesObject" syncable="YES">
-        <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SMKiTunesTrack" inverseName="playlists" inverseEntity="SMKiTunesTrack" syncable="YES"/>
+        <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SMKiTunesTrack" inverseName="playlists" inverseEntity="SMKiTunesTrack" syncable="YES"/>
     </entity>
     <entity name="SMKiTunesTrack" representedClassName="SMKiTunesTrack" parentEntity="SMKiTunesObject" syncable="YES">
         <attribute name="albumArtistName" optional="YES" attributeType="String" syncable="YES"/>
@@ -40,7 +41,7 @@
         <element name="SMKiTunesAlbum" positionX="0" positionY="0" width="128" height="105"/>
         <element name="SMKiTunesArtist" positionX="0" positionY="0" width="128" height="60"/>
         <element name="SMKiTunesKeyword" positionX="0" positionY="0" width="128" height="75"/>
-        <element name="SMKiTunesObject" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="SMKiTunesObject" positionX="0" positionY="0" width="128" height="105"/>
         <element name="SMKiTunesPlaylist" positionX="0" positionY="0" width="128" height="60"/>
         <element name="SMKiTunesTrack" positionX="0" positionY="0" width="128" height="240"/>
     </elements>

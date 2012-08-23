@@ -41,6 +41,21 @@ static void* const SMKContentSourceKey = @"SMKContentSource";
     return results;
 }
 
+- (NSArray *)SMK_noBlockFetchWithEntityName:(NSString *)entityName
+                            sortDescriptors:(NSArray *)sortDescriptors
+                                  predicate:(NSPredicate *)predicate
+                                  batchSize:(NSUInteger)batchSize
+                                 fetchLimit:(NSUInteger)fetchLimit
+                                      error:(NSError **)error
+{
+    NSFetchRequest *request = [self SMK_fetchRequestWithEntityName:entityName
+                                                   sortDescriptors:sortDescriptors
+                                                         predicate:predicate
+                                                         batchSize:batchSize
+                                                        fetchLimit:fetchLimit];
+    return [self executeFetchRequest:request error:error];
+}
+
 - (void)SMK_asyncFetchWithEntityName:(NSString *)entityName
                      sortDescriptors:(NSArray *)sortDescriptors
                            predicate:(NSPredicate *)predicate
@@ -75,6 +90,13 @@ static void* const SMKContentSourceKey = @"SMKContentSource";
     [request setFetchLimit:fetchLimit];
     return request;
 }
+
+- (id)SMK_createObjectOfEntityName:(NSString *)entityName
+{
+    return [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:self];
+}
+
+#pragma mark - Accessors
 
 - (void)setContentSource:(id<SMKContentSource>)contentSource
 {

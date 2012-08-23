@@ -1,6 +1,7 @@
 #import "SMKiTunesArtist.h"
 #import "SMKiTunesConstants.h"
 #import "NSManagedObjectContext+SMKAdditions.h"
+#import "NSString+SMKAdditions.h"
 
 @interface SMKiTunesArtist ()
 - (NSPredicate *)_compoundAlbumPredicateWithPredicate:(NSPredicate *)predicate;
@@ -42,6 +43,20 @@
 {
     // TODO: Implement this with @sum/@count operators somehow
     return @0;
+}
+
++ (NSString *)sortingNameForName:(NSString *)name
+{
+    NSArray *filterTerms = [NSArray arrayWithObjects:@"the ", @"a ", @"an ", nil];
+    NSMutableString *sortString = [NSMutableString stringWithString:name];
+    for (NSString *term in filterTerms) {
+        NSRange range = [sortString rangeOfString:term options:NSCaseInsensitiveSearch];
+        if ((range.location == 0) && (range.length > 0)) {
+            [sortString replaceCharactersInRange:range withString:@""];
+            break;
+        }
+    }
+    return [sortString SMK_normalizedString];
 }
 
 #pragma mark - Private
