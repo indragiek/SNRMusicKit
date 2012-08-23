@@ -124,6 +124,7 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
                 // without any additional fetching
                 if (!importNew && [[playlist valueForKey:SMKiTunesKeyMusic] boolValue]) {
                     [playlist setTracks:[NSOrderedSet orderedSetWithArray:music]];
+                    music = nil;
                 } else {
                     // Otherwise each track needs to be fetched individually by persistent ID
                     NSArray *items = [playlist valueForKey:SMKiTunesKeyPlaylistItems];
@@ -141,6 +142,7 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
             }
         }
         [_context SMK_saveChanges];
+        [_context reset];
     }];
     if (self.completionBlock) {
         dispatch_async(dispatch_get_main_queue(), ^{
