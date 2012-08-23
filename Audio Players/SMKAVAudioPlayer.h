@@ -22,4 +22,9 @@
 
 #pragma mark - Player Specific API
 @property (nonatomic, strong, readonly) AVAudioPlayer *audioPlayer;
+
+/**
+ Set this to YES to load the entire file in memory before playing instead of using a buffer
+ */
+@property (nonatomic, assign) BOOL loadFilesInMemory;
 @end

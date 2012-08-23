@@ -70,7 +70,7 @@
 - (void)playTrack:(id<SMKTrack>)track completionHandler:(void(^)(NSError *error))handler
 {
     NSError *error = nil;
-    self.currentPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[track playbackURL] error:&error];
+    self.currentPlayer = [self _playerForTrack:track error:&error];
     self.currentPlayer.volume = self.volume;
     [self _delegateWillStartPlaying];
     [self.currentPlayer play];
@@ -110,7 +110,7 @@
         handler([NSError SMK_errorWithCode:SMKPlayerErrorTrackAlreadyPreloaded description:[NSString stringWithFormat:@"The following track is already preloaded: %@. This track must begin playing before you can preload another one.", _preloadedTrack]]);
     }
     NSError *error = nil;
-    _preloadedPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[track playbackURL] error:&error];
+    _preloadedPlayer = [self _playerForTrack:track error:&error];
     if (_preloadedPlayer && !error) {
         _preloadedPlayer.volume = self.volume;
         [_preloadedPlayer prepareToPlay];
@@ -183,6 +183,16 @@
 {
     if ([self.delegate respondsToSelector:@selector(playerWillStartPlaying:)]) {
         [self.delegate playerWillStartPlaying:self];
+    }
+}
+
+- (AVAudioPlayer *)_playerForTrack:(id<SMKTrack>)track error:(NSError **)error
+{
+    if (self.loadFilesInMemory) {
+        NSData *data = [NSData dataWithContentsOfURL:[track playbackURL]];
+        return [[AVAudioPlayer alloc] initWithData:data error:error];
+    } else {
+        return [[AVAudioPlayer alloc] initWithContentsOfURL:[track playbackURL] error:error];
     }
 }
 

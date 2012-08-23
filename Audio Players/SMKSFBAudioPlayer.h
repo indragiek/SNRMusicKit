@@ -29,6 +29,8 @@
  */
 - (void)setEQValue:(float)value forEQBand:(int)band;
 
-/** Set this to YES to load the entire file in memory before playing instead of using a buffer */
+/** 
+ Set this to YES to load the entire file in memory before playing instead of using a buffer 
+ */
 @property (nonatomic, assign) BOOL loadFilesInMemory;
 @end
