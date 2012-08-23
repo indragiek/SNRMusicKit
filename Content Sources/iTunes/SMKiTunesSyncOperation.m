@@ -46,6 +46,7 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
 @synthesize contentSource = _contentSource;
 @synthesize progressBlock = _progressBlock;
 @synthesize completionBlock = _completionBlock;
+@synthesize syncPlaylists = _syncPlaylists;
 
 - (id)init
 {
@@ -115,32 +116,34 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
         NSArray *playlists = [_iTunesDictionary valueForKey:SMKiTunesKeyPlaylists];
         NSDictionary *tracks = [_iTunesDictionary valueForKey:SMKiTunesKeyTracks];
         // Iterate through all the playlists
-        for (NSDictionary *playlist in playlists) {
-            @autoreleasepool {
-                if (![self _validateiTunesPlaylistDictionary:playlist]) { continue; }
-                // Create a new playlist object for each dictionary
-                NSString *name = [playlist valueForKey:SMKiTunesKeyName];
-                SMKiTunesPlaylist *iTunesPlaylist = [_context SMK_createObjectOfEntityName:SMKiTunesEntityNamePlaylist];
-                [iTunesPlaylist setName:name];
-                // If we're already imported the entire music playlist, then just set those objects
-                // without any additional fetching
-                BOOL isMusic = [[playlist valueForKey:SMKiTunesKeyMusic] boolValue];
-                if (isMusic && !importNew) {
-                    [iTunesPlaylist setTracks:[NSOrderedSet orderedSetWithArray:music]];
-                    music = nil;
-                } else if (!isMusic || (totalTracks || [_removediTunesTrackPersistentIDs count])) {
-                    // Otherwise each track needs to be fetched individually by persistent ID
-                    NSArray *items = [playlist valueForKey:SMKiTunesKeyPlaylistItems];
-                    NSMutableOrderedSet *playlistTracks = [[NSMutableOrderedSet alloc] initWithCapacity:[items count]];
-                    for (NSDictionary *item in items) {
-                        NSNumber *trackID = [item valueForKey:SMKiTunesKeyTrackID];
-                        NSDictionary *trackDict = [tracks objectForKey:[trackID stringValue]];
-                        NSString *persistentID = [trackDict valueForKey:SMKiTunesKeyPersistentID];
-                        SMKiTunesTrack *track = [_context SMK_iTunesTrackWithIdentifier:persistentID];
-                        if (track)
-                            [playlistTracks addObject:track];
+        if (self.syncPlaylists) {
+            for (NSDictionary *playlist in playlists) {
+                @autoreleasepool {
+                    if (![self _validateiTunesPlaylistDictionary:playlist]) { continue; }
+                    // Create a new playlist object for each dictionary
+                    NSString *name = [playlist valueForKey:SMKiTunesKeyName];
+                    SMKiTunesPlaylist *iTunesPlaylist = [_context SMK_createObjectOfEntityName:SMKiTunesEntityNamePlaylist];
+                    [iTunesPlaylist setName:name];
+                    // If we're already imported the entire music playlist, then just set those objects
+                    // without any additional fetching
+                    BOOL isMusic = [[playlist valueForKey:SMKiTunesKeyMusic] boolValue];
+                    if (isMusic && !importNew) {
+                        [iTunesPlaylist setTracks:[NSOrderedSet orderedSetWithArray:music]];
+                        music = nil;
+                    } else if (!isMusic || (totalTracks || [_removediTunesTrackPersistentIDs count])) {
+                        // Otherwise each track needs to be fetched individually by persistent ID
+                        NSArray *items = [playlist valueForKey:SMKiTunesKeyPlaylistItems];
+                        NSMutableOrderedSet *playlistTracks = [[NSMutableOrderedSet alloc] initWithCapacity:[items count]];
+                        for (NSDictionary *item in items) {
+                            NSNumber *trackID = [item valueForKey:SMKiTunesKeyTrackID];
+                            NSDictionary *trackDict = [tracks objectForKey:[trackID stringValue]];
+                            NSString *persistentID = [trackDict valueForKey:SMKiTunesKeyPersistentID];
+                            SMKiTunesTrack *track = [_context SMK_iTunesTrackWithIdentifier:persistentID];
+                            if (track)
+                                [playlistTracks addObject:track];
+                        }
+                        [iTunesPlaylist setTracks:playlistTracks];
                     }
-                    [iTunesPlaylist setTracks:playlistTracks];
                 }
             }
         }

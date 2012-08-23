@@ -31,6 +31,7 @@
 @synthesize backgroundQueueObjectContext = _backgroundQueueObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize syncPlaylists = _syncPlaylists;
 
 - (id)init
 {
@@ -39,6 +40,7 @@
         _operationQueue = [NSOperationQueue new];
         _backgroundQueue = dispatch_queue_create("com.indragie.SNRMusicKit.SNRiTunesContentSource", DISPATCH_QUEUE_SERIAL);
         dispatch_set_target_queue(_backgroundQueue, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0));
+        self.syncPlaylists = YES;
         [self sync];
     }
     return self;
@@ -153,6 +155,7 @@
         }
     }];
     [operation setContentSource:self];
+    [operation setSyncPlaylists:self.syncPlaylists];
     [_operationQueue addOperation:operation];
 }
 

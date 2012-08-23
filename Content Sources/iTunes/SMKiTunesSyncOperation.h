@@ -11,6 +11,7 @@
 @class SMKiTunesContentSource;
 @interface SMKiTunesSyncOperation : NSOperation
 @property (nonatomic, weak) SMKiTunesContentSource *contentSource;
+@property (nonatomic, assign) BOOL syncPlaylists;
 
 @property (nonatomic, copy) void (^completionBlock)(SMKiTunesSyncOperation *operation, NSUInteger importedCount);
 @property (nonatomic, copy) void (^progressBlock)(SMKiTunesSyncOperation *operation, NSUInteger trackNumber, NSUInteger totalTracks, NSError *error);

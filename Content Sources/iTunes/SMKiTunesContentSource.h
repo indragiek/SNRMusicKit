@@ -10,12 +10,15 @@
 #import "SMKContentSource.h"
 
 @interface SMKiTunesContentSource : NSObject <SMKContentSource>
+
 #pragma mark - Content Source Specific API
+
 @property (nonatomic, strong) NSManagedObjectContext *mainQueueObjectContext;
 @property (nonatomic, strong) NSManagedObjectContext *backgroundQueueObjectContext;
 @property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
 
+@property (nonatomic, assign) BOOL syncPlaylists;
 /** Starts a sync with iTunes. This method is called automatically in SMKiTunesContentSource's -init. */
 - (void)sync;
 /** 
