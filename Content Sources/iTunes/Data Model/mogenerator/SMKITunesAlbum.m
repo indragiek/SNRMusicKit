@@ -55,11 +55,7 @@
 
 - (NSNumber *)duration
 {
-    NSUInteger totalDuration = 0;
-    for (SMKiTunesTrack *track in self.tracks) {
-        totalDuration += [[track duration] unsignedIntegerValue];
-    }
-    return @(totalDuration);
+    return [self valueForKey:@"tracks.@sum.duration"];
 }
 
 #pragma mark - Private

@@ -9,9 +9,5 @@
  */
 - (NSDate *)releaseDate;
 
-/**
- Calling this can be expensive because it fetches all the tracks synchronously and
- calculates the total duration based on their individual durations.
- */
 - (NSNumber *)duration;
 @end
