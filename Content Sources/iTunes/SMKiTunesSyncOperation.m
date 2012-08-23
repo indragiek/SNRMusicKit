@@ -91,7 +91,7 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
                 if (track)
                     [music addObject:track];
                 if (self.progressBlock) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
+                    dispatch_sync(dispatch_get_main_queue(), ^{
                         self.progressBlock(self, importedCount, totalTracks, error);
                     });
                 }
@@ -145,7 +145,7 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
         [_context reset];
     }];
     if (self.completionBlock) {
-        dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_sync(dispatch_get_main_queue(), ^{
             self.completionBlock(self, totalTracks);
         });
     }

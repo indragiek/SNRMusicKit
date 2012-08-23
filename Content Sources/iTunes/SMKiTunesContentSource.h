@@ -14,4 +14,12 @@
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
+
+/** Starts a sync with iTunes. This method is called automatically in SMKiTunesContentSource's -init. */
+- (void)sync;
+/** 
+ Deletes the persistent store used to cache the iTunes Library info.
+ @discussion You must manually call -sync again before accessing anything
+ */
+- (void)deleteStore;
 @end

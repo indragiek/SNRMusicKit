@@ -13,13 +13,18 @@
 #import "NSURL+SMKAdditions.h"
 #import "NSError+SMKAdditions.h"
 #import "NSManagedObjectContext+SMKAdditions.h"
+#import "SMKiTunesSyncOperation.h"
 
 @interface SMKiTunesContentSource ()
 // Notifications
 - (void)_applicationWillTerminate:(NSNotification *)notification;
 @end
 
-@implementation SMKiTunesContentSource
+@implementation SMKiTunesContentSource {
+    NSOperationQueue *_operationQueue;
+    dispatch_semaphore_t _waiter;
+    dispatch_queue_t _backgroundQueue;
+}
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
@@ -28,6 +33,10 @@
 {
     if ((self = [super init])) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_applicationWillTerminate:) name:NSApplicationWillTerminateNotification object:[NSApplication sharedApplication]];
+        _operationQueue = [NSOperationQueue new];
+        _waiter = dispatch_semaphore_create(0);
+        _backgroundQueue = dispatch_queue_create("com.indragie.SNRMusicKit.SNRiTunesContentSource", DISPATCH_QUEUE_SERIAL);
+        [self sync];
     }
     return self;
 }
@@ -35,6 +44,10 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    if (_waiter)
+        dispatch_release(_waiter);
+    if (_backgroundQueue)
+        dispatch_release(_backgroundQueue);
 }
 
 #pragma mark - SMKContentSource
@@ -49,6 +62,15 @@
                                 predicate:(NSPredicate *)predicate
                                 withError:(NSError **)error
 {
+    // If the operation is already running, then create a semaphore to force it to wait till it finishes
+    if ([_operationQueue operationCount] != 0 && !_waiter) {
+        _waiter = dispatch_semaphore_create(0);
+        dispatch_semaphore_wait(_waiter, DISPATCH_TIME_FOREVER);
+    }
+    // Release the semaphore after we're done with it
+    if (_waiter)
+        dispatch_release(_waiter);
+    // Fetch the objects and return
     return [self.managedObjectContext SMK_fetchWithEntityName:SMKiTunesEntityNamePlaylist
                                               sortDescriptors:sortDescriptors
                                                     predicate:predicate
@@ -62,11 +84,39 @@
                                 predicate:(NSPredicate *)predicate
                         completionHandler:(void(^)(NSArray *playlists, NSError *error))handler
 {
-    return [self.managedObjectContext SMK_asyncFetchWithEntityName:SMKiTunesEntityNamePlaylist
-                                                   sortDescriptors:sortDescriptors
-                                                         predicate:predicate batchSize:batchSize
-                                                        fetchLimit:fetchLimit
-                                                 completionHandler:handler];
+    __block SMKiTunesContentSource *weakSelf = self;
+    dispatch_async(_backgroundQueue, ^{
+        SMKiTunesContentSource *strongSelf = weakSelf;
+        __block BOOL noSempahore = NO;
+        // Check on the main queue if a sync operation is already running
+        // If so, create a semaphore 
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            noSempahore = ![strongSelf->_operationQueue operationCount] != 0 && !strongSelf->_waiter;
+            if (noSempahore)
+                _waiter = dispatch_semaphore_create(0);
+        });
+        // Now we tell the semaphore to wait on the background queue until the sync is over
+        // Hopefully dispatch_semaphore is thread-safe?
+        if (noSempahore)
+            dispatch_semaphore_wait(strongSelf->_waiter, DISPATCH_TIME_FOREVER);
+        // Once that's done, tell the MOC on the main queue to run an asynchronous fetch
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            if (strongSelf->_waiter)
+                dispatch_release(strongSelf->_waiter);
+            [strongSelf.managedObjectContext SMK_asyncFetchWithEntityName:SMKiTunesEntityNamePlaylist sortDescriptors:sortDescriptors predicate:predicate batchSize:batchSize fetchLimit:fetchLimit completionHandler:handler];
+        });
+    });
+}
+
+- (void)deleteStore
+{
+    _managedObjectContext = nil;
+    _persistentStoreCoordinator = nil;
+    NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"SMKiTunesContentSource.storedata"];
+    NSError *error = nil;
+    [[NSFileManager defaultManager] removeItemAtURL:url error:&error];
+    if (error)
+        NSLog(@"Error removing Core Data store at URL %@: %@, %@", url, error, [error userInfo]);
 }
 
 #pragma mark - Notifications
@@ -74,6 +124,25 @@
 - (void)_applicationWillTerminate:(NSNotification *)notification
 {
     [self.managedObjectContext SMK_saveChanges];
+}
+
+#pragma mark - Sync
+
+- (void)sync
+{
+    // There's a sync already happening
+    if ([_operationQueue operationCount] != 0)
+        return;
+    
+    __block SMKiTunesContentSource *weakSelf = self;
+    SMKiTunesSyncOperation *operation = [SMKiTunesSyncOperation new];
+    [operation setCompletionBlock:^(SMKiTunesSyncOperation *op, NSUInteger count) {
+        SMKiTunesContentSource *strongSelf = weakSelf;
+        if (strongSelf->_waiter) {
+            dispatch_semaphore_signal(strongSelf->_waiter);
+        }
+    }];
+    [_operationQueue addOperation:operation];
 }
 
 #pragma mark - Core Data Boilerplate
