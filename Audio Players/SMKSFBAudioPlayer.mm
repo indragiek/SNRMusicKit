@@ -118,12 +118,12 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
     return [NSSet setWithObjects:NSStringFromClass([SMKiTunesContentSource class]), nil];
 }
 
-- (BOOL)supportsPreloading
++ (BOOL)supportsPreloading
 {
     return YES;
 }
 
-- (BOOL)supportsAirPlay
++ (BOOL)supportsAirPlay
 {
     return NO;
 }

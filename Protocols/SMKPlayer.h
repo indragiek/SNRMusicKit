@@ -19,12 +19,12 @@
 /**
  @return Whether the player supports preloading tracks.
  */
-- (BOOL)supportsPreloading;
++ (BOOL)supportsPreloading;
 
 /**
  @return Whether the play supports streaming via AirPlay.
  */
-- (BOOL)supportsAirPlay;
++ (BOOL)supportsAirPlay;
 
 /**
  @return Whether the player supports seeking.
