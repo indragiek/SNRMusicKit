@@ -71,7 +71,7 @@ static void* const SMKContentSourceKey = @"SMKContentSource";
                                                             fetchLimit:fetchLimit];
         NSError *error = nil;
         NSArray *results = [self executeFetchRequest:request error:&error];
-        dispatch_sync(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
             if (handler) handler(results, error);
         });
     }];

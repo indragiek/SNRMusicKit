@@ -88,12 +88,13 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
             @autoreleasepool {
                 NSError *error = nil;
                 SMKiTunesTrack *track = [self _importiTunesFileWithDictionary:trackDict error:&error];
+                //NSLog(@"Imported track %@", track.name);
+                if (error)
+                    NSLog(@"Error importing track: %@, %@", error, [error userInfo]);
                 if (track)
                     [music addObject:track];
                 if (self.progressBlock) {
-                    dispatch_sync(dispatch_get_main_queue(), ^{
-                        self.progressBlock(self, importedCount, totalTracks, error);
-                    });
+                    self.progressBlock(self, importedCount, totalTracks, error);
                 }
                 saveCount++;
                 importedCount++;
@@ -118,12 +119,12 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
                 if (![self _validateiTunesPlaylistDictionary:playlist]) { continue; }
                 // Create a new playlist object for each dictionary
                 NSString *name = [playlist valueForKey:SMKiTunesKeyName];
-                SMKiTunesPlaylist *playlist = [_context SMK_createObjectOfEntityName:SMKiTunesEntityNamePlaylist];
-                [playlist setName:name];
+                SMKiTunesPlaylist *iTunesPlaylist = [_context SMK_createObjectOfEntityName:SMKiTunesEntityNamePlaylist];
+                [iTunesPlaylist setName:name];
                 // If we're already imported the entire music playlist, then just set those objects
                 // without any additional fetching
                 if (!importNew && [[playlist valueForKey:SMKiTunesKeyMusic] boolValue]) {
-                    [playlist setTracks:[NSOrderedSet orderedSetWithArray:music]];
+                    [iTunesPlaylist setTracks:[NSOrderedSet orderedSetWithArray:music]];
                     music = nil;
                 } else {
                     // Otherwise each track needs to be fetched individually by persistent ID
@@ -137,7 +138,7 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
                         if (track)
                             [playlistTracks addObject:track];
                     }
-                    [playlist setTracks:playlistTracks];
+                    [iTunesPlaylist setTracks:playlistTracks];
                 }
             }
         }
@@ -145,9 +146,7 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
         [_context reset];
     }];
     if (self.completionBlock) {
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            self.completionBlock(self, totalTracks);
-        });
+        self.completionBlock(self, totalTracks);
     }
 }
 
@@ -175,10 +174,14 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
 // Merge the objects from the background context back into the main context
 - (void)_managedObjectContextDidSave:(NSNotification *)notification
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSManagedObjectContext *context = [self.contentSource managedObjectContext];
-        [context mergeChangesFromContextDidSaveNotification:notification];
-    });
+    NSManagedObjectContext *mainContext = [self.contentSource mainQueueObjectContext];
+    NSManagedObjectContext *backgroundContext = [self.contentSource backgroundQueueObjectContext];
+    [mainContext performBlock:^{
+        [mainContext mergeChangesFromContextDidSaveNotification:notification];
+    }];
+    [backgroundContext performBlock:^{
+        [backgroundContext mergeChangesFromContextDidSaveNotification:notification];
+    }];
 }
 
 #pragma mark - iTunes Library Parsing
@@ -270,7 +273,7 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
 {
     SMKiTunesTrack *track = [_context SMK_createObjectOfEntityName:SMKiTunesEntityNameTrack];
     NSURL *url = [NSURL URLWithString:[dictionary valueForKey:SMKiTunesKeyLocation]];
-    NSData *bookmarkData = [NSURL bookmarkDataWithContentsOfURL:url error:error];
+    NSData *bookmarkData = [url bookmarkDataWithOptions:NSURLBookmarkCreationMinimalBookmark includingResourceValuesForKeys:nil relativeToURL:nil error:error];
     if (!bookmarkData) {
         [_context deleteObject:track];
         return nil;

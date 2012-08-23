@@ -8,11 +8,11 @@
 
 #import "SMKiTunesConstants.h"
 
-NSString* const SMKiTunesEntityNameArtist = @"SMKiTunesEntityNameArtist";
-NSString* const SMKiTunesEntityNameAlbum = @"SMKiTunesEntityNameAlbum";
-NSString* const SMKiTunesEntityNameTrack = @"SMKiTunesEntityNameTrack";
-NSString* const SMKiTunesEntityNamePlaylist = @"SMKiTunesEntityNamePlaylist";
-NSString* const SMKiTunesEntityNameTag = @"SMKiTunesEntityNameTag";
+NSString* const SMKiTunesEntityNameArtist = @"SMKiTunesArtist";
+NSString* const SMKiTunesEntityNameAlbum = @"SMKiTunesAlbum";
+NSString* const SMKiTunesEntityNameTrack = @"SMKiTunesTrack";
+NSString* const SMKiTunesEntityNamePlaylist = @"SMKiTunesPlaylist";
+NSString* const SMKiTunesEntityNameTag = @"SMKiTunesTag";
 
 NSString* const SMKiTunesKeyTracks = @"Tracks";
 NSString* const SMKiTunesKeyPlaylists = @"Playlists";

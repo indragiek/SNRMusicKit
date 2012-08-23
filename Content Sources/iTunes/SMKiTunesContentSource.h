@@ -11,7 +11,8 @@
 
 @interface SMKiTunesContentSource : NSObject <SMKContentSource>
 #pragma mark - Content Source Specific API
-@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSManagedObjectContext *mainQueueObjectContext;
+@property (nonatomic, strong) NSManagedObjectContext *backgroundQueueObjectContext;
 @property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
 

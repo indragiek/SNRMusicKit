@@ -37,7 +37,7 @@
         name = SMKiTunesUntitledAlbumName;
     NSString *normalizedName = [SMKiTunesAlbum sortingNameForName:name];
     NSError *error = nil;
-    NSArray *fetchedObjects = [self SMK_noBlockFetchWithEntityName:SMKiTunesEntityNameArtist sortDescriptors:nil predicate:[NSPredicate predicateWithFormat:@"(normalizedName == %@) AND (artist == %@)", normalizedName, artist] batchSize:0 fetchLimit:1 error:&error];
+    NSArray *fetchedObjects = [self SMK_noBlockFetchWithEntityName:SMKiTunesEntityNameAlbum sortDescriptors:nil predicate:[NSPredicate predicateWithFormat:@"(normalizedName == %@) AND (artist == %@)", normalizedName, artist] batchSize:0 fetchLimit:1 error:&error];
     if (error)
         NSLog(@"Error fetching iTunes album with name \"%@\": %@ %@", name, error, [error userInfo]);
 	if (![fetchedObjects count]) {

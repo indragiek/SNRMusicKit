@@ -7,10 +7,10 @@
 //
 
 static inline BOOL SMKObjectIsValid(id object) {
-	return (object == nil)
-    || (object == [NSNull null])
-    || ([object respondsToSelector:@selector(length)]
-        && [(NSData *)object length] == 0)
-    || ([object respondsToSelector:@selector(count)]
-        && [(NSArray *)object count] == 0);
+	return (object != nil)
+    && (object != [NSNull null])
+    && (![object respondsToSelector:@selector(length)]
+        || [(NSData *)object length] != 0)
+    && (![object respondsToSelector:@selector(count)]
+        || [(NSArray *)object count] != 0);
 }

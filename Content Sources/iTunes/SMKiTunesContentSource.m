@@ -25,7 +25,8 @@
     dispatch_semaphore_t _waiter;
     dispatch_queue_t _backgroundQueue;
 }
-@synthesize managedObjectContext = _managedObjectContext;
+@synthesize mainQueueObjectContext = _mainQueueObjectContext;
+@synthesize backgroundQueueObjectContext = _backgroundQueueObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
@@ -67,10 +68,12 @@
         dispatch_semaphore_wait(_waiter, DISPATCH_TIME_FOREVER);
     }
     // Release the semaphore after we're done with it
-    if (_waiter)
+    if (_waiter) {
         dispatch_release(_waiter);
+        _waiter = NULL;
+    }
     // Fetch the objects and return
-    return [self.managedObjectContext SMK_fetchWithEntityName:SMKiTunesEntityNamePlaylist
+    return [self.mainQueueObjectContext SMK_fetchWithEntityName:SMKiTunesEntityNamePlaylist
                                               sortDescriptors:sortDescriptors
                                                     predicate:predicate
                                                     batchSize:batchSize
@@ -86,31 +89,30 @@
     __block SMKiTunesContentSource *weakSelf = self;
     dispatch_async(_backgroundQueue, ^{
         SMKiTunesContentSource *strongSelf = weakSelf;
-        __block BOOL noSempahore = NO;
         // Check on the main queue if a sync operation is already running
         // If so, create a semaphore 
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            noSempahore = ![strongSelf->_operationQueue operationCount] != 0 && !strongSelf->_waiter;
-            if (noSempahore)
-                _waiter = dispatch_semaphore_create(0);
-        });
-        // Now we tell the semaphore to wait on the background queue until the sync is over
-        // Hopefully dispatch_semaphore is thread-safe?
-        if (noSempahore)
-            dispatch_semaphore_wait(strongSelf->_waiter, DISPATCH_TIME_FOREVER);
+        if ([_operationQueue operationCount] != 0 && !_waiter) {
+            _waiter = dispatch_semaphore_create(0);
+            dispatch_semaphore_wait(_waiter, DISPATCH_TIME_FOREVER);
+        }
+        // Release the semaphore after we're done with it
+        if (_waiter) {
+            dispatch_release(_waiter);
+            _waiter = NULL;
+        }
         // Once that's done, tell the MOC on the main queue to run an asynchronous fetch
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            if (strongSelf->_waiter)
-                dispatch_release(strongSelf->_waiter);
-            [strongSelf.managedObjectContext SMK_asyncFetchWithEntityName:SMKiTunesEntityNamePlaylist sortDescriptors:sortDescriptors predicate:predicate batchSize:batchSize fetchLimit:fetchLimit completionHandler:handler];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [strongSelf.mainQueueObjectContext SMK_asyncFetchWithEntityName:SMKiTunesEntityNamePlaylist sortDescriptors:sortDescriptors predicate:predicate batchSize:batchSize fetchLimit:fetchLimit completionHandler:handler];
         });
     });
 }
 
 - (void)deleteStore
 {
-    _managedObjectContext = nil;
+    _mainQueueObjectContext = nil;
+    _backgroundQueueObjectContext = nil;
     _persistentStoreCoordinator = nil;
+    NSURL *applicationFilesDirectory = [NSURL SMK_applicationSupportFolder];
     NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"SMKiTunesContentSource.storedata"];
     NSError *error = nil;
     [[NSFileManager defaultManager] removeItemAtURL:url error:&error];
@@ -122,7 +124,8 @@
 
 - (void)_applicationWillTerminate:(NSNotification *)notification
 {
-    [self.managedObjectContext SMK_saveChanges];
+    [self.backgroundQueueObjectContext SMK_saveChanges];
+    [self.mainQueueObjectContext SMK_saveChanges];
 }
 
 #pragma mark - Sync
@@ -141,15 +144,16 @@
             dispatch_semaphore_signal(strongSelf->_waiter);
         }
     }];
+    [operation setContentSource:self];
     [_operationQueue addOperation:operation];
 }
 
 #pragma mark - Core Data Boilerplate
 
-- (NSManagedObjectContext *)managedObjectContext
+- (NSManagedObjectContext *)mainQueueObjectContext
 {
-    if (_managedObjectContext) {
-        return _managedObjectContext;
+    if (_mainQueueObjectContext) {
+        return _mainQueueObjectContext;
     }
     
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
@@ -158,11 +162,30 @@
         NSLog(@"Error: %@, %@", error, [error userInfo]);
         return nil;
     }
-    _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-    [_managedObjectContext setPersistentStoreCoordinator:coordinator];
-    [_managedObjectContext setUndoManager:nil];
-    [_managedObjectContext setContentSource:self];
-    return _managedObjectContext;
+    _mainQueueObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+    [_mainQueueObjectContext setPersistentStoreCoordinator:coordinator];
+    [_mainQueueObjectContext setUndoManager:nil];
+    [_mainQueueObjectContext setContentSource:self];
+    return _mainQueueObjectContext;
+}
+
+- (NSManagedObjectContext *)backgroundQueueObjectContext
+{
+    if (_backgroundQueueObjectContext) {
+        return _backgroundQueueObjectContext;
+    }
+    
+    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+    if (!coordinator) {
+        NSError *error = [NSError SMK_errorWithCode:SMKCoreDataErrorFailedToInitializeStore description:[NSString stringWithFormat:@"Failed to initialize the store for class: %@", NSStringFromClass([self class])]];
+        NSLog(@"Error: %@, %@", error, [error userInfo]);
+        return nil;
+    }
+    _backgroundQueueObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    [_backgroundQueueObjectContext setPersistentStoreCoordinator:coordinator];
+    [_backgroundQueueObjectContext setUndoManager:nil];
+    [_backgroundQueueObjectContext setContentSource:self];
+    return _backgroundQueueObjectContext;
 }
 
 - (NSManagedObjectModel *)managedObjectModel
@@ -170,7 +193,7 @@
     if (_managedObjectModel) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"SMKiTunesDataModel" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle SMK_frameworkBundle] URLForResource:@"SMKiTunesDataModel" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -199,14 +222,14 @@
             ok = [fileManager createDirectoryAtPath:[applicationFilesDirectory path] withIntermediateDirectories:YES attributes:nil error:&error];
         }
         if (!ok) {
-            [[NSApplication sharedApplication] presentError:error];
+            NSLog(@"Error reading attributes of application files directrory: %@, %@", error, [error userInfo]);
             return nil;
         }
     } else {
         if (![properties[NSURLIsDirectoryKey] boolValue]) {
             NSString *failureDescription = [NSString stringWithFormat:@"Expected a folder to store application data, found a file (%@).", [applicationFilesDirectory path]];
             error = [NSError SMK_errorWithCode:SMKCoreDataErrorDataStoreNotAFolder description:failureDescription];
-            NSLog(@"Error: %@, %@", error, [error userInfo]);
+            NSLog(@"Error creating data store: %@, %@", error, [error userInfo]);
             return nil;
         }
     }
@@ -214,7 +237,7 @@
     NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"SMKiTunesContentSource.storedata"];
     NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
     if (![coordinator addPersistentStoreWithType:NSXMLStoreType configuration:nil URL:url options:nil error:&error]) {
-        [[NSApplication sharedApplication] presentError:error];
+        NSLog(@"Error adding persistent store: %@, %@", error, [error userInfo]);
         return nil;
     }
     _persistentStoreCoordinator = coordinator;

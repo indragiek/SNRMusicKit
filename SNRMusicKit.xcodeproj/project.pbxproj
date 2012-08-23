@@ -1110,6 +1110,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SNRMusicKit/SNRMusicKit-Prefix.pch";
 				INFOPLIST_FILE = "SNRMusicKit/SNRMusicKit-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1122,6 +1123,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SNRMusicKit/SNRMusicKit-Prefix.pch";
 				INFOPLIST_FILE = "SNRMusicKit/SNRMusicKit-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1138,6 +1140,7 @@
 				GCC_PREFIX_HEADER = "SNRMusicKitMac/SNRMusicKitMac-Prefix.pch";
 				INFOPLIST_FILE = "SNRMusicKitMac/SNRMusicKitMac-Info.plist";
 				INSTALL_PATH = "@rpath";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -1154,6 +1157,7 @@
 				GCC_PREFIX_HEADER = "SNRMusicKitMac/SNRMusicKitMac-Prefix.pch";
 				INFOPLIST_FILE = "SNRMusicKitMac/SNRMusicKitMac-Info.plist";
 				INSTALL_PATH = "@rpath";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};

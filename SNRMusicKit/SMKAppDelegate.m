@@ -9,7 +9,9 @@
 #import "SMKAppDelegate.h"
 #import <SNRMusicKitMac/SMKiTunesContentSource.h>
 
-@implementation SMKAppDelegate
+@implementation SMKAppDelegate {
+    SMKiTunesContentSource *_source;
+}
 
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize managedObjectModel = _managedObjectModel;
@@ -17,6 +19,10 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    _source = [SMKiTunesContentSource new];
+    [_source fetchPlaylistsWithSortDescriptors:nil batchSize:20 fetchLimit:0 predicate:nil completionHandler:^(NSArray *playlists, NSError *error) {
+        NSLog(@"%@", playlists);
+    }];
 }
 
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "com.indragie.SNRMusicKit" in the user's Application Support directory.
