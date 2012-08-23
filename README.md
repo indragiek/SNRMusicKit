@@ -33,7 +33,8 @@ git submodule update
 I'll try to update this section as frequently as possible:
 
 * Protocols for some of the basic types (Song, Album, Artist, Playlist, Player)
-* A wrapper of SFBAudioEngine's AudioPlayer that conforms to SMKPlayer
+* A wrapper of **SFBAudioEngine**'s AudioPlayer that conforms to SMKPlayer
+* A full Core Data based implementation of the iTunes content source (**SMKiTunesContentSource**). Going to write an example app to show this soon.
 
 #### License
 
