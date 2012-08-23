@@ -66,6 +66,7 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
     [self _createBackgroundContext];
     _existingiTunesTrackPersistentIDs = [self _existingiTunesTrackPersistentIDs];
     // Check if stuff has been imported already to decide whether to only import new tracks
+    NSLog(@"%lu", [_existingiTunesTrackPersistentIDs count]);
     BOOL importNew = ([_existingiTunesTrackPersistentIDs count] != 0);
     NSArray *tracks = [self _iTunesTracksNewOnly:importNew];
     NSUInteger totalTracks = [tracks count];
@@ -123,10 +124,11 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
                 [iTunesPlaylist setName:name];
                 // If we're already imported the entire music playlist, then just set those objects
                 // without any additional fetching
-                if (!importNew && [[playlist valueForKey:SMKiTunesKeyMusic] boolValue]) {
+                BOOL isMusic = [[playlist valueForKey:SMKiTunesKeyMusic] boolValue];
+                if (isMusic && !importNew) {
                     [iTunesPlaylist setTracks:[NSOrderedSet orderedSetWithArray:music]];
                     music = nil;
-                } else {
+                } else if (!isMusic || (totalTracks || [_removediTunesTrackPersistentIDs count])) {
                     // Otherwise each track needs to be fetched individually by persistent ID
                     NSArray *items = [playlist valueForKey:SMKiTunesKeyPlaylistItems];
                     NSMutableOrderedSet *playlistTracks = [[NSMutableOrderedSet alloc] initWithCapacity:[items count]];
