@@ -32,17 +32,6 @@
 - (BOOL)supportsSeeking;
 
 /**
- @return The delegate of this player.
- */
-- (id<SMKPlayerDelegate>)delegate;
-
-/**
- Set the delegate of the player.
- @param delegate The player delegate.
-*/
-- (void)setDelegate:(id<SMKPlayerDelegate>)delegate;
-
-/**
  @return The currently playing track.
  */
 - (id<SMKTrack>)currentTrack;
@@ -50,13 +39,7 @@
 /**
  @return The player volume from 0.0 to 1.0
  */
-- (float)volume;
-
-/**
- Set the player volume from 0.0 to 1.0
- @param volume The player volume
- */
-- (void)setVolume:(float)volume;
+@property (nonatomic, assign) float volume;
 
 /**
  Play the specified track.
@@ -73,7 +56,7 @@
 /**
  Resume playback.
  */
-- (void)resume;
+- (void)play;
 
 /**
  @return Whether the player is playing.
@@ -116,17 +99,6 @@
 - (void)seekForward;
 
 /**
- @return Whether AirPlay is enabled (assuming the player supports it)
- */
-- (BOOL)airPlayEnabled;
-
-/**
- Set whether AirPlay is enabled on the player (if the player supports it).
- @param enabled Whether AirPlay should be enabled
- */
-- (void)setAirPlayEnabled:(BOOL)enabled;
-
-/**
  Preload the specified track (if the player supports preloading)
  @param handler Completion handler called with an NSError if preloading failed and nil if successful.
  */
@@ -141,12 +113,14 @@
  Skips to the track that the player has preloaded.
  */
 - (void)skipToPreloadedTrack;
-@end
 
-@protocol SMKPlayerDelegate <NSObject>
-@optional
-/** Called immediately before the player starts playing a track */
-- (void)playerWillStartPlaying:(id<SMKPlayer>)player;
-/** Called immediately after the player finishes playing a track */
-- (void)playerDidFinishPlaying:(id<SMKPlayer>)player;
+/**
+ @return Whether AirPlay is enabled (assuming the player supports it)
+ */
+@property (nonatomic, assign) BOOL airPlayEnabled;
+
+/**
+ A block called when the current track finishes playing
+ */
+@property (nonatomic, copy) void (^finishedTrackBlock)(id<SMKPlayer> player, id<SMKTrack> track, NSError *error);
 @end

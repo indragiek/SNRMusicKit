@@ -105,7 +105,7 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
         AudioObjectAddPropertyListener(kAudioObjectSystemObject, &_outputAudioAddress, systemOutputDeviceDidChange, (__bridge void*)self);
 #endif
         AudioDecoder::SetAutomaticallyOpenDecoders(true);
-        _renderTimer = [NSTimer timerWithTimeInterval:0.5f target:self selector:@selector(_renderTimerFired:) userInfo:nil repeats:YES];
+        _renderTimer = [NSTimer timerWithTimeInterval:1.f target:self selector:@selector(_renderTimerFired:) userInfo:nil repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:_renderTimer forMode:NSRunLoopCommonModes];
     }
     return self;
@@ -165,7 +165,7 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
     _player->Pause();
 }
 
-- (void)resume
+- (void)play
 {
     if (!_playWhenReady)
         _player->Play();
@@ -271,22 +271,16 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
 
 - (void)_renderTimerFired:(NSTimer*)timer
 {
-    if (SMKPlayerFlagRenderingStarted & _playerFlags) {
-        OSAtomicTestAndClearBarrier(7 /* SMKPlayerFlagRenderingStarted */, &_playerFlags);
-        if ([self.delegate respondsToSelector:@selector(playerWillStartPlaying:)]) {
-            [self.delegate playerWillStartPlaying:self];
-        }
-    } else if (SMKPlayerFlagRenderingFinished & _playerFlags) {
+    if (SMKPlayerFlagRenderingFinished & _playerFlags) {
         OSAtomicTestAndClearBarrier(6 /* SMKPlayerFlagRenderingFinished */, &_playerFlags);
-        if ([self.delegate respondsToSelector:@selector(playerDidFinishPlaying:)]) {
-            [self.delegate playerDidFinishPlaying:self];
-        }
+        if (self.finishedTrackBlock)
+            self.finishedTrackBlock(self, _currentTrack, nil);
         _currentTrack = _preloadedTrack;
         _preloadedTrack = nil;
     } else if (SMKPlayerFlagDecodingStarted & _playerFlags) {
         OSAtomicTestAndClearBarrier(5 /* SMKPlayerFlagDecodingStarted */, &_playerFlags);
         if (_playWhenReady) {
-            [self resume];
+            [self play];
             _playWhenReady = NO;
         }
     }

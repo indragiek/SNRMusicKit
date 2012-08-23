@@ -156,7 +156,7 @@
     return [applicationFilesDirectory URLByAppendingPathComponent:@"SMKiTunesContentSource.storedata"];
 }
 
-- (NSManagedObjectContext *)mainQueueObjectContext
+- (SMKManagedObjectContext *)mainQueueObjectContext
 {
     if (_mainQueueObjectContext) {
         return _mainQueueObjectContext;
@@ -168,10 +168,10 @@
         SMKGenericErrorLog(nil, error);
         return nil;
     }
-    _mainQueueObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+    _mainQueueObjectContext = [[SMKManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     [_mainQueueObjectContext setPersistentStoreCoordinator:coordinator];
     [_mainQueueObjectContext setUndoManager:nil];
-    [_mainQueueObjectContext setContentSource:self];
+    [_mainQueueObjectContext setSMK_contentSource:self];
     return _mainQueueObjectContext;
 }
 
@@ -187,10 +187,10 @@
         SMKGenericErrorLog(nil, error);
         return nil;
     }
-    _backgroundQueueObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    _backgroundQueueObjectContext = [[SMKManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     [_backgroundQueueObjectContext setParentContext:[self mainQueueObjectContext]];
     [_backgroundQueueObjectContext setUndoManager:nil];
-    [_backgroundQueueObjectContext setContentSource:self];
+    [_backgroundQueueObjectContext setSMK_contentSource:self];
     return _backgroundQueueObjectContext;
 }
 

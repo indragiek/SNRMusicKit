@@ -9,11 +9,18 @@
 #import <Foundation/Foundation.h>
 #import "SMKPlayer.h"
 
+
+/**
+ SMKSFBAudioPlayer is a wrapper class around SFBAudioEngine that provides support for a multitude of audio formats.
+ 
+ Supported formats include: MP3, MPEG-4, AIFF, WAV, OGG, FLAC, Musepack, WavPack, 
+ Monkey's Audio, MOD, S3M, XM, IT, True Audio
+ */
 @interface SMKSFBAudioPlayer : NSObject <SMKPlayer>
 
 #pragma mark - SMKPlayer API
 
-@property (nonatomic, assign) id<SMKPlayerDelegate> delegate;
+@property (nonatomic, copy) void (^finishedTrackBlock)(id<SMKPlayer> player, id<SMKTrack> track, NSError *error);
 @property (nonatomic, assign) float volume;
 @property (nonatomic, assign) NSTimeInterval seekTimeInterval;
 @property (nonatomic, assign, readonly) NSTimeInterval playbackTime;

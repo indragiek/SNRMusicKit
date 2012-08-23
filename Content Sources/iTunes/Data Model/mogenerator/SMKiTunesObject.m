@@ -1,6 +1,7 @@
 #import "SMKiTunesObject.h"
 #import "NSManagedObjectContext+SMKAdditions.h"
 #import "NSString+SMKAdditions.h"
+#import "SMKManagedObjectContext.h"
 
 @implementation SMKiTunesObject
 
@@ -11,7 +12,7 @@
 
 - (id<SMKContentSource>)contentSource
 {
-    return [[self managedObjectContext] contentSource];
+    return [(SMKManagedObjectContext *)[self managedObjectContext] SMK_contentSource];
 }
 
 + (NSSet *)supportedSortKeys

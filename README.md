@@ -61,7 +61,7 @@ git submodule update
     <th>Name</th><th>iOS</th><th>Mac</th><th>Implemented</th>
   </tr>
   <tr>
-    <td>AVAudioPlayer</td><td>✔</td><td>✔</td><td>✔</td>
+    <td>AVQueuePlayer</td><td>✔</td><td>✔</td><td>✔</td>
   </tr>
   <tr>
     <td>SFBAudioEngine</td><td>✔</td><td>✔</td><td>✔</td>

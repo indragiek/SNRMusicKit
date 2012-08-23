@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <SNRMusicKitMac/SMKAVAudioPlayer.h>
+#import <SNRMusicKitMac/SMKAVQueuePlayer.h>
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSTableViewDelegate>
 
@@ -17,5 +17,5 @@
 
 @property (nonatomic, strong) NSArray *playlists;
 @property (nonatomic, strong) NSArray *tracks;
-@property (nonatomic, strong, readonly) SMKAVAudioPlayer *audioPlayer;
+@property (nonatomic, strong, readonly) SMKAVQueuePlayer *audioPlayer;
 @end

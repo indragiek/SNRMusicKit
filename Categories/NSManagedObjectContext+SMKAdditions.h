@@ -7,11 +7,8 @@
 //
 
 #import <CoreData/CoreData.h>
-#import "SMKContentSource.h"
 
 @interface NSManagedObjectContext (SMKAdditions)
-@property (nonatomic, weak) id<SMKContentSource> contentSource;
-
 /**
  This method saves the managed object context and logs an error if there is one
  @return Whether the save was successful

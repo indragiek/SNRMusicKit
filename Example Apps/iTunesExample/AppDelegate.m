@@ -10,7 +10,7 @@
 #import <SNRMusicKitMac/SMKiTunesContentSource.h>
 
 @interface AppDelegate ()
-@property (nonatomic, strong) SMKAVAudioPlayer *audioPlayer;
+@property (nonatomic, strong) SMKAVQueuePlayer *audioPlayer;
 @end
 
 @implementation AppDelegate {
@@ -20,8 +20,11 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     _contentSource = [SMKiTunesContentSource new];
-    self.audioPlayer = [SMKAVAudioPlayer new];
+    self.audioPlayer = [SMKAVQueuePlayer new];
     self.audioPlayer.volume = 0.5f;
+    [self.audioPlayer setFinishedTrackBlock:^(id<SMKPlayer> player, id<SMKTrack> track, NSError *error) {
+        NSLog(@"Player %@ finished track %@ with error %@", player, track, error);
+    }];
     [self.tracksTableView setTarget:self];
     [self.tracksTableView setDoubleAction:@selector(playTrack:)];
     NSArray *sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];

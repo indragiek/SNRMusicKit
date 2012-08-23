@@ -7,16 +7,13 @@
 //
 
 #import "NSManagedObjectContext+SMKAdditions.h"
-#import "NSObject+AssociatedObjects.h"
-
-static void* const SMKContentSourceKey = @"SMKContentSource";
 
 @implementation NSManagedObjectContext (SMKAdditions)
 - (BOOL)SMK_saveChanges
 {
     NSError *error = nil;
     if (![self save:&error]) {
-        NSLog(@"NSManagedObjectContext save error: %@ %@", error, [error userInfo]);
+        SMKGenericErrorLog(@"NSManagedObjectContext save error", error);
         return NO;
     }
     return YES;
@@ -130,7 +127,7 @@ static void* const SMKContentSourceKey = @"SMKContentSource";
             NSError *error = nil;
             NSManagedObject *existingObject = [self existingObjectWithID:objectID error:&error];
             if (error)
-                NSLog(@"Failed to fetch object with ID %@", objectID);
+                SMKGenericErrorLog([NSString stringWithFormat:@"Failed to fetch object with ID %@", objectID], error);
             if (existingObject)
                 [objects addObject:existingObject];
         }
@@ -141,17 +138,5 @@ static void* const SMKContentSourceKey = @"SMKContentSource";
 - (id)SMK_createObjectOfEntityName:(NSString *)entityName
 {
     return [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:self];
-}
-
-#pragma mark - Accessors
-
-- (void)setContentSource:(id<SMKContentSource>)contentSource
-{
-    [self weaklyAssociateValue:contentSource withKey:SMKContentSourceKey];
-}
-
-- (id<SMKContentSource>)contentSource
-{
-    return [self associatedValueForKey:SMKContentSourceKey];
 }
 @end

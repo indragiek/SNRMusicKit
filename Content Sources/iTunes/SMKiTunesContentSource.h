@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SMKManagedObjectContext.h"
 #import "SMKContentSource.h"
 #import "SMKiTunesPlaylist.h"
 #import "SMKiTunesTrack.h"
@@ -21,8 +22,8 @@
 /** 
  Access to Core Data backing store 
  */
-@property (nonatomic, strong) NSManagedObjectContext *mainQueueObjectContext;
-@property (nonatomic, strong) NSManagedObjectContext *backgroundQueueObjectContext;
+@property (nonatomic, strong) SMKManagedObjectContext *mainQueueObjectContext;
+@property (nonatomic, strong) SMKManagedObjectContext *backgroundQueueObjectContext;
 @property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
 
