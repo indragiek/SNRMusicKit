@@ -34,7 +34,6 @@
     if ((self = [super init])) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_applicationWillTerminate:) name:NSApplicationWillTerminateNotification object:[NSApplication sharedApplication]];
         _operationQueue = [NSOperationQueue new];
-        _waiter = dispatch_semaphore_create(0);
         _backgroundQueue = dispatch_queue_create("com.indragie.SNRMusicKit.SNRiTunesContentSource", DISPATCH_QUEUE_SERIAL);
         [self sync];
     }
