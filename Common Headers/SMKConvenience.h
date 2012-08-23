@@ -14,3 +14,8 @@ static inline BOOL SMKObjectIsValid(id object) {
     && (![object respondsToSelector:@selector(count)]
         || [(NSArray *)object count] != 0);
 }
+static inline void SMKGenericErrorLog(NSString *errorText, NSError *error) {
+    if (![errorText length])
+        errorText = @"Error";
+    NSLog(@"%@: %@, %@", errorText, error, [error userInfo]);
+}

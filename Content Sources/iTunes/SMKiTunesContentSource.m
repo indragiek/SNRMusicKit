@@ -19,7 +19,7 @@
 // Notifications
 - (void)_applicationWillTerminate:(NSNotification *)notification;
 // Locations
-- (NSURL *)storeURL;
+- (NSURL *)_storeURL;
 @end
 
 @implementation SMKiTunesContentSource {
@@ -173,7 +173,7 @@
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (!coordinator) {
         NSError *error = [NSError SMK_errorWithCode:SMKCoreDataErrorFailedToInitializeStore description:[NSString stringWithFormat:@"Failed to initialize the store for class: %@", NSStringFromClass([self class])]];
-        NSLog(@"Error: %@, %@", error, [error userInfo]);
+        SMKGenericErrorLog(nil, error);
         return nil;
     }
     _mainQueueObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
@@ -192,7 +192,7 @@
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (!coordinator) {
         NSError *error = [NSError SMK_errorWithCode:SMKCoreDataErrorFailedToInitializeStore description:[NSString stringWithFormat:@"Failed to initialize the store for class: %@", NSStringFromClass([self class])]];
-        NSLog(@"Error: %@, %@", error, [error userInfo]);
+        SMKGenericErrorLog(nil, error);
         return nil;
     }
     _backgroundQueueObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
@@ -236,20 +236,20 @@
             ok = [fileManager createDirectoryAtPath:[applicationFilesDirectory path] withIntermediateDirectories:YES attributes:nil error:&error];
         }
         if (!ok) {
-            NSLog(@"Error reading attributes of application files directrory: %@, %@", error, [error userInfo]);
+            SMKGenericErrorLog(@"Error reading attributes of application files directrory", error);
             return nil;
         }
     } else {
         if (![properties[NSURLIsDirectoryKey] boolValue]) {
             NSString *failureDescription = [NSString stringWithFormat:@"Expected a folder to store application data, found a file (%@).", [applicationFilesDirectory path]];
             error = [NSError SMK_errorWithCode:SMKCoreDataErrorDataStoreNotAFolder description:failureDescription];
-            NSLog(@"Error creating data store: %@, %@", error, [error userInfo]);
+            SMKGenericErrorLog(@"Error creating data store", error);
             return nil;
         }
     }
     NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
     if (![coordinator addPersistentStoreWithType:NSXMLStoreType configuration:nil URL:[self _storeURL] options:nil error:&error]) {
-        NSLog(@"Error adding persistent store: %@, %@", error, [error userInfo]);
+        SMKGenericErrorLog(@"Error adding persistent store", error);
         return nil;
     }
     _persistentStoreCoordinator = coordinator;

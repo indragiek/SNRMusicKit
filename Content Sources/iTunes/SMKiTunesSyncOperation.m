@@ -55,7 +55,7 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
         NSError *error = nil;
         _iTunesDictionary = [NSPropertyListSerialization propertyListWithData:[NSData dataWithContentsOfURL:libraryURL] options:NSPropertyListImmutable format:NULL error:&error];
         if (error) {
-            NSLog(@"Error reading iTunes Music Library.xml: %@, %@", error, [error userInfo]);
+            SMKGenericErrorLog(@"Error reading iTunes Music Library.xml", error);
         }
     }
     return self;
@@ -90,7 +90,7 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
                 SMKiTunesTrack *track = [self _importiTunesFileWithDictionary:trackDict error:&error];
                 //NSLog(@"Imported track %@", track.name);
                 if (error)
-                    NSLog(@"Error importing track: %@, %@", error, [error userInfo]);
+                    SMKGenericErrorLog(@"Error importing track", error);
                 if (track)
                     [music addObject:track];
                 if (self.progressBlock) {
@@ -255,7 +255,7 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
         NSError *error = nil;
         [results addObjectsFromArray:[_context executeFetchRequest:trackRequest error:&error]];
         if (error)
-            NSLog(@"Error fetching iTunes persistent ID's for tracks: %@, %@", error, [error userInfo]);
+            SMKGenericErrorLog(@"Error fetching iTunes persistent ID's for tracks", error);
     }];
     return [results valueForKey:persistentIDKey];
 }
