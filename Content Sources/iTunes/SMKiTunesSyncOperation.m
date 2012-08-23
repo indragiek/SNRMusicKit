@@ -46,76 +46,21 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
 {
     [self _createBackgroundContext];
     _existingiTunesTrackPersistentIDs = [self _existingiTunesTrackPersistentIDs];
-    // Check if stuff has been imported already to decide whether to only import new tracks
     BOOL importNew = ([_existingiTunesTrackPersistentIDs count] != 0);
     NSArray *tracks = [self _iTunesTracksNewOnly:importNew];
     NSUInteger totalTracks = [tracks count];
     [_context performBlockAndWait:^{
-        NSUInteger saveCount = 0;
-        NSUInteger importedCount = 0;
-        for (NSDictionary *trackDict in tracks) {
-            @autoreleasepool {
-                NSError *error = nil;
-                [self _importiTunesFileWithDictionary:trackDict error:&error];
-                if (error)
-                    SMKGenericErrorLog(@"Error importing track", error);
-                if (self.progressBlock) {
-                    self.progressBlock(self, importedCount, totalTracks, error);
-                }
-                saveCount++;
-                importedCount++;
-                // We don't want tons of objects being allocated
-                // so we save and clear the context every few hundred objects
-                if (saveCount == SMKiTunesSyncOperationSaveEvery) {
-                    [_context SMK_saveNestedChanges];
-                    [_context reset];
-                    saveCount = 0;
-                }
-            }
-        }
-        // Remove all the dead objects that no longer exist in iTunes
-        [self _removeDeadiTunesTracks];
-        // Refresh all the playlist content
-        NSArray *playlists = [_iTunesDictionary valueForKey:SMKiTunesKeyPlaylists];
-        NSDictionary *tracks = [_iTunesDictionary valueForKey:SMKiTunesKeyTracks];
-        // Iterate through all the playlists
-        if (self.syncPlaylists) {
-            // Remove all the playlists (since we're going to refresh them anyways)
-            [self _removeAllPlaylists];
-            for (NSDictionary *playlist in playlists) {
-                @autoreleasepool {
-                    if (![self _validateiTunesPlaylistDictionary:playlist]) { continue; }
-                    // Create a new playlist object for each dictionary
-                    NSString *name = [playlist valueForKey:SMKiTunesKeyName];
-                    SMKiTunesPlaylist *iTunesPlaylist = [_context SMK_createObjectOfEntityName:SMKiTunesEntityNamePlaylist];
-                    [iTunesPlaylist setName:name];
-                    if ([[playlist valueForKey:SMKiTunesKeyMusic] boolValue]) {
-                        // Get all the tracks
-                        NSArray *tracks = [_context SMK_noBlockFetchWithEntityName:SMKiTunesEntityNameTrack sortDescriptors:nil predicate:nil batchSize:1 fetchLimit:0 error:nil];
-                        [iTunesPlaylist setTracks:[NSOrderedSet orderedSetWithArray:tracks]];
-                    } else {
-                        // Otherwise each track needs to be fetched individually by persistent ID
-                        NSArray *items = [playlist valueForKey:SMKiTunesKeyPlaylistItems];
-                        NSMutableOrderedSet *playlistTracks = [[NSMutableOrderedSet alloc] initWithCapacity:[items count]];
-                        for (NSDictionary *item in items) {
-                            NSNumber *trackID = [item valueForKey:SMKiTunesKeyTrackID];
-                            NSDictionary *trackDict = [tracks objectForKey:[trackID stringValue]];
-                            NSString *persistentID = [trackDict valueForKey:SMKiTunesKeyPersistentID];
-                            SMKiTunesTrack *track = [_context SMK_iTunesTrackWithIdentifier:persistentID];
-                            if (track)
-                                [playlistTracks addObject:track];
-                        }
-                        [iTunesPlaylist setTracks:playlistTracks];
-                    }
-                }
-            }
-        }
+        [self _syncTracksWithDictionaries:tracks];
+        if (self.syncPlaylists)
+            [self _syncPlaylists];
         [_context SMK_saveNestedChanges];
         [_context reset];
+        if (self.completionBlock) {
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                self.completionBlock(self, totalTracks);
+            });
+        }
     }];
-    if (self.completionBlock) {
-        self.completionBlock(self, totalTracks);
-    }
 }
 
 #pragma mark - Private
@@ -284,6 +229,77 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
     }
     [_context SMK_saveNestedChanges];
 }
+
+// Syncs iTunes Playlists
+- (void)_syncPlaylists
+{
+    NSArray *playlists = [_iTunesDictionary valueForKey:SMKiTunesKeyPlaylists];
+    NSDictionary *tracks = [_iTunesDictionary valueForKey:SMKiTunesKeyTracks];
+    // Remove all the playlists (since we're going to refresh them anyways)
+    [self _removeAllPlaylists];
+    for (NSDictionary *playlist in playlists) {
+        @autoreleasepool {
+            if (![self _validateiTunesPlaylistDictionary:playlist]) { continue; }
+            // Create a new playlist object for each dictionary
+            NSString *name = [playlist valueForKey:SMKiTunesKeyName];
+            SMKiTunesPlaylist *iTunesPlaylist = [_context SMK_createObjectOfEntityName:SMKiTunesEntityNamePlaylist];
+            [iTunesPlaylist setName:name];
+            if ([[playlist valueForKey:SMKiTunesKeyMusic] boolValue]) {
+                // Get all the tracks
+                NSArray *tracks = [_context SMK_noBlockFetchWithEntityName:SMKiTunesEntityNameTrack sortDescriptors:nil predicate:nil batchSize:1 fetchLimit:0 error:nil];
+                [iTunesPlaylist setTracks:[NSOrderedSet orderedSetWithArray:tracks]];
+            } else {
+                // Otherwise each track needs to be fetched individually by persistent ID
+                NSArray *items = [playlist valueForKey:SMKiTunesKeyPlaylistItems];
+                NSMutableOrderedSet *playlistTracks = [[NSMutableOrderedSet alloc] initWithCapacity:[items count]];
+                for (NSDictionary *item in items) {
+                    NSNumber *trackID = [item valueForKey:SMKiTunesKeyTrackID];
+                    NSDictionary *trackDict = [tracks objectForKey:[trackID stringValue]];
+                    NSString *persistentID = [trackDict valueForKey:SMKiTunesKeyPersistentID];
+                    SMKiTunesTrack *track = [_context SMK_iTunesTrackWithIdentifier:persistentID];
+                    if (track)
+                        [playlistTracks addObject:track];
+                }
+                [iTunesPlaylist setTracks:playlistTracks];
+            }
+        }
+    }
+    [_context SMK_saveNestedChanges];
+}
+
+- (void)_syncTracksWithDictionaries:(NSArray *)dictionaries
+{
+    NSUInteger saveCount = 0;
+    NSUInteger importedCount = 0;
+    NSUInteger totalCount = [dictionaries count];
+    for (NSDictionary *trackDict in dictionaries) {
+        @autoreleasepool {
+            NSError *error = nil;
+            [self _importiTunesFileWithDictionary:trackDict error:&error];
+            if (error)
+                SMKGenericErrorLog(@"Error importing track", error);
+            if (self.progressBlock) {
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    self.progressBlock(self, importedCount, totalCount, error);
+                });
+            }
+            saveCount++;
+            importedCount++;
+            // We don't want tons of objects being allocated
+            // so we save and clear the context every few hundred objects
+            if (saveCount == SMKiTunesSyncOperationSaveEvery) {
+                [_context SMK_saveNestedChanges];
+                [_context reset];
+                saveCount = 0;
+            }
+        }
+    }
+    // Remove all the dead objects that no longer exist in iTunes
+    [self _removeDeadiTunesTracks];
+}
+
+// Validates the playlist dictionary to make sure that
+// it's not the Master playlist (containing other content types) or a folder
 
 - (BOOL)_validateiTunesPlaylistDictionary:(NSDictionary *)dictionary
 {
