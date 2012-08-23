@@ -10,10 +10,13 @@ const struct SMKiTunesTrackAttributes SMKiTunesTrackAttributes = {
 	.compilation = @"compilation",
 	.composer = @"composer",
 	.dateAdded = @"dateAdded",
+	.dateModified = @"dateModified",
 	.discNumber = @"discNumber",
 	.duration = @"duration",
-	.lyrics = @"lyrics",
-	.playCounts = @"playCounts",
+	.genre = @"genre",
+	.isClean = @"isClean",
+	.isExplicit = @"isExplicit",
+	.rating = @"rating",
 	.trackNumber = @"trackNumber",
 };
 
@@ -63,8 +66,16 @@ const struct SMKiTunesTrackFetchedProperties SMKiTunesTrackFetchedProperties = {
 		NSSet *affectingKey = [NSSet setWithObject:@"duration"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
-	if ([key isEqualToString:@"playCountsValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"playCounts"];
+	if ([key isEqualToString:@"isCleanValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"isClean"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+	}
+	if ([key isEqualToString:@"isExplicitValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"isExplicit"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+	}
+	if ([key isEqualToString:@"ratingValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"rating"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
 	if ([key isEqualToString:@"trackNumberValue"]) {
@@ -139,6 +150,13 @@ const struct SMKiTunesTrackFetchedProperties SMKiTunesTrackFetchedProperties = {
 
 
 
+@dynamic dateModified;
+
+
+
+
+
+
 @dynamic discNumber;
 
 
@@ -191,33 +209,85 @@ const struct SMKiTunesTrackFetchedProperties SMKiTunesTrackFetchedProperties = {
 
 
 
-@dynamic lyrics;
+@dynamic genre;
 
 
 
 
 
 
-@dynamic playCounts;
+@dynamic isClean;
 
 
 
-- (int32_t)playCountsValue {
-	NSNumber *result = [self playCounts];
+- (BOOL)isCleanValue {
+	NSNumber *result = [self isClean];
+	return [result boolValue];
+}
+
+- (void)setIsCleanValue:(BOOL)value_ {
+	[self setIsClean:[NSNumber numberWithBool:value_]];
+}
+
+- (BOOL)primitiveIsCleanValue {
+	NSNumber *result = [self primitiveIsClean];
+	return [result boolValue];
+}
+
+- (void)setPrimitiveIsCleanValue:(BOOL)value_ {
+	[self setPrimitiveIsClean:[NSNumber numberWithBool:value_]];
+}
+
+
+
+
+
+@dynamic isExplicit;
+
+
+
+- (BOOL)isExplicitValue {
+	NSNumber *result = [self isExplicit];
+	return [result boolValue];
+}
+
+- (void)setIsExplicitValue:(BOOL)value_ {
+	[self setIsExplicit:[NSNumber numberWithBool:value_]];
+}
+
+- (BOOL)primitiveIsExplicitValue {
+	NSNumber *result = [self primitiveIsExplicit];
+	return [result boolValue];
+}
+
+- (void)setPrimitiveIsExplicitValue:(BOOL)value_ {
+	[self setPrimitiveIsExplicit:[NSNumber numberWithBool:value_]];
+}
+
+
+
+
+
+@dynamic rating;
+
+
+
+- (int32_t)ratingValue {
+	NSNumber *result = [self rating];
 	return [result intValue];
 }
 
-- (void)setPlayCountsValue:(int32_t)value_ {
-	[self setPlayCounts:[NSNumber numberWithInt:value_]];
+- (void)setRatingValue:(int32_t)value_ {
+	[self setRating:[NSNumber numberWithInt:value_]];
 }
 
-- (int32_t)primitivePlayCountsValue {
-	NSNumber *result = [self primitivePlayCounts];
+- (int32_t)primitiveRatingValue {
+	NSNumber *result = [self primitiveRating];
 	return [result intValue];
 }
 
-- (void)setPrimitivePlayCountsValue:(int32_t)value_ {
-	[self setPrimitivePlayCounts:[NSNumber numberWithInt:value_]];
+- (void)setPrimitiveRatingValue:(int32_t)value_ {
+	[self setPrimitiveRating:[NSNumber numberWithInt:value_]];
 }
 
 

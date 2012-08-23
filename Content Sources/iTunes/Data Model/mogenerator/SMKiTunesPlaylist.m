@@ -2,10 +2,6 @@
 #import "NSManagedObjectContext+SMKAdditions.h"
 #import "SMKiTunesConstants.h"
 
-@interface SMKiTunesPlaylist ()
-- (NSPredicate *)_compoundTrackPredicateWithPredicate:(NSPredicate *)predicate;
-@end
-
 @implementation SMKiTunesPlaylist
 
 - (NSArray *)tracksWithSortDescriptors:(NSArray *)sortDescriptors

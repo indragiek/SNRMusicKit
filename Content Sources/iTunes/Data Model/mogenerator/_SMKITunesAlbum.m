@@ -5,6 +5,7 @@
 
 const struct SMKiTunesAlbumAttributes SMKiTunesAlbumAttributes = {
 	.isCompilation = @"isCompilation",
+	.rating = @"rating",
 	.releaseYear = @"releaseYear",
 };
 
@@ -46,6 +47,10 @@ const struct SMKiTunesAlbumFetchedProperties SMKiTunesAlbumFetchedProperties = {
 		NSSet *affectingKey = [NSSet setWithObject:@"isCompilation"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
+	if ([key isEqualToString:@"ratingValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"rating"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+	}
 	if ([key isEqualToString:@"releaseYearValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"releaseYear"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -77,6 +82,32 @@ const struct SMKiTunesAlbumFetchedProperties SMKiTunesAlbumFetchedProperties = {
 
 - (void)setPrimitiveIsCompilationValue:(BOOL)value_ {
 	[self setPrimitiveIsCompilation:[NSNumber numberWithBool:value_]];
+}
+
+
+
+
+
+@dynamic rating;
+
+
+
+- (int32_t)ratingValue {
+	NSNumber *result = [self rating];
+	return [result intValue];
+}
+
+- (void)setRatingValue:(int32_t)value_ {
+	[self setRating:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveRatingValue {
+	NSNumber *result = [self primitiveRating];
+	return [result intValue];
+}
+
+- (void)setPrimitiveRatingValue:(int32_t)value_ {
+	[self setPrimitiveRating:[NSNumber numberWithInt:value_]];
 }
 
 

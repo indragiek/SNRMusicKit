@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1807" systemVersion="12A269" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1807" systemVersion="12B19" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="SMKiTunesAlbum" representedClassName="SMKiTunesAlbum" parentEntity="SMKiTunesObject" syncable="YES">
         <attribute name="isCompilation" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="releaseYear" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="artist" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SMKiTunesArtist" inverseName="albums" inverseEntity="SMKiTunesArtist" syncable="YES"/>
         <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SMKiTunesTrack" inverseName="album" inverseEntity="SMKiTunesTrack" syncable="YES"/>
@@ -29,10 +30,13 @@
         <attribute name="compilation" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="composer" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateAdded" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="dateModified" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="discNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="duration" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="lyrics" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="playCounts" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="genre" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isClean" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isExplicit" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="trackNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="album" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SMKiTunesAlbum" inverseName="tracks" inverseEntity="SMKiTunesAlbum" syncable="YES"/>
         <relationship name="playlists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SMKiTunesPlaylist" inverseName="tracks" inverseEntity="SMKiTunesPlaylist" syncable="YES"/>
@@ -43,6 +47,6 @@
         <element name="SMKiTunesKeyword" positionX="0" positionY="0" width="128" height="75"/>
         <element name="SMKiTunesObject" positionX="0" positionY="0" width="128" height="105"/>
         <element name="SMKiTunesPlaylist" positionX="0" positionY="0" width="128" height="60"/>
-        <element name="SMKiTunesTrack" positionX="0" positionY="0" width="128" height="240"/>
+        <element name="SMKiTunesTrack" positionX="0" positionY="0" width="128" height="285"/>
     </elements>
 </model>

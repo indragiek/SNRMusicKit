@@ -3,10 +3,6 @@
 #import "NSManagedObjectContext+SMKAdditions.h"
 #import "NSString+SMKAdditions.h"
 
-@interface SMKiTunesArtist ()
-- (NSPredicate *)_compoundAlbumPredicateWithPredicate:(NSPredicate *)predicate;
-@end
-
 @implementation SMKiTunesArtist
 
 - (NSArray *)albumsWithSortDescriptors:(NSArray *)sortDescriptors
@@ -37,12 +33,6 @@
                                                     batchSize:batchSize
                                                    fetchLimit:fetchLimit
                                             completionHandler:handler];
-}
-
-- (NSNumber *)numberOfTracks
-{
-    // TODO: Implement this with @sum/@count operators somehow
-    return @0;
 }
 
 + (NSString *)sortingNameForName:(NSString *)name

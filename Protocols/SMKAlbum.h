@@ -72,21 +72,6 @@
 - (NSNumber *)isCompilation;
 
 /**
- @return Whether the album contains explicit content.
- */
-- (NSNumber *)isExplicit;
-
-/**
- @return Whether the album is free of explicit content.
- */
-- (NSNumber *)isClean;
-
-/**
- @return Whether the album can be streamed from the content source.
- */
-- (BOOL)canStream;
-
-/**
  Plays the album
  @return Whether the album was successfully played.
  @param error An NSError object with error information if it was unsuccessful.

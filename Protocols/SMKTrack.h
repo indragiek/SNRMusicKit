@@ -33,7 +33,7 @@
 
 /**
  @return The URL to play the track from
- @discussion This URL could be local or remote (for streaming services)
+ @discussion This URL could be local or remote (for streaming services). If the track cannot be played, this method should return nil.
  */
 - (NSURL *)playbackURL;
 
@@ -76,11 +76,6 @@
  @return Whether the track is free of explicit content.
  */
 - (NSNumber *)isClean;
-
-/**
- @return Whether the track can be streamed from the content source.
- */
-- (BOOL)canStream;
 
 /**
  Plays the tracks

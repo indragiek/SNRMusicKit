@@ -19,6 +19,12 @@
 - (BOOL)SMK_saveChanges;
 
 /**
+ This method saves the managed object context and its nested context (if it exists) and logs the error
+ @return Whether the save was successful
+ */
+- (BOOL)SMK_saveNestedChanges;
+
+/**
  This method fetches the objects synchronously, wrapped in a -performBlockAndWait call
  @param entityName The name of the Core Data entity to fetch
  @param sortDescriptors Array of NSSortDescriptor's used to sort the results

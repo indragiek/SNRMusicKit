@@ -26,11 +26,8 @@
 
 + (NSSet *)supportedSortKeys
 {
-    return [NSSet setWithObjects:@"album", @"duration", @"composer", @"trackNumber", @"discNumber", @"playCounts", nil];
+    return [NSSet setWithObjects:@"album", @"duration", @"composer", @"trackNumber", @"discNumber", @"isExplicit", @"isClean", @"genre", @"rating", nil];
 }
 
 - (NSNumber *)popularity { return @0; }
-- (NSNumber *)isExplicit { return @NO; }
-- (NSNumber *)isClean { return @NO; }
-- (BOOL)canStream { return self.bookmark != nil; }
 @end

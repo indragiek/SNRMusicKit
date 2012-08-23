@@ -15,24 +15,11 @@
 #import "NSManagedObjectContext+SMKAdditions.h"
 #import "SMKiTunesSyncOperation.h"
 
-@interface SMKiTunesContentSource ()
-- (void)_createSemaphoreAndWait;
-// Notifications
-- (void)_applicationWillTerminate:(NSNotification *)notification;
-// Locations
-- (NSURL *)_storeURL;
-@end
-
 @implementation SMKiTunesContentSource {
     NSOperationQueue *_operationQueue;
     dispatch_semaphore_t _waiter;
     dispatch_queue_t _backgroundQueue;
 }
-@synthesize mainQueueObjectContext = _mainQueueObjectContext;
-@synthesize backgroundQueueObjectContext = _backgroundQueueObjectContext;
-@synthesize managedObjectModel = _managedObjectModel;
-@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-@synthesize syncPlaylists = _syncPlaylists;
 
 - (id)init
 {
@@ -119,7 +106,9 @@
 
 - (void)_applicationWillTerminate:(NSNotification *)notification
 {
-    [self.backgroundQueueObjectContext SMK_saveChanges];
+    [self.backgroundQueueObjectContext performBlockAndWait:^{
+        [self.backgroundQueueObjectContext SMK_saveChanges];
+    }];
 }
 
 #pragma mark - Sync
@@ -199,7 +188,7 @@
         return nil;
     }
     _backgroundQueueObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    [_backgroundQueueObjectContext setPersistentStoreCoordinator:coordinator];
+    [_backgroundQueueObjectContext setParentContext:[self mainQueueObjectContext]];
     [_backgroundQueueObjectContext setUndoManager:nil];
     [_backgroundQueueObjectContext setContentSource:self];
     return _backgroundQueueObjectContext;

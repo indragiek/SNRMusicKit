@@ -3,10 +3,6 @@
 #import "SMKiTunesConstants.h"
 #import "SMKiTunesTrack.h"
 
-@interface SMKiTunesAlbum ()
-- (NSPredicate *)_compoundTrackPredicateWithPredicate:(NSPredicate *)predicate;
-@end
-
 @implementation SMKiTunesAlbum
 
 - (NSArray *)tracksWithSortDescriptors:(NSArray *)sortDescriptors
@@ -41,7 +37,7 @@
 
 + (NSSet *)supportedSortKeys
 {
-    return [NSSet setWithObjects:@"name", @"releaseYear", @"artist", nil];
+    return [NSSet setWithObjects:@"name", @"releaseYear", @"artist", @"isCompilation", @"rating", nil];
 }
 
 - (NSDate *)releaseDate
@@ -65,10 +61,6 @@
     }
     return @(totalDuration);
 }
-
-- (NSNumber *)isExplicit { return @NO; }
-- (NSNumber *)isClean { return @NO; }
-- (BOOL)canStream { return YES; }
 
 #pragma mark - Private
 

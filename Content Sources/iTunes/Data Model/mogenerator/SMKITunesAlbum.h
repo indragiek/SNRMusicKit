@@ -14,15 +14,4 @@
  calculates the total duration based on their individual durations.
  */
 - (NSNumber *)duration;
-
-/**
- Just returns YES since these are local files.
- */
-- (BOOL)canStream;
-
-/**
- Return NO for both of these because we don't have that information available
- */
-- (NSNumber *)isExplicit;
-- (NSNumber *)isClean;
 @end

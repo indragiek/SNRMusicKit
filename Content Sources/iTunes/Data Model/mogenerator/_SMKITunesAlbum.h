@@ -6,6 +6,7 @@
 
 extern const struct SMKiTunesAlbumAttributes {
 	__unsafe_unretained NSString *isCompilation;
+	__unsafe_unretained NSString *rating;
 	__unsafe_unretained NSString *releaseYear;
 } SMKiTunesAlbumAttributes;
 
@@ -19,6 +20,7 @@ extern const struct SMKiTunesAlbumFetchedProperties {
 
 @class SMKiTunesArtist;
 @class SMKiTunesTrack;
+
 
 
 
@@ -43,6 +45,18 @@ extern const struct SMKiTunesAlbumFetchedProperties {
 - (void)setIsCompilationValue:(BOOL)value_;
 
 //- (BOOL)validateIsCompilation:(id*)value_ error:(NSError**)error_;
+
+
+
+
+@property (nonatomic, strong) NSNumber* rating;
+
+
+@property int32_t ratingValue;
+- (int32_t)ratingValue;
+- (void)setRatingValue:(int32_t)value_;
+
+//- (BOOL)validateRating:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -94,6 +108,15 @@ extern const struct SMKiTunesAlbumFetchedProperties {
 
 - (BOOL)primitiveIsCompilationValue;
 - (void)setPrimitiveIsCompilationValue:(BOOL)value_;
+
+
+
+
+- (NSNumber*)primitiveRating;
+- (void)setPrimitiveRating:(NSNumber*)value;
+
+- (int32_t)primitiveRatingValue;
+- (void)setPrimitiveRatingValue:(int32_t)value_;
 
 
 

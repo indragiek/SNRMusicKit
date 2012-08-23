@@ -38,6 +38,12 @@ extern NSString* const SMKiTunesKeySmartInfo;
 extern NSString* const SMKiTunesKeyTrackType;
 extern NSString* const SMKiTunesKeyValueFileTrackType;
 extern NSString* const SMKiTunesKeyHasVideo;
+extern NSString* const SMKiTunesKeyClean;
+extern NSString* const SMKiTunesKeyExplicit;
+extern NSString* const SMKiTunesKeyRating;
+extern NSString* const SMKiTunesKeyAlbumRating;
+extern NSString* const SMKiTunesKeyGenre;
+extern NSString* const SMKiTunesKeyDateModified;
 
 extern NSString* const SMKiTunesUntitledArtistName;
 extern NSString* const SMKiTunesUntitledTrackName;

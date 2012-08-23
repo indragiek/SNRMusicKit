@@ -20,22 +20,6 @@
 // The context will be saved after importing this many tracks
 static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
 
-@interface SMKiTunesSyncOperation ()
-- (NSURL *)_iTunesLibraryURL;
-- (void)_createBackgroundContext;
-
-- (NSArray*)_iTunesTracksNewOnly:(BOOL)new;
-- (NSArray *)_existingiTunesTrackPersistentIDs;
-
-- (BOOL)_validateiTunesTrackDictionary:(NSDictionary *)dictionary;
-- (BOOL)_validateiTunesPlaylistDictionary:(NSDictionary *)dictionary;
-- (SMKiTunesTrack *)_importiTunesFileWithDictionary:(NSDictionary *)dictionary error:(NSError **)error;
-- (void)_removeDeadiTunesTracks;
-- (void)_removeAllPlaylists;
-
-- (void)_managedObjectContextDidSave:(NSNotification *)notification;
-@end
-
 @implementation SMKiTunesSyncOperation {
     NSDictionary *_iTunesDictionary;
     NSManagedObjectContext *_context;
@@ -43,10 +27,6 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
     NSArray *_existingiTunesTrackPersistentIDs;
     NSMutableArray *_removediTunesTrackPersistentIDs;
 }
-@synthesize contentSource = _contentSource;
-@synthesize progressBlock = _progressBlock;
-@synthesize completionBlock = _completionBlock;
-@synthesize syncPlaylists = _syncPlaylists;
 
 - (id)init
 {
@@ -67,7 +47,6 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
     [self _createBackgroundContext];
     _existingiTunesTrackPersistentIDs = [self _existingiTunesTrackPersistentIDs];
     // Check if stuff has been imported already to decide whether to only import new tracks
-    NSLog(@"%lu", [_existingiTunesTrackPersistentIDs count]);
     BOOL importNew = ([_existingiTunesTrackPersistentIDs count] != 0);
     NSArray *tracks = [self _iTunesTracksNewOnly:importNew];
     NSUInteger totalTracks = [tracks count];
@@ -90,7 +69,6 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
             @autoreleasepool {
                 NSError *error = nil;
                 SMKiTunesTrack *track = [self _importiTunesFileWithDictionary:trackDict error:&error];
-                //NSLog(@"Imported track %@", track.name);
                 if (error)
                     SMKGenericErrorLog(@"Error importing track", error);
                 if (track)
@@ -103,7 +81,7 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
                 // We don't want tons of objects being allocated
                 // so we save and clear the context every few hundred objects
                 if (saveCount == SMKiTunesSyncOperationSaveEvery) {
-                    [_context SMK_saveChanges];
+                    [_context SMK_saveNestedChanges];
                     saveCount = 0;
                 }
             }
@@ -147,17 +125,12 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
                 }
             }
         }
-        [_context SMK_saveChanges];
+        [_context SMK_saveNestedChanges];
         [_context reset];
     }];
     if (self.completionBlock) {
         self.completionBlock(self, totalTracks);
     }
-}
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Private
@@ -170,22 +143,6 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
         [_context setPersistentStoreCoordinator:persistentStoreCoordinator];
         [_context setMergePolicy:[[NSMergePolicy alloc] initWithMergeType:NSOverwriteMergePolicyType]];
         [_context setUndoManager:nil];
-    }];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_managedObjectContextDidSave:) name:NSManagedObjectContextObjectsDidChangeNotification object:_context];
-}
-
-#pragma mark - Notifications
-
-// Merge the objects from the background context back into the main context
-- (void)_managedObjectContextDidSave:(NSNotification *)notification
-{
-    NSManagedObjectContext *mainContext = [self.contentSource mainQueueObjectContext];
-    NSManagedObjectContext *backgroundContext = [self.contentSource backgroundQueueObjectContext];
-    [mainContext performBlock:^{
-        [mainContext mergeChangesFromContextDidSaveNotification:notification];
-    }];
-    [backgroundContext performBlock:^{
-        [backgroundContext mergeChangesFromContextDidSaveNotification:notification];
     }];
 }
 
@@ -294,6 +251,13 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
     NSUInteger duration = [[dictionary valueForKey:SMKiTunesKeyTotalTime] unsignedIntegerValue];
     [track setDuration:@(duration / 1000)]; // Need to divide by 1000 because iTunes durations are in ms
     [track setIdentifier:[dictionary valueForKey:SMKiTunesKeyPersistentID]];
+    [track setGenre:[dictionary valueForKey:SMKiTunesKeyGenre]];
+    [track setIsClean:[dictionary valueForKey:SMKiTunesKeyClean]];
+    [track setIsExplicit:[dictionary valueForKey:SMKiTunesKeyExplicit]];
+    [track setDateAdded:[dictionary valueForKey:SMKiTunesKeyDateAdded]];
+    [track setDateModified:[dictionary valueForKey:SMKiTunesKeyDateModified]];
+    [track setRating:[dictionary valueForKey:SMKiTunesKeyRating]];
+    
     NSString *albumTitle = [dictionary valueForKey:SMKiTunesKeyAlbum];
     NSString *artistName = SMKObjectIsValid([track albumArtistName]) ? [track albumArtistName] : [track artistName];
     NSNumber *compilation = [dictionary valueForKey:SMKiTunesKeyCompilation];
@@ -307,6 +271,10 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
     if (![album releaseYear] && SMKObjectIsValid(year)) {
         [album setReleaseYear:year];
     }
+    NSNumber *albumRating = [dictionary valueForKey:SMKiTunesKeyAlbumRating];
+    if (![album rating] && SMKObjectIsValid(albumRating)) {
+        [album setRating:albumRating];
+    }
     return track;
 }
 
@@ -318,7 +286,7 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
         SMKiTunesTrack *track = [_context SMK_iTunesTrackWithIdentifier:identifier];
         [_context deleteObject:track];
     }
-    [_context SMK_saveChanges];
+    [_context SMK_saveNestedChanges];
 }
 
 // Removes all the playlists 
@@ -329,7 +297,7 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
     for (NSManagedObject *playlist in playlists) {
         [_context deleteObject:playlist];
     }
-    [_context SMK_saveChanges];
+    [_context SMK_saveNestedChanges];
 }
 
 - (BOOL)_validateiTunesPlaylistDictionary:(NSDictionary *)dictionary

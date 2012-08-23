@@ -22,6 +22,15 @@ static void* const SMKContentSourceKey = @"SMKContentSource";
     return YES;
 }
 
+- (BOOL)SMK_saveNestedChanges
+{
+    BOOL success = [self SMK_saveChanges];
+    if ([self parentContext]) {
+        success = success && [[self parentContext] SMK_saveChanges];
+    }
+    return success;
+}
+
 - (NSArray *)SMK_fetchWithEntityName:(NSString *)entityName
                      sortDescriptors:(NSArray *)sortDescriptors
                            predicate:(NSPredicate *)predicate

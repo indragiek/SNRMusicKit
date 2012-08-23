@@ -40,6 +40,12 @@ NSString* const SMKiTunesKeySmartInfo = @"Smart Info";
 NSString* const SMKiTunesKeyTrackType = @"Track Type";
 NSString* const SMKiTunesKeyValueFileTrackType = @"File";
 NSString* const SMKiTunesKeyHasVideo = @"Has Video";
+NSString* const SMKiTunesKeyClean = @"Clean";
+NSString* const SMKiTunesKeyExplicit = @"Explicit";
+NSString* const SMKiTunesKeyRating = @"Rating";
+NSString* const SMKiTunesKeyAlbumRating = @"Album Rating";
+NSString* const SMKiTunesKeyGenre = @"Genre";
+NSString* const SMKiTunesKeyDateModified = @"Date Modified";
 
 NSString* const SMKiTunesUntitledArtistName = @"Untitled Artist";
 NSString* const SMKiTunesUntitledTrackName = @"Untitled Track";

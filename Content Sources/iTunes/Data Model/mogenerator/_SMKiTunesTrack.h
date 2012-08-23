@@ -11,10 +11,13 @@ extern const struct SMKiTunesTrackAttributes {
 	__unsafe_unretained NSString *compilation;
 	__unsafe_unretained NSString *composer;
 	__unsafe_unretained NSString *dateAdded;
+	__unsafe_unretained NSString *dateModified;
 	__unsafe_unretained NSString *discNumber;
 	__unsafe_unretained NSString *duration;
-	__unsafe_unretained NSString *lyrics;
-	__unsafe_unretained NSString *playCounts;
+	__unsafe_unretained NSString *genre;
+	__unsafe_unretained NSString *isClean;
+	__unsafe_unretained NSString *isExplicit;
+	__unsafe_unretained NSString *rating;
 	__unsafe_unretained NSString *trackNumber;
 } SMKiTunesTrackAttributes;
 
@@ -28,6 +31,9 @@ extern const struct SMKiTunesTrackFetchedProperties {
 
 @class SMKiTunesAlbum;
 @class SMKiTunesPlaylist;
+
+
+
 
 
 
@@ -105,6 +111,14 @@ extern const struct SMKiTunesTrackFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSDate* dateModified;
+
+
+//- (BOOL)validateDateModified:(id*)value_ error:(NSError**)error_;
+
+
+
+
 @property (nonatomic, strong) NSNumber* discNumber;
 
 
@@ -129,22 +143,46 @@ extern const struct SMKiTunesTrackFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* lyrics;
+@property (nonatomic, strong) NSString* genre;
 
 
-//- (BOOL)validateLyrics:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateGenre:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) NSNumber* playCounts;
+@property (nonatomic, strong) NSNumber* isClean;
 
 
-@property int32_t playCountsValue;
-- (int32_t)playCountsValue;
-- (void)setPlayCountsValue:(int32_t)value_;
+@property BOOL isCleanValue;
+- (BOOL)isCleanValue;
+- (void)setIsCleanValue:(BOOL)value_;
 
-//- (BOOL)validatePlayCounts:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateIsClean:(id*)value_ error:(NSError**)error_;
+
+
+
+
+@property (nonatomic, strong) NSNumber* isExplicit;
+
+
+@property BOOL isExplicitValue;
+- (BOOL)isExplicitValue;
+- (void)setIsExplicitValue:(BOOL)value_;
+
+//- (BOOL)validateIsExplicit:(id*)value_ error:(NSError**)error_;
+
+
+
+
+@property (nonatomic, strong) NSNumber* rating;
+
+
+@property int32_t ratingValue;
+- (int32_t)ratingValue;
+- (void)setRatingValue:(int32_t)value_;
+
+//- (BOOL)validateRating:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -230,6 +268,12 @@ extern const struct SMKiTunesTrackFetchedProperties {
 
 
 
+- (NSDate*)primitiveDateModified;
+- (void)setPrimitiveDateModified:(NSDate*)value;
+
+
+
+
 - (NSNumber*)primitiveDiscNumber;
 - (void)setPrimitiveDiscNumber:(NSNumber*)value;
 
@@ -248,17 +292,35 @@ extern const struct SMKiTunesTrackFetchedProperties {
 
 
 
-- (NSString*)primitiveLyrics;
-- (void)setPrimitiveLyrics:(NSString*)value;
+- (NSString*)primitiveGenre;
+- (void)setPrimitiveGenre:(NSString*)value;
 
 
 
 
-- (NSNumber*)primitivePlayCounts;
-- (void)setPrimitivePlayCounts:(NSNumber*)value;
+- (NSNumber*)primitiveIsClean;
+- (void)setPrimitiveIsClean:(NSNumber*)value;
 
-- (int32_t)primitivePlayCountsValue;
-- (void)setPrimitivePlayCountsValue:(int32_t)value_;
+- (BOOL)primitiveIsCleanValue;
+- (void)setPrimitiveIsCleanValue:(BOOL)value_;
+
+
+
+
+- (NSNumber*)primitiveIsExplicit;
+- (void)setPrimitiveIsExplicit:(NSNumber*)value;
+
+- (BOOL)primitiveIsExplicitValue;
+- (void)setPrimitiveIsExplicitValue:(BOOL)value_;
+
+
+
+
+- (NSNumber*)primitiveRating;
+- (void)setPrimitiveRating:(NSNumber*)value;
+
+- (int32_t)primitiveRatingValue;
+- (void)setPrimitiveRatingValue:(int32_t)value_;
 
 
 

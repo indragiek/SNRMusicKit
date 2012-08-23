@@ -41,10 +41,4 @@
                              batchSize:(NSUInteger)batchSize
                             fetchLimit:(NSUInteger)fetchLimit
                      completionHandler:(void(^)(NSArray *albums, NSError *error))handler;
-
-@optional
-/**
- @return The number of tracks that the artist has.
-*/
-- (NSNumber *)numberOfTracks;
 @end
