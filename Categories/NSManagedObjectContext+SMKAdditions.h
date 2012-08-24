@@ -87,6 +87,22 @@
                                     fetchLimit:(NSUInteger)fetchLimit;
 
 /**
+ @param request The fetch request to execute
+ @param error NSError pointer for if the fetch request fails
+ @discussion This method is synchronous and will block until results have been returned
+ */
+- (NSArray *)SMK_fetchWithFetchRequest:(NSFetchRequest *)request error:(NSError **)error;
+
+/**
+ @param request The fetch request to execute
+ @param handler The completion handler to call when the fetch is complete
+ @discussion This method is asynchronous and will return immediately
+ */
+- (void)SMK_asyncFetchWithFetchRequest:(NSFetchRequest *)request
+                     completionHandler:(void(^)(NSArray *results, NSError *error))handler;
+
+
+/**
  This method fetches objects as NSManagedObjectID's (not the objects themselves)
  asynchronously, wrapped in a -performBlock call
  @param entityName The name of the Core Data entity to fetch

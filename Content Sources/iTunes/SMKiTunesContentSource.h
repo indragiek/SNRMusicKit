@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SMKManagedObjectContext.h"
 #import "SMKContentSource.h"
+#import "SMKiTunesConstants.h"
 #import "SMKiTunesPlaylist.h"
 #import "SMKiTunesTrack.h"
 #import "SMKiTunesArtist.h"
@@ -34,6 +35,7 @@
 
 /** 
  Starts a sync with iTunes. This method is called automatically in SMKiTunesContentSource's -init. 
+ @discussion This method starts an asynchronous operation and will return immediately
  */
 - (void)sync;
 
@@ -42,4 +44,22 @@
  @discussion You must manually call -sync again before accessing anything
  */
 - (void)deleteStore;
+
+#pragma mark - Fetching
+
+/**
+ Executes the specified fetch request synchronously
+ @param request The fetch request to execute
+ @parame error An NSError providing error information if the request fails
+ */
+- (NSArray *)executeFetchRequestSynchronously:(NSFetchRequest *)request
+                                        error:(NSError **)error;
+
+/**
+ Executes the specified fetch request asynchronously
+ @param request The fetch request to execute
+ @parame handler Completion handler to be called upon execution of the request
+ */
+- (void)executeFetchRequestAsynchronously:(NSFetchRequest *)request
+                        completionHandler:(void(^)(NSArray *playlists, NSError *error))handler;
 @end

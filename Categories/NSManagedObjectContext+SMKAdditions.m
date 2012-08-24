@@ -35,16 +35,12 @@
                           fetchLimit:(NSUInteger)fetchLimit
                                error:(NSError **)error
 {
-    __block NSArray *results = nil;
-    [self performBlockAndWait:^{
-        NSFetchRequest *request = [self SMK_fetchRequestWithEntityName:entityName
-                                                       sortDescriptors:sortDescriptors
-                                                             predicate:predicate
-                                                             batchSize:batchSize
-                                                            fetchLimit:fetchLimit];
-        results = [self executeFetchRequest:request error:error];
-    }];
-    return results;
+    NSFetchRequest *request = [self SMK_fetchRequestWithEntityName:entityName
+                                                   sortDescriptors:sortDescriptors
+                                                         predicate:predicate
+                                                         batchSize:batchSize
+                                                        fetchLimit:fetchLimit];
+    return [self SMK_fetchWithFetchRequest:request error:error];
 }
 
 - (NSArray *)SMK_noBlockFetchWithEntityName:(NSString *)entityName
@@ -69,12 +65,27 @@
                           fetchLimit:(NSUInteger)fetchLimit
                    completionHandler:(void(^)(NSArray *results, NSError *error))handler
 {
+    NSFetchRequest *request = [self SMK_fetchRequestWithEntityName:entityName
+                                                   sortDescriptors:sortDescriptors
+                                                         predicate:predicate
+                                                         batchSize:batchSize
+                                                        fetchLimit:fetchLimit];
+    [self SMK_asyncFetchWithFetchRequest:request completionHandler:handler];
+}
+
+- (NSArray *)SMK_fetchWithFetchRequest:(NSFetchRequest *)request error:(NSError **)error
+{
+    __block NSArray *results = nil;
+    [self performBlockAndWait:^{
+        results = [self executeFetchRequest:request error:error];
+    }];
+    return results;
+}
+
+- (void)SMK_asyncFetchWithFetchRequest:(NSFetchRequest *)request
+                     completionHandler:(void(^)(NSArray *results, NSError *error))handler
+{
     [self performBlock:^{
-        NSFetchRequest *request = [self SMK_fetchRequestWithEntityName:entityName
-                                                       sortDescriptors:sortDescriptors
-                                                             predicate:predicate
-                                                             batchSize:batchSize
-                                                            fetchLimit:fetchLimit];
         NSError *error = nil;
         NSArray *results = [self executeFetchRequest:request error:&error];
         dispatch_async(dispatch_get_main_queue(), ^{

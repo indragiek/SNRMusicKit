@@ -7,13 +7,14 @@
 //
 
 #import "SMKiTunesContentSource.h"
-#import "SMKiTunesConstants.h"
 
 #import "NSBundle+SMKAdditions.h"
 #import "NSURL+SMKAdditions.h"
 #import "NSError+SMKAdditions.h"
 #import "NSManagedObjectContext+SMKAdditions.h"
 #import "SMKiTunesSyncOperation.h"
+
+static NSUInteger const SMKiTunesContentSourceDefaultBatchSize = 20;
 
 @implementation SMKiTunesContentSource {
     NSOperationQueue *_operationQueue;
@@ -74,10 +75,7 @@
     __weak SMKiTunesContentSource *weakSelf = self;
     dispatch_async(_backgroundQueue, ^{
         SMKiTunesContentSource *strongSelf = weakSelf;
-        // Check on the main queue if a sync operation is already running
-        // If so, create a semaphore 
         [strongSelf _createSemaphoreAndWait];
-        // Once that's done, tell the MOC on the main queue to run an asynchronous fetch
         [strongSelf.backgroundQueueObjectContext SMK_asyncFetchObjectIDsWithEntityName:SMKiTunesEntityNamePlaylist
                                                                        sortDescriptors:sortDescriptors
                                                                              predicate:predicate
@@ -89,6 +87,29 @@
         }];
     });
 }
+
+
+- (NSArray *)executeFetchRequestSynchronously:(NSFetchRequest *)request
+                                        error:(NSError **)error
+{
+    [self _createSemaphoreAndWait];
+    return [self.mainQueueObjectContext SMK_fetchWithFetchRequest:request error:error];
+}
+ 
+- (void)executeFetchRequestAsynchronously:(NSFetchRequest *)request
+                        completionHandler:(void(^)(NSArray *playlists, NSError *error))handler
+{
+    __weak SMKiTunesContentSource *weakSelf = self;
+    dispatch_async(_backgroundQueue, ^{
+        SMKiTunesContentSource *strongSelf = weakSelf;
+        [strongSelf _createSemaphoreAndWait];
+        [strongSelf.backgroundQueueObjectContext SMK_asyncFetchWithFetchRequest:request completionHandler:^(NSArray *results, NSError *error) {
+            NSArray *objects = [strongSelf.mainQueueObjectContext SMK_objectsFromObjectIDs:results];
+            if (handler) handler(objects, error);
+        }];
+    });
+}
+
 
 - (void)deleteStore
 {
