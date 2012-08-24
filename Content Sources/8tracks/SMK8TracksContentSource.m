@@ -46,10 +46,9 @@ static NSString* const SMK8TracksHTTClientBaseURL = @"https://8tracks.com/";
                          failure:(void(^)(NSError *error))failure
 {
     [self postPath:@"sessions" parameters:@{@"login" : username, @"password" : password} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@", responseObject);
         if ([responseObject[@"logged_in"] boolValue]) {
             [self setDefaultHeader:SMK8TracksHTTClientUserTokenHeader value:responseObject[@"user_token"]];
-            SMK8TracksUser *user = [SMK8TracksUser userWithDictionary:responseObject[@"current_user"]];
+            SMK8TracksUser *user = [SMK8TracksUser userWithDictionary:responseObject[@"current_user"] contentSource:self];
             if (success) success(user);
         } else {
             if (failure) failure(nil);
@@ -68,7 +67,7 @@ static NSString* const SMK8TracksHTTClientBaseURL = @"https://8tracks.com/";
     [self postPath:@"users" parameters:@{@"user[login]" : username, @"user[password]" : password, @"user[email]" : email, @"user[agree_to_terms]" : @1} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if ([responseObject[@"logged_in"] boolValue]) {
             [self setDefaultHeader:SMK8TracksHTTClientUserTokenHeader value:responseObject[@"user_token"]];
-            SMK8TracksUser *user = [SMK8TracksUser userWithDictionary:responseObject[@"current_user"]];
+            SMK8TracksUser *user = [SMK8TracksUser userWithDictionary:responseObject[@"current_user"] contentSource:self];
             if (success) success(user);
         } else {
             if (failure) failure(nil);

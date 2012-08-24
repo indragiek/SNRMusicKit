@@ -16,14 +16,15 @@ static NSString* const SMK8TracksUserWebBaseURL = @"http://8tracks.com";
 
 #pragma mark - Initialization
 
-+ (instancetype)userWithDictionary:(NSDictionary *)dictionary
++ (instancetype)userWithDictionary:(NSDictionary *)dictionary contentSource:(id<SMKContentSource>)contentSource
 {
-    return [[SMK8TracksUser alloc] initWithDictionary:dictionary];
+    return [[SMK8TracksUser alloc] initWithDictionary:dictionary contentSource:contentSource];
 }
 
-- (id)initWithDictionary:(NSDictionary *)dictionary
+- (id)initWithDictionary:(NSDictionary *)dictionary contentSource:(id<SMKContentSource>)contentSource
 {
     if ((self = [super init])) {
+        self.contentSource = contentSource;
         _avatarURLs = dictionary[@"avatar_urls"];
         _biography = dictionary[@"bio_html"];
         _followingCount = dictionary[@"followed_by_current_user"];
@@ -62,6 +63,7 @@ static NSString* const SMK8TracksUserWebBaseURL = @"http://8tracks.com";
             break;
         case SMK8TracksUserAvatarSize250:
             URLString = _avatarURLs[@"max250w"];
+            break;
         default:
             URLString = _avatarURLs[@"sq100"];
             break;

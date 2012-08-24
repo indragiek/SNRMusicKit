@@ -72,9 +72,12 @@ typedef NSUInteger SMK8TracksUserAvatarSize;
 /**
  Create an SMK8TracksUser object with the specified dictionary
  @param dictionary Dictionary to create object from
+ @param contentSource The content source the user belongs to
  @return The SMK8TracksUser object
  */
-+ (instancetype)userWithDictionary:(NSDictionary *)dictionary;
-- (id)initWithDictionary:(NSDictionary *)dictionary;
++ (instancetype)userWithDictionary:(NSDictionary *)dictionary
+                     contentSource:(id<SMKContentSource>)contentSource;
+- (id)initWithDictionary:(NSDictionary *)dictionary
+           contentSource:(id<SMKContentSource>)contentSource;
 
 @end

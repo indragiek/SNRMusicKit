@@ -161,6 +161,9 @@
 		03FBED7C15E71C9B00A67DEE /* SMK8TracksObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 03FBED7A15E71C9B00A67DEE /* SMK8TracksObject.h */; };
 		03FBED7D15E71C9B00A67DEE /* SMK8TracksObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FBED7B15E71C9B00A67DEE /* SMK8TracksObject.m */; };
 		03FBED7E15E71C9B00A67DEE /* SMK8TracksObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FBED7B15E71C9B00A67DEE /* SMK8TracksObject.m */; };
+		03FBED8115E71E8100A67DEE /* SMK8TracksMix.h in Headers */ = {isa = PBXBuildFile; fileRef = 03FBED7F15E71E8100A67DEE /* SMK8TracksMix.h */; };
+		03FBED8215E71E8100A67DEE /* SMK8TracksMix.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FBED8015E71E8100A67DEE /* SMK8TracksMix.m */; };
+		03FBED8315E71E8100A67DEE /* SMK8TracksMix.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FBED8015E71E8100A67DEE /* SMK8TracksMix.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -449,6 +452,8 @@
 		03FBED7615E7176A00A67DEE /* SMK8TracksUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMK8TracksUser.m; path = "Content Sources/8tracks/Data Model/SMK8TracksUser.m"; sourceTree = "<group>"; };
 		03FBED7A15E71C9B00A67DEE /* SMK8TracksObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMK8TracksObject.h; path = "Content Sources/8tracks/Data Model/SMK8TracksObject.h"; sourceTree = "<group>"; };
 		03FBED7B15E71C9B00A67DEE /* SMK8TracksObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMK8TracksObject.m; path = "Content Sources/8tracks/Data Model/SMK8TracksObject.m"; sourceTree = "<group>"; };
+		03FBED7F15E71E8100A67DEE /* SMK8TracksMix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMK8TracksMix.h; path = "Content Sources/8tracks/Data Model/SMK8TracksMix.h"; sourceTree = "<group>"; };
+		03FBED8015E71E8100A67DEE /* SMK8TracksMix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMK8TracksMix.m; path = "Content Sources/8tracks/Data Model/SMK8TracksMix.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -914,6 +919,8 @@
 				03FBED7615E7176A00A67DEE /* SMK8TracksUser.m */,
 				03FBED7A15E71C9B00A67DEE /* SMK8TracksObject.h */,
 				03FBED7B15E71C9B00A67DEE /* SMK8TracksObject.m */,
+				03FBED7F15E71E8100A67DEE /* SMK8TracksMix.h */,
+				03FBED8015E71E8100A67DEE /* SMK8TracksMix.m */,
 			);
 			name = "Data Model";
 			sourceTree = "<group>";
@@ -977,6 +984,7 @@
 				03FBECAA15E6E49400A67DEE /* SMKManagedObjectContext.h in Headers */,
 				03FBED7715E7176A00A67DEE /* SMK8TracksUser.h in Headers */,
 				03FBED7C15E71C9B00A67DEE /* SMK8TracksObject.h in Headers */,
+				03FBED8115E71E8100A67DEE /* SMK8TracksMix.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1259,6 +1267,7 @@
 				03FBED3515E70C1200A67DEE /* SMK8TracksContentSource.m in Sources */,
 				03FBED7815E7176A00A67DEE /* SMK8TracksUser.m in Sources */,
 				03FBED7D15E71C9B00A67DEE /* SMK8TracksObject.m in Sources */,
+				03FBED8215E71E8100A67DEE /* SMK8TracksMix.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1290,6 +1299,7 @@
 				03FBED3615E70C1200A67DEE /* SMK8TracksContentSource.m in Sources */,
 				03FBED7915E7176A00A67DEE /* SMK8TracksUser.m in Sources */,
 				03FBED7E15E71C9B00A67DEE /* SMK8TracksObject.m in Sources */,
+				03FBED8315E71E8100A67DEE /* SMK8TracksMix.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

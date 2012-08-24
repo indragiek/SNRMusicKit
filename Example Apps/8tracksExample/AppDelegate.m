@@ -7,15 +7,15 @@
 //
 
 #import "AppDelegate.h"
-#import <SNRMusicKitMac/SMK8TracksHTTPClient.h>
+//#import <SNRMusicKitMac/SMK8TracksHTTPClient.h>
 
 @implementation AppDelegate {
-    SMK8TracksHTTPClient *_client;
+    //SMK8TracksHTTPClient *_client;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    
+
 }
 
 @end

@@ -49,5 +49,7 @@
 
 #pragma mark - Mixes
 
+- (void)getLatestTenMixesWithSuccess:(void(^)(SMK8TracksUser *user))success
+                         failure:(void(^)(NSError *error))failure;
 
 @end
