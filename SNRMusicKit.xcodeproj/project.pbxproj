@@ -141,6 +141,9 @@
 		03FBECAB15E6E49400A67DEE /* SMKManagedObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FBECA915E6E49400A67DEE /* SMKManagedObjectContext.m */; };
 		03FBECAD15E6F1A000A67DEE /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FBECAC15E6F1A000A67DEE /* CoreMedia.framework */; };
 		03FBECAF15E6F1B200A67DEE /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FBECAE15E6F1B100A67DEE /* CoreMedia.framework */; };
+		03FBECCB15E700AB00A67DEE /* CocoaLibSpotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FBECC815E7009000A67DEE /* CocoaLibSpotify.framework */; };
+		03FBECCC15E700B600A67DEE /* CocoaLibSpotify.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03FBECC815E7009000A67DEE /* CocoaLibSpotify.framework */; };
+		03FBECDB15E700EF00A67DEE /* libCocoaLibSpotify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FBECD715E700C300A67DEE /* libCocoaLibSpotify.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -193,6 +196,48 @@
 			remoteGlobalIDString = 0369921615E3EB0B003BCCBE;
 			remoteInfo = SNRMusicKitMac;
 		};
+		03FBECC715E7009000A67DEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03FBECBE15E7009000A67DEE /* CocoaLibSpotify Mac Framework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 503D630F13258041007772CA;
+			remoteInfo = CocoaLibSpotify;
+		};
+		03FBECC915E7009000A67DEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03FBECBE15E7009000A67DEE /* CocoaLibSpotify Mac Framework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 504E4934155AA85400E1C0F7;
+			remoteInfo = CocoaLSTests;
+		};
+		03FBECD615E700C300A67DEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03FBECCD15E700C200A67DEE /* CocoaLibSpotify iOS Library.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 50AF49DC1439CBFE00E4A5EF;
+			remoteInfo = CocoaLibSpotify;
+		};
+		03FBECD815E700C300A67DEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03FBECCD15E700C200A67DEE /* CocoaLibSpotify iOS Library.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 50D4F52B156BCDE800E237DD;
+			remoteInfo = CocoaLSTests;
+		};
+		03FBECDC15E700FE00A67DEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03FBECBE15E7009000A67DEE /* CocoaLibSpotify Mac Framework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 503D630E13258041007772CA;
+			remoteInfo = CocoaLibSpotify;
+		};
+		03FBECDE15E7010300A67DEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03FBECCD15E700C200A67DEE /* CocoaLibSpotify iOS Library.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 50AF49DB1439CBFE00E4A5EF;
+			remoteInfo = CocoaLibSpotify;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -212,6 +257,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				03FBECCC15E700B600A67DEE /* CocoaLibSpotify.framework in CopyFiles */,
 				0369948F15E3F3D1003BCCBE /* SFBAudioEngine.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,6 +398,8 @@
 		03FBECA915E6E49400A67DEE /* SMKManagedObjectContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKManagedObjectContext.m; path = "Content Sources/Shared/SMKManagedObjectContext.m"; sourceTree = "<group>"; };
 		03FBECAC15E6F1A000A67DEE /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		03FBECAE15E6F1B100A67DEE /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
+		03FBECBE15E7009000A67DEE /* CocoaLibSpotify Mac Framework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CocoaLibSpotify Mac Framework.xcodeproj"; path = "External/cocoalibspotify/Mac Framework/CocoaLibSpotify Mac Framework.xcodeproj"; sourceTree = "<group>"; };
+		03FBECCD15E700C200A67DEE /* CocoaLibSpotify iOS Library.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CocoaLibSpotify iOS Library.xcodeproj"; path = "External/cocoalibspotify/iOS Library/CocoaLibSpotify iOS Library.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +407,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03FBECCB15E700AB00A67DEE /* CocoaLibSpotify.framework in Frameworks */,
 				03FBECAD15E6F1A000A67DEE /* CoreMedia.framework in Frameworks */,
 				03F795BA15E4749000C9F652 /* AudioUnit.framework in Frameworks */,
 				03F795B815E4748B00C9F652 /* CoreAudio.framework in Frameworks */,
@@ -373,6 +422,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03FBECDB15E700EF00A67DEE /* libCocoaLibSpotify.a in Frameworks */,
 				03FBECAF15E6F1B200A67DEE /* CoreMedia.framework in Frameworks */,
 				03F795BE15E474A400C9F652 /* CoreAudio.framework in Frameworks */,
 				03F795BC15E4749D00C9F652 /* AudioUnit.framework in Frameworks */,
@@ -418,6 +468,8 @@
 				0369923C15E3EB44003BCCBE /* SNRMusicKitiOS */,
 				036991F115E3EAE1003BCCBE /* Frameworks */,
 				036991EF15E3EAE1003BCCBE /* Products */,
+				03FBECCD15E700C200A67DEE /* CocoaLibSpotify iOS Library.xcodeproj */,
+				03FBECBE15E7009000A67DEE /* CocoaLibSpotify Mac Framework.xcodeproj */,
 				0369947415E3F3AA003BCCBE /* SFBAudioEngine.xcodeproj */,
 			);
 			sourceTree = "<group>";
@@ -743,6 +795,24 @@
 			name = Shared;
 			sourceTree = "<group>";
 		};
+		03FBECBF15E7009000A67DEE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				03FBECC815E7009000A67DEE /* CocoaLibSpotify.framework */,
+				03FBECCA15E7009000A67DEE /* CocoaLibSpotify Test Container.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		03FBECCE15E700C200A67DEE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				03FBECD715E700C300A67DEE /* libCocoaLibSpotify.a */,
+				03FBECD915E700C300A67DEE /* CocoaLSTests.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -819,6 +889,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				03FBECDD15E700FE00A67DEE /* PBXTargetDependency */,
 				0369948C15E3F3C2003BCCBE /* PBXTargetDependency */,
 			);
 			name = SNRMusicKitMac;
@@ -837,6 +908,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				03FBECDF15E7010300A67DEE /* PBXTargetDependency */,
 				0369948915E3F3B6003BCCBE /* PBXTargetDependency */,
 			);
 			name = SNRMusicKitiOS;
@@ -885,6 +957,14 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 03FBECCE15E700C200A67DEE /* Products */;
+					ProjectRef = 03FBECCD15E700C200A67DEE /* CocoaLibSpotify iOS Library.xcodeproj */;
+				},
+				{
+					ProductGroup = 03FBECBF15E7009000A67DEE /* Products */;
+					ProjectRef = 03FBECBE15E7009000A67DEE /* CocoaLibSpotify Mac Framework.xcodeproj */;
+				},
+				{
 					ProductGroup = 0369947515E3F3AA003BCCBE /* Products */;
 					ProjectRef = 0369947415E3F3AA003BCCBE /* SFBAudioEngine.xcodeproj */;
 				},
@@ -925,6 +1005,35 @@
 			fileType = wrapper.application;
 			path = "SimplePlayer-iOS.app";
 			remoteRef = 0369948615E3F3AA003BCCBE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		03FBECC815E7009000A67DEE /* CocoaLibSpotify.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CocoaLibSpotify.framework;
+			remoteRef = 03FBECC715E7009000A67DEE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		03FBECCA15E7009000A67DEE /* CocoaLibSpotify Test Container.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			name = "CocoaLibSpotify Test Container.app";
+			path = CocoaLSTests.app;
+			remoteRef = 03FBECC915E7009000A67DEE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		03FBECD715E700C300A67DEE /* libCocoaLibSpotify.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCocoaLibSpotify.a;
+			remoteRef = 03FBECD615E700C300A67DEE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		03FBECD915E700C300A67DEE /* CocoaLSTests.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = CocoaLSTests.app;
+			remoteRef = 03FBECD815E700C300A67DEE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1068,6 +1177,16 @@
 			target = 0369921615E3EB0B003BCCBE /* SNRMusicKitMac */;
 			targetProxy = 03927E1915E69FB600E6483E /* PBXContainerItemProxy */;
 		};
+		03FBECDD15E700FE00A67DEE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CocoaLibSpotify;
+			targetProxy = 03FBECDC15E700FE00A67DEE /* PBXContainerItemProxy */;
+		};
+		03FBECDF15E7010300A67DEE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CocoaLibSpotify;
+			targetProxy = 03FBECDE15E7010300A67DEE /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1163,6 +1282,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = $CONFIGURATION_BUILD_DIR/CocoaLibSpotify.framework/Versions/Frameworks;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SNRMusicKitMac/SNRMusicKitMac-Prefix.pch";
@@ -1180,6 +1300,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = $CONFIGURATION_BUILD_DIR/CocoaLibSpotify.framework/Versions/Frameworks;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SNRMusicKitMac/SNRMusicKitMac-Prefix.pch";

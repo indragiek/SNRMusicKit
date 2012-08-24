@@ -4,3 +4,6 @@
 [submodule "External/AFNetworking"]
 	path = External/AFNetworking
 	url = git://github.com/AFNetworking/AFNetworking.git
+[submodule "External/cocoalibspotify"]
+	path = External/cocoalibspotify
+	url = git://github.com/spotify/cocoalibspotify.git
