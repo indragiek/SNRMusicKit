@@ -14,16 +14,9 @@
 
 @protocol SMKUser <NSObject, SMKContentObject, SMKArtworkSource, SMKWebObject>
 @required
-
+@optional
 /**
  @return The username of the user
  */
 - (NSString *)username;
-
-@optional
-
-/**
- @return The display name of the user (real name)
- */
-- (NSString *)displayName;
 @end

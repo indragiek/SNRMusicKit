@@ -8,9 +8,11 @@
 
 #import "NSError+SMKAdditions.h"
 
+static NSString* const SMKDefaultErrorDomain = @"SMKErrorDomain";
+
 @implementation NSError (SMKAdditions)
 + (NSError *)SMK_errorWithCode:(NSInteger)code description:(NSString *)description
 {
-    return [NSError errorWithDomain:@"SMKErrorDomain" code:code userInfo:@{description : NSLocalizedDescriptionKey}];
+    return [NSError errorWithDomain:SMKDefaultErrorDomain code:code userInfo:@{description : NSLocalizedDescriptionKey}];
 }
 @end

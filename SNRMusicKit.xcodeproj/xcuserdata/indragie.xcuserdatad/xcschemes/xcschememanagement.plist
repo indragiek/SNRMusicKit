@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>8tracksExample.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
 		<key>SNRMusicKit.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -48,6 +53,11 @@
 			<true/>
 		</dict>
 		<key>03927DFF15E69ED700E6483E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>03FBED3A15E70FA400A67DEE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

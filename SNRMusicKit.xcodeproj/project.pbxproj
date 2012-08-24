@@ -144,6 +144,23 @@
 		03FBECCB15E700AB00A67DEE /* CocoaLibSpotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FBECC815E7009000A67DEE /* CocoaLibSpotify.framework */; };
 		03FBECCC15E700B600A67DEE /* CocoaLibSpotify.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03FBECC815E7009000A67DEE /* CocoaLibSpotify.framework */; };
 		03FBECDB15E700EF00A67DEE /* libCocoaLibSpotify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FBECD715E700C300A67DEE /* libCocoaLibSpotify.a */; };
+		03FBED3415E70C1200A67DEE /* SMK8TracksContentSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 03FBED3215E70C1200A67DEE /* SMK8TracksContentSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		03FBED3515E70C1200A67DEE /* SMK8TracksContentSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FBED3315E70C1200A67DEE /* SMK8TracksContentSource.m */; };
+		03FBED3615E70C1200A67DEE /* SMK8TracksContentSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FBED3315E70C1200A67DEE /* SMK8TracksContentSource.m */; };
+		03FBED3D15E70FA400A67DEE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036991F215E3EAE1003BCCBE /* Cocoa.framework */; };
+		03FBED5A15E70FE100A67DEE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FBED5915E70FE100A67DEE /* AppDelegate.m */; };
+		03FBED5F15E70FF200A67DEE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FBED5D15E70FF200A67DEE /* main.m */; };
+		03FBED6415E70FFA00A67DEE /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 03FBED6015E70FFA00A67DEE /* Credits.rtf */; };
+		03FBED6515E70FFA00A67DEE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03FBED6215E70FFA00A67DEE /* InfoPlist.strings */; };
+		03FBED6815E7101300A67DEE /* SNRMusicKitMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0369921715E3EB0B003BCCBE /* SNRMusicKitMac.framework */; };
+		03FBED6A15E7101F00A67DEE /* SNRMusicKitMac.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0369921715E3EB0B003BCCBE /* SNRMusicKitMac.framework */; };
+		03FBED6D15E710B300A67DEE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03FBED6B15E710B300A67DEE /* MainMenu.xib */; };
+		03FBED7715E7176A00A67DEE /* SMK8TracksUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 03FBED7515E7176A00A67DEE /* SMK8TracksUser.h */; };
+		03FBED7815E7176A00A67DEE /* SMK8TracksUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FBED7615E7176A00A67DEE /* SMK8TracksUser.m */; };
+		03FBED7915E7176A00A67DEE /* SMK8TracksUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FBED7615E7176A00A67DEE /* SMK8TracksUser.m */; };
+		03FBED7C15E71C9B00A67DEE /* SMK8TracksObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 03FBED7A15E71C9B00A67DEE /* SMK8TracksObject.h */; };
+		03FBED7D15E71C9B00A67DEE /* SMK8TracksObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FBED7B15E71C9B00A67DEE /* SMK8TracksObject.m */; };
+		03FBED7E15E71C9B00A67DEE /* SMK8TracksObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FBED7B15E71C9B00A67DEE /* SMK8TracksObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -238,6 +255,13 @@
 			remoteGlobalIDString = 50AF49DB1439CBFE00E4A5EF;
 			remoteInfo = CocoaLibSpotify;
 		};
+		03FBED6615E7100B00A67DEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 036991E515E3EAE1003BCCBE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0369921615E3EB0B003BCCBE;
+			remoteInfo = SNRMusicKitMac;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -269,6 +293,16 @@
 			dstSubfolderSpec = 10;
 			files = (
 				03927E1D15E69FC600E6483E /* SNRMusicKitMac.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03FBED6915E7101500A67DEE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				03FBED6A15E7101F00A67DEE /* SNRMusicKitMac.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +434,21 @@
 		03FBECAE15E6F1B100A67DEE /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
 		03FBECBE15E7009000A67DEE /* CocoaLibSpotify Mac Framework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CocoaLibSpotify Mac Framework.xcodeproj"; path = "External/cocoalibspotify/Mac Framework/CocoaLibSpotify Mac Framework.xcodeproj"; sourceTree = "<group>"; };
 		03FBECCD15E700C200A67DEE /* CocoaLibSpotify iOS Library.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CocoaLibSpotify iOS Library.xcodeproj"; path = "External/cocoalibspotify/iOS Library/CocoaLibSpotify iOS Library.xcodeproj"; sourceTree = "<group>"; };
+		03FBED3215E70C1200A67DEE /* SMK8TracksContentSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMK8TracksContentSource.h; path = "Content Sources/8tracks/SMK8TracksContentSource.h"; sourceTree = "<group>"; };
+		03FBED3315E70C1200A67DEE /* SMK8TracksContentSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMK8TracksContentSource.m; path = "Content Sources/8tracks/SMK8TracksContentSource.m"; sourceTree = "<group>"; };
+		03FBED3B15E70FA400A67DEE /* 8tracksExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 8tracksExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		03FBED5815E70FE100A67DEE /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "Example Apps/8tracksExample/AppDelegate.h"; sourceTree = SOURCE_ROOT; };
+		03FBED5915E70FE100A67DEE /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "Example Apps/8tracksExample/AppDelegate.m"; sourceTree = SOURCE_ROOT; };
+		03FBED5B15E70FF200A67DEE /* 8tracksExample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "8tracksExample-Info.plist"; path = "Example Apps/8tracksExample/8tracksExample-Info.plist"; sourceTree = SOURCE_ROOT; };
+		03FBED5C15E70FF200A67DEE /* 8tracksExample-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "8tracksExample-Prefix.pch"; path = "Example Apps/8tracksExample/8tracksExample-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		03FBED5D15E70FF200A67DEE /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Example Apps/8tracksExample/main.m"; sourceTree = SOURCE_ROOT; };
+		03FBED6115E70FFA00A67DEE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = "Example Apps/8tracksExample/en.lproj/Credits.rtf"; sourceTree = SOURCE_ROOT; };
+		03FBED6315E70FFA00A67DEE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "Example Apps/8tracksExample/en.lproj/InfoPlist.strings"; sourceTree = SOURCE_ROOT; };
+		03FBED6C15E710B300A67DEE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "Example Apps/8tracksExample/en.lproj/MainMenu.xib"; sourceTree = SOURCE_ROOT; };
+		03FBED7515E7176A00A67DEE /* SMK8TracksUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMK8TracksUser.h; path = "Content Sources/8tracks/Data Model/SMK8TracksUser.h"; sourceTree = "<group>"; };
+		03FBED7615E7176A00A67DEE /* SMK8TracksUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMK8TracksUser.m; path = "Content Sources/8tracks/Data Model/SMK8TracksUser.m"; sourceTree = "<group>"; };
+		03FBED7A15E71C9B00A67DEE /* SMK8TracksObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMK8TracksObject.h; path = "Content Sources/8tracks/Data Model/SMK8TracksObject.h"; sourceTree = "<group>"; };
+		03FBED7B15E71C9B00A67DEE /* SMK8TracksObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMK8TracksObject.m; path = "Content Sources/8tracks/Data Model/SMK8TracksObject.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -442,6 +491,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		03FBED3815E70FA400A67DEE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03FBED6815E7101300A67DEE /* SNRMusicKitMac.framework in Frameworks */,
+				03FBED3D15E70FA400A67DEE /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -480,6 +538,7 @@
 				0369921715E3EB0B003BCCBE /* SNRMusicKitMac.framework */,
 				0369923915E3EB44003BCCBE /* libSNRMusicKitiOS.a */,
 				03927E0015E69ED700E6483E /* iTunesExample.app */,
+				03FBED3B15E70FA400A67DEE /* 8tracksExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -626,6 +685,7 @@
 		03927DFB15E69EBD00E6483E /* Example Apps */ = {
 			isa = PBXGroup;
 			children = (
+				03FBED3E15E70FA400A67DEE /* 8tracksExample */,
 				03927E0315E69ED700E6483E /* iTunesExample */,
 			);
 			name = "Example Apps";
@@ -757,6 +817,7 @@
 			children = (
 				03FBECA715E6E47C00A67DEE /* Shared */,
 				03F795E415E4933500C9F652 /* iTunes */,
+				03FBED3115E70BC500A67DEE /* 8tracks */,
 			);
 			name = "Content Sources";
 			sourceTree = "<group>";
@@ -813,6 +874,50 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		03FBED3115E70BC500A67DEE /* 8tracks */ = {
+			isa = PBXGroup;
+			children = (
+				03FBED7415E7172D00A67DEE /* Data Model */,
+				03FBED3215E70C1200A67DEE /* SMK8TracksContentSource.h */,
+				03FBED3315E70C1200A67DEE /* SMK8TracksContentSource.m */,
+			);
+			name = 8tracks;
+			sourceTree = "<group>";
+		};
+		03FBED3E15E70FA400A67DEE /* 8tracksExample */ = {
+			isa = PBXGroup;
+			children = (
+				03FBED6B15E710B300A67DEE /* MainMenu.xib */,
+				03FBED5815E70FE100A67DEE /* AppDelegate.h */,
+				03FBED5915E70FE100A67DEE /* AppDelegate.m */,
+				03FBED3F15E70FA500A67DEE /* Supporting Files */,
+			);
+			path = 8tracksExample;
+			sourceTree = "<group>";
+		};
+		03FBED3F15E70FA500A67DEE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				03FBED6015E70FFA00A67DEE /* Credits.rtf */,
+				03FBED6215E70FFA00A67DEE /* InfoPlist.strings */,
+				03FBED5B15E70FF200A67DEE /* 8tracksExample-Info.plist */,
+				03FBED5C15E70FF200A67DEE /* 8tracksExample-Prefix.pch */,
+				03FBED5D15E70FF200A67DEE /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		03FBED7415E7172D00A67DEE /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				03FBED7515E7176A00A67DEE /* SMK8TracksUser.h */,
+				03FBED7615E7176A00A67DEE /* SMK8TracksUser.m */,
+				03FBED7A15E71C9B00A67DEE /* SMK8TracksObject.h */,
+				03FBED7B15E71C9B00A67DEE /* SMK8TracksObject.m */,
+			);
+			name = "Data Model";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -828,6 +933,7 @@
 				037010E315E5751800FEAF6F /* SMKiTunesTrack.h in Headers */,
 				03F795B415E4740900C9F652 /* SMKSFBAudioPlayer.h in Headers */,
 				03E22DDA15E4AB92008351DD /* SMKiTunesContentSource.h in Headers */,
+				03FBED3415E70C1200A67DEE /* SMK8TracksContentSource.h in Headers */,
 				03FBEC9F15E6E0C200A67DEE /* SMKAVQueuePlayer.h in Headers */,
 				036994A715E3F3EB003BCCBE /* AFHTTPClient.h in Headers */,
 				036994AB15E3F3EB003BCCBE /* AFHTTPRequestOperation.h in Headers */,
@@ -869,6 +975,8 @@
 				030CE8D615E5CE0000AC12BE /* SMKConvenience.h in Headers */,
 				03FBECA415E6E2EB00A67DEE /* SMKAVPlayerItem.h in Headers */,
 				03FBECAA15E6E49400A67DEE /* SMKManagedObjectContext.h in Headers */,
+				03FBED7715E7176A00A67DEE /* SMK8TracksUser.h in Headers */,
+				03FBED7C15E71C9B00A67DEE /* SMK8TracksObject.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -935,6 +1043,25 @@
 			productReference = 03927E0015E69ED700E6483E /* iTunesExample.app */;
 			productType = "com.apple.product-type.application";
 		};
+		03FBED3A15E70FA400A67DEE /* 8tracksExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03FBED5015E70FA500A67DEE /* Build configuration list for PBXNativeTarget "8tracksExample" */;
+			buildPhases = (
+				03FBED3715E70FA400A67DEE /* Sources */,
+				03FBED3815E70FA400A67DEE /* Frameworks */,
+				03FBED3915E70FA400A67DEE /* Resources */,
+				03FBED6915E7101500A67DEE /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				03FBED6715E7100B00A67DEE /* PBXTargetDependency */,
+			);
+			name = 8tracksExample;
+			productName = 8tracksExample;
+			productReference = 03FBED3B15E70FA400A67DEE /* 8tracksExample.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -974,6 +1101,7 @@
 				0369921615E3EB0B003BCCBE /* SNRMusicKitMac */,
 				0369923815E3EB44003BCCBE /* SNRMusicKitiOS */,
 				03927DFF15E69ED700E6483E /* iTunesExample */,
+				03FBED3A15E70FA400A67DEE /* 8tracksExample */,
 			);
 		};
 /* End PBXProject section */
@@ -1057,6 +1185,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		03FBED3915E70FA400A67DEE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03FBED6415E70FFA00A67DEE /* Credits.rtf in Resources */,
+				03FBED6515E70FFA00A67DEE /* InfoPlist.strings in Resources */,
+				03FBED6D15E710B300A67DEE /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -1118,6 +1256,9 @@
 				03FBECA015E6E0C200A67DEE /* SMKAVQueuePlayer.m in Sources */,
 				03FBECA515E6E2EB00A67DEE /* SMKAVPlayerItem.m in Sources */,
 				03FBECAB15E6E49400A67DEE /* SMKManagedObjectContext.m in Sources */,
+				03FBED3515E70C1200A67DEE /* SMK8TracksContentSource.m in Sources */,
+				03FBED7815E7176A00A67DEE /* SMK8TracksUser.m in Sources */,
+				03FBED7D15E71C9B00A67DEE /* SMK8TracksObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1146,6 +1287,9 @@
 				030CE8D415E5C31F00AC12BE /* NSString+SMKAdditions.m in Sources */,
 				03FBECA115E6E0C200A67DEE /* SMKAVQueuePlayer.m in Sources */,
 				03FBECA615E6E2EB00A67DEE /* SMKAVPlayerItem.m in Sources */,
+				03FBED3615E70C1200A67DEE /* SMK8TracksContentSource.m in Sources */,
+				03FBED7915E7176A00A67DEE /* SMK8TracksUser.m in Sources */,
+				03FBED7E15E71C9B00A67DEE /* SMK8TracksObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1156,6 +1300,15 @@
 				037A599615E6B0910092C6B9 /* AppDelegate.m in Sources */,
 				037A599A15E6B09C0092C6B9 /* InsetTextField.m in Sources */,
 				037A59A515E6B0B70092C6B9 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03FBED3715E70FA400A67DEE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03FBED5A15E70FE100A67DEE /* AppDelegate.m in Sources */,
+				03FBED5F15E70FF200A67DEE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1186,6 +1339,11 @@
 			isa = PBXTargetDependency;
 			name = CocoaLibSpotify;
 			targetProxy = 03FBECDE15E7010300A67DEE /* PBXContainerItemProxy */;
+		};
+		03FBED6715E7100B00A67DEE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0369921615E3EB0B003BCCBE /* SNRMusicKitMac */;
+			targetProxy = 03FBED6615E7100B00A67DEE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1220,6 +1378,30 @@
 				037A599E15E6B0B70092C6B9 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		03FBED6015E70FFA00A67DEE /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03FBED6115E70FFA00A67DEE /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		03FBED6215E70FFA00A67DEE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03FBED6315E70FFA00A67DEE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		03FBED6B15E710B300A67DEE /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03FBED6C15E710B300A67DEE /* en */,
+			);
+			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1367,6 +1549,30 @@
 			};
 			name = Release;
 		};
+		03FBED5115E70FA500A67DEE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Example Apps/8tracksExample/8tracksExample-Prefix.pch";
+				INFOPLIST_FILE = "Example Apps/8tracksExample/8tracksExample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		03FBED5215E70FA500A67DEE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Example Apps/8tracksExample/8tracksExample-Prefix.pch";
+				INFOPLIST_FILE = "Example Apps/8tracksExample/8tracksExample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1405,6 +1611,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		03FBED5015E70FA500A67DEE /* Build configuration list for PBXNativeTarget "8tracksExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03FBED5115E70FA500A67DEE /* Debug */,
+				03FBED5215E70FA500A67DEE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 
