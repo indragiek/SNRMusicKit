@@ -13,6 +13,7 @@
 
 #import "SPUser+SMKUser.h"
 #import "NSObject+SMKSpotifyAdditions.h"
+#import "NSMutableArray+SMKAdditions.h"
 #import "SPAlbum+SMKAlbum.h"
 #import "SPArtist+SMKArtist.h"
 
@@ -160,12 +161,7 @@
             [tracks addObjectsFromArray:[(SPPlaylist *)item tracksWithSortDescriptors:nil predicate:nil batchSize:0 fetchLimit:0 withError:nil]];
         }
     }];
-    if (predicate)
-        [tracks filterUsingPredicate:predicate];
-    if (sortDescriptors)
-        [tracks sortUsingDescriptors:sortDescriptors];
-    if (fetchLimit > [tracks count])
-        [tracks removeObjectsInRange:NSMakeRange(fetchLimit, [tracks count] - fetchLimit)];
+    [tracks SMK_processWithSortDescriptors:sortDescriptors predicate:predicate fetchLimit:fetchLimit];
     return tracks;
 }
 
@@ -214,13 +210,8 @@
         });
         dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
         dispatch_release(group);
+        [playlistTracks SMK_processWithSortDescriptors:sortDescriptors predicate:predicate fetchLimit:fetchLimit];
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (predicate)
-                [playlistTracks filterUsingPredicate:predicate];
-            if (sortDescriptors)
-                [playlistTracks sortUsingDescriptors:sortDescriptors];
-            if (fetchLimit > [playlistTracks count])
-                [playlistTracks removeObjectsInRange:NSMakeRange(fetchLimit, [playlistTracks count] - fetchLimit)];
             if (handler)
                 handler(playlistTracks, nil);
         });
