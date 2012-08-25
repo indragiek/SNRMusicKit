@@ -175,17 +175,17 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
     [track setAlbumArtistName:[dictionary valueForKey:SMKiTunesKeyAlbumArtist]];
     [track setArtistName:[dictionary valueForKey:SMKiTunesKeyArtist]];
     [track setComposer:[dictionary valueForKey:SMKiTunesKeyComposer]];
-    [track setTrackNumber:[dictionary valueForKey:SMKiTunesKeyTrackNumber]];
-    [track setDiscNumber:[dictionary valueForKey:SMKiTunesKeyDiscNumber]];
+    [track setCd_trackNumber:[dictionary valueForKey:SMKiTunesKeyTrackNumber]];
+    [track setCd_discNumber:[dictionary valueForKey:SMKiTunesKeyDiscNumber]];
     NSUInteger duration = [[dictionary valueForKey:SMKiTunesKeyTotalTime] unsignedIntegerValue];
-    [track setDuration:@(duration / 1000)]; // Need to divide by 1000 because iTunes durations are in ms
+    [track setCd_duration:@(duration / 1000)]; // Need to divide by 1000 because iTunes durations are in ms
     [track setIdentifier:[dictionary valueForKey:SMKiTunesKeyPersistentID]];
     [track setGenre:[dictionary valueForKey:SMKiTunesKeyGenre]];
-    [track setIsClean:[dictionary valueForKey:SMKiTunesKeyClean]];
-    [track setIsExplicit:[dictionary valueForKey:SMKiTunesKeyExplicit]];
+    [track setCd_isClean:[dictionary valueForKey:SMKiTunesKeyClean]];
+    [track setCd_isExplicit:[dictionary valueForKey:SMKiTunesKeyExplicit]];
     [track setDateAdded:[dictionary valueForKey:SMKiTunesKeyDateAdded]];
     [track setDateModified:[dictionary valueForKey:SMKiTunesKeyDateModified]];
-    [track setRating:[dictionary valueForKey:SMKiTunesKeyRating]];
+    [track setCd_rating:[dictionary valueForKey:SMKiTunesKeyRating]];
     
     NSString *albumTitle = [dictionary valueForKey:SMKiTunesKeyAlbum];
     NSString *artistName = SMKObjectIsValid([track albumArtistName]) ? [track albumArtistName] : [track artistName];
@@ -193,16 +193,16 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
     SMKiTunesArtist *artist = [compilation boolValue] ? [_context SMK_iTunesCompilationsArtist] : [_context SMK_iTunesArtistWithName:artistName create:YES];
     SMKiTunesAlbum *album = [_context SMK_iTunesAlbumWithName:albumTitle byArtist:artist create:YES];
     [track setAlbum:album];
-    if (![album isCompilation] && SMKObjectIsValid(compilation)) {
-        [album setIsCompilation:compilation];
+    if (![album cd_isCompilation] && SMKObjectIsValid(compilation)) {
+        [album setCd_isCompilation:compilation];
     }
     NSNumber *year = [dictionary valueForKey:SMKiTunesKeyYear];
-    if (![album releaseYear] && SMKObjectIsValid(year)) {
-        [album setReleaseYear:year];
+    if (![album cd_releaseYear] && SMKObjectIsValid(year)) {
+        [album setCd_releaseYear:year];
     }
     NSNumber *albumRating = [dictionary valueForKey:SMKiTunesKeyAlbumRating];
-    if (![album rating] && SMKObjectIsValid(albumRating)) {
-        [album setRating:albumRating];
+    if (![album cd_rating] && SMKObjectIsValid(albumRating)) {
+        [album setCd_rating:albumRating];
     }
     return track;
 }

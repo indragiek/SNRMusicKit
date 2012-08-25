@@ -7,17 +7,17 @@ const struct SMKiTunesTrackAttributes SMKiTunesTrackAttributes = {
 	.albumArtistName = @"albumArtistName",
 	.artistName = @"artistName",
 	.bookmark = @"bookmark",
-	.compilation = @"compilation",
+	.cd_compilation = @"cd_compilation",
+	.cd_discNumber = @"cd_discNumber",
+	.cd_duration = @"cd_duration",
+	.cd_isClean = @"cd_isClean",
+	.cd_isExplicit = @"cd_isExplicit",
+	.cd_rating = @"cd_rating",
+	.cd_trackNumber = @"cd_trackNumber",
 	.composer = @"composer",
 	.dateAdded = @"dateAdded",
 	.dateModified = @"dateModified",
-	.discNumber = @"discNumber",
-	.duration = @"duration",
 	.genre = @"genre",
-	.isClean = @"isClean",
-	.isExplicit = @"isExplicit",
-	.rating = @"rating",
-	.trackNumber = @"trackNumber",
 };
 
 const struct SMKiTunesTrackRelationships SMKiTunesTrackRelationships = {
@@ -54,32 +54,32 @@ const struct SMKiTunesTrackFetchedProperties SMKiTunesTrackFetchedProperties = {
 + (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
-	if ([key isEqualToString:@"compilationValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"compilation"];
+	if ([key isEqualToString:@"cd_compilationValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"cd_compilation"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
-	if ([key isEqualToString:@"discNumberValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"discNumber"];
+	if ([key isEqualToString:@"cd_discNumberValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"cd_discNumber"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
-	if ([key isEqualToString:@"durationValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"duration"];
+	if ([key isEqualToString:@"cd_durationValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"cd_duration"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
-	if ([key isEqualToString:@"isCleanValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"isClean"];
+	if ([key isEqualToString:@"cd_isCleanValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"cd_isClean"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
-	if ([key isEqualToString:@"isExplicitValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"isExplicit"];
+	if ([key isEqualToString:@"cd_isExplicitValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"cd_isExplicit"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
-	if ([key isEqualToString:@"ratingValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"rating"];
+	if ([key isEqualToString:@"cd_ratingValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"cd_rating"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
-	if ([key isEqualToString:@"trackNumberValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"trackNumber"];
+	if ([key isEqualToString:@"cd_trackNumberValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"cd_trackNumber"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
 
@@ -110,26 +110,182 @@ const struct SMKiTunesTrackFetchedProperties SMKiTunesTrackFetchedProperties = {
 
 
 
-@dynamic compilation;
+@dynamic cd_compilation;
 
 
 
-- (BOOL)compilationValue {
-	NSNumber *result = [self compilation];
+- (BOOL)cd_compilationValue {
+	NSNumber *result = [self cd_compilation];
 	return [result boolValue];
 }
 
-- (void)setCompilationValue:(BOOL)value_ {
-	[self setCompilation:[NSNumber numberWithBool:value_]];
+- (void)setCd_compilationValue:(BOOL)value_ {
+	[self setCd_compilation:[NSNumber numberWithBool:value_]];
 }
 
-- (BOOL)primitiveCompilationValue {
-	NSNumber *result = [self primitiveCompilation];
+- (BOOL)primitiveCd_compilationValue {
+	NSNumber *result = [self primitiveCd_compilation];
 	return [result boolValue];
 }
 
-- (void)setPrimitiveCompilationValue:(BOOL)value_ {
-	[self setPrimitiveCompilation:[NSNumber numberWithBool:value_]];
+- (void)setPrimitiveCd_compilationValue:(BOOL)value_ {
+	[self setPrimitiveCd_compilation:[NSNumber numberWithBool:value_]];
+}
+
+
+
+
+
+@dynamic cd_discNumber;
+
+
+
+- (int32_t)cd_discNumberValue {
+	NSNumber *result = [self cd_discNumber];
+	return [result intValue];
+}
+
+- (void)setCd_discNumberValue:(int32_t)value_ {
+	[self setCd_discNumber:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveCd_discNumberValue {
+	NSNumber *result = [self primitiveCd_discNumber];
+	return [result intValue];
+}
+
+- (void)setPrimitiveCd_discNumberValue:(int32_t)value_ {
+	[self setPrimitiveCd_discNumber:[NSNumber numberWithInt:value_]];
+}
+
+
+
+
+
+@dynamic cd_duration;
+
+
+
+- (float)cd_durationValue {
+	NSNumber *result = [self cd_duration];
+	return [result floatValue];
+}
+
+- (void)setCd_durationValue:(float)value_ {
+	[self setCd_duration:[NSNumber numberWithFloat:value_]];
+}
+
+- (float)primitiveCd_durationValue {
+	NSNumber *result = [self primitiveCd_duration];
+	return [result floatValue];
+}
+
+- (void)setPrimitiveCd_durationValue:(float)value_ {
+	[self setPrimitiveCd_duration:[NSNumber numberWithFloat:value_]];
+}
+
+
+
+
+
+@dynamic cd_isClean;
+
+
+
+- (BOOL)cd_isCleanValue {
+	NSNumber *result = [self cd_isClean];
+	return [result boolValue];
+}
+
+- (void)setCd_isCleanValue:(BOOL)value_ {
+	[self setCd_isClean:[NSNumber numberWithBool:value_]];
+}
+
+- (BOOL)primitiveCd_isCleanValue {
+	NSNumber *result = [self primitiveCd_isClean];
+	return [result boolValue];
+}
+
+- (void)setPrimitiveCd_isCleanValue:(BOOL)value_ {
+	[self setPrimitiveCd_isClean:[NSNumber numberWithBool:value_]];
+}
+
+
+
+
+
+@dynamic cd_isExplicit;
+
+
+
+- (BOOL)cd_isExplicitValue {
+	NSNumber *result = [self cd_isExplicit];
+	return [result boolValue];
+}
+
+- (void)setCd_isExplicitValue:(BOOL)value_ {
+	[self setCd_isExplicit:[NSNumber numberWithBool:value_]];
+}
+
+- (BOOL)primitiveCd_isExplicitValue {
+	NSNumber *result = [self primitiveCd_isExplicit];
+	return [result boolValue];
+}
+
+- (void)setPrimitiveCd_isExplicitValue:(BOOL)value_ {
+	[self setPrimitiveCd_isExplicit:[NSNumber numberWithBool:value_]];
+}
+
+
+
+
+
+@dynamic cd_rating;
+
+
+
+- (int32_t)cd_ratingValue {
+	NSNumber *result = [self cd_rating];
+	return [result intValue];
+}
+
+- (void)setCd_ratingValue:(int32_t)value_ {
+	[self setCd_rating:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveCd_ratingValue {
+	NSNumber *result = [self primitiveCd_rating];
+	return [result intValue];
+}
+
+- (void)setPrimitiveCd_ratingValue:(int32_t)value_ {
+	[self setPrimitiveCd_rating:[NSNumber numberWithInt:value_]];
+}
+
+
+
+
+
+@dynamic cd_trackNumber;
+
+
+
+- (int32_t)cd_trackNumberValue {
+	NSNumber *result = [self cd_trackNumber];
+	return [result intValue];
+}
+
+- (void)setCd_trackNumberValue:(int32_t)value_ {
+	[self setCd_trackNumber:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveCd_trackNumberValue {
+	NSNumber *result = [self primitiveCd_trackNumber];
+	return [result intValue];
+}
+
+- (void)setPrimitiveCd_trackNumberValue:(int32_t)value_ {
+	[self setPrimitiveCd_trackNumber:[NSNumber numberWithInt:value_]];
 }
 
 
@@ -157,164 +313,8 @@ const struct SMKiTunesTrackFetchedProperties SMKiTunesTrackFetchedProperties = {
 
 
 
-@dynamic discNumber;
-
-
-
-- (int32_t)discNumberValue {
-	NSNumber *result = [self discNumber];
-	return [result intValue];
-}
-
-- (void)setDiscNumberValue:(int32_t)value_ {
-	[self setDiscNumber:[NSNumber numberWithInt:value_]];
-}
-
-- (int32_t)primitiveDiscNumberValue {
-	NSNumber *result = [self primitiveDiscNumber];
-	return [result intValue];
-}
-
-- (void)setPrimitiveDiscNumberValue:(int32_t)value_ {
-	[self setPrimitiveDiscNumber:[NSNumber numberWithInt:value_]];
-}
-
-
-
-
-
-@dynamic duration;
-
-
-
-- (int64_t)durationValue {
-	NSNumber *result = [self duration];
-	return [result longLongValue];
-}
-
-- (void)setDurationValue:(int64_t)value_ {
-	[self setDuration:[NSNumber numberWithLongLong:value_]];
-}
-
-- (int64_t)primitiveDurationValue {
-	NSNumber *result = [self primitiveDuration];
-	return [result longLongValue];
-}
-
-- (void)setPrimitiveDurationValue:(int64_t)value_ {
-	[self setPrimitiveDuration:[NSNumber numberWithLongLong:value_]];
-}
-
-
-
-
-
 @dynamic genre;
 
-
-
-
-
-
-@dynamic isClean;
-
-
-
-- (BOOL)isCleanValue {
-	NSNumber *result = [self isClean];
-	return [result boolValue];
-}
-
-- (void)setIsCleanValue:(BOOL)value_ {
-	[self setIsClean:[NSNumber numberWithBool:value_]];
-}
-
-- (BOOL)primitiveIsCleanValue {
-	NSNumber *result = [self primitiveIsClean];
-	return [result boolValue];
-}
-
-- (void)setPrimitiveIsCleanValue:(BOOL)value_ {
-	[self setPrimitiveIsClean:[NSNumber numberWithBool:value_]];
-}
-
-
-
-
-
-@dynamic isExplicit;
-
-
-
-- (BOOL)isExplicitValue {
-	NSNumber *result = [self isExplicit];
-	return [result boolValue];
-}
-
-- (void)setIsExplicitValue:(BOOL)value_ {
-	[self setIsExplicit:[NSNumber numberWithBool:value_]];
-}
-
-- (BOOL)primitiveIsExplicitValue {
-	NSNumber *result = [self primitiveIsExplicit];
-	return [result boolValue];
-}
-
-- (void)setPrimitiveIsExplicitValue:(BOOL)value_ {
-	[self setPrimitiveIsExplicit:[NSNumber numberWithBool:value_]];
-}
-
-
-
-
-
-@dynamic rating;
-
-
-
-- (int32_t)ratingValue {
-	NSNumber *result = [self rating];
-	return [result intValue];
-}
-
-- (void)setRatingValue:(int32_t)value_ {
-	[self setRating:[NSNumber numberWithInt:value_]];
-}
-
-- (int32_t)primitiveRatingValue {
-	NSNumber *result = [self primitiveRating];
-	return [result intValue];
-}
-
-- (void)setPrimitiveRatingValue:(int32_t)value_ {
-	[self setPrimitiveRating:[NSNumber numberWithInt:value_]];
-}
-
-
-
-
-
-@dynamic trackNumber;
-
-
-
-- (int32_t)trackNumberValue {
-	NSNumber *result = [self trackNumber];
-	return [result intValue];
-}
-
-- (void)setTrackNumberValue:(int32_t)value_ {
-	[self setTrackNumber:[NSNumber numberWithInt:value_]];
-}
-
-- (int32_t)primitiveTrackNumberValue {
-	NSNumber *result = [self primitiveTrackNumber];
-	return [result intValue];
-}
-
-- (void)setPrimitiveTrackNumberValue:(int32_t)value_ {
-	[self setPrimitiveTrackNumber:[NSNumber numberWithInt:value_]];
-}
 
 
 

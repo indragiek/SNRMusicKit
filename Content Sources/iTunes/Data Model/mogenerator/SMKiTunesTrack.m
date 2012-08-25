@@ -13,6 +13,31 @@
     return self.identifier;
 }
 
+- (NSTimeInterval)duration
+{
+    return [self cd_durationValue];
+}
+
+- (NSUInteger)trackNumber
+{
+    return [self cd_trackNumberValue];
+}
+
+- (NSUInteger)discNumber
+{
+    return [self cd_discNumberValue];
+}
+
+- (BOOL)isExplicit
+{
+    return [self cd_isExplicitValue];
+}
+
+- (BOOL)isClean
+{
+    return [self cd_isCleanValue];
+}
+
 - (NSURL *)playbackURL
 {
     if (!self.bookmark) { return nil; }

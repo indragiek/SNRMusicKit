@@ -38,15 +38,15 @@
 /**
  @return The duration of the track in seconds.
  */
-- (NSNumber *)duration;
+- (NSTimeInterval)duration;
+
+@optional
 
 /**
  @return The URL to play the track from
  @discussion This URL could be local or remote (for streaming services). If the track cannot be played, this method should return nil.
  */
 - (NSURL *)playbackURL;
-
-@optional
 
 /**
  @return The composer of the track.
@@ -56,17 +56,17 @@
 /**
  @return The track's track number.
  */
-- (NSNumber *)trackNumber;
+- (NSUInteger)trackNumber;
 
 /**
  @return The track's disc number.
 */
-- (NSNumber *)discNumber;
+- (NSUInteger)discNumber;
 
 /**
  @return The number of times the track has been played.
  */
-- (NSNumber *)playCounts;
+- (NSUInteger)playCounts;
 
 /**
  @return The popularity index for the track.
@@ -74,15 +74,15 @@
  but in general, a higher popularity index means the track is more popular. If this
  information is not available, this method will return 0.
 */
-- (NSNumber *)popularity;
+- (NSUInteger)popularity;
 
 /**
  @return Whether the track contains explicit content.
  */
-- (NSNumber *)isExplicit;
+- (BOOL)isExplicit;
 
 /**
  @return Whether the track is free of explicit content.
  */
-- (NSNumber *)isClean;
+- (BOOL)isClean;
 @end

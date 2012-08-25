@@ -138,6 +138,15 @@
 		03EB019115E87676001F3A02 /* SMKSpotifyConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 03EB018F15E87676001F3A02 /* SMKSpotifyConstants.h */; };
 		03EB019215E87676001F3A02 /* SMKSpotifyConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB019015E87676001F3A02 /* SMKSpotifyConstants.m */; };
 		03EB019315E87676001F3A02 /* SMKSpotifyConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB019015E87676001F3A02 /* SMKSpotifyConstants.m */; };
+		03EB019615E87A4A001F3A02 /* SPTrack+SMKTrack.h in Headers */ = {isa = PBXBuildFile; fileRef = 03EB019415E87A4A001F3A02 /* SPTrack+SMKTrack.h */; };
+		03EB019715E87A4A001F3A02 /* SPTrack+SMKTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB019515E87A4A001F3A02 /* SPTrack+SMKTrack.m */; };
+		03EB019815E87A4A001F3A02 /* SPTrack+SMKTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB019515E87A4A001F3A02 /* SPTrack+SMKTrack.m */; };
+		03EB019B15E88746001F3A02 /* SPAlbum+SMKAlbum.h in Headers */ = {isa = PBXBuildFile; fileRef = 03EB019915E88745001F3A02 /* SPAlbum+SMKAlbum.h */; };
+		03EB019C15E88746001F3A02 /* SPAlbum+SMKAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB019A15E88746001F3A02 /* SPAlbum+SMKAlbum.m */; };
+		03EB019D15E88746001F3A02 /* SPAlbum+SMKAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB019A15E88746001F3A02 /* SPAlbum+SMKAlbum.m */; };
+		03EB01A015E88F17001F3A02 /* SPArtist+SMKArtist.h in Headers */ = {isa = PBXBuildFile; fileRef = 03EB019E15E88F17001F3A02 /* SPArtist+SMKArtist.h */; };
+		03EB01A115E88F17001F3A02 /* SPArtist+SMKArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB019F15E88F17001F3A02 /* SPArtist+SMKArtist.m */; };
+		03EB01A215E88F17001F3A02 /* SPArtist+SMKArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB019F15E88F17001F3A02 /* SPArtist+SMKArtist.m */; };
 		03F7955315E426ED00C9F652 /* SMKAlbum.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F7955215E426ED00C9F652 /* SMKAlbum.h */; };
 		03F7955615E4282800C9F652 /* SMKContentSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F7955515E4282800C9F652 /* SMKContentSource.h */; };
 		03F7955815E42BE800C9F652 /* SMKArtist.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F7955715E42BE800C9F652 /* SMKArtist.h */; };
@@ -443,6 +452,12 @@
 		03EB018D15E86728001F3A02 /* SMKPlatformImports.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKPlatformImports.h; path = "Common Headers/SMKPlatformImports.h"; sourceTree = "<group>"; };
 		03EB018F15E87676001F3A02 /* SMKSpotifyConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKSpotifyConstants.h; path = "Content Sources/Spotify/SMKSpotifyConstants.h"; sourceTree = "<group>"; };
 		03EB019015E87676001F3A02 /* SMKSpotifyConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKSpotifyConstants.m; path = "Content Sources/Spotify/SMKSpotifyConstants.m"; sourceTree = "<group>"; };
+		03EB019415E87A4A001F3A02 /* SPTrack+SMKTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SPTrack+SMKTrack.h"; path = "Content Sources/Spotify/Data Model/SPTrack+SMKTrack.h"; sourceTree = "<group>"; };
+		03EB019515E87A4A001F3A02 /* SPTrack+SMKTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SPTrack+SMKTrack.m"; path = "Content Sources/Spotify/Data Model/SPTrack+SMKTrack.m"; sourceTree = "<group>"; };
+		03EB019915E88745001F3A02 /* SPAlbum+SMKAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SPAlbum+SMKAlbum.h"; path = "Content Sources/Spotify/Data Model/SPAlbum+SMKAlbum.h"; sourceTree = "<group>"; };
+		03EB019A15E88746001F3A02 /* SPAlbum+SMKAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SPAlbum+SMKAlbum.m"; path = "Content Sources/Spotify/Data Model/SPAlbum+SMKAlbum.m"; sourceTree = "<group>"; };
+		03EB019E15E88F17001F3A02 /* SPArtist+SMKArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SPArtist+SMKArtist.h"; path = "Content Sources/Spotify/Data Model/SPArtist+SMKArtist.h"; sourceTree = "<group>"; };
+		03EB019F15E88F17001F3A02 /* SPArtist+SMKArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SPArtist+SMKArtist.m"; path = "Content Sources/Spotify/Data Model/SPArtist+SMKArtist.m"; sourceTree = "<group>"; };
 		03F7955215E426ED00C9F652 /* SMKAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKAlbum.h; path = Protocols/SMKAlbum.h; sourceTree = "<group>"; };
 		03F7955515E4282800C9F652 /* SMKContentSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKContentSource.h; path = Protocols/SMKContentSource.h; sourceTree = "<group>"; };
 		03F7955715E42BE800C9F652 /* SMKArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKArtist.h; path = Protocols/SMKArtist.h; sourceTree = "<group>"; };
@@ -830,6 +845,12 @@
 				03EB017F15E85C3E001F3A02 /* SPPlaylist+SMKPlaylist.m */,
 				03EB018815E86317001F3A02 /* NSObject+SMKSpotifyAdditions.h */,
 				03EB018915E86317001F3A02 /* NSObject+SMKSpotifyAdditions.m */,
+				03EB019415E87A4A001F3A02 /* SPTrack+SMKTrack.h */,
+				03EB019515E87A4A001F3A02 /* SPTrack+SMKTrack.m */,
+				03EB019915E88745001F3A02 /* SPAlbum+SMKAlbum.h */,
+				03EB019A15E88746001F3A02 /* SPAlbum+SMKAlbum.m */,
+				03EB019E15E88F17001F3A02 /* SPArtist+SMKArtist.h */,
+				03EB019F15E88F17001F3A02 /* SPArtist+SMKArtist.m */,
 			);
 			name = "Data Model";
 			sourceTree = "<group>";
@@ -1076,6 +1097,9 @@
 				03EB018515E86088001F3A02 /* NSObject+SMKAdditions.h in Headers */,
 				03EB018A15E86318001F3A02 /* NSObject+SMKSpotifyAdditions.h in Headers */,
 				03EB019115E87676001F3A02 /* SMKSpotifyConstants.h in Headers */,
+				03EB019615E87A4A001F3A02 /* SPTrack+SMKTrack.h in Headers */,
+				03EB019B15E88746001F3A02 /* SPAlbum+SMKAlbum.h in Headers */,
+				03EB01A015E88F17001F3A02 /* SPArtist+SMKArtist.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1364,6 +1388,9 @@
 				03EB018615E86088001F3A02 /* NSObject+SMKAdditions.m in Sources */,
 				03EB018B15E86318001F3A02 /* NSObject+SMKSpotifyAdditions.m in Sources */,
 				03EB019215E87676001F3A02 /* SMKSpotifyConstants.m in Sources */,
+				03EB019715E87A4A001F3A02 /* SPTrack+SMKTrack.m in Sources */,
+				03EB019C15E88746001F3A02 /* SPAlbum+SMKAlbum.m in Sources */,
+				03EB01A115E88F17001F3A02 /* SPArtist+SMKArtist.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1404,6 +1431,9 @@
 				03EB018715E86088001F3A02 /* NSObject+SMKAdditions.m in Sources */,
 				03EB018C15E86318001F3A02 /* NSObject+SMKSpotifyAdditions.m in Sources */,
 				03EB019315E87676001F3A02 /* SMKSpotifyConstants.m in Sources */,
+				03EB019815E87A4A001F3A02 /* SPTrack+SMKTrack.m in Sources */,
+				03EB019D15E88746001F3A02 /* SPAlbum+SMKAlbum.m in Sources */,
+				03EB01A215E88F17001F3A02 /* SPArtist+SMKArtist.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

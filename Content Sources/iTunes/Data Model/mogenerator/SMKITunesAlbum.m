@@ -40,22 +40,19 @@
     return [NSSet setWithObjects:@"name", @"releaseYear", @"artist", @"isCompilation", @"rating", nil];
 }
 
-- (NSDate *)releaseDate
+- (NSTimeInterval)duration
 {
-    NSDateComponents *comp = [[NSDateComponents alloc] init];
-    [comp setDay:1];
-    [comp setMonth:1];
-    [comp setYear:[[self releaseYear] unsignedIntegerValue]];
-    [comp setHour:12];
-    [comp setMinute:0];
-    [comp setSecond:0];
-    NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    return [cal dateFromComponents:comp];
+    return [[self valueForKey:@"tracks.@sum.duration"] floatValue];
 }
 
-- (NSNumber *)duration
+- (BOOL)isCompilation
 {
-    return [self valueForKey:@"tracks.@sum.duration"];
+    return [self cd_isCompilationValue];
+}
+
+- (NSUInteger)releaseYear
+{
+    return [self cd_releaseYearValue];
 }
 
 #pragma mark - Private
