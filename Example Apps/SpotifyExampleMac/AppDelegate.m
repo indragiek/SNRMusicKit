@@ -51,7 +51,6 @@
             id<SMKPlaylist> playlist = [self.playlists objectAtIndex:selectedRow];
             NSArray *sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
             [playlist fetchTracksWithSortDescriptors:sortDescriptors predicate:nil batchSize:20 fetchlimit:0 completionHandler:^(NSArray *tracks, NSError *error) {
-                NSLog(@"%@", tracks);
                 self.tracks = tracks;
             }];
         }
