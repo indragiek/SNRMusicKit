@@ -10,6 +10,7 @@
 #import "NSObject+AssociatedObjects.h"
 #import "NSObject+SMKSpotifyAdditions.h"
 #import "NSMutableArray+SMKAdditions.h"
+#import "SMKSpotifyContentSource.h"
 
 static void* const SMKSPArtistBrowseKey = @"SMK_SPArtistBrowse";
 
@@ -46,11 +47,17 @@ static void* const SMKSPArtistBrowseKey = @"SMK_SPArtistBrowse";
     __weak SPArtist *weakSelf = self;
     [SPAsyncLoading waitUntilLoaded:browse timeout:SMKSpotifyDefaultLoadingTimeout then:^(NSArray *loadedItems, NSArray *notLoadedItems) {
         SPArtist *strongSelf = weakSelf;
-        if (handler)
-            handler([strongSelf _albumsFromBrowse:browse
-                              sortDescriptors:sortDescriptors
-                                    predicate:predicate
-                                   fetchLimit:fetchLimit], browse.loadError);
+        SMKSpotifyContentSource *source = (SMKSpotifyContentSource *)self.session;
+        dispatch_async(source.spotifyLocalQueue, ^{
+            NSArray *sorted = [strongSelf _albumsFromBrowse:browse
+                                            sortDescriptors:sortDescriptors
+                                                  predicate:predicate
+                                                 fetchLimit:fetchLimit];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if(handler)
+                    handler(sorted, browse.loadError);
+            });
+        });
     }];
 }
 

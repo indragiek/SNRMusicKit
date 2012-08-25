@@ -175,39 +175,37 @@
     dispatch_async(waitingQueue, ^{
         dispatch_group_t group = dispatch_group_create();
         NSMutableArray *playlistTracks = [NSMutableArray array];
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            SPPlaylist *strongSelf = weakSelf;
-            [strongSelf.items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                id item = [(SPPlaylistItem *)obj item];
-                if ([item isKindOfClass:[SPTrack class]]) {
-                    [playlistTracks addObject:item];
-                } else if ([item isKindOfClass:[SPAlbum class]]) {
-                    dispatch_group_enter(group);
-                    [(SPAlbum *)item fetchTracksWithSortDescriptors:nil predicate:nil batchSize:0 fetchLimit:0 completionHandler:^(NSArray *tracks, NSError *error) {
-                        [playlistTracks addObjectsFromArray:tracks];
-                        dispatch_group_leave(group);
-                    }];
-                } else if ([item isKindOfClass:[SPArtist class]]) {
-                    dispatch_group_enter(group);
-                    [(SPArtist *)item fetchAlbumsWithSortDescriptors:nil predicate:nil batchSize:0 fetchLimit:0 completionHandler:^(NSArray *albums, NSError *error) {
-                        [albums enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                            dispatch_group_enter(group);
-                            [(SPAlbum *)obj fetchTracksWithSortDescriptors:nil predicate:nil batchSize:0 fetchLimit:0 completionHandler:^(NSArray *tracks, NSError *error) {
-                                [playlistTracks addObjectsFromArray:tracks];
-                                dispatch_group_leave(group);
-                            }];
+        SPPlaylist *strongSelf = weakSelf;
+        [strongSelf.items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            id item = [(SPPlaylistItem *)obj item];
+            if ([item isKindOfClass:[SPTrack class]]) {
+                [playlistTracks addObject:item];
+            } else if ([item isKindOfClass:[SPAlbum class]]) {
+                dispatch_group_enter(group);
+                [(SPAlbum *)item fetchTracksWithSortDescriptors:nil predicate:nil batchSize:0 fetchLimit:0 completionHandler:^(NSArray *tracks, NSError *error) {
+                    [playlistTracks addObjectsFromArray:tracks];
+                    dispatch_group_leave(group);
+                }];
+            } else if ([item isKindOfClass:[SPArtist class]]) {
+                dispatch_group_enter(group);
+                [(SPArtist *)item fetchAlbumsWithSortDescriptors:nil predicate:nil batchSize:0 fetchLimit:0 completionHandler:^(NSArray *albums, NSError *error) {
+                    [albums enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                        dispatch_group_enter(group);
+                        [(SPAlbum *)obj fetchTracksWithSortDescriptors:nil predicate:nil batchSize:0 fetchLimit:0 completionHandler:^(NSArray *tracks, NSError *error) {
+                            [playlistTracks addObjectsFromArray:tracks];
+                            dispatch_group_leave(group);
                         }];
-                        dispatch_group_leave(group);
                     }];
-                } else if ([item isKindOfClass:[SPPlaylist class]]) {
-                    dispatch_group_enter(group);
-                    [(SPPlaylist *)item fetchTracksWithSortDescriptors:nil predicate:nil batchSize:0 fetchlimit:0 completionHandler:^(NSArray *tracks, NSError *error) {
-                        [playlistTracks addObjectsFromArray:tracks];
-                        dispatch_group_leave(group);
-                    }];
-                }
-            }];
-        });
+                    dispatch_group_leave(group);
+                }];
+            } else if ([item isKindOfClass:[SPPlaylist class]]) {
+                dispatch_group_enter(group);
+                [(SPPlaylist *)item fetchTracksWithSortDescriptors:nil predicate:nil batchSize:0 fetchlimit:0 completionHandler:^(NSArray *tracks, NSError *error) {
+                    [playlistTracks addObjectsFromArray:tracks];
+                    dispatch_group_leave(group);
+                }];
+            }
+        }];
         dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
         dispatch_release(group);
         [playlistTracks SMK_processWithSortDescriptors:sortDescriptors predicate:predicate fetchLimit:fetchLimit];

@@ -11,6 +11,7 @@
 #import "SMKSpotifyConstants.h"
 #import "NSObject+AssociatedObjects.h"
 #import "NSMutableArray+SMKAdditions.h"
+#import "SMKSpotifyContentSource.h"
 
 static void* const SMKSPAlbumBrowseKey = @"SMK_SPAlbumBrowse";
 
@@ -43,11 +44,17 @@ static void* const SMKSPAlbumBrowseKey = @"SMK_SPAlbumBrowse";
     __weak SPAlbum *weakSelf = self;
     [SPAsyncLoading waitUntilLoaded:browse timeout:SMKSpotifyDefaultLoadingTimeout then:^(NSArray *loadedItems, NSArray *notLoadedItems) {
         SPAlbum *strongSelf = weakSelf;
-        if(handler)
-            handler([strongSelf _tracksFromBrowse:browse
-                              sortDescriptors:sortDescriptors
-                                    predicate:predicate
-                                   fetchLimit:fetchLimit], browse.loadError);
+        SMKSpotifyContentSource *source = (SMKSpotifyContentSource *)self.session;
+        dispatch_async(source.spotifyLocalQueue, ^{
+            NSArray *sorted = [strongSelf _tracksFromBrowse:browse
+                                            sortDescriptors:sortDescriptors
+                                                  predicate:predicate
+                                                 fetchLimit:fetchLimit];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if(handler)
+                    handler(sorted, browse.loadError);
+            });
+        });
     }];
 }
 
