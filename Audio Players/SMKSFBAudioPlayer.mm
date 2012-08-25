@@ -107,6 +107,7 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
         AudioDecoder::SetAutomaticallyOpenDecoders(true);
         _renderTimer = [NSTimer timerWithTimeInterval:1.f target:self selector:@selector(_renderTimerFired:) userInfo:nil repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:_renderTimer forMode:NSRunLoopCommonModes];
+        self.seekTimeInterval = SMKPlayerDefaultSeekTimeInterval;
     }
     return self;
 }

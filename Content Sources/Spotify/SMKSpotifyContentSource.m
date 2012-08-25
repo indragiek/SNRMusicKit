@@ -7,9 +7,11 @@
 //
 
 #import "SMKSpotifyContentSource.h"
+#import "SMKSpotifyConstants.h"
+#import "SMKSpotifyPlayer.h"
+
 #import "NSObject+SMKSpotifyAdditions.h"
 #import "NSMutableArray+SMKAdditions.h"
-#import "SMKSpotifyConstants.h"
 
 @implementation SMKSpotifyContentSource {
     dispatch_queue_t _localQueue;
@@ -18,6 +20,7 @@
 
 - (NSString *)name { return @"Spotify"; }
 + (BOOL)supportsBatching { return NO; }
++ (Class)defaultPlayerClass { return [SMKSpotifyPlayer class]; }
 
 - (NSArray *)playlistsWithSortDescriptors:(NSArray *)sortDescriptors
                                 batchSize:(NSUInteger)batchSize

@@ -35,6 +35,7 @@
             SMKAVQueuePlayer *strongSelf = weakSelf;
             strongSelf.playbackTime = (NSTimeInterval)CMTimeGetSeconds(time);
         }];
+        self.seekTimeInterval = SMKPlayerDefaultSeekTimeInterval;
     }
     return self;
 }
@@ -170,6 +171,7 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
+    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     if (object == self && [keyPath isEqualToString:@"rate"]) {
         float newValue = [[change valueForKey:NSKeyValueChangeNewKey] floatValue];
         [self willChangeValueForKey:@"playing"];

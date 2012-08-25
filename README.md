@@ -44,7 +44,7 @@ git submodule update
     <td>MPMediaLibrary</td><td>✔</td><td>✘</td><td>✘</td>
   </tr>
   <tr>
-    <td>Spotify</td><td>✔</td><td>✔</td><td>✘</td>
+    <td>Spotify</td><td>✔</td><td>✔</td><td>✔</td>
   </tr>
   <tr>
     <td>Rdio</td><td>✔</td><td>✘</td><td>✘</td>
@@ -70,7 +70,7 @@ git submodule update
     <td>MPMusicPlayerController</td><td>✔</td><td>✘</td><td>✘</td>
   </tr>
   <tr>
-    <td>Spotify SDK^2</td><td>✔</td><td>✔</td><td>✘</td>
+    <td>Spotify SDK^2</td><td>✔</td><td>✔</td><td>✔</td>
   </tr>
   <tr>
     <td>Rdio SDK^2</td><td>✔</td><td>✘</td><td>✘</td>

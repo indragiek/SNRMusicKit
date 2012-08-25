@@ -26,6 +26,12 @@
 		0335CC3215E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0335CC3015E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.h */; };
 		0335CC3315E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0335CC3115E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.m */; };
 		0335CC3415E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0335CC3115E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.m */; };
+		03576BAE15E95C1B00316930 /* SMKSpotifyPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 03576BAC15E95C1B00316930 /* SMKSpotifyPlayer.h */; };
+		03576BAF15E95C1B00316930 /* SMKSpotifyPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 03576BAD15E95C1B00316930 /* SMKSpotifyPlayer.m */; };
+		03576BB015E95C1B00316930 /* SMKSpotifyPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 03576BAD15E95C1B00316930 /* SMKSpotifyPlayer.m */; };
+		03576BB315E961A000316930 /* SMKGlobalConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 03576BB115E961A000316930 /* SMKGlobalConstants.h */; };
+		03576BB415E961A000316930 /* SMKGlobalConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 03576BB215E961A000316930 /* SMKGlobalConstants.m */; };
+		03576BB515E961A000316930 /* SMKGlobalConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 03576BB215E961A000316930 /* SMKGlobalConstants.m */; };
 		0369921815E3EB0B003BCCBE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036991F215E3EAE1003BCCBE /* Cocoa.framework */; };
 		0369921E15E3EB0B003BCCBE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0369921C15E3EB0B003BCCBE /* InfoPlist.strings */; };
 		0369922215E3EB0B003BCCBE /* SNRMusicKitMac.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369922115E3EB0B003BCCBE /* SNRMusicKitMac.m */; };
@@ -352,6 +358,10 @@
 		030CE8D515E5CE0000AC12BE /* SMKConvenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKConvenience.h; path = "Common Headers/SMKConvenience.h"; sourceTree = "<group>"; };
 		0335CC3015E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+SMKAdditions.h"; path = "Categories/NSMutableArray+SMKAdditions.h"; sourceTree = "<group>"; };
 		0335CC3115E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+SMKAdditions.m"; path = "Categories/NSMutableArray+SMKAdditions.m"; sourceTree = "<group>"; };
+		03576BAC15E95C1B00316930 /* SMKSpotifyPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKSpotifyPlayer.h; path = "Audio Players/SMKSpotifyPlayer.h"; sourceTree = "<group>"; };
+		03576BAD15E95C1B00316930 /* SMKSpotifyPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKSpotifyPlayer.m; path = "Audio Players/SMKSpotifyPlayer.m"; sourceTree = "<group>"; };
+		03576BB115E961A000316930 /* SMKGlobalConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKGlobalConstants.h; path = "Common Headers/SMKGlobalConstants.h"; sourceTree = "<group>"; };
+		03576BB215E961A000316930 /* SMKGlobalConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKGlobalConstants.m; path = "Common Headers/SMKGlobalConstants.m"; sourceTree = "<group>"; };
 		036991F215E3EAE1003BCCBE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		036991F515E3EAE1003BCCBE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		036991F615E3EAE1003BCCBE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -886,6 +896,8 @@
 				03FBEC9E15E6E0C100A67DEE /* SMKAVQueuePlayer.m */,
 				03FBECA215E6E2EB00A67DEE /* SMKAVPlayerItem.h */,
 				03FBECA315E6E2EB00A67DEE /* SMKAVPlayerItem.m */,
+				03576BAC15E95C1B00316930 /* SMKSpotifyPlayer.h */,
+				03576BAD15E95C1B00316930 /* SMKSpotifyPlayer.m */,
 			);
 			name = "Audio Players";
 			sourceTree = "<group>";
@@ -897,6 +909,8 @@
 				03F795C115E47A3C00C9F652 /* SMKErrorCodes.h */,
 				03F795C915E47BC400C9F652 /* SMKErrorCodes.m */,
 				03EB018D15E86728001F3A02 /* SMKPlatformImports.h */,
+				03576BB115E961A000316930 /* SMKGlobalConstants.h */,
+				03576BB215E961A000316930 /* SMKGlobalConstants.m */,
 			);
 			name = "Common Headers";
 			sourceTree = "<group>";
@@ -1108,6 +1122,8 @@
 				03EB019B15E88746001F3A02 /* SPAlbum+SMKAlbum.h in Headers */,
 				03EB01A015E88F17001F3A02 /* SPArtist+SMKArtist.h in Headers */,
 				0335CC3215E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.h in Headers */,
+				03576BAE15E95C1B00316930 /* SMKSpotifyPlayer.h in Headers */,
+				03576BB315E961A000316930 /* SMKGlobalConstants.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1400,6 +1416,8 @@
 				03EB019C15E88746001F3A02 /* SPAlbum+SMKAlbum.m in Sources */,
 				03EB01A115E88F17001F3A02 /* SPArtist+SMKArtist.m in Sources */,
 				0335CC3315E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.m in Sources */,
+				03576BAF15E95C1B00316930 /* SMKSpotifyPlayer.m in Sources */,
+				03576BB415E961A000316930 /* SMKGlobalConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1444,6 +1462,8 @@
 				03EB019D15E88746001F3A02 /* SPAlbum+SMKAlbum.m in Sources */,
 				03EB01A215E88F17001F3A02 /* SPArtist+SMKArtist.m in Sources */,
 				0335CC3415E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.m in Sources */,
+				03576BB015E95C1B00316930 /* SMKSpotifyPlayer.m in Sources */,
+				03576BB515E961A000316930 /* SMKGlobalConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
