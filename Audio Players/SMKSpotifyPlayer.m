@@ -45,6 +45,7 @@
     } else if ([keyPath isEqualToString:@"trackPosition"] && object == self) {
         [self willChangeValueForKey:@"playbackTime"];
         _playbackTime = [newValue doubleValue];
+        [self didChangeValueForKey:@"playbackTime"];
     } else if ([keyPath isEqualToString:@"currentTrack"]) {
         if (!newValue) {
             if (self.finishedTrackBlock)
