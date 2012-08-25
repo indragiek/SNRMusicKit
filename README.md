@@ -70,9 +70,6 @@ git submodule update
     <td>MPMusicPlayerController</td><td>✔</td><td>✘</td><td>✘</td>
   </tr>
   <tr>
-    <td>MPMoviePlayerController^1</td><td>✔</td><td>✘</td><td>✘</td>
-  </tr>
-  <tr>
     <td>Spotify SDK^2</td><td>✔</td><td>✔</td><td>✘</td>
   </tr>
   <tr>
