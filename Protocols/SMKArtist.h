@@ -8,10 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "SMKContentObject.h"
-#import "SMKArtworkSource.h"
-#import "SMKWebObject.h"
 
-@protocol SMKArtist <NSObject, SMKContentObject, SMKArtworkSource, SMKWebObject>
+@protocol SMKArtist <NSObject, SMKContentObject>
 @required
 /**
  @param error An NSError object with error information if it was unsuccessful.

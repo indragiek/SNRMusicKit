@@ -6,4 +6,5 @@
     #import <Cocoa/Cocoa.h>
     #import "SMKErrorCodes.h"
     #import "SMKConvenience.h"
+    #import "SMKPlatformImports.h"
 #endif

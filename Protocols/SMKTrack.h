@@ -12,9 +12,8 @@
 #import "SMKContentSource.h"
 
 #import "SMKContentObject.h"
-#import "SMKWebObject.h"
 
-@protocol SMKTrack <NSObject, SMKContentObject, SMKWebObject>
+@protocol SMKTrack <NSObject, SMKContentObject>
 @required
 /**
  @return The parent artist of the track.
@@ -86,11 +85,4 @@
  @return Whether the track is free of explicit content.
  */
 - (NSNumber *)isClean;
-
-/**
- Plays the tracks
- @return Whether the track was successfully played.
- @param error An NSError object with error information if it was unsuccessful.
- */
-- (BOOL)playWithError:(NSError **)error;
 @end

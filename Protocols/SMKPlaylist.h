@@ -12,10 +12,8 @@
 #import "SMKUser.h"
 
 #import "SMKContentObject.h"
-#import "SMKArtworkSource.h"
-#import "SMKWebObject.h"
 
-@protocol SMKPlaylist <NSObject, SMKContentObject, SMKArtworkSource, SMKWebObject>
+@protocol SMKPlaylist <NSObject, SMKContentObject>
 @required
 /**
  @param error An NSError object with error information if it was unsuccessful.
@@ -70,26 +68,33 @@
  @param index The index to move the items to.
  @param handler A handler block to be called when the operation completes
  */
-- (void)moveTracksAtIndexes:(NSIndexSet*)indexes toIndex:(NSUInteger)index completionHandler:(void(^)(NSError *error))handler;
+- (void)moveTracksAtIndexes:(NSIndexSet*)indexes
+                    toIndex:(NSUInteger)index
+          completionHandler:(void(^)(NSError *error))handler;
 
 /**
  @param tracks The tracks to move
  @param index The index to move the tracks to.
  @param handler A handler block to be called when the operation completes
  */
-- (void)moveTracks:(NSArray*)tracks toIndex:(NSUInteger)index completionHandler:(void(^)(NSError *error))handler;
+- (void)moveTracks:(NSArray*)tracks
+           toIndex:(NSUInteger)index
+ completionHandler:(void(^)(NSError *error))handler;
 
 /**
  @param track The tracks to add to the playlist.
  @param index The index to add the tracks to.
  @param handler A handler block to be called when the operation completes
  */
-- (void)addTracks:(NSArray*)tracks atIndex:(NSUInteger)index completionHandler:(void(^)(NSError *error))handler;
+- (void)addTracks:(NSArray*)tracks
+          atIndex:(NSUInteger)index
+completionHandler:(void(^)(NSError *error))handler;
 
 /**
  @param indexes The indexes of the tracks to remove
  @param handler A handler block to be called when the operation completes
  */
-- (void)removeTracksAtIndexes:(NSIndexSet *)indexes completionHandler:(void(^)(NSError *error))handler;
+- (void)removeTracksAtIndexes:(NSIndexSet *)indexes
+            completionHandler:(void(^)(NSError *error))handler;
 
 @end

@@ -11,10 +11,8 @@
 #import "SMKArtist.h"
 
 #import "SMKContentObject.h"
-#import "SMKArtworkSource.h"
-#import "SMKWebObject.h"
 
-@protocol SMKAlbum <NSObject, SMKContentObject, SMKArtworkSource, SMKWebObject>
+@protocol SMKAlbum <NSObject, SMKContentObject>
 @required
 /**
  @return The artist of the album.
