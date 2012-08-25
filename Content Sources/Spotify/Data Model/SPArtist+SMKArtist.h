@@ -9,6 +9,7 @@
 #import <CocoaLibSpotify/CocoaLibSpotify.h>
 #import "SMKArtist.h"
 #import "SMKWebObject.h"
+#import "SMKArtworkObject.h"
 
-@interface SPArtist (SMKArtist) <SMKArtist, SMKWebObject>
+@interface SPArtist (SMKArtist) <SMKArtist, SMKWebObject, SMKArtworkObject>
 @end

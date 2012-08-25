@@ -8,7 +8,6 @@
 
 #import "NSObject+SMKSpotifyAdditions.h"
 #import "NSObject+SMKAdditions.h"
-#import "SMKSpotifyConstants.h"
 #import <CocoaLibSpotify/CocoaLibSpotify.h>
 
 @implementation NSObject (SMKSpotifyAdditions)

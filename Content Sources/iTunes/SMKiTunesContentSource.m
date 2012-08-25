@@ -33,7 +33,6 @@ static NSUInteger const SMKiTunesContentSourceDefaultBatchSize = 20;
         self.operationQueue = [NSOperationQueue new];
         [self.operationQueue setMaxConcurrentOperationCount:1];
         _backgroundQueue = dispatch_queue_create("com.indragie.SNRMusicKit.SNRiTunesContentSource", DISPATCH_QUEUE_SERIAL);
-        dispatch_set_target_queue(_backgroundQueue, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0));
         self.syncPlaylists = YES;
         [self sync];
     }

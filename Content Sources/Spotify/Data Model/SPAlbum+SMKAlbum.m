@@ -9,10 +9,9 @@
 #import "SPAlbum+SMKAlbum.h"
 #import "NSObject+SMKSpotifyAdditions.h"
 #import "SMKSpotifyConstants.h"
+#import "NSObject+AssociatedObjects.h"
 
-@interface SPAlbum (SMKInternal)
-@property (nonatomic, readwrite, strong) SPSession *session;
-@end
+static void* const SMKSPAlbumBrowseKey = @"SMK_SPAlbumBrowse";
 
 @implementation SPAlbum (SMKAlbum)
 
@@ -24,7 +23,7 @@
                             fetchLimit:(NSUInteger)fetchLimit
                                  error:(NSError **)error
 {
-    SPAlbumBrowse *browse = [SPAlbumBrowse browseAlbum:self inSession:self.session];
+    SPAlbumBrowse *browse = [self _associatedAlbumBrowse];
     [browse SMK_spotifyWaitUntilLoaded];
     *error = browse.loadError;
     return [self _tracksFromBrowse:browse
@@ -39,11 +38,12 @@
                             fetchLimit:(NSUInteger)fetchLimit
                      completionHandler:(void(^)(NSArray *tracks, NSError *error))handler
 {
-    SPAlbumBrowse *browse = [SPAlbumBrowse browseAlbum:self inSession:self.session];
+    SPAlbumBrowse *browse = [self _associatedAlbumBrowse];
     __weak SPAlbum *weakSelf = self;
     [SPAsyncLoading waitUntilLoaded:browse timeout:SMKSpotifyDefaultLoadingTimeout then:^(NSArray *loadedItems, NSArray *notLoadedItems) {
         SPAlbum *strongSelf = weakSelf;
-        handler([strongSelf _tracksFromBrowse:browse
+        if(handler)
+            handler([strongSelf _tracksFromBrowse:browse
                               sortDescriptors:sortDescriptors
                                     predicate:predicate
                                    fetchLimit:fetchLimit], browse.loadError);
@@ -97,7 +97,8 @@
         SPAlbum *strongSelf = weakSelf;
         SPImage *image = [strongSelf _imageForSize:size];
         [SPAsyncLoading waitUntilLoaded:image timeout:SMKSpotifyDefaultLoadingTimeout then:^(NSArray *loadedItems, NSArray *notLoadedItems) {
-            handler(image.image, nil);
+            if (handler)
+                handler(image.image, nil);
         }];
     }];
 }
@@ -134,5 +135,17 @@
             return nil;
             break;
     }
+}
+
+- (SPAlbumBrowse *)_associatedAlbumBrowse
+{
+    __block SPAlbumBrowse *browse = [self associatedValueForKey:SMKSPAlbumBrowseKey];
+    if (!browse) {
+        dispatch_sync([SPSession libSpotifyQueue], ^{
+            browse = [SPAlbumBrowse browseAlbum:self inSession:self.session];
+        });
+        [self associateValue:browse withKey:SMKSPAlbumBrowseKey];
+    }
+    return browse;
 }
 @end

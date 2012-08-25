@@ -9,6 +9,7 @@
 #import "SPTrack+SMKTrack.h"
 #import "NSObject+SMKSpotifyAdditions.h"
 #import "SPAlbum+SMKAlbum.h"
+#import "SPArtist+SMKArtist.h"
 
 @interface SPTrack (SMKInternal)
 @property (nonatomic, readwrite, assign) __unsafe_unretained SPSession *session;
