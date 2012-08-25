@@ -50,7 +50,10 @@
     __weak SPPlaylist *weakSelf = self;
     [SPAsyncLoading waitUntilLoaded:self timeout:kSPAsyncLoadingDefaultTimeout then:^(NSArray *loadedItems, NSArray *notLoadedItems) {
         SPPlaylist *strongSelf = weakSelf;
-        [strongSelf _asyncFlattenedTracksWithSortDescriptors:sortDescriptors predicate:predicate fetchLimit:fetchLimit completionHandler:handler];
+        [strongSelf _asyncFlattenedTracksWithSortDescriptors:sortDescriptors
+                                                   predicate:predicate
+                                                  fetchLimit:fetchLimit
+                                           completionHandler:handler];
     }];
 }
 
@@ -171,8 +174,8 @@
                                completionHandler:(void(^)(NSArray *tracks, NSError *error))handler
 {
     __weak SPPlaylist *weakSelf = self;
-    dispatch_queue_t waitingQueue = [(SMKSpotifyContentSource *)self.session _spotifyWaitingQueue];
-    dispatch_async(waitingQueue, ^{
+    dispatch_queue_t localQueue = [(SMKSpotifyContentSource *)self.session spotifyLocalQueue];
+    dispatch_async(localQueue, ^{
         dispatch_group_t group = dispatch_group_create();
         NSMutableArray *playlistTracks = [NSMutableArray array];
         SPPlaylist *strongSelf = weakSelf;
@@ -206,13 +209,14 @@
                 }];
             }
         }];
-        dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
-        dispatch_release(group);
-        [playlistTracks SMK_processWithSortDescriptors:sortDescriptors predicate:predicate fetchLimit:fetchLimit];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (handler)
-                handler(playlistTracks, nil);
+        dispatch_group_notify(group, localQueue, ^{
+            [playlistTracks SMK_processWithSortDescriptors:sortDescriptors predicate:predicate fetchLimit:fetchLimit];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (handler)
+                    handler(playlistTracks, nil);
+            });
         });
+        dispatch_release(group);
     });
 }
 @end
