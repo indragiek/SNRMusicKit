@@ -7,6 +7,7 @@
 //
 
 #import "NSManagedObjectContext+SMKAdditions.h"
+#import "SMKConvenience.h"
 
 @implementation NSManagedObjectContext (SMKAdditions)
 - (BOOL)SMK_saveChanges

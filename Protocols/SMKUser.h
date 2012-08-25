@@ -9,11 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "SMKContentSource.h"
 #import "SMKContentObject.h"
-#import "SMKArtworkSource.h"
-#import "SMKWebObject.h"
 
-@protocol SMKUser <NSObject, SMKContentObject, SMKArtworkSource, SMKWebObject>
-@required
+@protocol SMKUser <NSObject, SMKContentObject>
 @optional
 /**
  @return The username of the user

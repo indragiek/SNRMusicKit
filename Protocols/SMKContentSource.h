@@ -21,6 +21,11 @@
 + (BOOL)supportsBatching;
 
 /**
+ @return The class of the default player for this content source
+ */
++ (Class)defaultPlayerClass;
+
+/**
  @param error An NSError object with error information if it was unsuccessful.
  @param sortDescriptors Array of NSSortDescriptor objects used to sort the content
  @param predicate A predicate to filter the results with

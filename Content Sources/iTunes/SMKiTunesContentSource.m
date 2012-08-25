@@ -7,18 +7,22 @@
 //
 
 #import "SMKiTunesContentSource.h"
+#import "SMKiTunesSyncOperation.h"
+#import "SMKAVQueuePlayer.h"
 
 #import "NSBundle+SMKAdditions.h"
 #import "NSURL+SMKAdditions.h"
 #import "NSError+SMKAdditions.h"
 #import "NSManagedObjectContext+SMKAdditions.h"
-#import "SMKiTunesSyncOperation.h"
+#import "NSObject+SMKAdditions.h"
+
+@interface SMKiTunesContentSource ()
+@property (nonatomic, strong) NSOperationQueue *operationQueue;
+@end
 
 static NSUInteger const SMKiTunesContentSourceDefaultBatchSize = 20;
 
 @implementation SMKiTunesContentSource {
-    NSOperationQueue *_operationQueue;
-    dispatch_semaphore_t _waiter;
     dispatch_queue_t _backgroundQueue;
 }
 
@@ -26,8 +30,8 @@ static NSUInteger const SMKiTunesContentSourceDefaultBatchSize = 20;
 {
     if ((self = [super init])) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_applicationWillTerminate:) name:NSApplicationWillTerminateNotification object:[NSApplication sharedApplication]];
-        _operationQueue = [NSOperationQueue new];
-        [_operationQueue setMaxConcurrentOperationCount:1];
+        self.operationQueue = [NSOperationQueue new];
+        [self.operationQueue setMaxConcurrentOperationCount:1];
         _backgroundQueue = dispatch_queue_create("com.indragie.SNRMusicKit.SNRiTunesContentSource", DISPATCH_QUEUE_SERIAL);
         dispatch_set_target_queue(_backgroundQueue, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0));
         self.syncPlaylists = YES;
@@ -39,8 +43,6 @@ static NSUInteger const SMKiTunesContentSourceDefaultBatchSize = 20;
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    if (_waiter)
-        dispatch_release(_waiter);
     if (_backgroundQueue)
         dispatch_release(_backgroundQueue);
 }
@@ -51,13 +53,16 @@ static NSUInteger const SMKiTunesContentSourceDefaultBatchSize = 20;
 
 + (BOOL)supportsBatching { return YES; }
 
++ (Class)defaultPlayerClass { return [SMKAVQueuePlayer class]; }
+
 - (NSArray *)playlistsWithSortDescriptors:(NSArray *)sortDescriptors
                                 batchSize:(NSUInteger)batchSize
                                fetchLimit:(NSUInteger)fetchLimit
                                 predicate:(NSPredicate *)predicate
                                 withError:(NSError **)error
 {
-    [self _createSemaphoreAndWait];
+    if ([self.operationQueue operationCount] != 0)
+        [self SMK_semaphoreWait:DISPATCH_TIME_FOREVER];
     // Fetch the objects and return
     return [self.mainQueueObjectContext SMK_fetchWithEntityName:SMKiTunesEntityNamePlaylist
                                               sortDescriptors:sortDescriptors
@@ -75,7 +80,8 @@ static NSUInteger const SMKiTunesContentSourceDefaultBatchSize = 20;
     __weak SMKiTunesContentSource *weakSelf = self;
     dispatch_async(_backgroundQueue, ^{
         SMKiTunesContentSource *strongSelf = weakSelf;
-        [strongSelf _createSemaphoreAndWait];
+        if ([strongSelf.operationQueue operationCount] != 0)
+            [strongSelf SMK_semaphoreWait:DISPATCH_TIME_FOREVER];
         [strongSelf.backgroundQueueObjectContext SMK_asyncFetchObjectIDsWithEntityName:SMKiTunesEntityNamePlaylist
                                                                        sortDescriptors:sortDescriptors
                                                                              predicate:predicate
@@ -92,7 +98,7 @@ static NSUInteger const SMKiTunesContentSourceDefaultBatchSize = 20;
 - (NSArray *)executeFetchRequestSynchronously:(NSFetchRequest *)request
                                         error:(NSError **)error
 {
-    [self _createSemaphoreAndWait];
+    [self SMK_semaphoreWait:DISPATCH_TIME_FOREVER];
     return [self.mainQueueObjectContext SMK_fetchWithFetchRequest:request error:error];
 }
  
@@ -102,7 +108,7 @@ static NSUInteger const SMKiTunesContentSourceDefaultBatchSize = 20;
     __weak SMKiTunesContentSource *weakSelf = self;
     dispatch_async(_backgroundQueue, ^{
         SMKiTunesContentSource *strongSelf = weakSelf;
-        [strongSelf _createSemaphoreAndWait];
+        [strongSelf SMK_semaphoreWait:DISPATCH_TIME_FOREVER];
         [strongSelf.backgroundQueueObjectContext SMK_asyncFetchWithFetchRequest:request completionHandler:^(NSArray *results, NSError *error) {
             NSArray *objects = [strongSelf.mainQueueObjectContext SMK_objectsFromObjectIDs:results];
             if (handler) handler(objects, error);
@@ -144,29 +150,13 @@ static NSUInteger const SMKiTunesContentSourceDefaultBatchSize = 20;
     SMKiTunesSyncOperation *operation = [SMKiTunesSyncOperation new];
     [operation setCompletionBlock:^(SMKiTunesSyncOperation *op, NSUInteger count) {
         SMKiTunesContentSource *strongSelf = weakSelf;
-        if (strongSelf->_waiter) {
-            dispatch_semaphore_signal(strongSelf->_waiter);
+        if ([strongSelf SMK_semaphoreExists]) {
+            [strongSelf SMK_semaphoreSignal];
         }
     }];
     [operation setContentSource:self];
     [operation setSyncPlaylists:self.syncPlaylists];
     [_operationQueue addOperation:operation];
-}
-
-#pragma mark - Private
-
-- (void)_createSemaphoreAndWait
-{
-    // Create a semaphore if there's an operation
-    if ([_operationQueue operationCount] != 0 && !_waiter) {
-        _waiter = dispatch_semaphore_create(0);
-        dispatch_semaphore_wait(_waiter, DISPATCH_TIME_FOREVER);
-    }
-    // Release the semaphore after we're done with it
-    if (_waiter) {
-        dispatch_release(_waiter);
-        _waiter = NULL;
-    }
 }
 
 #pragma mark - Core Data Boilerplate

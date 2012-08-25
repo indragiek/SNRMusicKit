@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @protocol SMKWebObject <NSObject>
-@optional
+@required
 /**
  @return The URL to the web page for this content object.
  */
