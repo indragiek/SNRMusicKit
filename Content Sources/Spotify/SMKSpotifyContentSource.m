@@ -12,7 +12,6 @@
 #import "SMKSpotifyConstants.h"
 
 @implementation SMKSpotifyContentSource {
-    dispatch_queue_t _networkQueue;
     dispatch_queue_t _localQueue;
 }
 #pragma mark - SMKContentSource
@@ -56,19 +55,9 @@
 {
     if (_localQueue)
         dispatch_release(_localQueue);
-    if (_networkQueue)
-        dispatch_release(_networkQueue);
 }
 
 #pragma mark - Accessors
-
-- (dispatch_queue_t)spotifyNetworkQueue
-{
-    if (!_networkQueue) {
-        _networkQueue = dispatch_queue_create("com.indragie.SNRMusicKit.spotifyNetworkQueue", DISPATCH_QUEUE_SERIAL);
-    }
-    return _networkQueue;
-}
 
 - (dispatch_queue_t)spotifyLocalQueue
 {
