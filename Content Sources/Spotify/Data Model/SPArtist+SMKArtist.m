@@ -9,6 +9,7 @@
 #import "SPArtist+SMKArtist.h"
 #import "NSObject+AssociatedObjects.h"
 #import "NSObject+SMKSpotifyAdditions.h"
+#import "NSMutableArray+SMKAdditions.h"
 
 static void* const SMKSPArtistBrowseKey = @"SMK_SPArtistBrowse";
 
@@ -123,12 +124,7 @@ static void* const SMKSPArtistBrowseKey = @"SMK_SPArtistBrowse";
                     fetchLimit:(NSUInteger)limit
 {
     NSMutableArray *albums = [NSMutableArray arrayWithArray:browse.albums];
-    if (predicate)
-        [albums filterUsingPredicate:predicate];
-    if (sortDescriptors)
-        [albums sortUsingDescriptors:sortDescriptors];
-    if (limit > [albums count])
-        [albums removeObjectsInRange:NSMakeRange(limit, [albums count] - limit)];
+    [albums SMK_processWithSortDescriptors:sortDescriptors predicate:predicate fetchLimit:limit];
     return albums;
 }
 

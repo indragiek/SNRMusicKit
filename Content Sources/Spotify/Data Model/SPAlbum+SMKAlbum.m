@@ -10,6 +10,7 @@
 #import "NSObject+SMKSpotifyAdditions.h"
 #import "SMKSpotifyConstants.h"
 #import "NSObject+AssociatedObjects.h"
+#import "NSMutableArray+SMKAdditions.h"
 
 static void* const SMKSPAlbumBrowseKey = @"SMK_SPAlbumBrowse";
 
@@ -111,12 +112,7 @@ static void* const SMKSPAlbumBrowseKey = @"SMK_SPAlbumBrowse";
                fetchLimit:(NSUInteger)limit
 {
     NSMutableArray *tracks = [NSMutableArray arrayWithArray:browse.tracks];
-    if (predicate)
-        [tracks filterUsingPredicate:predicate];
-    if (sortDescriptors)
-        [tracks sortUsingDescriptors:sortDescriptors];
-    if (limit > [tracks count])
-        [tracks removeObjectsInRange:NSMakeRange(limit, [tracks count] - limit)];
+    [tracks SMK_processWithSortDescriptors:sortDescriptors predicate:predicate fetchLimit:limit];
     return tracks;
 }
 

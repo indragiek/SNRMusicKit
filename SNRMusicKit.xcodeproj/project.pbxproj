@@ -23,6 +23,9 @@
 		030CE8D315E5C31F00AC12BE /* NSString+SMKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 030CE8D115E5C31F00AC12BE /* NSString+SMKAdditions.m */; };
 		030CE8D415E5C31F00AC12BE /* NSString+SMKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 030CE8D115E5C31F00AC12BE /* NSString+SMKAdditions.m */; };
 		030CE8D615E5CE0000AC12BE /* SMKConvenience.h in Headers */ = {isa = PBXBuildFile; fileRef = 030CE8D515E5CE0000AC12BE /* SMKConvenience.h */; };
+		0335CC3215E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0335CC3015E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.h */; };
+		0335CC3315E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0335CC3115E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.m */; };
+		0335CC3415E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0335CC3115E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.m */; };
 		0369921815E3EB0B003BCCBE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036991F215E3EAE1003BCCBE /* Cocoa.framework */; };
 		0369921E15E3EB0B003BCCBE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0369921C15E3EB0B003BCCBE /* InfoPlist.strings */; };
 		0369922215E3EB0B003BCCBE /* SNRMusicKitMac.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369922115E3EB0B003BCCBE /* SNRMusicKitMac.m */; };
@@ -347,6 +350,8 @@
 		030CE8D015E5C31F00AC12BE /* NSString+SMKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+SMKAdditions.h"; path = "Categories/NSString+SMKAdditions.h"; sourceTree = "<group>"; };
 		030CE8D115E5C31F00AC12BE /* NSString+SMKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+SMKAdditions.m"; path = "Categories/NSString+SMKAdditions.m"; sourceTree = "<group>"; };
 		030CE8D515E5CE0000AC12BE /* SMKConvenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKConvenience.h; path = "Common Headers/SMKConvenience.h"; sourceTree = "<group>"; };
+		0335CC3015E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+SMKAdditions.h"; path = "Categories/NSMutableArray+SMKAdditions.h"; sourceTree = "<group>"; };
+		0335CC3115E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+SMKAdditions.m"; path = "Categories/NSMutableArray+SMKAdditions.m"; sourceTree = "<group>"; };
 		036991F215E3EAE1003BCCBE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		036991F515E3EAE1003BCCBE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		036991F615E3EAE1003BCCBE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -913,6 +918,8 @@
 				030CE8D115E5C31F00AC12BE /* NSString+SMKAdditions.m */,
 				03EB018315E86088001F3A02 /* NSObject+SMKAdditions.h */,
 				03EB018415E86088001F3A02 /* NSObject+SMKAdditions.m */,
+				0335CC3015E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.h */,
+				0335CC3115E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1100,6 +1107,7 @@
 				03EB019615E87A4A001F3A02 /* SPTrack+SMKTrack.h in Headers */,
 				03EB019B15E88746001F3A02 /* SPAlbum+SMKAlbum.h in Headers */,
 				03EB01A015E88F17001F3A02 /* SPArtist+SMKArtist.h in Headers */,
+				0335CC3215E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1391,6 +1399,7 @@
 				03EB019715E87A4A001F3A02 /* SPTrack+SMKTrack.m in Sources */,
 				03EB019C15E88746001F3A02 /* SPAlbum+SMKAlbum.m in Sources */,
 				03EB01A115E88F17001F3A02 /* SPArtist+SMKArtist.m in Sources */,
+				0335CC3315E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1434,6 +1443,7 @@
 				03EB019815E87A4A001F3A02 /* SPTrack+SMKTrack.m in Sources */,
 				03EB019D15E88746001F3A02 /* SPAlbum+SMKAlbum.m in Sources */,
 				03EB01A215E88F17001F3A02 /* SPArtist+SMKArtist.m in Sources */,
+				0335CC3415E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
