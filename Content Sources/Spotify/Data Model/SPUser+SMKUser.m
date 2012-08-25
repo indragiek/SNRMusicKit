@@ -26,7 +26,6 @@
 
 - (NSString *)name
 {
-    [self SMK_spotifyWaitUntilLoaded];
     return self.displayName;
 }
 

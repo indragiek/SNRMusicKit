@@ -36,12 +36,13 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     id newValue = [change valueForKey:NSKeyValueChangeNewKey];
     if ([keyPath isEqualToString:@"playbackSession.playing"] && object == self) {
         [self willChangeValueForKey:@"playing"];
         _playing = [newValue boolValue];
         [self didChangeValueForKey:@"playing"];
+        if (context != NULL)
+            [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     } else if ([keyPath isEqualToString:@"trackPosition"] && object == self) {
         [self willChangeValueForKey:@"playbackTime"];
         _playbackTime = [newValue doubleValue];
@@ -52,6 +53,8 @@
                 self.finishedTrackBlock(self, _oldCurrentTrack, nil);
             _oldCurrentTrack = nil;
         }
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
 

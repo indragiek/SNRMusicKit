@@ -8,6 +8,12 @@
 
 #import <CocoaLibSpotify/CocoaLibSpotify.h>
 #import "SMKContentSource.h"
+#import "SPUser+SMKUser.h"
+#import "SPPlaylist+SMKPlaylist.h"
+#import "SPTrack+SMKTrack.h"
+#import "SPAlbum+SMKAlbum.h"
+#import "SPArtist+SMKArtist.h"
+#import "SMKSpotifyPlayer.h"
 
 @interface SMKSpotifyContentSource : SPSession <SMKContentSource>
 /** This queue is used to sort and filter content before it's returned */

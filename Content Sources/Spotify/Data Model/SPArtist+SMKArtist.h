@@ -12,4 +12,5 @@
 #import "SMKArtworkObject.h"
 
 @interface SPArtist (SMKArtist) <SMKArtist, SMKWebObject, SMKArtworkObject>
+- (SPArtistBrowse *)SMK_associatedArtistBrowse;
 @end

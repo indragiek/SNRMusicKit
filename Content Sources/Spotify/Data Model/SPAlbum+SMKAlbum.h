@@ -12,4 +12,5 @@
 #import "SMKArtworkObject.h"
 
 @interface SPAlbum (SMKAlbum) <SMKAlbum, SMKWebObject, SMKArtworkObject>
+- (SPAlbumBrowse *)SMK_associatedAlbumBrowse;
 @end

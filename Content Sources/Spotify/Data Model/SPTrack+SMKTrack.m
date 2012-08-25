@@ -19,16 +19,11 @@
 
 - (id<SMKArtist>)artist
 {
-    [self SMK_spotifyWaitUntilLoaded];
-    [self.album SMK_spotifyWaitUntilLoaded];
     return self.album.artist;
 }
 
 - (NSString *)artistName
 {
-    [self SMK_spotifyWaitUntilLoaded];
-    [self.album SMK_spotifyWaitUntilLoaded];
-    [self.album.artist SMK_spotifyWaitUntilLoaded];
     return self.album.artist.name;
 }
 
