@@ -12,7 +12,8 @@
 #import "SMKSpotifyConstants.h"
 
 @implementation SMKSpotifyContentSource {
-    dispatch_queue_t _waitingQueue;
+    dispatch_queue_t _networkQueue;
+    dispatch_queue_t _localQueue;
 }
 #pragma mark - SMKContentSource
 
@@ -39,17 +40,42 @@
                         completionHandler:(void(^)(NSArray *playlists, NSError *error))handler
 {
     [SPAsyncLoading waitUntilLoaded:self timeout:SMKSpotifyDefaultLoadingTimeout then:^(NSArray *loadedItems, NSArray *notLoadedItems) {
-        if (handler)
-            handler([self _allPlaylistsWithSortDescriptors:sortDescriptors
-                                            fetchLimit:fetchLimit
-                                             predicate:predicate], nil);
+        dispatch_async(self.spotifyLocalQueue, ^{
+            NSArray *sorted = [self _allPlaylistsWithSortDescriptors:sortDescriptors
+                                                          fetchLimit:fetchLimit
+                                                           predicate:predicate];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (handler)
+                    handler(sorted, nil);
+            });
+        });
     }];
 }
 
 - (void)dealloc
 {
-    if (_waitingQueue)
-        dispatch_release(_waitingQueue);
+    if (_localQueue)
+        dispatch_release(_localQueue);
+    if (_networkQueue)
+        dispatch_release(_networkQueue);
+}
+
+#pragma mark - Accessors
+
+- (dispatch_queue_t)spotifyNetworkQueue
+{
+    if (!_networkQueue) {
+        _networkQueue = dispatch_queue_create("com.indragie.SNRMusicKit.spotifyNetworkQueue", DISPATCH_QUEUE_SERIAL);
+    }
+    return _networkQueue;
+}
+
+- (dispatch_queue_t)spotifyLocalQueue
+{
+    if (!_localQueue) {
+        _localQueue = dispatch_queue_create("com.indragie.SNRMusicKit.spotifyLocalQueue", DISPATCH_QUEUE_SERIAL);
+    }
+    return _localQueue;
 }
 
 #pragma mark - Private
@@ -60,13 +86,5 @@
     [playlists addObjectsFromArray:[self.userPlaylists flattenedPlaylists]];
     [playlists SMK_processWithSortDescriptors:sortDescriptors predicate:predicate fetchLimit:fetchLimit];
     return playlists;
-}
-
-- (dispatch_queue_t)_spotifyWaitingQueue;
-{
-    if (!_waitingQueue) {
-        _waitingQueue = dispatch_queue_create("com.indragie.SNRMusicKit.spotifyWaitingQueue", DISPATCH_QUEUE_SERIAL);
-    }
-    return _waitingQueue;
 }
 @end
