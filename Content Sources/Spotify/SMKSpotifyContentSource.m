@@ -8,6 +8,7 @@
 
 #import "SMKSpotifyContentSource.h"
 #import "NSObject+SMKSpotifyAdditions.h"
+#import "NSMutableArray+SMKAdditions.h"
 #import "SMKSpotifyConstants.h"
 
 @implementation SMKSpotifyContentSource {
@@ -57,12 +58,7 @@
 {
     NSMutableArray *playlists = [NSMutableArray arrayWithObjects:self.inboxPlaylist, self.starredPlaylist, nil];
     [playlists addObjectsFromArray:[self.userPlaylists flattenedPlaylists]];
-    if (predicate)
-        [playlists filterUsingPredicate:predicate];
-    if (sortDescriptors)
-        [playlists sortUsingDescriptors:sortDescriptors];
-    if (fetchLimit > [playlists count])
-        [playlists removeObjectsInRange:NSMakeRange(fetchLimit, [playlists count] - fetchLimit)];
+    [playlists SMK_processWithSortDescriptors:sortDescriptors predicate:predicate fetchLimit:fetchLimit];
     return playlists;
 }
 
