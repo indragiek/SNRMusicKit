@@ -11,4 +11,5 @@
 
 @interface NSObject (SMKSpotifyAdditions)
 - (void)SMK_spotifyWaitUntilLoaded;
+- (void)SMK_spotifyWaitAsyncThen:(void(^)())then;
 @end

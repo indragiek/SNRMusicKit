@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SMKPlatformImports.h"
 
 enum {
     SMKArtworkSizeSmallest = 0,

@@ -20,7 +20,7 @@ static void* const SMKObjectSemaphoreWrapperKey = @"SMK_semaphoreWrapper";
 - (void)SMK_semaphoreWait:(dispatch_time_t)time
 {
     [[self SMK_retrieveOrCreateSemaphore] wait:time];
-    [self SMK_semaphoreDestruct];
+  //  [self SMK_semaphoreDestruct];
 }
 
 - (SMKSemaphoreWrapper *)SMK_retrieveOrCreateSemaphore

@@ -171,12 +171,13 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     if (object == self && [keyPath isEqualToString:@"rate"]) {
         float newValue = [[change valueForKey:NSKeyValueChangeNewKey] floatValue];
         [self willChangeValueForKey:@"playing"];
         _playing = newValue >= 1.0;
         [self didChangeValueForKey:@"playing"];
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
 

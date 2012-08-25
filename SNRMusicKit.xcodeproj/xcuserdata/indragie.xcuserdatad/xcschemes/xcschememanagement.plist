@@ -24,6 +24,11 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>SpotifyExampleMac.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
 		<key>iTunesExample.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -32,6 +37,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>03576BB915E9695E00316930</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>036991ED15E3EAE1003BCCBE</key>
 		<dict>
 			<key>primary</key>

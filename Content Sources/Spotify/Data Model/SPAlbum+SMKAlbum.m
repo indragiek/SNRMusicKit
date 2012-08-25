@@ -8,10 +8,12 @@
 
 #import "SPAlbum+SMKAlbum.h"
 #import "NSObject+SMKSpotifyAdditions.h"
-#import "SMKSpotifyConstants.h"
 #import "NSObject+AssociatedObjects.h"
 #import "NSMutableArray+SMKAdditions.h"
+
+#import "SMKSpotifyConstants.h"
 #import "SMKSpotifyContentSource.h"
+#import "SMKSpotifyHelpers.h"
 
 static void* const SMKSPAlbumBrowseKey = @"SMK_SPAlbumBrowse";
 
@@ -25,13 +27,13 @@ static void* const SMKSPAlbumBrowseKey = @"SMK_SPAlbumBrowse";
                             fetchLimit:(NSUInteger)fetchLimit
                                  error:(NSError **)error
 {
-    SPAlbumBrowse *browse = [self _associatedAlbumBrowse];
-    [browse SMK_spotifyWaitUntilLoaded];
+    SPAlbumBrowse *browse = [self SMK_associatedAlbumBrowse];
+    NSArray *objects = [SMKSpotifyHelpers loadItemsSynchronously:@[browse]
+                                                 sortDescriptors:sortDescriptors
+                                                       predicate:predicate
+                                                      fetchLimit:fetchLimit];
     *error = browse.loadError;
-    return [self _tracksFromBrowse:browse
-                   sortDescriptors:sortDescriptors
-                         predicate:predicate
-                        fetchLimit:fetchLimit];
+    return objects;
 }
 
 - (void)fetchTracksWithSortDescriptors:(NSArray *)sortDescriptors
@@ -40,22 +42,14 @@ static void* const SMKSPAlbumBrowseKey = @"SMK_SPAlbumBrowse";
                             fetchLimit:(NSUInteger)fetchLimit
                      completionHandler:(void(^)(NSArray *tracks, NSError *error))handler
 {
-    SPAlbumBrowse *browse = [self _associatedAlbumBrowse];
-    __weak SPAlbum *weakSelf = self;
-    [SPAsyncLoading waitUntilLoaded:browse timeout:SMKSpotifyDefaultLoadingTimeout then:^(NSArray *loadedItems, NSArray *notLoadedItems) {
-        SPAlbum *strongSelf = weakSelf;
-        SMKSpotifyContentSource *source = (SMKSpotifyContentSource *)self.session;
-        dispatch_async(source.spotifyLocalQueue, ^{
-            NSArray *sorted = [strongSelf _tracksFromBrowse:browse
-                                            sortDescriptors:sortDescriptors
-                                                  predicate:predicate
-                                                 fetchLimit:fetchLimit];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if(handler)
-                    handler(sorted, browse.loadError);
-            });
-        });
-    }];
+    SPAlbumBrowse *browse = [self SMK_associatedAlbumBrowse];
+    dispatch_queue_t queue = [(SMKSpotifyContentSource *)self.session spotifyLocalQueue];
+    [SMKSpotifyHelpers loadItemsAynchronously:@[browse]
+                              sortDescriptors:sortDescriptors
+                                    predicate:predicate
+                                   fetchLimit:fetchLimit
+                                 sortingQueue:queue
+                            completionHandler:handler];
 }
 
 - (NSUInteger)releaseYear
@@ -91,7 +85,6 @@ static void* const SMKSPAlbumBrowseKey = @"SMK_SPAlbumBrowse";
 
 - (SMKPlatformNativeImage *)artworkWithSize:(SMKArtworkSize)size error:(NSError **)error
 {
-    [self SMK_spotifyWaitUntilLoaded];
     SPImage *image = [self _imageForSize:size];
     [image SMK_spotifyWaitUntilLoaded];
     return image.image;
@@ -100,28 +93,13 @@ static void* const SMKSPAlbumBrowseKey = @"SMK_SPAlbumBrowse";
 - (void)fetchArtworkWithSize:(SMKArtworkSize)size
        withCompletionHandler:(void(^)(SMKPlatformNativeImage *image, NSError *error))handler
 {
-    __weak SPAlbum *weakSelf = self;
-    [SPAsyncLoading waitUntilLoaded:self timeout:SMKSpotifyDefaultLoadingTimeout then:^(NSArray *loadedItems, NSArray *notLoadedItems) {
-        SPAlbum *strongSelf = weakSelf;
-        SPImage *image = [strongSelf _imageForSize:size];
-        [SPAsyncLoading waitUntilLoaded:image timeout:SMKSpotifyDefaultLoadingTimeout then:^(NSArray *loadedItems, NSArray *notLoadedItems) {
-            if (handler)
-                handler(image.image, nil);
-        }];
+    SPImage *image = [self _imageForSize:size];
+    [image SMK_spotifyWaitAsyncThen:^{
+        if (handler) { handler(image.image, nil); }
     }];
 }
 
 #pragma mark - Private
-
-- (NSArray *)_tracksFromBrowse:(SPAlbumBrowse *)browse
-          sortDescriptors:(NSArray *)sortDescriptors
-                predicate:(NSPredicate *)predicate
-               fetchLimit:(NSUInteger)limit
-{
-    NSMutableArray *tracks = [NSMutableArray arrayWithArray:browse.tracks];
-    [tracks SMK_processWithSortDescriptors:sortDescriptors predicate:predicate fetchLimit:limit];
-    return tracks;
-}
 
 - (SPImage *)_imageForSize:(SMKArtworkSize)size
 {
@@ -140,7 +118,7 @@ static void* const SMKSPAlbumBrowseKey = @"SMK_SPAlbumBrowse";
     }
 }
 
-- (SPAlbumBrowse *)_associatedAlbumBrowse
+- (SPAlbumBrowse *)SMK_associatedAlbumBrowse
 {
     __block SPAlbumBrowse *browse = [self associatedValueForKey:SMKSPAlbumBrowseKey];
     if (!browse) {

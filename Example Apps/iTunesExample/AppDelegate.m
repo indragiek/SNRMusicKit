@@ -39,7 +39,7 @@
     if (tableView == self.playlistsTableView) {
         NSInteger selectedRow = [tableView selectedRow];
         if (selectedRow != -1) {
-            SMKiTunesPlaylist *playlist = [self.playlists objectAtIndex:selectedRow];
+            id<SMKPlaylist> playlist = [self.playlists objectAtIndex:selectedRow];
             NSArray *sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
             [playlist fetchTracksWithSortDescriptors:sortDescriptors predicate:nil batchSize:20 fetchlimit:0 completionHandler:^(NSArray *tracks, NSError *error) {
                 self.tracks = tracks;
@@ -52,7 +52,7 @@
 {
     NSInteger selectedRow = [sender selectedRow];
     if (selectedRow != -1) {
-        SMKiTunesTrack *track = [self.tracks objectAtIndex:selectedRow];
+        id<SMKTrack> track = [self.tracks objectAtIndex:selectedRow];
         [self.audioPlayer playTrack:track completionHandler:^(NSError *error) {
             if (error)
                 NSLog(@"Error playing track %@: %@, %@", track, error, [error userInfo]);
