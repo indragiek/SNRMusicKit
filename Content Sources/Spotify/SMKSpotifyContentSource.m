@@ -45,28 +45,17 @@
                         completionHandler:(void(^)(NSArray *playlists, NSError *error))handler
 {
     __weak SMKSpotifyContentSource *weakSelf = self;
-    [SPAsyncLoading waitUntilLoaded:self timeout:SMKSpotifyDefaultLoadingTimeout then:^(NSArray *loadedItems, NSArray *notLoadedItems) {
-        dispatch_async(self.spotifyLocalQueue, ^{
-            SMKSpotifyContentSource *strongSelf = weakSelf;
+    [self SMK_spotifyWaitAsyncThen:^{
+        SMKSpotifyContentSource *strongSelf = weakSelf;
+        dispatch_async(strongSelf.spotifyLocalQueue, ^{
             dispatch_group_t group = dispatch_group_create();
-            dispatch_group_enter(group);
-            [strongSelf.starredPlaylist SMK_spotifyWaitAsyncThen:^{
-                dispatch_group_leave(group);
-            }];
-            dispatch_group_enter(group);
-            [strongSelf.inboxPlaylist SMK_spotifyWaitAsyncThen:^{
-                dispatch_group_leave(group);
-            }];
-            dispatch_group_enter(group);
+            [strongSelf.starredPlaylist SMK_spotifyWaitAsyncThen:nil group:group];
+            [strongSelf.inboxPlaylist SMK_spotifyWaitAsyncThen:nil group:group];
             [strongSelf.userPlaylists SMK_spotifyWaitAsyncThen:^{
                 [strongSelf.userPlaylists.playlists enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                    dispatch_group_enter(group);
-                    [obj SMK_spotifyWaitAsyncThen:^{
-                        dispatch_group_leave(group);
-                    }];
+                    [obj SMK_spotifyWaitAsyncThen:nil group:group];
                 }];
-                dispatch_group_leave(group);
-            }];
+            } group:group];
             dispatch_group_notify(group, strongSelf.spotifyLocalQueue, ^{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (handler)

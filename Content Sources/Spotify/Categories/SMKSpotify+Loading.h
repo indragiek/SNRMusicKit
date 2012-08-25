@@ -8,6 +8,11 @@
 
 #import <CocoaLibSpotify/CocoaLibSpotify.h>
 
+/**
+ These methods load the object and all its sub-objects in the hierarchy.
+ The last object in the chain is SPTrack, which gets added to the array that's passed in
+ */
+
 @interface SPTrack (Loading)
 - (void)SMK_loadHierarchy:(dispatch_group_t)group array:(NSMutableArray *)array;
 @end

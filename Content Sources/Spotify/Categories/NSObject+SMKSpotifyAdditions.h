@@ -10,6 +10,22 @@
 #import "SMKSpotifyConstants.h"
 
 @interface NSObject (SMKSpotifyAdditions)
+/**
+ Blocks until the object has been fully loaded via SPAsyncLoading
+ */
 - (void)SMK_spotifyWaitUntilLoaded;
+
+/**
+ Asynchronously waits for the object to finish loading and calls the completion block.
+ This method just calls -SMK_spotifyWaitAsyncThen:group: passing NULL as the group
+ @param then The block to call when loading is finished.
+ */
 - (void)SMK_spotifyWaitAsyncThen:(void(^)())then;
+
+/**
+ Enters the dispatch group, waits for the object to load, leaves the group, and calls the handler
+ @param group The dispatch_group to enter and leave (optional, pass in NULL if you aren't using a group)
+ @param then The block to call when loading is finished
+ */
+- (void)SMK_spotifyWaitAsyncThen:(void(^)())then group:(dispatch_group_t)group;
 @end
