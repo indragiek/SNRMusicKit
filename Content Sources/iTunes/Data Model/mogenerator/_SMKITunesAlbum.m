@@ -4,9 +4,9 @@
 #import "_SMKiTunesAlbum.h"
 
 const struct SMKiTunesAlbumAttributes SMKiTunesAlbumAttributes = {
-	.isCompilation = @"isCompilation",
-	.rating = @"rating",
-	.releaseYear = @"releaseYear",
+	.cd_isCompilation = @"cd_isCompilation",
+	.cd_rating = @"cd_rating",
+	.cd_releaseYear = @"cd_releaseYear",
 };
 
 const struct SMKiTunesAlbumRelationships SMKiTunesAlbumRelationships = {
@@ -43,16 +43,16 @@ const struct SMKiTunesAlbumFetchedProperties SMKiTunesAlbumFetchedProperties = {
 + (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
-	if ([key isEqualToString:@"isCompilationValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"isCompilation"];
+	if ([key isEqualToString:@"cd_isCompilationValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"cd_isCompilation"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
-	if ([key isEqualToString:@"ratingValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"rating"];
+	if ([key isEqualToString:@"cd_ratingValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"cd_rating"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
-	if ([key isEqualToString:@"releaseYearValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"releaseYear"];
+	if ([key isEqualToString:@"cd_releaseYearValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"cd_releaseYear"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
 
@@ -62,78 +62,78 @@ const struct SMKiTunesAlbumFetchedProperties SMKiTunesAlbumFetchedProperties = {
 
 
 
-@dynamic isCompilation;
+@dynamic cd_isCompilation;
 
 
 
-- (BOOL)isCompilationValue {
-	NSNumber *result = [self isCompilation];
+- (BOOL)cd_isCompilationValue {
+	NSNumber *result = [self cd_isCompilation];
 	return [result boolValue];
 }
 
-- (void)setIsCompilationValue:(BOOL)value_ {
-	[self setIsCompilation:[NSNumber numberWithBool:value_]];
+- (void)setCd_isCompilationValue:(BOOL)value_ {
+	[self setCd_isCompilation:[NSNumber numberWithBool:value_]];
 }
 
-- (BOOL)primitiveIsCompilationValue {
-	NSNumber *result = [self primitiveIsCompilation];
+- (BOOL)primitiveCd_isCompilationValue {
+	NSNumber *result = [self primitiveCd_isCompilation];
 	return [result boolValue];
 }
 
-- (void)setPrimitiveIsCompilationValue:(BOOL)value_ {
-	[self setPrimitiveIsCompilation:[NSNumber numberWithBool:value_]];
+- (void)setPrimitiveCd_isCompilationValue:(BOOL)value_ {
+	[self setPrimitiveCd_isCompilation:[NSNumber numberWithBool:value_]];
 }
 
 
 
 
 
-@dynamic rating;
+@dynamic cd_rating;
 
 
 
-- (int32_t)ratingValue {
-	NSNumber *result = [self rating];
+- (int32_t)cd_ratingValue {
+	NSNumber *result = [self cd_rating];
 	return [result intValue];
 }
 
-- (void)setRatingValue:(int32_t)value_ {
-	[self setRating:[NSNumber numberWithInt:value_]];
+- (void)setCd_ratingValue:(int32_t)value_ {
+	[self setCd_rating:[NSNumber numberWithInt:value_]];
 }
 
-- (int32_t)primitiveRatingValue {
-	NSNumber *result = [self primitiveRating];
+- (int32_t)primitiveCd_ratingValue {
+	NSNumber *result = [self primitiveCd_rating];
 	return [result intValue];
 }
 
-- (void)setPrimitiveRatingValue:(int32_t)value_ {
-	[self setPrimitiveRating:[NSNumber numberWithInt:value_]];
+- (void)setPrimitiveCd_ratingValue:(int32_t)value_ {
+	[self setPrimitiveCd_rating:[NSNumber numberWithInt:value_]];
 }
 
 
 
 
 
-@dynamic releaseYear;
+@dynamic cd_releaseYear;
 
 
 
-- (int32_t)releaseYearValue {
-	NSNumber *result = [self releaseYear];
+- (int32_t)cd_releaseYearValue {
+	NSNumber *result = [self cd_releaseYear];
 	return [result intValue];
 }
 
-- (void)setReleaseYearValue:(int32_t)value_ {
-	[self setReleaseYear:[NSNumber numberWithInt:value_]];
+- (void)setCd_releaseYearValue:(int32_t)value_ {
+	[self setCd_releaseYear:[NSNumber numberWithInt:value_]];
 }
 
-- (int32_t)primitiveReleaseYearValue {
-	NSNumber *result = [self primitiveReleaseYear];
+- (int32_t)primitiveCd_releaseYearValue {
+	NSNumber *result = [self primitiveCd_releaseYear];
 	return [result intValue];
 }
 
-- (void)setPrimitiveReleaseYearValue:(int32_t)value_ {
-	[self setPrimitiveReleaseYear:[NSNumber numberWithInt:value_]];
+- (void)setPrimitiveCd_releaseYearValue:(int32_t)value_ {
+	[self setPrimitiveCd_releaseYear:[NSNumber numberWithInt:value_]];
 }
 
 

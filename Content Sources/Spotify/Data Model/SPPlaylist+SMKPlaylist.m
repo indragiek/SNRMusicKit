@@ -37,17 +37,11 @@
                             fetchlimit:(NSUInteger)fetchLimit
                      completionHandler:(void(^)(NSArray *tracks, NSError *error))handler
 {
-    if (!self.loaded) {
-        [SPAsyncLoading waitUntilLoaded:self timeout:kSPAsyncLoadingDefaultTimeout then:^(NSArray *loadedItems, NSArray *notLoadedItems) {
-            handler([self _flattenedTracksWithSortDescriptors:sortDescriptors
-                                                    predicate:predicate
-                                                   fetchLimit:fetchLimit], nil);
-        }];
-    } else {
+    [SPAsyncLoading waitUntilLoaded:self timeout:kSPAsyncLoadingDefaultTimeout then:^(NSArray *loadedItems, NSArray *notLoadedItems) {
         handler([self _flattenedTracksWithSortDescriptors:sortDescriptors
                                                 predicate:predicate
                                                fetchLimit:fetchLimit], nil);
-    }
+    }];
 }
 
 - (BOOL)isEditable
@@ -112,17 +106,10 @@
        withCompletionHandler:(void(^)(SMKPlatformNativeImage *image, NSError *error))handler
 {
     __weak SPPlaylist *weakSelf = self;
-    if (!self.loaded) {
-        [SPAsyncLoading waitUntilLoaded:self timeout:SMKSpotifyDefaultLoadingTimeout then:^(NSArray *loadedItems, NSArray *notLoadedItems) {
-            SPPlaylist *strongSelf = weakSelf;
-            if (!strongSelf.image.loaded)
-                [strongSelf _waitUntilImageLoadedAndCallHandler:handler];
-        }];
-    } else if (!self.image.loaded) {
-        [self _waitUntilImageLoadedAndCallHandler:handler];
-    } else {
-        handler(self.image.image, nil);
-    }
+    [SPAsyncLoading waitUntilLoaded:self timeout:SMKSpotifyDefaultLoadingTimeout then:^(NSArray *loadedItems, NSArray *notLoadedItems) {
+        SPPlaylist *strongSelf = weakSelf;
+       [strongSelf _waitUntilImageLoadedAndCallHandler:handler];
+    }];
 }
 
 #pragma mark - SMKWebObject

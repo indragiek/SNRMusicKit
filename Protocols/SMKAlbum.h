@@ -52,27 +52,15 @@
 /**
  @return The release year of the album
  */
-- (NSNumber *)releaseYear;
-
-/**
- @return The release date of the album.
- */
-- (NSDate *)releaseDate;
+- (NSUInteger)releaseYear;
 
 /**
  @return The duration of the album in seconds.
  */
-- (NSNumber *)duration;
+- (NSTimeInterval)duration;
 
 /**
  @return Whether the album is a compilation.
  */
-- (NSNumber *)isCompilation;
-
-/**
- Plays the album
- @return Whether the album was successfully played.
- @param error An NSError object with error information if it was unsuccessful.
- */
-- (BOOL)playWithError:(NSError **)error;
+- (BOOL)isCompilation;
 @end

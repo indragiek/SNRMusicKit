@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1807" systemVersion="12B19" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="SMKiTunesAlbum" representedClassName="SMKiTunesAlbum" parentEntity="SMKiTunesObject" syncable="YES">
-        <attribute name="isCompilation" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="rating" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="releaseYear" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="cd_isCompilation" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="cd_rating" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="cd_releaseYear" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="artist" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SMKiTunesArtist" inverseName="albums" inverseEntity="SMKiTunesArtist" syncable="YES"/>
         <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SMKiTunesTrack" inverseName="album" inverseEntity="SMKiTunesTrack" syncable="YES"/>
     </entity>
@@ -27,17 +27,17 @@
         <attribute name="albumArtistName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="artistName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="bookmark" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="compilation" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="cd_compilation" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="cd_discNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="cd_duration" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="cd_isClean" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="cd_isExplicit" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="cd_rating" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="cd_trackNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="composer" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateAdded" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="dateModified" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="discNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="duration" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="genre" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="isClean" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="isExplicit" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="rating" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="trackNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="album" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SMKiTunesAlbum" inverseName="tracks" inverseEntity="SMKiTunesAlbum" syncable="YES"/>
         <relationship name="playlists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SMKiTunesPlaylist" inverseName="tracks" inverseEntity="SMKiTunesPlaylist" syncable="YES"/>
     </entity>

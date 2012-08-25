@@ -5,9 +5,9 @@
 #import "SMKiTunesObject.h"
 
 extern const struct SMKiTunesAlbumAttributes {
-	__unsafe_unretained NSString *isCompilation;
-	__unsafe_unretained NSString *rating;
-	__unsafe_unretained NSString *releaseYear;
+	__unsafe_unretained NSString *cd_isCompilation;
+	__unsafe_unretained NSString *cd_rating;
+	__unsafe_unretained NSString *cd_releaseYear;
 } SMKiTunesAlbumAttributes;
 
 extern const struct SMKiTunesAlbumRelationships {
@@ -37,38 +37,38 @@ extern const struct SMKiTunesAlbumFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber* isCompilation;
+@property (nonatomic, strong) NSNumber* cd_isCompilation;
 
 
-@property BOOL isCompilationValue;
-- (BOOL)isCompilationValue;
-- (void)setIsCompilationValue:(BOOL)value_;
+@property BOOL cd_isCompilationValue;
+- (BOOL)cd_isCompilationValue;
+- (void)setCd_isCompilationValue:(BOOL)value_;
 
-//- (BOOL)validateIsCompilation:(id*)value_ error:(NSError**)error_;
-
-
-
-
-@property (nonatomic, strong) NSNumber* rating;
-
-
-@property int32_t ratingValue;
-- (int32_t)ratingValue;
-- (void)setRatingValue:(int32_t)value_;
-
-//- (BOOL)validateRating:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateCd_isCompilation:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) NSNumber* releaseYear;
+@property (nonatomic, strong) NSNumber* cd_rating;
 
 
-@property int32_t releaseYearValue;
-- (int32_t)releaseYearValue;
-- (void)setReleaseYearValue:(int32_t)value_;
+@property int32_t cd_ratingValue;
+- (int32_t)cd_ratingValue;
+- (void)setCd_ratingValue:(int32_t)value_;
 
-//- (BOOL)validateReleaseYear:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateCd_rating:(id*)value_ error:(NSError**)error_;
+
+
+
+
+@property (nonatomic, strong) NSNumber* cd_releaseYear;
+
+
+@property int32_t cd_releaseYearValue;
+- (int32_t)cd_releaseYearValue;
+- (void)setCd_releaseYearValue:(int32_t)value_;
+
+//- (BOOL)validateCd_releaseYear:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -103,29 +103,29 @@ extern const struct SMKiTunesAlbumFetchedProperties {
 @interface _SMKiTunesAlbum (CoreDataGeneratedPrimitiveAccessors)
 
 
-- (NSNumber*)primitiveIsCompilation;
-- (void)setPrimitiveIsCompilation:(NSNumber*)value;
+- (NSNumber*)primitiveCd_isCompilation;
+- (void)setPrimitiveCd_isCompilation:(NSNumber*)value;
 
-- (BOOL)primitiveIsCompilationValue;
-- (void)setPrimitiveIsCompilationValue:(BOOL)value_;
-
-
-
-
-- (NSNumber*)primitiveRating;
-- (void)setPrimitiveRating:(NSNumber*)value;
-
-- (int32_t)primitiveRatingValue;
-- (void)setPrimitiveRatingValue:(int32_t)value_;
+- (BOOL)primitiveCd_isCompilationValue;
+- (void)setPrimitiveCd_isCompilationValue:(BOOL)value_;
 
 
 
 
-- (NSNumber*)primitiveReleaseYear;
-- (void)setPrimitiveReleaseYear:(NSNumber*)value;
+- (NSNumber*)primitiveCd_rating;
+- (void)setPrimitiveCd_rating:(NSNumber*)value;
 
-- (int32_t)primitiveReleaseYearValue;
-- (void)setPrimitiveReleaseYearValue:(int32_t)value_;
+- (int32_t)primitiveCd_ratingValue;
+- (void)setPrimitiveCd_ratingValue:(int32_t)value_;
+
+
+
+
+- (NSNumber*)primitiveCd_releaseYear;
+- (void)setPrimitiveCd_releaseYear:(NSNumber*)value;
+
+- (int32_t)primitiveCd_releaseYearValue;
+- (void)setPrimitiveCd_releaseYearValue:(int32_t)value_;
 
 
 

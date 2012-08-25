@@ -35,17 +35,11 @@
                                 predicate:(NSPredicate *)predicate
                         completionHandler:(void(^)(NSArray *playlists, NSError *error))handler
 {
-    if (!self.loaded) {
-        [SPAsyncLoading waitUntilLoaded:self timeout:SMKSpotifyDefaultLoadingTimeout then:^(NSArray *loadedItems, NSArray *notLoadedItems) {
-            handler([self _allPlaylistsWithSortDescriptors:sortDescriptors
-                                                fetchLimit:fetchLimit
-                                                 predicate:predicate], nil);
-        }];
-    } else {
+    [SPAsyncLoading waitUntilLoaded:self timeout:SMKSpotifyDefaultLoadingTimeout then:^(NSArray *loadedItems, NSArray *notLoadedItems) {
         handler([self _allPlaylistsWithSortDescriptors:sortDescriptors
                                             fetchLimit:fetchLimit
                                              predicate:predicate], nil);
-    }
+    }];
 }
 
 #pragma mark - Private
@@ -58,7 +52,7 @@
         [playlists filterUsingPredicate:predicate];
     if (sortDescriptors)
         [playlists sortUsingDescriptors:sortDescriptors];
-    if (fetchLimit)
+    if (fetchLimit > [playlists count])
         [playlists removeObjectsInRange:NSMakeRange(fetchLimit, [playlists count] - fetchLimit)];
     return playlists;
 }
