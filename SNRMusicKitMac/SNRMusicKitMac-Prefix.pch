@@ -7,4 +7,5 @@
     #import "SMKErrorCodes.h"
     #import "SMKConvenience.h"
     #import "SMKPlatformImports.h"
+    #import "SMKGlobalConstants.h"
 #endif
