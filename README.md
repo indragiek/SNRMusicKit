@@ -77,8 +77,6 @@ git submodule update
   </tr>
 </table>
 
-^1 *Implementing MPMoviePlayerController only for its AirPlay functionality*
-
 ^2 *Spotify and Rdio have proprietary SDKs and therefore require their own dedicated player classes*
 
 ### License
