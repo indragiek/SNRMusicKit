@@ -10,7 +10,9 @@
 #import "NSObject+SMKSpotifyAdditions.h"
 #import "SMKSpotifyConstants.h"
 
-@implementation SMKSpotifyContentSource
+@implementation SMKSpotifyContentSource {
+    dispatch_queue_t _waitingQueue;
+}
 #pragma mark - SMKContentSource
 
 - (NSString *)name { return @"Spotify"; }
@@ -36,10 +38,17 @@
                         completionHandler:(void(^)(NSArray *playlists, NSError *error))handler
 {
     [SPAsyncLoading waitUntilLoaded:self timeout:SMKSpotifyDefaultLoadingTimeout then:^(NSArray *loadedItems, NSArray *notLoadedItems) {
-        handler([self _allPlaylistsWithSortDescriptors:sortDescriptors
+        if (handler)
+            handler([self _allPlaylistsWithSortDescriptors:sortDescriptors
                                             fetchLimit:fetchLimit
                                              predicate:predicate], nil);
     }];
+}
+
+- (void)dealloc
+{
+    if (_waitingQueue)
+        dispatch_release(_waitingQueue);
 }
 
 #pragma mark - Private
@@ -55,5 +64,13 @@
     if (fetchLimit > [playlists count])
         [playlists removeObjectsInRange:NSMakeRange(fetchLimit, [playlists count] - fetchLimit)];
     return playlists;
+}
+
+- (dispatch_queue_t)_spotifyWaitingQueue;
+{
+    if (!_waitingQueue) {
+        _waitingQueue = dispatch_queue_create("com.indragie.SNRMusicKit.spotifyWaitingQueue", DISPATCH_QUEUE_SERIAL);
+    }
+    return _waitingQueue;
 }
 @end

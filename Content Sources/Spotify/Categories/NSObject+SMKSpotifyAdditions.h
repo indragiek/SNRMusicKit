@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SMKSpotifyConstants.h"
 
 @interface NSObject (SMKSpotifyAdditions)
 - (void)SMK_spotifyWaitUntilLoaded;
