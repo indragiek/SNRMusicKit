@@ -43,6 +43,13 @@ static NSString* const SMK8TracksUserWebBaseURL = @"http://8tracks.com";
     return self;
 }
 
+#pragma mark - SMKUser
+
++ (NSSet *)supportedSortKeys
+{
+    return [NSSet setWithObjects:@"followingCount", @"followerCount", @"userID", @"username", @"name", @"location", @"hideNSFW", nil];
+}
+
 #pragma mark - 8Tracks
 
 - (NSURL *)avatarURLForSize:(SMK8TracksUserAvatarSize)size

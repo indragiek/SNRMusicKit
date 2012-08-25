@@ -31,7 +31,6 @@
 		0369924215E3EB44003BCCBE /* SNRMusicKitiOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369924115E3EB44003BCCBE /* SNRMusicKitiOS.m */; };
 		0369924715E3F341003BCCBE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0369924615E3F341003BCCBE /* AVFoundation.framework */; };
 		0369924D15E3F382003BCCBE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0369924C15E3F382003BCCBE /* AVFoundation.framework */; };
-		0369948A15E3F3B9003BCCBE /* libSFBAudioEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0369948515E3F3AA003BCCBE /* libSFBAudioEngine.a */; };
 		0369948D15E3F3C5003BCCBE /* SFBAudioEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0369948115E3F3AA003BCCBE /* SFBAudioEngine.framework */; };
 		0369948F15E3F3D1003BCCBE /* SFBAudioEngine.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0369948115E3F3AA003BCCBE /* SFBAudioEngine.framework */; };
 		036994A715E3F3EB003BCCBE /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 0369949215E3F3EB003BCCBE /* AFHTTPClient.h */; };
@@ -111,6 +110,12 @@
 		03E22DD715E4AB61008351DD /* SMKiTunesDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 03E22DD515E4AB61008351DD /* SMKiTunesDataModel.xcdatamodeld */; };
 		03E22DDA15E4AB92008351DD /* SMKiTunesContentSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 03E22DD815E4AB92008351DD /* SMKiTunesContentSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		03E22DDB15E4AB92008351DD /* SMKiTunesContentSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E22DD915E4AB92008351DD /* SMKiTunesContentSource.m */; };
+		03EB016215E83D54001F3A02 /* SMKMPMediaLibraryContentSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB016115E83D54001F3A02 /* SMKMPMediaLibraryContentSource.m */; };
+		03EB016515E83F3C001F3A02 /* MPMediaItem+SMKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB016415E83F3C001F3A02 /* MPMediaItem+SMKAdditions.m */; };
+		03EB016815E83F60001F3A02 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03EB016715E83F60001F3A02 /* MediaPlayer.framework */; };
+		03EB016915E840D5001F3A02 /* SMKErrorCodes.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03F795C115E47A3C00C9F652 /* SMKErrorCodes.h */; };
+		03EB016A15E840DB001F3A02 /* SMKMPMediaLibraryContentSource.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03EB016015E83D54001F3A02 /* SMKMPMediaLibraryContentSource.h */; };
+		03EB016B15E840DD001F3A02 /* MPMediaItem+SMKAdditions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03EB016315E83F3C001F3A02 /* MPMediaItem+SMKAdditions.h */; };
 		03F7955315E426ED00C9F652 /* SMKAlbum.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F7955215E426ED00C9F652 /* SMKAlbum.h */; };
 		03F7955615E4282800C9F652 /* SMKContentSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F7955515E4282800C9F652 /* SMKContentSource.h */; };
 		03F7955815E42BE800C9F652 /* SMKArtist.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F7955715E42BE800C9F652 /* SMKArtist.h */; };
@@ -120,10 +125,8 @@
 		03F7958215E447AE00C9F652 /* SMKUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F7958115E447AE00C9F652 /* SMKUser.h */; };
 		03F795B415E4740900C9F652 /* SMKSFBAudioPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F795B215E4740900C9F652 /* SMKSFBAudioPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		03F795B515E4740900C9F652 /* SMKSFBAudioPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03F795B315E4740900C9F652 /* SMKSFBAudioPlayer.mm */; };
-		03F795B615E4740900C9F652 /* SMKSFBAudioPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03F795B315E4740900C9F652 /* SMKSFBAudioPlayer.mm */; };
 		03F795B815E4748B00C9F652 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03F795B715E4748B00C9F652 /* CoreAudio.framework */; };
 		03F795BA15E4749000C9F652 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03F795B915E4748F00C9F652 /* AudioUnit.framework */; };
-		03F795BC15E4749D00C9F652 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03F795BB15E4749D00C9F652 /* AudioUnit.framework */; };
 		03F795BE15E474A400C9F652 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03F795BD15E474A400C9F652 /* CoreAudio.framework */; };
 		03F795C215E47A3C00C9F652 /* SMKErrorCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F795C115E47A3C00C9F652 /* SMKErrorCodes.h */; };
 		03F795C615E47AD300C9F652 /* NSError+SMKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F795C415E47AD300C9F652 /* NSError+SMKAdditions.h */; };
@@ -143,7 +146,6 @@
 		03FBECAF15E6F1B200A67DEE /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FBECAE15E6F1B100A67DEE /* CoreMedia.framework */; };
 		03FBECCB15E700AB00A67DEE /* CocoaLibSpotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FBECC815E7009000A67DEE /* CocoaLibSpotify.framework */; };
 		03FBECCC15E700B600A67DEE /* CocoaLibSpotify.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03FBECC815E7009000A67DEE /* CocoaLibSpotify.framework */; };
-		03FBECDB15E700EF00A67DEE /* libCocoaLibSpotify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FBECD715E700C300A67DEE /* libCocoaLibSpotify.a */; };
 		03FBED3415E70C1200A67DEE /* SMK8TracksContentSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 03FBED3215E70C1200A67DEE /* SMK8TracksContentSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		03FBED3515E70C1200A67DEE /* SMK8TracksContentSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FBED3315E70C1200A67DEE /* SMK8TracksContentSource.m */; };
 		03FBED3615E70C1200A67DEE /* SMK8TracksContentSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FBED3315E70C1200A67DEE /* SMK8TracksContentSource.m */; };
@@ -195,13 +197,6 @@
 			remoteGlobalIDString = 32AEB3041409BE48001F9A60;
 			remoteInfo = "SimplePlayer-iOS";
 		};
-		0369948815E3F3B6003BCCBE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0369947415E3F3AA003BCCBE /* SFBAudioEngine.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 32AEB26F1409AC30001F9A60;
-			remoteInfo = SFBAudioEngine;
-		};
 		0369948B15E3F3C2003BCCBE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0369947415E3F3AA003BCCBE /* SFBAudioEngine.xcodeproj */;
@@ -251,13 +246,6 @@
 			remoteGlobalIDString = 503D630E13258041007772CA;
 			remoteInfo = CocoaLibSpotify;
 		};
-		03FBECDE15E7010300A67DEE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03FBECCD15E700C200A67DEE /* CocoaLibSpotify iOS Library.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 50AF49DB1439CBFE00E4A5EF;
-			remoteInfo = CocoaLibSpotify;
-		};
 		03FBED6615E7100B00A67DEE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 036991E515E3EAE1003BCCBE /* Project object */;
@@ -275,6 +263,9 @@
 			dstSubfolderSpec = 16;
 			files = (
 				0369924015E3EB44003BCCBE /* SNRMusicKitiOS.h in CopyFiles */,
+				03EB016B15E840DD001F3A02 /* MPMediaItem+SMKAdditions.h in CopyFiles */,
+				03EB016915E840D5001F3A02 /* SMKErrorCodes.h in CopyFiles */,
+				03EB016A15E840DB001F3A02 /* SMKMPMediaLibraryContentSource.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +401,11 @@
 		03E22DD615E4AB61008351DD /* SMKiTunesDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SMKiTunesDataModel.xcdatamodel; sourceTree = "<group>"; };
 		03E22DD815E4AB92008351DD /* SMKiTunesContentSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKiTunesContentSource.h; path = "Content Sources/iTunes/SMKiTunesContentSource.h"; sourceTree = "<group>"; };
 		03E22DD915E4AB92008351DD /* SMKiTunesContentSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKiTunesContentSource.m; path = "Content Sources/iTunes/SMKiTunesContentSource.m"; sourceTree = "<group>"; };
+		03EB016015E83D54001F3A02 /* SMKMPMediaLibraryContentSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKMPMediaLibraryContentSource.h; path = "Content Sources/MPMediaLibrary/SMKMPMediaLibraryContentSource.h"; sourceTree = "<group>"; };
+		03EB016115E83D54001F3A02 /* SMKMPMediaLibraryContentSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKMPMediaLibraryContentSource.m; path = "Content Sources/MPMediaLibrary/SMKMPMediaLibraryContentSource.m"; sourceTree = "<group>"; };
+		03EB016315E83F3C001F3A02 /* MPMediaItem+SMKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MPMediaItem+SMKAdditions.h"; path = "Content Sources/MPMediaLibrary/Categories/MPMediaItem+SMKAdditions.h"; sourceTree = "<group>"; };
+		03EB016415E83F3C001F3A02 /* MPMediaItem+SMKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MPMediaItem+SMKAdditions.m"; path = "Content Sources/MPMediaLibrary/Categories/MPMediaItem+SMKAdditions.m"; sourceTree = "<group>"; };
+		03EB016715E83F60001F3A02 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/MediaPlayer.framework; sourceTree = DEVELOPER_DIR; };
 		03F7955215E426ED00C9F652 /* SMKAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKAlbum.h; path = Protocols/SMKAlbum.h; sourceTree = "<group>"; };
 		03F7955515E4282800C9F652 /* SMKContentSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKContentSource.h; path = Protocols/SMKContentSource.h; sourceTree = "<group>"; };
 		03F7955715E42BE800C9F652 /* SMKArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKArtist.h; path = Protocols/SMKArtist.h; sourceTree = "<group>"; };
@@ -476,12 +472,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03FBECDB15E700EF00A67DEE /* libCocoaLibSpotify.a in Frameworks */,
+				03EB016815E83F60001F3A02 /* MediaPlayer.framework in Frameworks */,
 				03FBECAF15E6F1B200A67DEE /* CoreMedia.framework in Frameworks */,
 				03F795BE15E474A400C9F652 /* CoreAudio.framework in Frameworks */,
-				03F795BC15E4749D00C9F652 /* AudioUnit.framework in Frameworks */,
 				036994D215E3F475003BCCBE /* CoreData.framework in Frameworks */,
-				0369948A15E3F3B9003BCCBE /* libSFBAudioEngine.a in Frameworks */,
 				0369924715E3F341003BCCBE /* AVFoundation.framework in Frameworks */,
 				0369923B15E3EB44003BCCBE /* Foundation.framework in Frameworks */,
 			);
@@ -611,6 +605,7 @@
 		0369924815E3F347003BCCBE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03EB016715E83F60001F3A02 /* MediaPlayer.framework */,
 				03FBECAE15E6F1B100A67DEE /* CoreMedia.framework */,
 				03F795BD15E474A400C9F652 /* CoreAudio.framework */,
 				03F795BB15E4749D00C9F652 /* AudioUnit.framework */,
@@ -758,6 +753,32 @@
 			name = "Custom Logic";
 			sourceTree = "<group>";
 		};
+		03EB015F15E83C60001F3A02 /* MPMediaLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				03EB016615E83F40001F3A02 /* Categories */,
+				03EB016015E83D54001F3A02 /* SMKMPMediaLibraryContentSource.h */,
+				03EB016115E83D54001F3A02 /* SMKMPMediaLibraryContentSource.m */,
+			);
+			name = MPMediaLibrary;
+			sourceTree = "<group>";
+		};
+		03EB016615E83F40001F3A02 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				03EB016315E83F3C001F3A02 /* MPMediaItem+SMKAdditions.h */,
+				03EB016415E83F3C001F3A02 /* MPMediaItem+SMKAdditions.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		03EB016C15E85523001F3A02 /* Spotify */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Spotify;
+			sourceTree = "<group>";
+		};
 		03F7955015E426A500C9F652 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -820,6 +841,8 @@
 		03F795DF15E48F2A00C9F652 /* Content Sources */ = {
 			isa = PBXGroup;
 			children = (
+				03EB016C15E85523001F3A02 /* Spotify */,
+				03EB015F15E83C60001F3A02 /* MPMediaLibrary */,
 				03FBECA715E6E47C00A67DEE /* Shared */,
 				03F795E415E4933500C9F652 /* iTunes */,
 				03FBED3115E70BC500A67DEE /* 8tracks */,
@@ -1024,8 +1047,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				03FBECDF15E7010300A67DEE /* PBXTargetDependency */,
-				0369948915E3F3B6003BCCBE /* PBXTargetDependency */,
 			);
 			name = SNRMusicKitiOS;
 			productName = SNRMusicKitiOS;
@@ -1286,20 +1307,21 @@
 				036994C715E3F3EB003BCCBE /* AFURLConnectionOperation.m in Sources */,
 				036994CB15E3F3EB003BCCBE /* AFXMLRequestOperation.m in Sources */,
 				036994CF15E3F3EB003BCCBE /* UIImageView+AFNetworking.m in Sources */,
-				03F795B615E4740900C9F652 /* SMKSFBAudioPlayer.mm in Sources */,
 				03F795C815E47AD300C9F652 /* NSError+SMKAdditions.m in Sources */,
-				03F795CB15E47BC400C9F652 /* SMKErrorCodes.m in Sources */,
 				037010A615E5700100FEAF6F /* NSURL+SMKAdditions.m in Sources */,
 				037010B315E572E000FEAF6F /* NSBundle+SMKAdditions.m in Sources */,
 				030CE89915E579EC00AC12BE /* NSManagedObjectContext+SMKAdditions.m in Sources */,
 				030CE8A615E57D5200AC12BE /* NSObject+AssociatedObjects.m in Sources */,
 				030CE8D415E5C31F00AC12BE /* NSString+SMKAdditions.m in Sources */,
+				03F795CB15E47BC400C9F652 /* SMKErrorCodes.m in Sources */,
 				03FBECA115E6E0C200A67DEE /* SMKAVQueuePlayer.m in Sources */,
 				03FBECA615E6E2EB00A67DEE /* SMKAVPlayerItem.m in Sources */,
 				03FBED3615E70C1200A67DEE /* SMK8TracksContentSource.m in Sources */,
 				03FBED7915E7176A00A67DEE /* SMK8TracksUser.m in Sources */,
 				03FBED7E15E71C9B00A67DEE /* SMK8TracksObject.m in Sources */,
 				03FBED8315E71E8100A67DEE /* SMK8TracksMix.m in Sources */,
+				03EB016215E83D54001F3A02 /* SMKMPMediaLibraryContentSource.m in Sources */,
+				03EB016515E83F3C001F3A02 /* MPMediaItem+SMKAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1325,11 +1347,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0369948915E3F3B6003BCCBE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SFBAudioEngine;
-			targetProxy = 0369948815E3F3B6003BCCBE /* PBXContainerItemProxy */;
-		};
 		0369948C15E3F3C2003BCCBE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SFBAudioEngine.framework;
@@ -1344,11 +1361,6 @@
 			isa = PBXTargetDependency;
 			name = CocoaLibSpotify;
 			targetProxy = 03FBECDC15E700FE00A67DEE /* PBXContainerItemProxy */;
-		};
-		03FBECDF15E7010300A67DEE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CocoaLibSpotify;
-			targetProxy = 03FBECDE15E7010300A67DEE /* PBXContainerItemProxy */;
 		};
 		03FBED6715E7100B00A67DEE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1629,6 +1641,7 @@
 				03FBED5215E70FA500A67DEE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

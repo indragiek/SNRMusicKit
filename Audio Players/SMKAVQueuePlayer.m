@@ -10,6 +10,7 @@
 #import "SMKiTunesContentSource.h"
 #import "SMKAVPlayerItem.h"
 #import "SMKTrack.h"
+#import "SMKErrorCodes.h"
 #import "NSError+SMKAdditions.h"
 
 #import <CoreMedia/CoreMedia.h>

@@ -17,14 +17,24 @@
 @protocol SMKTrack <NSObject, SMKContentObject, SMKWebObject>
 @required
 /**
- @return The artist of the track.
+ @return The parent artist of the track.
  */
 - (id<SMKArtist>)artist;
 
 /**
- @return The album of the track.
+ @return The parent album of the track.
  */
 - (id<SMKAlbum>)album;
+
+/**
+ @return The name of the artist
+ */
+- (NSString *)artistName;
+
+/**
+ @return The name of the album artist
+ */
+- (NSString *)albumArtistName;
 
 /**
  @return The duration of the track in seconds.
