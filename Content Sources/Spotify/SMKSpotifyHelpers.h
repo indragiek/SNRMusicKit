@@ -10,10 +10,6 @@
 
 @interface SMKSpotifyHelpers : NSObject
 + (void)loadItems:(NSArray *)items group:(dispatch_group_t)group array:(NSMutableArray *)array;
-+ (NSArray *)loadItemsSynchronously:(NSArray *)items
-                               sortDescriptors:(NSArray *)sortDescriptors
-                                     predicate:(NSPredicate *)predicate
-                                    fetchLimit:(NSUInteger)fetchLimit;
 + (void)loadItemsAynchronously:(NSArray *)items
                           sortDescriptors:(NSArray *)sortDescriptors
                                 predicate:(NSPredicate *)predicate

@@ -144,15 +144,9 @@
 		03EB017615E859FB001F3A02 /* SPUser+SMKUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 03EB017415E859FB001F3A02 /* SPUser+SMKUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		03EB017715E859FB001F3A02 /* SPUser+SMKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB017515E859FB001F3A02 /* SPUser+SMKUser.m */; };
 		03EB017815E859FB001F3A02 /* SPUser+SMKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB017515E859FB001F3A02 /* SPUser+SMKUser.m */; };
-		03EB017B15E85BC3001F3A02 /* SMKSemaphoreWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 03EB017915E85BC3001F3A02 /* SMKSemaphoreWrapper.h */; };
-		03EB017C15E85BC3001F3A02 /* SMKSemaphoreWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB017A15E85BC3001F3A02 /* SMKSemaphoreWrapper.m */; };
-		03EB017D15E85BC3001F3A02 /* SMKSemaphoreWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB017A15E85BC3001F3A02 /* SMKSemaphoreWrapper.m */; };
 		03EB018015E85C3E001F3A02 /* SPPlaylist+SMKPlaylist.h in Headers */ = {isa = PBXBuildFile; fileRef = 03EB017E15E85C3E001F3A02 /* SPPlaylist+SMKPlaylist.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		03EB018115E85C3E001F3A02 /* SPPlaylist+SMKPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB017F15E85C3E001F3A02 /* SPPlaylist+SMKPlaylist.m */; };
 		03EB018215E85C3E001F3A02 /* SPPlaylist+SMKPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB017F15E85C3E001F3A02 /* SPPlaylist+SMKPlaylist.m */; };
-		03EB018515E86088001F3A02 /* NSObject+SMKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 03EB018315E86088001F3A02 /* NSObject+SMKAdditions.h */; };
-		03EB018615E86088001F3A02 /* NSObject+SMKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB018415E86088001F3A02 /* NSObject+SMKAdditions.m */; };
-		03EB018715E86088001F3A02 /* NSObject+SMKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB018415E86088001F3A02 /* NSObject+SMKAdditions.m */; };
 		03EB018A15E86318001F3A02 /* NSObject+SMKSpotifyAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 03EB018815E86317001F3A02 /* NSObject+SMKSpotifyAdditions.h */; };
 		03EB018B15E86318001F3A02 /* NSObject+SMKSpotifyAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB018915E86317001F3A02 /* NSObject+SMKSpotifyAdditions.m */; };
 		03EB018C15E86318001F3A02 /* NSObject+SMKSpotifyAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB018915E86317001F3A02 /* NSObject+SMKSpotifyAdditions.m */; };
@@ -499,12 +493,8 @@
 		03EB016F15E856FB001F3A02 /* SMKSpotifyContentSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKSpotifyContentSource.m; path = "Content Sources/Spotify/SMKSpotifyContentSource.m"; sourceTree = "<group>"; };
 		03EB017415E859FB001F3A02 /* SPUser+SMKUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SPUser+SMKUser.h"; path = "Content Sources/Spotify/Data Model/SPUser+SMKUser.h"; sourceTree = "<group>"; };
 		03EB017515E859FB001F3A02 /* SPUser+SMKUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SPUser+SMKUser.m"; path = "Content Sources/Spotify/Data Model/SPUser+SMKUser.m"; sourceTree = "<group>"; };
-		03EB017915E85BC3001F3A02 /* SMKSemaphoreWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKSemaphoreWrapper.h; path = "Content Sources/Shared/SMKSemaphoreWrapper.h"; sourceTree = "<group>"; };
-		03EB017A15E85BC3001F3A02 /* SMKSemaphoreWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKSemaphoreWrapper.m; path = "Content Sources/Shared/SMKSemaphoreWrapper.m"; sourceTree = "<group>"; };
 		03EB017E15E85C3E001F3A02 /* SPPlaylist+SMKPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SPPlaylist+SMKPlaylist.h"; path = "Content Sources/Spotify/Data Model/SPPlaylist+SMKPlaylist.h"; sourceTree = "<group>"; };
 		03EB017F15E85C3E001F3A02 /* SPPlaylist+SMKPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SPPlaylist+SMKPlaylist.m"; path = "Content Sources/Spotify/Data Model/SPPlaylist+SMKPlaylist.m"; sourceTree = "<group>"; };
-		03EB018315E86088001F3A02 /* NSObject+SMKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+SMKAdditions.h"; path = "Categories/NSObject+SMKAdditions.h"; sourceTree = "<group>"; };
-		03EB018415E86088001F3A02 /* NSObject+SMKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+SMKAdditions.m"; path = "Categories/NSObject+SMKAdditions.m"; sourceTree = "<group>"; };
 		03EB018815E86317001F3A02 /* NSObject+SMKSpotifyAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+SMKSpotifyAdditions.h"; path = "Content Sources/Spotify/Categories/NSObject+SMKSpotifyAdditions.h"; sourceTree = "<group>"; };
 		03EB018915E86317001F3A02 /* NSObject+SMKSpotifyAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+SMKSpotifyAdditions.m"; path = "Content Sources/Spotify/Categories/NSObject+SMKSpotifyAdditions.m"; sourceTree = "<group>"; };
 		03EB018D15E86728001F3A02 /* SMKPlatformImports.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKPlatformImports.h; path = "Common Headers/SMKPlatformImports.h"; sourceTree = "<group>"; };
@@ -1011,8 +1001,6 @@
 				030CE8A315E57D5200AC12BE /* NSObject+AssociatedObjects.m */,
 				030CE8D015E5C31F00AC12BE /* NSString+SMKAdditions.h */,
 				030CE8D115E5C31F00AC12BE /* NSString+SMKAdditions.m */,
-				03EB018315E86088001F3A02 /* NSObject+SMKAdditions.h */,
-				03EB018415E86088001F3A02 /* NSObject+SMKAdditions.m */,
 				0335CC3015E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.h */,
 				0335CC3115E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.m */,
 			);
@@ -1061,8 +1049,6 @@
 			children = (
 				03FBECA815E6E49400A67DEE /* SMKManagedObjectContext.h */,
 				03FBECA915E6E49400A67DEE /* SMKManagedObjectContext.m */,
-				03EB017915E85BC3001F3A02 /* SMKSemaphoreWrapper.h */,
-				03EB017A15E85BC3001F3A02 /* SMKSemaphoreWrapper.m */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -1201,8 +1187,6 @@
 				03FBED7715E7176A00A67DEE /* SMK8TracksUser.h in Headers */,
 				03FBED7C15E71C9B00A67DEE /* SMK8TracksObject.h in Headers */,
 				03FBED8115E71E8100A67DEE /* SMK8TracksMix.h in Headers */,
-				03EB017B15E85BC3001F3A02 /* SMKSemaphoreWrapper.h in Headers */,
-				03EB018515E86088001F3A02 /* NSObject+SMKAdditions.h in Headers */,
 				03EB018A15E86318001F3A02 /* NSObject+SMKSpotifyAdditions.h in Headers */,
 				0335CC3215E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.h in Headers */,
 				03576BEC15E9898F00316930 /* SMKSpotify+Loading.h in Headers */,
@@ -1531,9 +1515,7 @@
 				03FBED8215E71E8100A67DEE /* SMK8TracksMix.m in Sources */,
 				03EB017115E856FB001F3A02 /* SMKSpotifyContentSource.m in Sources */,
 				03EB017715E859FB001F3A02 /* SPUser+SMKUser.m in Sources */,
-				03EB017C15E85BC3001F3A02 /* SMKSemaphoreWrapper.m in Sources */,
 				03EB018115E85C3E001F3A02 /* SPPlaylist+SMKPlaylist.m in Sources */,
-				03EB018615E86088001F3A02 /* NSObject+SMKAdditions.m in Sources */,
 				03EB018B15E86318001F3A02 /* NSObject+SMKSpotifyAdditions.m in Sources */,
 				03EB019215E87676001F3A02 /* SMKSpotifyConstants.m in Sources */,
 				03EB019715E87A4A001F3A02 /* SPTrack+SMKTrack.m in Sources */,
@@ -1579,9 +1561,7 @@
 				03EB016515E83F3C001F3A02 /* MPMediaItem+SMKAdditions.m in Sources */,
 				03EB017215E856FB001F3A02 /* SMKSpotifyContentSource.m in Sources */,
 				03EB017815E859FB001F3A02 /* SPUser+SMKUser.m in Sources */,
-				03EB017D15E85BC3001F3A02 /* SMKSemaphoreWrapper.m in Sources */,
 				03EB018215E85C3E001F3A02 /* SPPlaylist+SMKPlaylist.m in Sources */,
-				03EB018715E86088001F3A02 /* NSObject+SMKAdditions.m in Sources */,
 				03EB018C15E86318001F3A02 /* NSObject+SMKSpotifyAdditions.m in Sources */,
 				03EB019315E87676001F3A02 /* SMKSpotifyConstants.m in Sources */,
 				03EB019815E87A4A001F3A02 /* SPTrack+SMKTrack.m in Sources */,

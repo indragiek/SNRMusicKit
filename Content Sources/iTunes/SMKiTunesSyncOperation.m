@@ -222,7 +222,7 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
 - (void)_removeAllPlaylists
 {
     NSError *error = nil;
-    NSArray *playlists = [_context SMK_noBlockFetchWithEntityName:SMKiTunesEntityNamePlaylist sortDescriptors:nil predicate:nil batchSize:0 fetchLimit:0 error:&error];
+    NSArray *playlists = [_context SMK_legacyFetchWithEntityName:SMKiTunesEntityNamePlaylist sortDescriptors:nil predicate:nil batchSize:0 fetchLimit:0 error:&error];
     for (NSManagedObject *playlist in playlists) {
         [_context deleteObject:playlist];
     }
@@ -245,7 +245,7 @@ static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
             [iTunesPlaylist setName:name];
             if ([[playlist valueForKey:SMKiTunesKeyMusic] boolValue]) {
                 // Get all the tracks
-                NSArray *tracks = [_context SMK_noBlockFetchWithEntityName:SMKiTunesEntityNameTrack sortDescriptors:nil predicate:nil batchSize:1 fetchLimit:0 error:nil];
+                NSArray *tracks = [_context SMK_legacyFetchWithEntityName:SMKiTunesEntityNameTrack sortDescriptors:nil predicate:nil batchSize:1 fetchLimit:0 error:nil];
                 [iTunesPlaylist setTracks:[NSOrderedSet orderedSetWithArray:tracks]];
             } else {
                 // Otherwise each track needs to be fetched individually by persistent ID

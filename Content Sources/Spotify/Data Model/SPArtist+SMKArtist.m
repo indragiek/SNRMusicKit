@@ -24,21 +24,6 @@ static void* const SMKSPArtistBrowseKey = @"SMK_SPArtistBrowse";
 
 #pragma mark - SMKArtist
 
-- (NSArray *)albumsWithSortDescriptors:(NSArray *)sortDescriptors
-                             predicate:(NSPredicate *)predicate
-                             batchSize:(NSUInteger)batchSize
-                            fetchLimit:(NSUInteger)fetchLimit
-                                 error:(NSError **)error
-{
-    SPArtistBrowse *browse = [self SMK_associatedArtistBrowse];
-    NSArray *objects = [SMKSpotifyHelpers loadItemsSynchronously:@[browse]
-                                                 sortDescriptors:sortDescriptors
-                                                       predicate:predicate
-                                                      fetchLimit:fetchLimit];
-    *error = browse.loadError;
-    return objects;
-}
-
 - (void)fetchAlbumsWithSortDescriptors:(NSArray *)sortDescriptors
                              predicate:(NSPredicate *)predicate
                              batchSize:(NSUInteger)batchSize
@@ -80,14 +65,6 @@ static void* const SMKSPArtistBrowseKey = @"SMK_SPArtistBrowse";
 }
 
 #pragma mark - SMKArtworkObject
-
-- (SMKPlatformNativeImage *)artworkWithSize:(SMKArtworkSize)size error:(NSError **)error
-{
-    SPArtistBrowse *browse = [self SMK_associatedArtistBrowse];
-    [browse SMK_spotifyWaitUntilLoaded];
-    [browse.firstPortrait SMK_spotifyWaitUntilLoaded];
-    return browse.firstPortrait.image;
-}
 
 - (void)fetchArtworkWithSize:(SMKArtworkSize)size
        withCompletionHandler:(void(^)(SMKPlatformNativeImage *image, NSError *error))handler

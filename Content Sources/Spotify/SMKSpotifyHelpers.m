@@ -19,20 +19,6 @@
     }];
 }
 
-+ (NSArray *)loadItemsSynchronously:(NSArray *)items
-                               sortDescriptors:(NSArray *)sortDescriptors
-                                     predicate:(NSPredicate *)predicate
-                                    fetchLimit:(NSUInteger)fetchLimit
-{
-    NSMutableArray *hierarchy = [NSMutableArray array];
-    dispatch_group_t group = dispatch_group_create();
-    [self loadItems:items group:group array:hierarchy];
-    [hierarchy SMK_processWithSortDescriptors:sortDescriptors predicate:predicate fetchLimit:fetchLimit];
-    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
-    dispatch_release(group);
-    return hierarchy;
-}
-
 + (void)loadItemsAynchronously:(NSArray *)items
                           sortDescriptors:(NSArray *)sortDescriptors
                                 predicate:(NSPredicate *)predicate
