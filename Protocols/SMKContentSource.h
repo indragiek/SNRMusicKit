@@ -11,21 +11,6 @@
 @protocol SMKContentSource <NSObject>
 @required
 /**
- @return The name of the content source.
- */
-- (NSString *)name;
-
-/**
- @return Whether the source supports fetching data in batches.
- */
-+ (BOOL)supportsBatching;
-
-/**
- @return The class of the default player for this content source
- */
-+ (Class)defaultPlayerClass;
-
-/**
  This method will fetch the playlists asynchronously and call the completion handler when finished.
  @param sortDescriptors Array of NSSortDescriptor objects used to sort the content
  @param predicate A predicate to filter the results with
@@ -38,4 +23,14 @@
                                fetchLimit:(NSUInteger)fetchLimit
                                 predicate:(NSPredicate *)predicate
                         completionHandler:(void(^)(NSArray *playlists, NSError *error))handler;
+
+/**
+ @return Whether the source supports fetching data in batches.
+ */
++ (BOOL)supportsBatching;
+
+/**
+ @return The class of the default player for this content source
+ */
++ (Class)defaultPlayerClass;
 @end

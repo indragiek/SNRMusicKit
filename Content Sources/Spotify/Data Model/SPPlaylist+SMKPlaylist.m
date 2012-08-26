@@ -106,4 +106,50 @@
 {
     return self.spotifyURL;
 }
+
+#pragma mark - SMKHierarchicalLoading
+
+- (void)loadHierarchy:(dispatch_group_t)group array:(NSMutableArray *)array
+{
+    __weak SPPlaylist *weakSelf = self;
+    dispatch_group_enter(group);
+    [self SMK_spotifyWaitAsyncThen:^{
+        SPPlaylist *strongSelf = weakSelf;
+        [strongSelf.items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            if ([obj conformsToProtocol:@protocol(SMKHierarchicalLoading)])
+                [obj loadHierarchy:group array:array];
+        }];
+        dispatch_group_leave(group);
+    }];
+}
+@end
+
+@implementation SPPlaylistItem (SMKPlaylist)
+
+#pragma mark - SMKHierarchicalLoading
+
+- (void)loadHierarchy:(dispatch_group_t)group array:(NSMutableArray *)array
+{
+    if ([self.item conformsToProtocol:@protocol(SMKHierarchicalLoading)])
+        [(id)self.item loadHierarchy:group array:array];
+}
+@end
+
+@implementation SPPlaylistContainer (SMKPlaylist)
+
+#pragma mark - SMKHierarchicalLoading
+
+- (void)loadHierarchy:(dispatch_group_t)group array:(NSMutableArray *)array
+{
+    __weak SPPlaylistContainer *weakSelf = self;
+    dispatch_group_enter(group);
+    [self SMK_spotifyWaitAsyncThen:^{
+        SPPlaylistContainer *strongSelf = weakSelf;
+        [strongSelf.flattenedPlaylists enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [obj loadHierarchy:group array:array];
+        }];
+        dispatch_group_leave(group);
+    }];
+}
+
 @end

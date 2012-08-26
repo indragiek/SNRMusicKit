@@ -10,12 +10,17 @@
 #import "SMKPlaylist.h"
 #import "SMKWebObject.h"
 #import "SMKArtworkObject.h"
+#import "SMKHierarchicalLoading.h"
 
-@interface SPPlaylist (SMKPlaylist) <SMKPlaylist, SMKArtworkObject, SMKWebObject>
+@interface SPPlaylist (SMKPlaylist) <SMKPlaylist, SMKArtworkObject, SMKWebObject, SMKHierarchicalLoading>
 
 #pragma mark - SMKPlaylist
 
-- (void)moveTracks:(NSArray*)tracks
-           toIndex:(NSUInteger)index
- completionHandler:(void(^)(NSError *error))handler;
+- (void)moveTracks:(NSArray*)tracks toIndex:(NSUInteger)index completionHandler:(void(^)(NSError *error))handler;
+@end
+
+@interface SPPlaylistItem (SMKPlaylist) <SMKHierarchicalLoading>
+@end
+
+@interface SPPlaylistContainer (SMKPlaylist) <SMKHierarchicalLoading>
 @end
