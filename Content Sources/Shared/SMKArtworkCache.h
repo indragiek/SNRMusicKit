@@ -26,6 +26,12 @@
  Default value is 1.0.
  */
 @property (nonatomic, assign) CGFloat JPEGCompressionQuality;
+
+/**
+ Maximum size of the on disk cache, in MB
+ Default maximum size is 200MB.
+ */
+@property (nonatomic, assign) NSUInteger maximumDiskCacheSize;
 /**
  Asynchronously fetches a cached image and calls the completion handler
  @param key The cached image key
