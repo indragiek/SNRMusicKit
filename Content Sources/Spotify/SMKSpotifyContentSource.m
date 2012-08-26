@@ -91,7 +91,9 @@
 {
     NSMutableArray *playlists = [NSMutableArray arrayWithObjects:self.inboxPlaylist, self.starredPlaylist, nil];
     [playlists addObjectsFromArray:[self.userPlaylists flattenedPlaylists]];
-    [playlists SMK_processWithSortDescriptors:sortDescriptors predicate:predicate fetchLimit:fetchLimit];
+    [playlists SMK_processWithSortDescriptors:sortDescriptors
+                                    predicate:predicate
+                                   fetchLimit:fetchLimit];
     return playlists;
 }
 @end

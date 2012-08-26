@@ -1236,7 +1236,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0369922315E3EB0B003BCCBE /* Build configuration list for PBXNativeTarget "SNRMusicKitMac" */;
 			buildPhases = (
-				03E22DDE15E4AF9E008351DD /* ShellScript */,
+				03E22DDE15E4AF9E008351DD /* Run Script (Generate model classes with mogenerator) */,
 				0369921215E3EB0B003BCCBE /* Sources */,
 				0369921315E3EB0B003BCCBE /* Frameworks */,
 				0369921415E3EB0B003BCCBE /* Headers */,
@@ -1456,13 +1456,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		03E22DDE15E4AF9E008351DD /* ShellScript */ = {
+		03E22DDE15E4AF9E008351DD /* Run Script (Generate model classes with mogenerator) */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script (Generate model classes with mogenerator)";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1728,12 +1729,16 @@
 		03576BD015E9695F00316930 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Developer ID Application: Tyler Murphy";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = $CONFIGURATION_BUILD_DIR/CocoaLibSpotify.framework/Versions/Frameworks;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Example Apps/SpotifyExampleMac/SpotifyExampleMac-Prefix.pch";
 				INFOPLIST_FILE = "Example Apps/SpotifyExampleMac/SpotifyExampleMac-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1741,12 +1746,15 @@
 		03576BD115E9695F00316930 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Developer ID Application: Tyler Murphy";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = $CONFIGURATION_BUILD_DIR/CocoaLibSpotify.framework/Versions/Frameworks;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Example Apps/SpotifyExampleMac/SpotifyExampleMac-Prefix.pch";
 				INFOPLIST_FILE = "Example Apps/SpotifyExampleMac/SpotifyExampleMac-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1805,6 +1813,7 @@
 		0369922415E3EB0B003BCCBE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1814,6 +1823,7 @@
 				GCC_PREFIX_HEADER = "SNRMusicKitMac/SNRMusicKitMac-Prefix.pch";
 				INFOPLIST_FILE = "SNRMusicKitMac/SNRMusicKitMac-Info.plist";
 				INSTALL_PATH = "@rpath";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
@@ -1823,6 +1833,7 @@
 		0369922515E3EB0B003BCCBE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1832,6 +1843,7 @@
 				GCC_PREFIX_HEADER = "SNRMusicKitMac/SNRMusicKitMac-Prefix.pch";
 				INFOPLIST_FILE = "SNRMusicKitMac/SNRMusicKitMac-Info.plist";
 				INSTALL_PATH = "@rpath";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
@@ -1927,6 +1939,7 @@
 				03576BD115E9695F00316930 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		036991E815E3EAE1003BCCBE /* Build configuration list for PBXProject "SNRMusicKit" */ = {
 			isa = XCConfigurationList;

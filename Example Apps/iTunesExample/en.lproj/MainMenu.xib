@@ -1757,6 +1757,7 @@
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSIsVertical">YES</bool>
 							<int key="NSDividerStyle">2</int>
+							<string key="NSAutosaveName">SMKSplitView</string>
 						</object>
 						<object class="NSTextField" id="66115303">
 							<reference key="NSNextResponder" ref="439893737"/>
@@ -1790,7 +1791,7 @@
 						</object>
 						<object class="NSSlider" id="147156460">
 							<reference key="NSNextResponder" ref="439893737"/>
-							<int key="NSvFlags">288</int>
+							<int key="NSvFlags">289</int>
 							<string key="NSFrame">{{627, 3}, {126, 15}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
@@ -1816,7 +1817,7 @@
 						</object>
 						<object class="NSTextField" id="293570844">
 							<reference key="NSNextResponder" ref="439893737"/>
-							<int key="NSvFlags">292</int>
+							<int key="NSvFlags">289</int>
 							<string key="NSFrame">{{577, 1}, {45, 17}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
