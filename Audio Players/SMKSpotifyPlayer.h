@@ -19,8 +19,6 @@
 
 // Seeking (SMKPlayer @optional)
 @property (nonatomic, strong, readonly) id<SMKTrack> preloadedTrack;
-
-// Seeking (SMKPlayer @optional)
 - (void)seekToPlaybackTime:(NSTimeInterval)time;
 - (void)seekBackward;
 - (void)seekForward;
