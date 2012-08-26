@@ -28,7 +28,8 @@
     [_source fetchPlaylistsWithSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]
                                      batchSize:0
                                     fetchLimit:0
-                                     predicate:[NSPredicate predicateWithFormat:@"items.@count != 0"] completionHandler:^(NSArray *playlists, NSError *error) {
+                                     predicate:nil
+                             completionHandler:^(NSArray *playlists, NSError *error) {
         self.playlists = playlists;
     }];
     self.audioPlayer = [[SMKSpotifyPlayer alloc] initWithPlaybackSession:_source];
