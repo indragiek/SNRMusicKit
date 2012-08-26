@@ -64,6 +64,20 @@ static void* const SMKSPArtistBrowseKey = @"SMK_SPArtistBrowse";
     return self.spotifyURL;
 }
 
+#pragma mark - SMKHierarchicalLoading
+
+- (void)loadHierarchy:(dispatch_group_t)group array:(NSMutableArray *)array
+{
+    dispatch_group_enter(group);
+    __weak SPArtist *weakSelf = self;
+    [self SMK_spotifyWaitAsyncThen:^{
+        SPArtist *strongSelf = weakSelf;
+        SPArtistBrowse *browse = [strongSelf SMK_associatedArtistBrowse];
+        [browse loadHierarchy:group array:array];
+        dispatch_group_leave(group);
+    }];
+}
+
 #pragma mark - SMKArtworkObject
 
 - (void)fetchArtworkWithSize:(SMKArtworkSize)size
@@ -88,5 +102,23 @@ static void* const SMKSPArtistBrowseKey = @"SMK_SPArtistBrowse";
         [self associateValue:browse withKey:SMKSPArtistBrowseKey];
     }
     return browse;
+}
+@end
+
+@implementation SPArtistBrowse (SMKArtist)
+
+#pragma mark - SMKHierarchicalLoading
+
+- (void)loadHierarchy:(dispatch_group_t)group array:(NSMutableArray *)array
+{
+    __weak SPArtistBrowse *weakSelf = self;
+    dispatch_group_enter(group);
+    [self SMK_spotifyWaitAsyncThen:^{
+        SPArtistBrowse *strongSelf = weakSelf;
+        [strongSelf.albums enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [obj loadHierarchy:group array:array];
+        }];
+        dispatch_group_leave(group);
+    }];
 }
 @end

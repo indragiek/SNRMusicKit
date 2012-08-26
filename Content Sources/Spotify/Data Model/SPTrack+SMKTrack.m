@@ -53,4 +53,15 @@
 {
     return self.spotifyURL;
 }
+
+#pragma mark - SMKHierarchicalLoading
+
+- (void)loadHierarchy:(dispatch_group_t)group array:(NSMutableArray *)array
+{
+    dispatch_group_enter(group);
+    [self SMK_spotifyWaitAsyncThen:^{
+        [array addObject:self];
+        dispatch_group_leave(group);
+    }];
+}
 @end

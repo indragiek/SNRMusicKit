@@ -10,7 +10,11 @@
 #import "SMKAlbum.h"
 #import "SMKWebObject.h"
 #import "SMKArtworkObject.h"
+#import "SMKHierarchicalLoading.h"
 
-@interface SPAlbum (SMKAlbum) <SMKAlbum, SMKWebObject, SMKArtworkObject>
+@interface SPAlbum (SMKAlbum) <SMKAlbum, SMKWebObject, SMKArtworkObject, SMKHierarchicalLoading>
 - (SPAlbumBrowse *)SMK_associatedAlbumBrowse;
+@end
+
+@interface SPAlbumBrowse (SMKAlbum) <SMKHierarchicalLoading>
 @end

@@ -10,7 +10,11 @@
 #import "SMKArtist.h"
 #import "SMKWebObject.h"
 #import "SMKArtworkObject.h"
+#import "SMKHierarchicalLoading.h"
 
-@interface SPArtist (SMKArtist) <SMKArtist, SMKWebObject, SMKArtworkObject>
+@interface SPArtist (SMKArtist) <SMKArtist, SMKWebObject, SMKArtworkObject, SMKHierarchicalLoading>
 - (SPArtistBrowse *)SMK_associatedArtistBrowse;
+@end
+
+@interface SPArtistBrowse (SMKArtist) <SMKHierarchicalLoading>
 @end

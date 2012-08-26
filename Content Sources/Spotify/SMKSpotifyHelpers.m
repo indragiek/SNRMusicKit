@@ -8,14 +8,15 @@
 
 #import "SMKSpotifyHelpers.h"
 #import "NSObject+SMKSpotifyAdditions.h"
-#import "SMKSpotify+Loading.h"
 #import "NSMutableArray+SMKAdditions.h"
+#import "SMKHierarchicalLoading.h"
 
 @implementation SMKSpotifyHelpers
 + (void)loadItems:(NSArray *)items group:(dispatch_group_t)group array:(NSMutableArray *)array
 {
     [items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [obj SMK_loadHierarchy:group array:array];
+        if ([obj conformsToProtocol:@protocol(SMKHierarchicalLoading)])
+            [obj loadHierarchy:group array:array];
     }];
 }
 

@@ -9,6 +9,7 @@
 #import <CocoaLibSpotify/CocoaLibSpotify.h>
 #import "SMKTrack.h"
 #import "SMKWebObject.h"
+#import "SMKHierarchicalLoading.h"
 
-@interface SPTrack (SMKTrack) <SMKTrack, SMKWebObject>
+@interface SPTrack (SMKTrack) <SMKTrack, SMKWebObject, SMKHierarchicalLoading>
 @end
