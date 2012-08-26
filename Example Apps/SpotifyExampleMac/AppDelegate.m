@@ -25,6 +25,7 @@
     _source = [[SMKSpotifyContentSource alloc] initWithApplicationKey:key userAgent:@"com.indragie.SNRMusicKit" loadingPolicy:SPAsyncLoadingImmediate error:nil];
     [_source attemptLoginWithUserName:username password:password];
     [_source setDelegate:self];
+    [_source setUsingVolumeNormalization:YES];
     [_source fetchPlaylistsWithSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]
                                      batchSize:0
                                     fetchLimit:0

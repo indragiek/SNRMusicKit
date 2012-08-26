@@ -48,7 +48,7 @@
         _playbackTime = [newValue doubleValue];
         [self didChangeValueForKey:@"playbackTime"];
     } else if ([keyPath isEqualToString:@"currentTrack"]) {
-        if (!newValue) {
+        if (!SMKObjectIsValid(newValue)) {
             if (self.finishedTrackBlock)
                 self.finishedTrackBlock(self, _oldCurrentTrack, nil);
             _oldCurrentTrack = nil;
@@ -116,5 +116,14 @@
 - (void)playTrack:(id<SMKTrack>)track completionHandler:(void (^)(NSError *))handler
 {
     [self playTrack:(SPTrack *)track callback:handler];
+}
+
+#pragma mark - Accessors
+
+- (void)setVolume:(float)volume
+{
+    [self willChangeValueForKey:@"volume"];
+    [super setVolume:volume];
+    [self didChangeValueForKey:@"volume"];
 }
 @end
