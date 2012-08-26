@@ -26,7 +26,7 @@
     [_source attemptLoginWithUserName:username password:password];
     [_source setDelegate:self];
     [_source setUsingVolumeNormalization:YES];
-    [_source fetchPlaylistsWithSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]
+    [_source fetchPlaylistsWithSortDescriptors:nil
                                      batchSize:0
                                     fetchLimit:0
                                      predicate:nil
