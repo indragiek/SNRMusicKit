@@ -16,4 +16,17 @@
 @property (nonatomic, assign) NSTimeInterval seekTimeInterval;
 @property (nonatomic, assign, readonly) NSTimeInterval playbackTime;
 @property (nonatomic, assign, readonly) BOOL playing;
+
+// Seeking (SMKPlayer @optional)
+@property (nonatomic, strong, readonly) id<SMKTrack> preloadedTrack;
+
+// Seeking (SMKPlayer @optional)
+- (void)seekToPlaybackTime:(NSTimeInterval)time;
+- (void)seekBackward;
+- (void)seekForward;
+
+// Preloading (SMKPlayer @optional)
+- (void)preloadTrack:(id<SMKTrack>)track completionHandler:(void(^)(NSError *error))handler;
+- (id<SMKTrack>)preloadedTrack;
+- (void)skipToPreloadedTrack;
 @end

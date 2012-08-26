@@ -10,9 +10,12 @@
 #import "SMKSpotifyContentSource.h"
 #import "SPTrack+SMKTrack.h"
 
-@implementation SMKSpotifyPlayer {
-    id<SMKTrack> _oldCurrentTrack;
-}
+@interface SMKSpotifyPlayer ()
+@property (nonatomic, strong) id<SMKTrack> oldCurrentTrack;
+@property (nonatomic, strong, readwrite) id<SMKTrack> preloadedTrack;
+@end
+
+@implementation SMKSpotifyPlayer
 
 - (id)initWithPlaybackSession:(SPSession *)aSession
 {
@@ -50,8 +53,10 @@
     } else if ([keyPath isEqualToString:@"currentTrack"]) {
         if (!SMKObjectIsValid(newValue)) {
             if (self.finishedTrackBlock)
-                self.finishedTrackBlock(self, _oldCurrentTrack, nil);
-            _oldCurrentTrack = nil;
+                self.finishedTrackBlock(self, self.oldCurrentTrack, nil);
+            self.oldCurrentTrack = nil;
+        } else {
+            self.preloadedTrack = nil;
         }
     } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
@@ -67,7 +72,7 @@
 
 + (BOOL)supportsPreloading
 {
-    return NO;
+    return YES;
 }
 
 + (BOOL)supportsAirPlay
@@ -107,15 +112,33 @@
     [self seekToTrackPosition:newTime];
 }
 
-- (void)playTrack:(SPTrack *)aTrack callback:(SPErrorableOperationCallback)block
-{
-    [super playTrack:aTrack callback:block];
-    _oldCurrentTrack = aTrack;
-}
-
 - (void)playTrack:(id<SMKTrack>)track completionHandler:(void (^)(NSError *))handler
 {
-    [self playTrack:(SPTrack *)track callback:handler];
+    __weak SMKSpotifyPlayer *weakSelf = self;
+    [self playTrack:(SPTrack *)track callback:^(NSError *error) {
+        SMKSpotifyPlayer *strongSelf = weakSelf;
+        if (!error)
+            strongSelf.oldCurrentTrack = track;
+        if (handler)
+            handler(error);
+    }];
+}
+
+- (void)preloadTrack:(id<SMKTrack>)track completionHandler:(void(^)(NSError *error))handler
+{
+    __weak SMKSpotifyPlayer *weakSelf = self;
+    [self.playbackSession preloadTrackForPlayback:(SPTrack *)track callback:^(NSError *error) {
+        SMKSpotifyPlayer *strongSelf = weakSelf;
+        if (!error)
+            strongSelf.preloadedTrack = track;
+        if (handler)
+            handler(error);
+    }];
+}
+
+- (void)skipToPreloadedTrack
+{
+    [self playTrack:self.preloadedTrack completionHandler:nil];
 }
 
 #pragma mark - Accessors

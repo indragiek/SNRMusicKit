@@ -19,10 +19,7 @@
 @property (nonatomic, assign, readwrite) NSTimeInterval playbackTime;
 @end
 
-@implementation SMKAVQueuePlayer {
-    BOOL _playing;
-}
-@synthesize playing = _playing;
+@implementation SMKAVQueuePlayer
 @dynamic volume;
 
 - (id)init
@@ -123,7 +120,6 @@
 {
     [self advanceToNextItem];
 }
-
 
 #pragma mark - Private
 
