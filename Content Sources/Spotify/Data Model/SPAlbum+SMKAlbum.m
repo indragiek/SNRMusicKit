@@ -32,7 +32,6 @@ static void* const SMKSPAlbumBrowseKey = @"SMK_SPAlbumBrowse";
     [SMKSpotifyHelpers loadItemsAynchronously:@[browse]
                               sortDescriptors:sortDescriptors
                                     predicate:predicate
-                                   fetchLimit:fetchLimit
                                  sortingQueue:queue
                             completionHandler:handler];
 }

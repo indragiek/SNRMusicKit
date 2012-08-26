@@ -19,7 +19,7 @@
     NSError *error = nil;
     NSArray *fetchedObjects = [self SMK_legacyFetchWithEntityName:SMKiTunesEntityNameArtist sortDescriptors:nil predicate:[NSPredicate predicateWithFormat:@"normalizedName == %@", normalizedName] batchSize:0 fetchLimit:1 error:&error];
     if (error)
-        SMKGenericErrorLog([NSString stringWithFormat:@"Error fetching iTunes artist with name \"%@\"", name], error);
+        SMKGenericErrorLog([NSString stringWithFormat:@"Error fetching iTunes artist with name %@", name], error);
 	if (![fetchedObjects count]) {
         if (create) {
             SMKiTunesArtist *artist = [self SMK_createObjectOfEntityName:SMKiTunesEntityNameArtist];
@@ -39,7 +39,7 @@
     NSError *error = nil;
     NSArray *fetchedObjects = [self SMK_legacyFetchWithEntityName:SMKiTunesEntityNameAlbum sortDescriptors:nil predicate:[NSPredicate predicateWithFormat:@"(normalizedName == %@) AND (artist == %@)", normalizedName, artist] batchSize:0 fetchLimit:1 error:&error];
     if (error)
-        SMKGenericErrorLog([NSString stringWithFormat:@"Error fetching iTunes album with name \"%@\"", name], error);
+        SMKGenericErrorLog([NSString stringWithFormat:@"Error fetching iTunes album with name %@", name], error);
 	if (![fetchedObjects count]) {
         if (create) {
             SMKiTunesAlbum *album = [self SMK_createObjectOfEntityName:SMKiTunesEntityNameAlbum];
@@ -56,7 +56,7 @@
     NSError *error = nil;
     NSArray *fetchedObjects = [self SMK_legacyFetchWithEntityName:SMKiTunesEntityNameTrack sortDescriptors:nil predicate:[NSPredicate predicateWithFormat:@"identifier == %@", identifier] batchSize:0 fetchLimit:1 error:&error];
     if (error)
-        SMKGenericErrorLog([NSString stringWithFormat:@"Error fetching iTunes track with identifier \"%@\"", identifier], error);
+        SMKGenericErrorLog([NSString stringWithFormat:@"Error fetching iTunes track with identifier %@", identifier], error);
     return ([fetchedObjects count] != 0) ? [fetchedObjects objectAtIndex:0] : nil;
 }
 
@@ -65,7 +65,7 @@
     NSError *error = nil;
     NSArray *fetchedObjects = [self SMK_legacyFetchWithEntityName:SMKiTunesEntityNamePlaylist sortDescriptors:nil predicate:[NSPredicate predicateWithFormat:@"identifier == %@", identifier] batchSize:0 fetchLimit:1 error:&error];
     if (error)
-        SMKGenericErrorLog([NSString stringWithFormat:@"Error fetching iTunes playlist with identifier \"%@\"", identifier], error);
+        SMKGenericErrorLog([NSString stringWithFormat:@"Error fetching iTunes playlist with identifier %@", identifier], error);
     return ([fetchedObjects count] != 0) ? [fetchedObjects objectAtIndex:0] : nil;
 }
 

@@ -128,6 +128,8 @@
 		03BDF4A715E9E840006CA8B1 /* SMKArtworkCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 03BDF4A515E9E840006CA8B1 /* SMKArtworkCache.h */; };
 		03BDF4A815E9E840006CA8B1 /* SMKArtworkCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDF4A615E9E840006CA8B1 /* SMKArtworkCache.m */; };
 		03BDF4A915E9E840006CA8B1 /* SMKArtworkCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDF4A615E9E840006CA8B1 /* SMKArtworkCache.m */; };
+		03DEF86D15EA9F7F001A1537 /* SPToplist+SMKPlaylist.h in Headers */ = {isa = PBXBuildFile; fileRef = 03DEF86B15EA9F7F001A1537 /* SPToplist+SMKPlaylist.h */; };
+		03DEF86E15EA9F7F001A1537 /* SPToplist+SMKPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 03DEF86C15EA9F7F001A1537 /* SPToplist+SMKPlaylist.m */; };
 		03E22DAA15E4A87B008351DD /* SMKContentObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 03E22DA915E4A87B008351DD /* SMKContentObject.h */; };
 		03E22DAC15E4A9C1008351DD /* SMKArtworkObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 03E22DAB15E4A9C1008351DD /* SMKArtworkObject.h */; };
 		03E22DAE15E4AA7D008351DD /* SMKWebObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 03E22DAD15E4AA7D008351DD /* SMKWebObject.h */; };
@@ -481,6 +483,8 @@
 		03BDF49615E9D914006CA8B1 /* SMKHierarchicalLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKHierarchicalLoading.h; path = Protocols/SMKHierarchicalLoading.h; sourceTree = "<group>"; };
 		03BDF4A515E9E840006CA8B1 /* SMKArtworkCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKArtworkCache.h; path = "Content Sources/Shared/SMKArtworkCache.h"; sourceTree = "<group>"; };
 		03BDF4A615E9E840006CA8B1 /* SMKArtworkCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKArtworkCache.m; path = "Content Sources/Shared/SMKArtworkCache.m"; sourceTree = "<group>"; };
+		03DEF86B15EA9F7F001A1537 /* SPToplist+SMKPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SPToplist+SMKPlaylist.h"; path = "Content Sources/Spotify/Data Model/SPToplist+SMKPlaylist.h"; sourceTree = "<group>"; };
+		03DEF86C15EA9F7F001A1537 /* SPToplist+SMKPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SPToplist+SMKPlaylist.m"; path = "Content Sources/Spotify/Data Model/SPToplist+SMKPlaylist.m"; sourceTree = "<group>"; };
 		03E22DA915E4A87B008351DD /* SMKContentObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKContentObject.h; path = Protocols/SMKContentObject.h; sourceTree = "<group>"; };
 		03E22DAB15E4A9C1008351DD /* SMKArtworkObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKArtworkObject.h; path = Protocols/SMKArtworkObject.h; sourceTree = "<group>"; };
 		03E22DAD15E4AA7D008351DD /* SMKWebObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKWebObject.h; path = Protocols/SMKWebObject.h; sourceTree = "<group>"; };
@@ -938,6 +942,8 @@
 				03EB019A15E88746001F3A02 /* SPAlbum+SMKAlbum.m */,
 				03EB019E15E88F17001F3A02 /* SPArtist+SMKArtist.h */,
 				03EB019F15E88F17001F3A02 /* SPArtist+SMKArtist.m */,
+				03DEF86B15EA9F7F001A1537 /* SPToplist+SMKPlaylist.h */,
+				03DEF86C15EA9F7F001A1537 /* SPToplist+SMKPlaylist.m */,
 			);
 			name = "Data Model";
 			sourceTree = "<group>";
@@ -1196,6 +1202,7 @@
 				03576BF015E993E100316930 /* SMKSpotifyHelpers.h in Headers */,
 				03BDF49715E9D914006CA8B1 /* SMKHierarchicalLoading.h in Headers */,
 				03BDF4A715E9E840006CA8B1 /* SMKArtworkCache.h in Headers */,
+				03DEF86D15EA9F7F001A1537 /* SPToplist+SMKPlaylist.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1531,6 +1538,7 @@
 				03576BB415E961A000316930 /* SMKGlobalConstants.m in Sources */,
 				03576BF115E993E100316930 /* SMKSpotifyHelpers.m in Sources */,
 				03BDF4A815E9E840006CA8B1 /* SMKArtworkCache.m in Sources */,
+				03DEF86E15EA9F7F001A1537 /* SPToplist+SMKPlaylist.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

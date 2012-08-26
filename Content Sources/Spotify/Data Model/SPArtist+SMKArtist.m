@@ -35,7 +35,6 @@ static void* const SMKSPArtistBrowseKey = @"SMK_SPArtistBrowse";
     [SMKSpotifyHelpers loadItemsAynchronously:@[browse]
                               sortDescriptors:sortDescriptors
                                     predicate:predicate
-                                   fetchLimit:fetchLimit
                                  sortingQueue:queue
                             completionHandler:handler];
 }

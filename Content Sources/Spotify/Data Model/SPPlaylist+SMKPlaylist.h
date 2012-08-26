@@ -16,6 +16,8 @@
 
 #pragma mark - SMKPlaylist
 
+- (id<SMKUser>)user;
+- (NSString *)extendedDescription;
 - (void)moveTracks:(NSArray*)tracks toIndex:(NSUInteger)index completionHandler:(void(^)(NSError *error))handler;
 @end
 

@@ -11,4 +11,5 @@
 
 @interface SMKManagedObjectContext : NSManagedObjectContext
 @property (nonatomic, strong) id<SMKContentSource> SMK_contentSource;
+@property (nonatomic, assign) NSUInteger defaultFetchBatchSize;
 @end

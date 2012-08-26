@@ -9,5 +9,13 @@
 #import "SMKManagedObjectContext.h"
 
 @implementation SMKManagedObjectContext
+@synthesize defaultFetchBatchSize = _defaultFetchBatchSize;
 
+- (id)initWithConcurrencyType:(NSManagedObjectContextConcurrencyType)ct
+{
+    if ((self = [super initWithConcurrencyType:ct])) {
+        self.defaultFetchBatchSize = 20;
+    }
+    return self;
+}
 @end
