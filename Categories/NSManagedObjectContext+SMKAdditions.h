@@ -22,7 +22,7 @@
 - (BOOL)SMK_saveNestedChanges;
 
 /**
- This method fetches the objects synchronously, wrapped in a -performBlockAndWait call
+ This method fetches the objects synchronously, WITHOUT wrapping it in a -performBlock call (hence called a legacy fetch)
  @param entityName The name of the Core Data entity to fetch
  @param sortDescriptors Array of NSSortDescriptor's used to sort the results
  @param predicate A predicate used to filter the results
@@ -31,24 +31,7 @@
  @param error Error pointer for an NSError if something goes wrong
  @return The fetched results
  */
-- (NSArray *)SMK_fetchWithEntityName:(NSString *)entityName
-                     sortDescriptors:(NSArray *)sortDescriptors
-                           predicate:(NSPredicate *)predicate
-                           batchSize:(NSUInteger)batchSize
-                          fetchLimit:(NSUInteger)fetchLimit
-                               error:(NSError **)error;
-
-/**
- This method fetches the objects synchronously, WITHOUT wrapping it in a -performBlock call
- @param entityName The name of the Core Data entity to fetch
- @param sortDescriptors Array of NSSortDescriptor's used to sort the results
- @param predicate A predicate used to filter the results
- @param batchSize The batch size to use for fetching
- @param fetchLimit The maximum number of objects to fetch
- @param error Error pointer for an NSError if something goes wrong
- @return The fetched results
- */
-- (NSArray *)SMK_noBlockFetchWithEntityName:(NSString *)entityName
+- (NSArray *)SMK_legacyFetchWithEntityName:(NSString *)entityName
                      sortDescriptors:(NSArray *)sortDescriptors
                            predicate:(NSPredicate *)predicate
                            batchSize:(NSUInteger)batchSize
@@ -85,13 +68,6 @@
                                      predicate:(NSPredicate *)predicate
                                      batchSize:(NSUInteger)batchSize
                                     fetchLimit:(NSUInteger)fetchLimit;
-
-/**
- @param request The fetch request to execute
- @param error NSError pointer for if the fetch request fails
- @discussion This method is synchronous and will block until results have been returned
- */
-- (NSArray *)SMK_fetchWithFetchRequest:(NSFetchRequest *)request error:(NSError **)error;
 
 /**
  @param request The fetch request to execute

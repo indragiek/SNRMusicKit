@@ -22,22 +22,6 @@
 + (BOOL)supportsBatching { return NO; }
 + (Class)defaultPlayerClass { return [SMKSpotifyPlayer class]; }
 
-- (NSArray *)playlistsWithSortDescriptors:(NSArray *)sortDescriptors
-                                batchSize:(NSUInteger)batchSize
-                               fetchLimit:(NSUInteger)fetchLimit
-                                predicate:(NSPredicate *)predicate
-                                withError:(NSError **)error
-{
-    [self SMK_spotifyWaitUntilLoaded];
-    [self.starredPlaylist SMK_spotifyWaitUntilLoaded];
-    [self.inboxPlaylist SMK_spotifyWaitUntilLoaded];
-    [self.userPlaylists SMK_spotifyWaitUntilLoaded];
-    return [self _allPlaylistsWithSortDescriptors:sortDescriptors
-                                                 fetchLimit:fetchLimit
-                                                  predicate:predicate];
-    
-}
-
 - (void)fetchPlaylistsWithSortDescriptors:(NSArray *)sortDescriptors
                                 batchSize:(NSUInteger)batchSize
                                fetchLimit:(NSUInteger)fetchLimit
@@ -57,11 +41,14 @@
                 }];
             } group:group];
             dispatch_group_notify(group, strongSelf.spotifyLocalQueue, ^{
+                NSMutableArray *playlists = [NSMutableArray arrayWithObjects:strongSelf.inboxPlaylist, strongSelf.starredPlaylist, nil];
+                [playlists addObjectsFromArray:[strongSelf.userPlaylists flattenedPlaylists]];
+                [playlists SMK_processWithSortDescriptors:sortDescriptors
+                                                predicate:predicate
+                                               fetchLimit:fetchLimit];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (handler)
-                        handler([strongSelf _allPlaylistsWithSortDescriptors:sortDescriptors
-                                                                  fetchLimit:fetchLimit
-                                                                   predicate:predicate], nil);
+                        handler(playlists, nil);
                 });
             });
             dispatch_release(group);
@@ -83,17 +70,5 @@
         _localQueue = dispatch_queue_create("com.indragie.SNRMusicKit.spotifyLocalQueue", DISPATCH_QUEUE_SERIAL);
     }
     return _localQueue;
-}
-
-#pragma mark - Private
-
-- (NSArray *)_allPlaylistsWithSortDescriptors:(NSArray *)sortDescriptors fetchLimit:(NSUInteger)fetchLimit predicate:(NSPredicate *)predicate
-{
-    NSMutableArray *playlists = [NSMutableArray arrayWithObjects:self.inboxPlaylist, self.starredPlaylist, nil];
-    [playlists addObjectsFromArray:[self.userPlaylists flattenedPlaylists]];
-    [playlists SMK_processWithSortDescriptors:sortDescriptors
-                                    predicate:predicate
-                                   fetchLimit:fetchLimit];
-    return playlists;
 }
 @end

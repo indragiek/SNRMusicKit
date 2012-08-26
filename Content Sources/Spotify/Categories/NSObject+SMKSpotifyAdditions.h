@@ -11,11 +11,6 @@
 
 @interface NSObject (SMKSpotifyAdditions)
 /**
- Blocks until the object has been fully loaded via SPAsyncLoading
- */
-- (void)SMK_spotifyWaitUntilLoaded;
-
-/**
  Asynchronously waits for the object to finish loading and calls the completion block.
  This method just calls -SMK_spotifyWaitAsyncThen:group: passing NULL as the group
  @param then The block to call when loading is finished.

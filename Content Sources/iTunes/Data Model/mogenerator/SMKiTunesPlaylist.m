@@ -4,21 +4,6 @@
 
 @implementation SMKiTunesPlaylist
 
-- (NSArray *)tracksWithSortDescriptors:(NSArray *)sortDescriptors
-                             predicate:(NSPredicate *)predicate
-                             batchSize:(NSUInteger)batchSize
-                            fetchLimit:(NSUInteger)fetchLimit
-                             withError:(NSError **)error
-{
-    NSPredicate *finalPredicate = [self _compoundTrackPredicateWithPredicate:predicate];
-    return [[self managedObjectContext] SMK_fetchWithEntityName:SMKiTunesEntityNameTrack
-                                                sortDescriptors:sortDescriptors
-                                                      predicate:finalPredicate
-                                                      batchSize:batchSize
-                                                     fetchLimit:fetchLimit
-                                                          error:error];
-}
-
 - (void)fetchTracksWithSortDescriptors:(NSArray *)sortDescriptors
                              predicate:(NSPredicate *)predicate
                              batchSize:(NSUInteger)batchSize

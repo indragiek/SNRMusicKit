@@ -7,23 +7,9 @@
 //
 
 #import "NSObject+SMKSpotifyAdditions.h"
-#import "NSObject+SMKAdditions.h"
 #import <CocoaLibSpotify/CocoaLibSpotify.h>
 
 @implementation NSObject (SMKSpotifyAdditions)
-- (void)SMK_spotifyWaitUntilLoaded
-{
-    if ([self conformsToProtocol:@protocol(SPAsyncLoading)]) {
-        id<SPAsyncLoading> asyncObject = (id)self;
-        if ([asyncObject isLoaded]) { return; }
-        __weak id weakSelf = self;
-        [SPAsyncLoading waitUntilLoaded:self timeout:SMKSpotifyDefaultLoadingTimeout then:^(NSArray *loadedItems, NSArray *notLoadedItems) {
-            id strongSelf = weakSelf;
-            [strongSelf SMK_semaphoreSignal];
-        }];
-        [self SMK_semaphoreWait:DISPATCH_TIME_FOREVER];
-    }
-}
 
 - (void)SMK_spotifyWaitAsyncThen:(void(^)())then
 {

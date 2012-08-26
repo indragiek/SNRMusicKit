@@ -26,18 +26,6 @@
 
 #pragma mark - SMKPlaylist
 
-- (NSArray *)tracksWithSortDescriptors:(NSArray *)sortDescriptors
-                             predicate:(NSPredicate *)predicate
-                             batchSize:(NSUInteger)batchSize
-                            fetchLimit:(NSUInteger)fetchLimit
-                             withError:(NSError **)error
-{
-    return [SMKSpotifyHelpers loadItemsSynchronously:self.items
-                                     sortDescriptors:sortDescriptors
-                                           predicate:predicate
-                                          fetchLimit:fetchLimit];
-}
-
 - (void)fetchTracksWithSortDescriptors:(NSArray *)sortDescriptors
                              predicate:(NSPredicate *)predicate
                              batchSize:(NSUInteger)batchSize
@@ -101,12 +89,6 @@
 }
 
 #pragma mark - SMKArtworkObject
-
-- (SMKPlatformNativeImage *)artworkWithSize:(SMKArtworkSize)size error:(NSError **)error
-{
-    [self.image SMK_spotifyWaitUntilLoaded];
-    return [self.image image];
-}
 
 - (void)fetchArtworkWithSize:(SMKArtworkSize)size
        withCompletionHandler:(void(^)(SMKPlatformNativeImage *image, NSError *error))handler

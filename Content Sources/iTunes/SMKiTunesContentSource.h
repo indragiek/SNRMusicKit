@@ -48,18 +48,10 @@
 #pragma mark - Fetching
 
 /**
- Executes the specified fetch request synchronously
- @param request The fetch request to execute
- @parame error An NSError providing error information if the request fails
- */
-- (NSArray *)executeFetchRequestSynchronously:(NSFetchRequest *)request
-                                        error:(NSError **)error;
-
-/**
  Executes the specified fetch request asynchronously
  @param request The fetch request to execute
  @parame handler Completion handler to be called upon execution of the request
  */
-- (void)executeFetchRequestAsynchronously:(NSFetchRequest *)request
-                        completionHandler:(void(^)(NSArray *playlists, NSError *error))handler;
+- (void)executeFetchRequest:(NSFetchRequest *)request
+          completionHandler:(void(^)(NSArray *playlists, NSError *error))handler;
 @end
