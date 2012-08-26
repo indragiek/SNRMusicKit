@@ -22,6 +22,11 @@
 + (instancetype)sharedCache;
 
 /**
+ Compression quality of the image, 1.0 being best quality and 0.0 being lowest.
+ Default value is 1.0.
+ */
+@property (nonatomic, assign) CGFloat JPEGCompressionQuality;
+/**
  Asynchronously fetches a cached image and calls the completion handler
  @param key The cached image key
  @param handler Hander block called with the fetched image

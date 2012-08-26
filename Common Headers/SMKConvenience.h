@@ -6,7 +6,10 @@
 //  Copyright (c) 2012 Indragie Karunaratne. All rights reserved.
 //
 
-static inline BOOL SMKObjectIsValid(id object) {
+#import "SMKPlatformImports.h"
+
+static inline BOOL SMKObjectIsValid(id object)
+{
 	return (object != nil)
     && (object != [NSNull null])
     && (![object respondsToSelector:@selector(length)]
@@ -14,8 +17,19 @@ static inline BOOL SMKObjectIsValid(id object) {
     && (![object respondsToSelector:@selector(count)]
         || [(NSArray *)object count] != 0);
 }
-static inline void SMKGenericErrorLog(NSString *errorText, NSError *error) {
+static inline void SMKGenericErrorLog(NSString *errorText, NSError *error)
+{
     if (![errorText length])
         errorText = @"Error";
     NSLog(@"%@: %@, %@", errorText, error, [error userInfo]);
+}
+
+static inline NSData* SMKImageJPEGRepresentation(SMKPlatformNativeImage *image, CGFloat compressionQuality)
+{
+#if TARGET_OS_MAC
+    NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:compressionQuality] forKey:NSImageCompressionFactor];
+    return [NSBitmapImageRep representationOfImageRepsInArray:[image representations] usingType: NSJPEGFileType properties:options];
+#else
+    return UIImageJPEGRepresentation(image, compressionQuality);
+#endif
 }

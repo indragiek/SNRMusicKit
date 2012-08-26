@@ -1,12 +1,10 @@
 ## SNRMusicKit
-### The next generation backbone for music apps on iOS and Mac
 
 SNRMusicKit is an open source project that will become the backbone for [Sonora](http://getsonora.com) and other music applications that we may build for the Mac and iOS platforms. This framework will consist of the following components that will create an all-in-one solution for building content rich music applications:
 
 * **Content Sources**: Services and applications that will provide content. Examples include the iTunes Library on OS X, [MPMediaLibrary](http://developer.apple.com/library/ios/#documentation/mediaplayer/reference/MediaPlayer_Framework/_index.html#//apple_ref/doc/uid/TP40006952) on iOS, as well as streaming services such as [Rdio](http://www.rdio.com) and [8tracks](http://8tracks.com).
-* **Players**: Different audio players sharing a common interface to handle a wide variety of content formats. Right now I'm planning to create two players, one based on [AVFoundation](http://developer.apple.com/library/ios/#documentation/AVFoundation/Reference/AVFoundationFramework/_index.html) and another based on [SFBAudioEngine](https://github.com/sbooth/SFBAudioEngine) for handling more obscure formats as well as HTTP streaming. Both frameworks are cross platform.
-* **Sharing**: Several methods and services for sharing music content, including posting Now Playing information to Twitter and Facebook, scrobbling on Last.fm, and sharing mixes on 8tracks.
-* **Integration**: The framework will provide simple methods of integrating into existing applications on OS X via an AppleScript based API.
+* **Players**: Different audio players sharing a common interface to handle a wide variety of content formats. 
+* **Other Services**: Objective-C interfaces to other commonly used services like Last.fm.
 
 All local databases will be **Core Data** SQL databases, in addition to other persistent caching of artwork, etc. All networking code will be built on top of [AFNetworking](https://github.com/AFNetworking/AFNetworking), specifically subclasses of **AFHTTPClient**.
 
@@ -78,6 +76,20 @@ git submodule update
 </table>
 
 ^2 *Spotify and Rdio have proprietary SDKs and therefore require their own dedicated player classes*
+
+### Roadmap
+
+#### Short term
+
+* iOS MPMediaLibrary content source implementation
+* Cross platform artwork cache
+* Search protocols & implementation for MPMediaLibrary and Spotify
+* Last.fm engine for scrobbling (basically a polished version of SNRLastFMEngine built on AFNetworking)
+
+#### Long term
+
+* Rdio content source implementation
+* 8tracks content source implementation
 
 ### License
 
