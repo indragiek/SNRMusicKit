@@ -26,8 +26,6 @@ static void* const SMKSPArtistBrowseKey = @"SMK_SPArtistBrowse";
 
 - (void)fetchAlbumsWithSortDescriptors:(NSArray *)sortDescriptors
                              predicate:(NSPredicate *)predicate
-                             batchSize:(NSUInteger)batchSize
-                            fetchLimit:(NSUInteger)fetchLimit
                      completionHandler:(void(^)(NSArray *albums, NSError *error))handler
 {
     SPArtistBrowse *browse = [self SMK_associatedArtistBrowse];

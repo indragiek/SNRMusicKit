@@ -52,8 +52,6 @@ static NSUInteger const SMKiTunesContentSourceDefaultBatchSize = 20;
 
 - (NSString *)name { return @"iTunes"; }
 
-+ (BOOL)supportsBatching { return YES; }
-
 + (Class)defaultPlayerClass { return [SMKAVQueuePlayer class]; }
 
 - (void)fetchPlaylistsWithSortDescriptors:(NSArray *)sortDescriptors

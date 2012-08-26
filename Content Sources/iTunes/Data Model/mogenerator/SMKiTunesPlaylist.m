@@ -7,11 +7,11 @@
 
 - (void)fetchTracksWithCompletionHandler:(void(^)(NSArray *tracks, NSError *error))handler
 {
-    NSUInteger batchSize = [(SMKManagedObjectContext *)[self managedObjectContext] defaultFetchBatchSize];
-    [[self managedObjectContext] SMK_asyncFetchWithEntityName:SMKiTunesEntityNameTrack
+    SMKManagedObjectContext *context = (SMKManagedObjectContext *)[self managedObjectContext];
+    [context SMK_asyncFetchWithEntityName:SMKiTunesEntityNameTrack
                                               sortDescriptors:nil
                                                     predicate:[NSPredicate predicateWithFormat:@"%@ in playlists", self]
-                                                    batchSize:batchSize
+                                                    batchSize:context.defaultFetchBatchSize
                                                    fetchLimit:0
                                             completionHandler:handler];
 }

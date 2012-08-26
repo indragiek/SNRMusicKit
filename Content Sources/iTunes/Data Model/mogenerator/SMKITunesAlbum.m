@@ -2,21 +2,21 @@
 #import "NSManagedObjectContext+SMKAdditions.h"
 #import "SMKiTunesConstants.h"
 #import "SMKiTunesTrack.h"
+#import "SMKManagedObjectContext.h"
 
 @implementation SMKiTunesAlbum
 
 - (void)fetchTracksWithSortDescriptors:(NSArray *)sortDescriptors
                              predicate:(NSPredicate *)predicate
-                             batchSize:(NSUInteger)batchSize
-                            fetchLimit:(NSUInteger)fetchLimit
                      completionHandler:(void(^)(NSArray *tracks, NSError *error))handler
 {
+    SMKManagedObjectContext *context = (SMKManagedObjectContext *)[self managedObjectContext];
     NSPredicate *finalPredicate = [self _compoundTrackPredicateWithPredicate:predicate];
-    [[self managedObjectContext] SMK_asyncFetchWithEntityName:SMKiTunesEntityNameTrack
+    [context SMK_asyncFetchWithEntityName:SMKiTunesEntityNameTrack
                                               sortDescriptors:sortDescriptors
                                                     predicate:finalPredicate
-                                                    batchSize:batchSize
-                                                   fetchLimit:fetchLimit
+                                                    batchSize:context.defaultFetchBatchSize
+                                                   fetchLimit:0
                                             completionHandler:handler];
 }
 

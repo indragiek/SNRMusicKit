@@ -23,8 +23,6 @@ static void* const SMKSPAlbumBrowseKey = @"SMK_SPAlbumBrowse";
 
 - (void)fetchTracksWithSortDescriptors:(NSArray *)sortDescriptors
                              predicate:(NSPredicate *)predicate
-                             batchSize:(NSUInteger)batchSize
-                            fetchLimit:(NSUInteger)fetchLimit
                      completionHandler:(void(^)(NSArray *tracks, NSError *error))handler
 {
     SPAlbumBrowse *browse = [self SMK_associatedAlbumBrowse];
