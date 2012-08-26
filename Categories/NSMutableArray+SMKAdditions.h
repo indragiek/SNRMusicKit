@@ -12,7 +12,6 @@
 /**
  @param sortDescriptors Array of sort descriptors to sort the array with
  @param predicate NSPredicate to filter the array
- @param fetchLimit Maximum permitted number of items in the array
  */
-- (void)SMK_processWithSortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate*)predicate fetchLimit:(NSUInteger)fetchLimit;
+- (void)SMK_processWithSortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate*)predicate;
 @end

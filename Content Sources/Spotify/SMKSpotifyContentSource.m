@@ -12,6 +12,7 @@
 
 #import "NSObject+SMKSpotifyAdditions.h"
 #import "NSMutableArray+SMKAdditions.h"
+#import "SPToplist+SMKPlaylist.h"
 
 @implementation SMKSpotifyContentSource {
     dispatch_queue_t _localQueue;
@@ -19,12 +20,9 @@
 #pragma mark - SMKContentSource
 
 - (NSString *)name { return @"Spotify"; }
-+ (BOOL)supportsBatching { return NO; }
 + (Class)defaultPlayerClass { return [SMKSpotifyPlayer class]; }
 
 - (void)fetchPlaylistsWithSortDescriptors:(NSArray *)sortDescriptors
-                                batchSize:(NSUInteger)batchSize
-                               fetchLimit:(NSUInteger)fetchLimit
                                 predicate:(NSPredicate *)predicate
                         completionHandler:(void(^)(NSArray *playlists, NSError *error))handler
 {
@@ -32,20 +30,29 @@
     [self SMK_spotifyWaitAsyncThen:^{
         SMKSpotifyContentSource *strongSelf = weakSelf;
         dispatch_async(strongSelf.spotifyLocalQueue, ^{
+            __block SPToplist *globalToplist = nil;
+            __block SPToplist *userToplist = nil;
+            dispatch_sync([SPSession libSpotifyQueue], ^{
+                globalToplist = [SPToplist globalToplistInSession:strongSelf];
+                userToplist = [SPToplist toplistForCurrentUserInSession:strongSelf];
+            });
             dispatch_group_t group = dispatch_group_create();
-            [strongSelf.starredPlaylist SMK_spotifyWaitAsyncThen:nil group:group];
-            [strongSelf.inboxPlaylist SMK_spotifyWaitAsyncThen:nil group:group];
-            [strongSelf.userPlaylists SMK_spotifyWaitAsyncThen:^{
+            dispatch_group_enter(group);
+            [SPAsyncLoading waitUntilLoaded:@[strongSelf.starredPlaylist, strongSelf.inboxPlaylist, strongSelf.userPlaylists, globalToplist, userToplist] timeout:SMKSpotifyDefaultLoadingTimeout then:^(NSArray *loadedItems, NSArray *notLoadedItems) {
                 [strongSelf.userPlaylists.playlists enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                     [obj SMK_spotifyWaitAsyncThen:nil group:group];
                 }];
-            } group:group];
+                dispatch_group_leave(group);
+            }];
             dispatch_group_notify(group, strongSelf.spotifyLocalQueue, ^{
-                NSMutableArray *playlists = [NSMutableArray arrayWithObjects:strongSelf.inboxPlaylist, strongSelf.starredPlaylist, nil];
+                strongSelf.inboxPlaylist.name = @"Inbox";
+                strongSelf.starredPlaylist.name = @"Starred";
+                globalToplist.name = @"Global Toplist";
+                userToplist.name = @"My Toplist";
+                NSMutableArray *playlists = [NSMutableArray arrayWithObjects:strongSelf.inboxPlaylist, strongSelf.starredPlaylist, globalToplist, userToplist, nil];
                 [playlists addObjectsFromArray:[strongSelf.userPlaylists flattenedPlaylists]];
                 [playlists SMK_processWithSortDescriptors:sortDescriptors
-                                                predicate:predicate
-                                               fetchLimit:fetchLimit];
+                                                predicate:predicate];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (handler)
                         handler(playlists, nil);

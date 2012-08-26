@@ -9,13 +9,11 @@
 #import "NSMutableArray+SMKAdditions.h"
 
 @implementation NSMutableArray (SMKAdditions)
-- (void)SMK_processWithSortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate*)predicate fetchLimit:(NSUInteger)fetchLimit
+- (void)SMK_processWithSortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate*)predicate
 {
     if (predicate)
         [self filterUsingPredicate:predicate];
     if ([sortDescriptors count])
         [self sortUsingDescriptors:sortDescriptors];
-    if (fetchLimit > [self count])
-        [self removeObjectsInRange:NSMakeRange(fetchLimit, [self count] - fetchLimit)];
 }
 @end

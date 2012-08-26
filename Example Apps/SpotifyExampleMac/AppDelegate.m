@@ -26,11 +26,7 @@
     [_source attemptLoginWithUserName:username password:password];
     [_source setDelegate:self];
     [_source setUsingVolumeNormalization:YES];
-    [_source fetchPlaylistsWithSortDescriptors:nil
-                                     batchSize:0
-                                    fetchLimit:0
-                                     predicate:nil
-                             completionHandler:^(NSArray *playlists, NSError *error) {
+    [_source fetchPlaylistsWithSortDescriptors:nil predicate:nil completionHandler:^(NSArray *playlists, NSError *error) {
         self.playlists = playlists;
     }];
     self.audioPlayer = [[SMKSpotifyPlayer alloc] initWithPlaybackSession:_source];
@@ -51,8 +47,7 @@
         NSInteger selectedRow = [tableView selectedRow];
         if (selectedRow != -1) {
             id<SMKPlaylist> playlist = [self.playlists objectAtIndex:selectedRow];
-            NSArray *sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
-            [playlist fetchTracksWithSortDescriptors:sortDescriptors predicate:nil batchSize:20 fetchlimit:0 completionHandler:^(NSArray *tracks, NSError *error) {
+            [playlist fetchTracksWithCompletionHandler:^(NSArray *tracks, NSError *error) {
                 self.tracks = tracks;
             }];
         }

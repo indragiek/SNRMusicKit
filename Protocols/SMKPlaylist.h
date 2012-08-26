@@ -15,19 +15,12 @@
 
 @protocol SMKPlaylist <NSObject, SMKContentObject>
 @required
+
 /**
- This method will fetch the tracks asynchronously and call the completion handler when finished.
- @param sortDescriptors Array of NSSortDescriptor objects used to sort the content
- @param predicate A predicate to filter the results with
- @param batchSize If this is not set to 0, the results will be fetched in batches of this many objects *providing that the source supports batching*
- @param fetchLimit A limit on the number of objects to return
- @discussion This method is asynchronous and will return immediately.
+  This method will fetch the tracks asynchronously and call the completion handler when finished.
+ @param handler Handler to call when tracks have been fetched
  */
-- (void)fetchTracksWithSortDescriptors:(NSArray *)sortDescriptors
-                             predicate:(NSPredicate *)predicate
-                             batchSize:(NSUInteger)batchSize
-                            fetchlimit:(NSUInteger)fetchLimit
-                     completionHandler:(void(^)(NSArray *tracks, NSError *error))handler;
+- (void)fetchTracksWithCompletionHandler:(void(^)(NSArray *tracks, NSError *error))handler;
 
 /**
  @return Whether the playlist is editable

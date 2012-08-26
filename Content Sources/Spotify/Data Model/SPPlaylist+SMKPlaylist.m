@@ -26,17 +26,12 @@
 
 #pragma mark - SMKPlaylist
 
-- (void)fetchTracksWithSortDescriptors:(NSArray *)sortDescriptors
-                             predicate:(NSPredicate *)predicate
-                             batchSize:(NSUInteger)batchSize
-                            fetchlimit:(NSUInteger)fetchLimit
-                     completionHandler:(void(^)(NSArray *tracks, NSError *error))handler
+- (void)fetchTracksWithCompletionHandler:(void(^)(NSArray *tracks, NSError *error))handler
 {
     dispatch_queue_t queue = [(SMKSpotifyContentSource *)self.session spotifyLocalQueue];
     [SMKSpotifyHelpers loadItemsAynchronously:self.items
-                              sortDescriptors:sortDescriptors
-                                    predicate:predicate
-                                   fetchLimit:fetchLimit
+                              sortDescriptors:nil
+                                    predicate:nil
                                  sortingQueue:queue
                             completionHandler:handler];
 }

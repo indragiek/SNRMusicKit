@@ -1,21 +1,18 @@
 #import "SMKiTunesPlaylist.h"
 #import "NSManagedObjectContext+SMKAdditions.h"
 #import "SMKiTunesConstants.h"
+#import "SMKManagedObjectContext.h"
 
 @implementation SMKiTunesPlaylist
 
-- (void)fetchTracksWithSortDescriptors:(NSArray *)sortDescriptors
-                             predicate:(NSPredicate *)predicate
-                             batchSize:(NSUInteger)batchSize
-                            fetchlimit:(NSUInteger)fetchLimit
-                     completionHandler:(void(^)(NSArray *tracks, NSError *error))handler
+- (void)fetchTracksWithCompletionHandler:(void(^)(NSArray *tracks, NSError *error))handler
 {
-    NSPredicate *finalPredicate = [self _compoundTrackPredicateWithPredicate:predicate];
+    NSUInteger batchSize = [(SMKManagedObjectContext *)[self managedObjectContext] defaultFetchBatchSize];
     [[self managedObjectContext] SMK_asyncFetchWithEntityName:SMKiTunesEntityNameTrack
-                                              sortDescriptors:sortDescriptors
-                                                    predicate:finalPredicate
+                                              sortDescriptors:nil
+                                                    predicate:[NSPredicate predicateWithFormat:@"%@ in playlists", self]
                                                     batchSize:batchSize
-                                                   fetchLimit:fetchLimit
+                                                   fetchLimit:0
                                             completionHandler:handler];
 }
 
@@ -26,13 +23,4 @@
     return self.identifier;
 }
 
-#pragma mark - Private
-
-- (NSPredicate *)_compoundTrackPredicateWithPredicate:(NSPredicate *)predicate
-{
-    NSPredicate *basePredicate = [NSPredicate predicateWithFormat:@"%@ in playlists", self];
-    if (predicate)
-        basePredicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[basePredicate, predicate]];
-    return basePredicate;
-}
 @end

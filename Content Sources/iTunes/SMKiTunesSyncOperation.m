@@ -20,6 +20,39 @@
 // The context will be saved after importing this many tracks
 static NSUInteger const SMKiTunesSyncOperationSaveEvery = 200;
 
+static NSString* const SMKiTunesKeyTracks = @"Tracks";
+static NSString* const SMKiTunesKeyPlaylists = @"Playlists";
+static NSString* const SMKiTunesKeyPlaylistItems = @"Playlist Items";
+static NSString* const SMKiTunesKeyTrackID = @"Track ID";
+static NSString* const SMKiTunesKeyMusic = @"Music";
+static NSString* const SMKiTunesKeyName = @"Name";
+static NSString* const SMKiTunesKeyCompilation = @"Compilation";
+static NSString* const SMKiTunesKeyYear = @"Year";
+static NSString* const SMKiTunesKeyComposer = @"Composer";
+static NSString* const SMKiTunesKeyArtist = @"Artist";
+static NSString* const SMKiTunesKeyAlbum = @"Album";
+static NSString* const SMKiTunesKeyAlbumArtist = @"Album Artist";
+static NSString* const SMKiTunesKeyTrackNumber = @"Track Number";
+static NSString* const SMKiTunesKeyDiscNumber = @"Disc Number";
+static NSString* const SMKiTunesKeyTotalTime = @"Total Time";
+static NSString* const SMKiTunesKeyDateAdded = @"Date Added";
+static NSString* const SMKiTunesKeyPersistentID = @"Persistent ID";
+static NSString* const SMKiTunesKeyLocation = @"Location";
+static NSString* const SMKiTunesKeyMaster = @"Master";
+static NSString* const SMKiTunesKeyDistinguishedKind = @"Distinguished Kind";
+static NSString* const SMKiTunesKeyPlaylistPersistentID = @"Playlist Persistent ID";
+static NSString* const SMKiTunesKeyFolder = @"Folder";
+static NSString* const SMKiTunesKeySmartInfo = @"Smart Info";
+static NSString* const SMKiTunesKeyTrackType = @"Track Type";
+static NSString* const SMKiTunesKeyValueFileTrackType = @"File";
+static NSString* const SMKiTunesKeyHasVideo = @"Has Video";
+static NSString* const SMKiTunesKeyClean = @"Clean";
+static NSString* const SMKiTunesKeyExplicit = @"Explicit";
+static NSString* const SMKiTunesKeyRating = @"Rating";
+static NSString* const SMKiTunesKeyAlbumRating = @"Album Rating";
+static NSString* const SMKiTunesKeyGenre = @"Genre";
+static NSString* const SMKiTunesKeyDateModified = @"Date Modified";
+
 @implementation SMKiTunesSyncOperation {
     NSDictionary *_iTunesDictionary;
     NSManagedObjectContext *_context;

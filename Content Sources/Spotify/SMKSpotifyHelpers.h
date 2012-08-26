@@ -13,7 +13,6 @@
 + (void)loadItemsAynchronously:(NSArray *)items
                           sortDescriptors:(NSArray *)sortDescriptors
                                 predicate:(NSPredicate *)predicate
-                               fetchLimit:(NSUInteger)fetchLimit
                              sortingQueue:(dispatch_queue_t)queue
                         completionHandler:(void(^)(NSArray *objects, NSError *error))handler;
 @end

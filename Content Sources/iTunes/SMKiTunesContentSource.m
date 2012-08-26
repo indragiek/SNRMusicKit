@@ -57,8 +57,6 @@ static NSUInteger const SMKiTunesContentSourceDefaultBatchSize = 20;
 + (Class)defaultPlayerClass { return [SMKAVQueuePlayer class]; }
 
 - (void)fetchPlaylistsWithSortDescriptors:(NSArray *)sortDescriptors
-                                batchSize:(NSUInteger)batchSize
-                               fetchLimit:(NSUInteger)fetchLimit
                                 predicate:(NSPredicate *)predicate
                         completionHandler:(void(^)(NSArray *playlists, NSError *error))handler
 {
@@ -66,12 +64,7 @@ static NSUInteger const SMKiTunesContentSourceDefaultBatchSize = 20;
     dispatch_async(_backgroundQueue, ^{
         SMKiTunesContentSource *strongSelf = weakSelf;
         [strongSelf _createSemaphoreAndWait];
-        [strongSelf.backgroundQueueObjectContext SMK_asyncFetchObjectIDsWithEntityName:SMKiTunesEntityNamePlaylist
-                                                                       sortDescriptors:sortDescriptors
-                                                                             predicate:predicate
-                                                                             batchSize:batchSize
-                                                                            fetchLimit:fetchLimit
-                                                                     completionHandler:^(NSArray *results, NSError *error) {
+        [strongSelf.backgroundQueueObjectContext SMK_asyncFetchObjectIDsWithEntityName:SMKiTunesEntityNamePlaylist sortDescriptors:sortDescriptors predicate:predicate batchSize:[strongSelf.backgroundQueueObjectContext defaultFetchBatchSize] fetchLimit:0 completionHandler:^(NSArray *results, NSError *error) {
             NSArray *objects = [strongSelf.mainQueueObjectContext SMK_objectsFromObjectIDs:results];
             if (handler) handler(objects, error);
         }];

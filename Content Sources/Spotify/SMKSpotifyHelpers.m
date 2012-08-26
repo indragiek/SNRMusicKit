@@ -10,6 +10,7 @@
 #import "NSObject+SMKSpotifyAdditions.h"
 #import "NSMutableArray+SMKAdditions.h"
 #import "SMKHierarchicalLoading.h"
+#import <CocoaLibSpotify/CocoaLibSpotify.h>
 
 @implementation SMKSpotifyHelpers
 + (void)loadItems:(NSArray *)items group:(dispatch_group_t)group array:(NSMutableArray *)array
@@ -23,7 +24,6 @@
 + (void)loadItemsAynchronously:(NSArray *)items
                           sortDescriptors:(NSArray *)sortDescriptors
                                 predicate:(NSPredicate *)predicate
-                               fetchLimit:(NSUInteger)fetchLimit
                              sortingQueue:(dispatch_queue_t)queue
                         completionHandler:(void(^)(NSArray *objects, NSError *error))handler
 {
@@ -31,7 +31,7 @@
     dispatch_group_t group = dispatch_group_create();
     [self loadItems:items group:group array:hierarchy];
     dispatch_group_notify(group, queue, ^{
-        [hierarchy SMK_processWithSortDescriptors:sortDescriptors predicate:predicate fetchLimit:fetchLimit];
+        [hierarchy SMK_processWithSortDescriptors:sortDescriptors predicate:predicate];
         dispatch_async(dispatch_get_main_queue(), ^{
             if (handler) handler(hierarchy, nil);
         });
