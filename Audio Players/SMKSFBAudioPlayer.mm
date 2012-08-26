@@ -84,15 +84,14 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
     AudioPlayer *_player;
     AudioUnit _equalizer;
     NSTimer *_renderTimer;
-    NSTimeInterval _playbackTime;
+    BOOL _playWhenReady;
     BOOL _playing;
     
     id<SMKTrack> _currentTrack;
     id<SMKTrack> _preloadedTrack;
-    
-    BOOL _playWhenReady;
 }
-@synthesize playbackTime = _playbackTime;
+@synthesize currentTrack = _currentTrack;
+@synthesize preloadedTrack = _preloadedTrack;
 @synthesize playing = _playing;
 
 - (id)init
