@@ -1,22 +1,22 @@
 #import "SMKiTunesArtist.h"
 #import "SMKiTunesConstants.h"
 #import "NSManagedObjectContext+SMKAdditions.h"
+#import "SMKManagedObjectContext.h"
 #import "NSString+SMKAdditions.h"
 
 @implementation SMKiTunesArtist
 
 - (void)fetchAlbumsWithSortDescriptors:(NSArray *)sortDescriptors
                              predicate:(NSPredicate *)predicate
-                             batchSize:(NSUInteger)batchSize
-                            fetchLimit:(NSUInteger)fetchLimit
                      completionHandler:(void(^)(NSArray *albums, NSError *error))handler
 {
     NSPredicate *finalPredicate = [self _compoundAlbumPredicateWithPredicate:predicate];
-    [[self managedObjectContext] SMK_asyncFetchWithEntityName:SMKiTunesEntityNameArtist
+    SMKManagedObjectContext *context = (SMKManagedObjectContext *)[self managedObjectContext];
+    [context SMK_asyncFetchWithEntityName:SMKiTunesEntityNameArtist
                                               sortDescriptors:sortDescriptors
                                                     predicate:finalPredicate
-                                                    batchSize:batchSize
-                                                   fetchLimit:fetchLimit
+                                                    batchSize:context.defaultFetchBatchSize
+                                                   fetchLimit:0
                                             completionHandler:handler];
 }
 
