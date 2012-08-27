@@ -82,9 +82,9 @@ git submodule update
 #### Short term
 
 * iOS MPMediaLibrary content source implementation
-* <s>Cross platform artwork cache</s>
+* ~~Cross platform artwork cache~~
 * Search protocols & implementation for MPMediaLibrary and Spotify
-* Last.fm engine for scrobbling (basically a polished version of SNRLastFMEngine built on AFNetworking)
+* ~~Last.fm engine for scrobbling (basically a polished version of SNRLastFMEngine built on AFNetworking)~~
 
 #### Long term
 
