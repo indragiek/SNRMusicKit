@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SMKPlatformImports.h"
+#import "SMKPlatformNativeImage+SMKAdditions.h"
 
 //
 // Cross platform artwork cache that handles on disk and in memory caching
@@ -42,13 +43,23 @@
 /**
  Saves an image in the cache with the specified key
  @param key The key to save the cached image under
+ @param targetSize The target size of the image to scale to. Pass CGSizeZero to keep the image at the original size. Do not apply scale factors to this size, as the scaling process will account for that.
+ @param method The resizing method to use. Values are defined in SMKPlatformNativeImage+SMKAdditions.h
  @param image The image to save
  */
-- (void)setCachedImage:(SMKPlatformNativeImage *)image forKey:(NSString *)key;
+- (void)setCachedImage:(SMKPlatformNativeImage *)image
+                forKey:(NSString *)key
+            targetSize:(CGSize)targetSize
+        resizingMethod:(SMKImageResizingMethod)method;
 
 /**
  Removes the image with the specified key from the cache
  @param key The key of the image to remove from the cache
  */
 - (void)removeCachedImageForKey:(NSString *)key;
+
+/**
+ Removes every image in the cache (including on disk)
+ */
+- (void)removeAllCachedImages;
 @end
