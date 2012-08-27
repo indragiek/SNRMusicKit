@@ -7,6 +7,7 @@
 //
 
 #import "SMKArtworkCache.h"
+#import "SMKPlatformNativeImage+SMKAdditions.h"
 
 static NSString *_imageCacheDirectory;
 
