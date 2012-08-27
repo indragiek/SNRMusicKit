@@ -2,7 +2,7 @@
 
 SNRMusicKit is an open source project that will become the backbone for [Sonora](http://getsonora.com) and other music applications that we may build for the Mac and iOS platforms. This framework will consist of the following components that will create an all-in-one solution for building content rich music applications:
 
-* **Content Sources**: Services and applications that will provide content. Examples include the iTunes Library on OS X, [MPMediaLibrary](http://developer.apple.com/library/ios/#documentation/mediaplayer/reference/MediaPlayer_Framework/_index.html#//apple_ref/doc/uid/TP40006952) on iOS, as well as streaming services such as [Rdio](http://www.rdio.com) and [8tracks](http://8tracks.com).
+* **Content Sources**: Services and applications that will provide content.
 * **Players**: Different audio players sharing a common interface to handle a wide variety of content formats. 
 * **Other Services**: Objective-C interfaces to other commonly used services like Last.fm.
 
@@ -45,12 +45,6 @@ git submodule update
   <tr>
     <td>Spotify</td><td>✔</td><td>✔</td><td>✔</td>
   </tr>
-  <tr>
-    <td>Rdio</td><td>✔</td><td>✘</td><td>✘</td>
-  </tr>
-  <tr>
-    <td>8tracks</td><td>✔</td><td>✔</td><td>✘</td>
-  </tr>
 </table>
 
 #### Players
@@ -69,14 +63,9 @@ git submodule update
     <td>MPMusicPlayerController</td><td>✔</td><td>✘</td><td>✘</td>
   </tr>
   <tr>
-    <td>Spotify SDK^2</td><td>✔</td><td>✔</td><td>✔</td>
-  </tr>
-  <tr>
-    <td>Rdio SDK^2</td><td>✔</td><td>✘</td><td>✘</td>
+    <td>Spotify SDK</td><td>✔</td><td>✔</td><td>✔</td>
   </tr>
 </table>
-
-^2 *Spotify and Rdio have proprietary SDKs and therefore require their own dedicated player classes*
 
 ### Roadmap
 
@@ -89,7 +78,6 @@ git submodule update
 
 #### Long term
 
-* Rdio content source implementation
 * 8tracks content source implementation
 
 ### License
