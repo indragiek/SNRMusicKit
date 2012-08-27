@@ -34,7 +34,7 @@ static NSString *_imageCacheDirectory;
 {
     if ((self = [super init])) {
         self.JPEGCompressionQuality = 1.0; // Best quality
-        self.maximumDiskCacheSize = 50; // MB
+        self.maximumDiskCacheSize = 200; // MB
         _outputQueue = dispatch_queue_create("com.indragie.SNRMusicKit.artworkOutputQueue", DISPATCH_QUEUE_SERIAL);
         _inputQueue = dispatch_queue_create("com.indragie.SNRMusicKit.artworkInputQueue", DISPATCH_QUEUE_SERIAL);
         [[NSFileManager defaultManager] createDirectoryAtPath:[self _imageCacheDirectory] withIntermediateDirectories:YES attributes:nil error:nil];
