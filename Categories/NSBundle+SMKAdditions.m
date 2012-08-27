@@ -10,7 +10,7 @@
 #import "SNRMusicKitMac.h"
 
 @implementation NSBundle (SMKAdditions)
-#if TARGET_OS_MAC
+#if !TARGET_OS_IPHONE
 + (NSBundle *)SMK_frameworkBundle
 {
     return [NSBundle bundleForClass:[SNRMusicKitMac class]];

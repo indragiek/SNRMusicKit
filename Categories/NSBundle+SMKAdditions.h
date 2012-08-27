@@ -10,7 +10,7 @@
 #import "TargetConditionals.h"
 
 @interface NSBundle (SMKAdditions)
-#if TARGET_OS_MAC
+#if !TARGET_OS_IPHONE
 /**
  Returns the bundle for the framework itself
  */

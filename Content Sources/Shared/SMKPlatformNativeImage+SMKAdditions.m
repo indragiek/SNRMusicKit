@@ -96,14 +96,7 @@
         sourceRect = CGRectMake(0, 0, sourceWidth, sourceHeight);
         destRect = CGRectMake(0, 0, scaledWidth, scaledHeight);
     }
-#if TARGET_OS_MAC
-    NSImage *result = [[NSImage alloc] initWithSize:NSSizeFromCGSize(size)];
-    [result lockFocus];
-    [[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationHigh];
-    [self drawInRect:destRect fromRect:sourceRect operation:NSCompositeSourceOver fraction:1.0];
-    [result unlockFocus];
-    return result;
-#else
+#if TARGET_OS_IPHONE
     UIGraphicsBeginImageContextWithOptions(destRect.size, YES, 0.0); // 0.0 for scale means "correct scale for device's main screen".
     CGImageRef sourceImg = CGImageCreateWithImageInRect([self CGImage], sourceRect); // cropping happens here.
     image = [UIImage imageWithCGImage:sourceImg scale:0.0 orientation:self.imageOrientation]; // create cropped UIImage.
@@ -114,6 +107,13 @@
     image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return image;
+#else
+    NSImage *result = [[NSImage alloc] initWithSize:NSSizeFromCGSize(size)];
+    [result lockFocus];
+    [[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationHigh];
+    [self drawInRect:destRect fromRect:sourceRect operation:NSCompositeSourceOver fraction:1.0];
+    [result unlockFocus];
+    return result;
 #endif
 }
 @end

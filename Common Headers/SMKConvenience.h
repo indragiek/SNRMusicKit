@@ -26,10 +26,10 @@ static inline void SMKGenericErrorLog(NSString *errorText, NSError *error)
 
 static inline NSData* SMKImageJPEGRepresentation(SMKPlatformNativeImage *image, CGFloat compressionQuality)
 {
-#if TARGET_OS_MAC
+#if TARGET_OS_IPHONE
+    return UIImageJPEGRepresentation(image, compressionQuality);
+#else
     NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:compressionQuality] forKey:NSImageCompressionFactor];
     return [NSBitmapImageRep representationOfImageRepsInArray:[image representations] usingType: NSJPEGFileType properties:options];
-#else
-    return UIImageJPEGRepresentation(image, compressionQuality);
 #endif
 }

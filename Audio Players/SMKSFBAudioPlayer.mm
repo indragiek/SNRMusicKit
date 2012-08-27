@@ -29,7 +29,7 @@ enum {
 
 volatile static uint32_t _playerFlags = 0;
 
-#if TARGET_OS_MAC
+#if !TARGET_OS_IPHONE
 static AudioObjectPropertyAddress _outputAudioAddress = {
     kAudioHardwarePropertyDefaultSystemOutputDevice,
     kAudioObjectPropertyScopeGlobal,
@@ -66,7 +66,7 @@ static void decodingFinished(void *context, const AudioDecoder *decoder)
 - (void)_enqueueTrack:(id<SMKTrack>)track completionHandler:(void(^)(NSError *error))handler;
 @end
 
-#if TARGET_OS_MAC
+#if !TARGET_OS_IPHONE
 static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inNumberAddresses, const AudioObjectPropertyAddress inAddresses[], void* refcon)
 {
     AudioDeviceID currentDevice;
@@ -100,7 +100,7 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
         _player = new AudioPlayer;
         _player->AddEffect(kAudioUnitSubType_GraphicEQ, kAudioUnitManufacturer_Apple, 0, 0, &_equalizer);
         AudioUnitSetParameter(_equalizer, 10000, kAudioUnitScope_Global, 0, 0.0, 0); // 10 band EQ
-#if TARGET_OS_MAC
+#if !TARGET_OS_IPHONE
         AudioObjectAddPropertyListener(kAudioObjectSystemObject, &_outputAudioAddress, systemOutputDeviceDidChange, (__bridge void*)self);
 #endif
         AudioDecoder::SetAutomaticallyOpenDecoders(true);

@@ -10,7 +10,7 @@
 #import "TargetConditionals.h"
 
 @interface NSURL (SMKAdditions)
-#if TARGET_OS_MAC
+#if !TARGET_OS_IPHONE
 /**
  @return The URL to the main bundle's Application Support folder
  */

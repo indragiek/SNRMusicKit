@@ -10,7 +10,7 @@
 #import "NSBundle+SMKAdditions.h"
 
 @implementation NSURL (SMKAdditions)
-#if TARGET_OS_MAC
+#if !TARGET_OS_IPHONE
 + (NSURL *)SMK_applicationSupportFolder
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
