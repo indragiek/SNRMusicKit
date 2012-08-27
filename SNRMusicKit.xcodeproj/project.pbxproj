@@ -143,6 +143,9 @@
 		03DEF89915EB2B76001A1537 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 03DEF89615EB2B76001A1537 /* SSKeychain.m */; };
 		03DEF89B15EB3159001A1537 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DEF89A15EB3159001A1537 /* Security.framework */; };
 		03DEF89D15EB3174001A1537 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DEF89C15EB3173001A1537 /* Security.framework */; };
+		03DEF8A015EB3262001A1537 /* SMKLastFMClient+SMKTrack.h in Headers */ = {isa = PBXBuildFile; fileRef = 03DEF89E15EB3262001A1537 /* SMKLastFMClient+SMKTrack.h */; };
+		03DEF8A115EB3262001A1537 /* SMKLastFMClient+SMKTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 03DEF89F15EB3262001A1537 /* SMKLastFMClient+SMKTrack.m */; };
+		03DEF8A215EB3262001A1537 /* SMKLastFMClient+SMKTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 03DEF89F15EB3262001A1537 /* SMKLastFMClient+SMKTrack.m */; };
 		03E22DAA15E4A87B008351DD /* SMKContentObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 03E22DA915E4A87B008351DD /* SMKContentObject.h */; };
 		03E22DAC15E4A9C1008351DD /* SMKArtworkObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 03E22DAB15E4A9C1008351DD /* SMKArtworkObject.h */; };
 		03E22DAE15E4AA7D008351DD /* SMKWebObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 03E22DAD15E4AA7D008351DD /* SMKWebObject.h */; };
@@ -508,6 +511,8 @@
 		03DEF89615EB2B76001A1537 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSKeychain.m; path = External/SSKeychain/SSKeychain.m; sourceTree = "<group>"; };
 		03DEF89A15EB3159001A1537 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		03DEF89C15EB3173001A1537 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		03DEF89E15EB3262001A1537 /* SMKLastFMClient+SMKTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SMKLastFMClient+SMKTrack.h"; path = "Other Services/SMKLastFMClient+SMKTrack.h"; sourceTree = "<group>"; };
+		03DEF89F15EB3262001A1537 /* SMKLastFMClient+SMKTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SMKLastFMClient+SMKTrack.m"; path = "Other Services/SMKLastFMClient+SMKTrack.m"; sourceTree = "<group>"; };
 		03E22DA915E4A87B008351DD /* SMKContentObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKContentObject.h; path = Protocols/SMKContentObject.h; sourceTree = "<group>"; };
 		03E22DAB15E4A9C1008351DD /* SMKArtworkObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKArtworkObject.h; path = Protocols/SMKArtworkObject.h; sourceTree = "<group>"; };
 		03E22DAD15E4AA7D008351DD /* SMKWebObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKWebObject.h; path = Protocols/SMKWebObject.h; sourceTree = "<group>"; };
@@ -914,6 +919,8 @@
 			children = (
 				03DEF88615EB1E43001A1537 /* SMKLastFMClient.h */,
 				03DEF88715EB1E43001A1537 /* SMKLastFMClient.m */,
+				03DEF89E15EB3262001A1537 /* SMKLastFMClient+SMKTrack.h */,
+				03DEF89F15EB3262001A1537 /* SMKLastFMClient+SMKTrack.m */,
 			);
 			name = "Other Services";
 			sourceTree = "<group>";
@@ -1275,6 +1282,7 @@
 				03DEF87315EAE525001A1537 /* SMKPlatformNativeImage+SMKAdditions.h in Headers */,
 				03DEF88815EB1E43001A1537 /* SMKLastFMClient.h in Headers */,
 				03DEF89715EB2B76001A1537 /* SSKeychain.h in Headers */,
+				03DEF8A015EB3262001A1537 /* SMKLastFMClient+SMKTrack.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1614,6 +1622,7 @@
 				03DEF87415EAE525001A1537 /* SMKPlatformNativeImage+SMKAdditions.m in Sources */,
 				03DEF88915EB1E43001A1537 /* SMKLastFMClient.m in Sources */,
 				03DEF89815EB2B76001A1537 /* SSKeychain.m in Sources */,
+				03DEF8A115EB3262001A1537 /* SMKLastFMClient+SMKTrack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1662,6 +1671,7 @@
 				03DEF87515EAE525001A1537 /* SMKPlatformNativeImage+SMKAdditions.m in Sources */,
 				03DEF88A15EB1E43001A1537 /* SMKLastFMClient.m in Sources */,
 				03DEF89915EB2B76001A1537 /* SSKeychain.m in Sources */,
+				03DEF8A215EB3262001A1537 /* SMKLastFMClient+SMKTrack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
