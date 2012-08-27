@@ -16,7 +16,8 @@ static NSString *_imageCacheDirectory;
 @end
 
 @implementation SMKArtworkCache {
-    dispatch_queue_t _diskOperationQueue;
+    dispatch_queue_t _inputQueue;
+    dispatch_queue_t _outputQueue;
 }
 
 + (instancetype)sharedCache
@@ -34,57 +35,103 @@ static NSString *_imageCacheDirectory;
     if ((self = [super init])) {
         self.JPEGCompressionQuality = 1.0; // Best quality
         self.maximumDiskCacheSize = 50; // MB
-        _diskOperationQueue = dispatch_queue_create("com.indragie.SNRMusicKit.artworkDiskOperationQueue", DISPATCH_QUEUE_SERIAL);
+        _outputQueue = dispatch_queue_create("com.indragie.SNRMusicKit.outputQueue", DISPATCH_QUEUE_SERIAL);
+        _inputQueue = dispatch_queue_create("com.indragie.SNRMusicKit.inputQueue", DISPATCH_QUEUE_SERIAL);
         [[NSFileManager defaultManager] createDirectoryAtPath:[self _imageCacheDirectory] withIntermediateDirectories:YES attributes:nil error:nil];
-        [self _pruneDiskCache];
+        dispatch_async(_inputQueue, ^{
+            [self _pruneDiskCache];
+        });
     }
     return self;
 }
 
 - (void)dealloc
 {
-    dispatch_release(_diskOperationQueue);
+    dispatch_release(_outputQueue);
+    dispatch_release(_inputQueue);
 }
 
 #pragma mark - Public API
 
 - (void)fetchImageForKey:(NSString *)key completionHandler:(void (^)(SMKPlatformNativeImage *image))handler
 {
-    
+    __weak SMKArtworkCache *weakSelf = self;
+    dispatch_async(_outputQueue, ^{
+        SMKArtworkCache *strongSelf = weakSelf;
+        SMKPlatformNativeImage *image = [strongSelf objectForKey:key];
+        if (!image) {
+            image = [strongSelf _onDiskImageForKey:key];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (handler) handler(image);
+        });
+    });
 }
 
-- (void)setCachedImage:(SMKPlatformNativeImage *)image forKey:(NSString *)key
+- (void)setCachedImage:(SMKPlatformNativeImage *)image
+                forKey:(NSString *)key
+            targetSize:(CGSize)targetSize
+        resizingMethod:(SMKImageResizingMethod)method
 {
-    
+    __weak SMKArtworkCache *weakSelf = self;
+    dispatch_async(_inputQueue, ^{
+        SMKArtworkCache *strongSelf = weakSelf;
+        SMKPlatformNativeImage *cacheImage = image;
+        if (CGSizeEqualToSize(targetSize, CGSizeZero)) {
+            cacheImage = [image imageToFitSize:targetSize method:method];
+        }
+        [strongSelf setObject:cacheImage forKey:key];
+        [strongSelf _writeImageToDisk:cacheImage withKey:key];
+    });
 }
 
 - (void)removeCachedImageForKey:(NSString *)key
 {
-    
+    __weak SMKArtworkCache *weakSelf = self;
+    dispatch_async(_inputQueue, ^{
+        SMKArtworkCache *strongSelf = weakSelf;
+        [strongSelf removeObjectForKey:key];
+        [strongSelf _removeOnDiskImageForKey:key];
+    });
+}
+
+- (void)removeAllCachedImages
+{
+    __weak SMKArtworkCache *weakSelf = self;
+    dispatch_async(_inputQueue, ^{
+        SMKArtworkCache *strongSelf = weakSelf;
+        [strongSelf removeAllObjects];
+        [strongSelf _removeAllImagesOnDisk];
+    });
 }
 
 #pragma mark - Private
 
 - (void)_writeImageToDisk:(SMKPlatformNativeImage *)image withKey:(NSString *)key
 {
-    __weak SMKArtworkCache *weakSelf = self;
-    dispatch_async(_diskOperationQueue, ^{
-        SMKArtworkCache *strongSelf = weakSelf;
-        NSData *data = SMKImageJPEGRepresentation(image, strongSelf.JPEGCompressionQuality);
-        [data writeToFile:[strongSelf _cachePathForKey:key] atomically:YES];
-    });
+    NSData *data = SMKImageJPEGRepresentation(image, self.JPEGCompressionQuality);
+    [data writeToFile:[self _cachePathForKey:key] atomically:YES];
+}
+
+- (SMKPlatformNativeImage*)_onDiskImageForKey:(NSString *)key
+{
+    NSData *data = [NSData dataWithContentsOfFile:[self _cachePathForKey:key]];
+    if (data)
+        return [[SMKPlatformNativeImage alloc] initWithData:data];
+    return nil;
+}
+
+- (void)_removeOnDiskImageForKey:(NSString *)key
+{
+    [[NSFileManager new] removeItemAtPath:[self _cachePathForKey:key] error:nil];
 }
 
 - (void)_removeAllImagesOnDisk
 {
-    __weak SMKArtworkCache *weakSelf = self;
-    dispatch_async(_diskOperationQueue, ^{
-        SMKArtworkCache *strongSelf = weakSelf;
-        NSString *cachePath = [strongSelf _imageCacheDirectory];
-        NSFileManager *fm = [NSFileManager new];
-        [fm removeItemAtPath:cachePath error:nil];
-        [fm createDirectoryAtPath:cachePath withIntermediateDirectories:YES attributes:nil error:nil];
-    });
+    NSString *cachePath = [self _imageCacheDirectory];
+    NSFileManager *fm = [NSFileManager new];
+    [fm removeItemAtPath:cachePath error:nil];
+    [fm createDirectoryAtPath:cachePath withIntermediateDirectories:YES attributes:nil error:nil];
 }
 
 - (NSString *)_imageCacheDirectory
@@ -106,7 +153,7 @@ static NSString *_imageCacheDirectory;
     NSString *cachePath = [self _imageCacheDirectory];
     if (!_cacheSize && cachePath) {
         __block NSUInteger totalSize = 0;
-        NSFileManager *fm = [NSFileManager defaultManager];
+        NSFileManager *fm = [NSFileManager new];
         NSArray *contents = [fm contentsOfDirectoryAtPath:cachePath error:nil];
         [contents enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             NSDictionary *attributes = [fm attributesOfItemAtPath:[cachePath stringByAppendingPathComponent:obj] error:nil];
@@ -119,37 +166,33 @@ static NSString *_imageCacheDirectory;
 
 - (void)_pruneDiskCache
 {
-    __weak SMKArtworkCache *weakSelf = self;
-    dispatch_async(_diskOperationQueue, ^{
-        SMKArtworkCache *strongSelf = weakSelf;
-        NSUInteger targetBytes = strongSelf.maximumDiskCacheSize * 1024 * 1024;
-        if ([strongSelf _totalDiskCacheSize] > targetBytes) {
-            NSString *cachePath = [strongSelf _imageCacheDirectory];
-            NSFileManager *fm = [NSFileManager new];;
-            NSArray *contents = [fm contentsOfDirectoryAtPath:cachePath error:nil];
-            NSMutableArray *paths = [NSMutableArray arrayWithCapacity:[contents count]];
-            [contents enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                [paths addObject:[cachePath stringByAppendingPathComponent:obj]];
-            }];
-            [paths sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-                NSDictionary *attributes1 = [fm attributesOfItemAtPath:obj1 error:nil];
-                NSDictionary *attributes2 = [fm attributesOfItemAtPath:obj2 error:nil];
-                NSDate *modDate1 = [attributes1 valueForKey:NSFileModificationDate];
-                NSDate *modDate2 = [attributes2 valueForKey:NSFileModificationDate];
-                return [modDate1 compare:modDate2];
-            }];
-            NSUInteger currentCacheSize = strongSelf.cacheSize;
-            while (currentCacheSize > targetBytes && [paths count]) {
-                NSString *path = [paths lastObject];
-                NSDictionary *attributes = [fm attributesOfItemAtPath:path error:nil];
-                NSUInteger fileSize = [[attributes valueForKey:NSFileSize] unsignedIntegerValue];
-                if ([fm removeItemAtPath:path error:nil]) {
-                    currentCacheSize -= fileSize;
-                    [paths removeLastObject];
-                }
+    NSUInteger targetBytes = self.maximumDiskCacheSize * 1024 * 1024;
+    if ([self _totalDiskCacheSize] > targetBytes) {
+        NSString *cachePath = [self _imageCacheDirectory];
+        NSFileManager *fm = [NSFileManager new];;
+        NSArray *contents = [fm contentsOfDirectoryAtPath:cachePath error:nil];
+        NSMutableArray *paths = [NSMutableArray arrayWithCapacity:[contents count]];
+        [contents enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [paths addObject:[cachePath stringByAppendingPathComponent:obj]];
+        }];
+        [paths sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            NSDictionary *attributes1 = [fm attributesOfItemAtPath:obj1 error:nil];
+            NSDictionary *attributes2 = [fm attributesOfItemAtPath:obj2 error:nil];
+            NSDate *modDate1 = [attributes1 valueForKey:NSFileModificationDate];
+            NSDate *modDate2 = [attributes2 valueForKey:NSFileModificationDate];
+            return [modDate1 compare:modDate2];
+        }];
+        NSUInteger currentCacheSize = self.cacheSize;
+        while (currentCacheSize > targetBytes && [paths count]) {
+            NSString *path = [paths lastObject];
+            NSDictionary *attributes = [fm attributesOfItemAtPath:path error:nil];
+            NSUInteger fileSize = [[attributes valueForKey:NSFileSize] unsignedIntegerValue];
+            if ([fm removeItemAtPath:path error:nil]) {
+                currentCacheSize -= fileSize;
+                [paths removeLastObject];
             }
-            strongSelf.cacheSize = currentCacheSize;
         }
-    });
+        self.cacheSize = currentCacheSize;
+    }
 }
 @end
