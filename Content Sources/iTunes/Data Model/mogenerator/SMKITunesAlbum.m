@@ -40,6 +40,11 @@
     return [self cd_releaseYearValue];
 }
 
+- (NSUInteger)rating
+{
+    return [self cd_ratingValue];
+}
+
 #pragma mark - Private
 
 - (NSPredicate *)_compoundTrackPredicateWithPredicate:(NSPredicate *)predicate

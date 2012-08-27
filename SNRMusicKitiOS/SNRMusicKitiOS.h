@@ -7,7 +7,5 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface SNRMusicKitiOS : NSObject
-
-@end
+#import "SMKMPMediaContentSource.h"
+#import "SMKAVQueuePlayer.h"

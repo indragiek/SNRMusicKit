@@ -19,6 +19,6 @@
  @discussion This method is asynchronous and will return immediately.
 */
 - (void)fetchAlbumsWithSortDescriptors:(NSArray *)sortDescriptors
-                             predicate:(NSPredicate *)predicate
+                             predicate:(id)predicate
                      completionHandler:(void(^)(NSArray *albums, NSError *error))handler;
 @end

@@ -86,7 +86,7 @@
 #pragma mark - SMKArtworkObject
 
 - (void)fetchArtworkWithSize:(SMKArtworkSize)size
-       withCompletionHandler:(void(^)(SMKPlatformNativeImage *image, NSError *error))handler
+       completionHandler:(void(^)(SMKPlatformNativeImage *image, NSError *error))handler
 {
     __weak SPPlaylist *weakSelf = self;
     [self.image SMK_spotifyWaitAsyncThen:^{

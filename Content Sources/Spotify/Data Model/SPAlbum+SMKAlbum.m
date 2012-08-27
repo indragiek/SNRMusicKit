@@ -65,8 +65,7 @@ static void* const SMKSPAlbumBrowseKey = @"SMK_SPAlbumBrowse";
 
 #pragma mark - SMKArtworkObject
 
-- (void)fetchArtworkWithSize:(SMKArtworkSize)size
-       withCompletionHandler:(void(^)(SMKPlatformNativeImage *image, NSError *error))handler
+- (void)fetchArtworkWithSize:(SMKArtworkSize)size completionHandler:(void(^)(SMKPlatformNativeImage *image, NSError *error))handler
 {
     SPImage *image = [self _imageForSize:size];
     [image SMK_spotifyWaitAsyncThen:^{

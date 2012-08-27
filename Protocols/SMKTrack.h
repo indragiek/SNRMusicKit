@@ -44,7 +44,7 @@
 
 /**
  @return The URL to play the track from
- @discussion This URL could be local or remote (for streaming services). If the track cannot be played, this method should return nil.
+ @discussion This URL could be local or remote (for streaming services). If the track cannot be played via a URL, this method should return nil.
  */
 - (NSURL *)playbackURL;
 
@@ -66,7 +66,27 @@
 /**
  @return The number of times the track has been played.
  */
-- (NSUInteger)playCounts;
+- (NSUInteger)playCount;
+
+/**
+ @return The lyrics for the song.
+ */
+- (NSString *)lyrics;
+
+/**
+ @return The genre of the song.
+ */
+- (NSString *)genre;
+
+/**
+ @return The rating of the song
+ */
+- (NSUInteger)rating;
+
+/**
+ @return The last play date of the song.
+*/
+- (NSDate *)lastPlayedDate;
 
 /**
  @return The popularity index for the track.

@@ -54,6 +54,8 @@ static NSUInteger const SMKiTunesContentSourceDefaultBatchSize = 20;
 
 + (Class)defaultPlayerClass { return [SMKAVQueuePlayer class]; }
 
++ (Class)predicateClass { return [NSPredicate class]; }
+
 - (void)fetchPlaylistsWithSortDescriptors:(NSArray *)sortDescriptors
                                 predicate:(NSPredicate *)predicate
                         completionHandler:(void(^)(NSArray *playlists, NSError *error))handler

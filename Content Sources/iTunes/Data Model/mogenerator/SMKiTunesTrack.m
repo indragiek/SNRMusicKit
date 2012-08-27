@@ -28,6 +28,11 @@
     return [self cd_discNumberValue];
 }
 
+- (NSUInteger)rating
+{
+    return [self cd_ratingValue];
+}
+
 - (BOOL)isExplicit
 {
     return [self cd_isExplicitValue];

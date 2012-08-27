@@ -7,9 +7,12 @@
 //
 
 #import "DetailViewController.h"
+#import "SNRMusicKitiOS.h"
+#import "SMKMPMediaContentSource.h"
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
+@property (nonatomic, strong) NSArray *tracks;
 - (void)configureView;
 @end
 
@@ -21,11 +24,8 @@
 {
     if (_detailItem != newDetailItem) {
         _detailItem = newDetailItem;
-        
-        // Update the view.
         [self configureView];
     }
-
     if (self.masterPopoverController != nil) {
         [self.masterPopoverController dismissPopoverAnimated:YES];
     }        
@@ -33,24 +33,48 @@
 
 - (void)configureView
 {
-    // Update the user interface for the detail item.
-
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
-    }
+    __weak DetailViewController *weakSelf = self;
+    [self.detailItem fetchTracksWithCompletionHandler:^(NSArray *tracks, NSError *error) {
+        DetailViewController *strongSelf = weakSelf;
+        strongSelf.tracks = tracks;
+        [self.tableView reloadData];
+        
+    }];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
 }
 
-- (void)didReceiveMemoryWarning
+#pragma mark - Table view
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.tracks.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailCell" forIndexPath:indexPath];
+    SMKMPMediaTrack *object = self.tracks[indexPath.row];
+    cell.textLabel.text = [object name];
+    cell.detailTextLabel.text = [object artistName];
+    [[object album] fetchTracksWithSortDescriptors:nil predicate:nil completionHandler:^(NSArray *tracks, NSError *error) {
+        NSLog(@"%@", [tracks valueForKey:@"name"]);
+    }];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   
 }
 
 #pragma mark - Split view

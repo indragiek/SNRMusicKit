@@ -78,7 +78,7 @@ static void* const SMKSPArtistBrowseKey = @"SMK_SPArtistBrowse";
 #pragma mark - SMKArtworkObject
 
 - (void)fetchArtworkWithSize:(SMKArtworkSize)size
-       withCompletionHandler:(void(^)(SMKPlatformNativeImage *image, NSError *error))handler
+       completionHandler:(void(^)(SMKPlatformNativeImage *image, NSError *error))handler
 {
     SPArtistBrowse *browse = [self SMK_associatedArtistBrowse];
     [browse SMK_spotifyWaitAsyncThen:^{

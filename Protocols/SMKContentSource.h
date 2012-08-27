@@ -13,15 +13,21 @@
 /**
  This method will fetch the playlists asynchronously and call the completion handler when finished.
  @param sortDescriptors Array of NSSortDescriptor objects used to sort the content
- @param predicate A predicate to filter the results with
+ @param predicate A predicate to filter the results with. Use SMKContentSource +predicateClass to find out which
+ class the content source expects its predicate to use.
  @discussion This method is asynchronous and will return immediately.
  */
 - (void)fetchPlaylistsWithSortDescriptors:(NSArray *)sortDescriptors
-                                predicate:(NSPredicate *)predicate
+                                predicate:(id)predicate
                         completionHandler:(void(^)(NSArray *playlists, NSError *error))handler;
 
 /**
  @return The class of the default player for this content source
  */
 + (Class)defaultPlayerClass;
+
+/**
+ @return The class of the predicate used to sort objects from this content source
+ */
++ (Class)predicateClass;
 @end

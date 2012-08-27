@@ -23,9 +23,18 @@ typedef NSUInteger SMKArtworkSize;
  Fetches artwork asynchronously.
  @param size The artwork size. If artwork of the given size is not available, it will return the closest possible match.
  @param handler Completion block to be called when the image is fetched
- @return An small artwork image
+ @return An artwork image
  @discussion This method is asynchronous and will return immediately
  */
-- (void)fetchArtworkWithSize:(SMKArtworkSize)size
-       withCompletionHandler:(void(^)(SMKPlatformNativeImage *image, NSError *error))handler;
+- (void)fetchArtworkWithSize:(SMKArtworkSize)size completionHandler:(void(^)(SMKPlatformNativeImage *image, NSError *error))handler;
+
+@optional
+/**
+ Fetches artwork asynchronously.
+ @param targetSize The size of the image. If an image of this size is not available, the closest possible match will be returned.
+ @param handler Completion block to be called when the image is fetched
+ @return An artwork image
+ @discussion This method is asynchronous and will return immediately
+ */
+- (void)fetchArtworkWithTargetSize:(CGSize)size completionHandler:(void(^)(SMKPlatformNativeImage *image, NSError *error))handler;
 @end
