@@ -137,7 +137,14 @@ static NSString *_imageCacheDirectory;
 - (NSString *)_imageCacheDirectory
 {
     if (!_imageCacheDirectory) {
-        _imageCacheDirectory = [[NSHomeDirectory() stringByAppendingPathComponent:@"Library/Caches/SMKArtworkCache"] copy];
+		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+
+	    if ((nil == paths) || (0 == paths.count)) {
+			return nil;
+	    }
+
+	    _imageCacheDirectory = [paths lastObject];
+        _imageCacheDirectory = [[_imageCacheDirectory stringByAppendingPathComponent:NSStringFromClass([self class])] copy];
     }
     return _imageCacheDirectory;
 }
