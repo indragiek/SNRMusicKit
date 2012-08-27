@@ -133,6 +133,16 @@
 		03DEF87315EAE525001A1537 /* SMKPlatformNativeImage+SMKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 03DEF87115EAE525001A1537 /* SMKPlatformNativeImage+SMKAdditions.h */; };
 		03DEF87415EAE525001A1537 /* SMKPlatformNativeImage+SMKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03DEF87215EAE525001A1537 /* SMKPlatformNativeImage+SMKAdditions.m */; };
 		03DEF87515EAE525001A1537 /* SMKPlatformNativeImage+SMKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03DEF87215EAE525001A1537 /* SMKPlatformNativeImage+SMKAdditions.m */; };
+		03DEF88815EB1E43001A1537 /* SMKLastFMClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 03DEF88615EB1E43001A1537 /* SMKLastFMClient.h */; };
+		03DEF88915EB1E43001A1537 /* SMKLastFMClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 03DEF88715EB1E43001A1537 /* SMKLastFMClient.m */; };
+		03DEF88A15EB1E43001A1537 /* SMKLastFMClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 03DEF88715EB1E43001A1537 /* SMKLastFMClient.m */; };
+		03DEF89215EB277F001A1537 /* libcommonCrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DEF89115EB277E001A1537 /* libcommonCrypto.dylib */; };
+		03DEF89415EB2796001A1537 /* libcommonCrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DEF89315EB2795001A1537 /* libcommonCrypto.dylib */; };
+		03DEF89715EB2B76001A1537 /* SSKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = 03DEF89515EB2B76001A1537 /* SSKeychain.h */; };
+		03DEF89815EB2B76001A1537 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 03DEF89615EB2B76001A1537 /* SSKeychain.m */; };
+		03DEF89915EB2B76001A1537 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 03DEF89615EB2B76001A1537 /* SSKeychain.m */; };
+		03DEF89B15EB3159001A1537 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DEF89A15EB3159001A1537 /* Security.framework */; };
+		03DEF89D15EB3174001A1537 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DEF89C15EB3173001A1537 /* Security.framework */; };
 		03E22DAA15E4A87B008351DD /* SMKContentObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 03E22DA915E4A87B008351DD /* SMKContentObject.h */; };
 		03E22DAC15E4A9C1008351DD /* SMKArtworkObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 03E22DAB15E4A9C1008351DD /* SMKArtworkObject.h */; };
 		03E22DAE15E4AA7D008351DD /* SMKWebObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 03E22DAD15E4AA7D008351DD /* SMKWebObject.h */; };
@@ -490,6 +500,14 @@
 		03DEF86C15EA9F7F001A1537 /* SPToplist+SMKPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SPToplist+SMKPlaylist.m"; path = "Content Sources/Spotify/Data Model/SPToplist+SMKPlaylist.m"; sourceTree = "<group>"; };
 		03DEF87115EAE525001A1537 /* SMKPlatformNativeImage+SMKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SMKPlatformNativeImage+SMKAdditions.h"; path = "Content Sources/Shared/SMKPlatformNativeImage+SMKAdditions.h"; sourceTree = "<group>"; };
 		03DEF87215EAE525001A1537 /* SMKPlatformNativeImage+SMKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SMKPlatformNativeImage+SMKAdditions.m"; path = "Content Sources/Shared/SMKPlatformNativeImage+SMKAdditions.m"; sourceTree = "<group>"; };
+		03DEF88615EB1E43001A1537 /* SMKLastFMClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKLastFMClient.h; path = "Other Services/SMKLastFMClient.h"; sourceTree = "<group>"; };
+		03DEF88715EB1E43001A1537 /* SMKLastFMClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKLastFMClient.m; path = "Other Services/SMKLastFMClient.m"; sourceTree = "<group>"; };
+		03DEF89115EB277E001A1537 /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/usr/lib/system/libcommonCrypto.dylib; sourceTree = DEVELOPER_DIR; };
+		03DEF89315EB2795001A1537 /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
+		03DEF89515EB2B76001A1537 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSKeychain.h; path = External/SSKeychain/SSKeychain.h; sourceTree = "<group>"; };
+		03DEF89615EB2B76001A1537 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSKeychain.m; path = External/SSKeychain/SSKeychain.m; sourceTree = "<group>"; };
+		03DEF89A15EB3159001A1537 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		03DEF89C15EB3173001A1537 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		03E22DA915E4A87B008351DD /* SMKContentObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKContentObject.h; path = Protocols/SMKContentObject.h; sourceTree = "<group>"; };
 		03E22DAB15E4A9C1008351DD /* SMKArtworkObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKArtworkObject.h; path = Protocols/SMKArtworkObject.h; sourceTree = "<group>"; };
 		03E22DAD15E4AA7D008351DD /* SMKWebObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKWebObject.h; path = Protocols/SMKWebObject.h; sourceTree = "<group>"; };
@@ -578,6 +596,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03DEF89B15EB3159001A1537 /* Security.framework in Frameworks */,
+				03DEF89415EB2796001A1537 /* libcommonCrypto.dylib in Frameworks */,
 				03FBECCB15E700AB00A67DEE /* CocoaLibSpotify.framework in Frameworks */,
 				03FBECAD15E6F1A000A67DEE /* CoreMedia.framework in Frameworks */,
 				03F795BA15E4749000C9F652 /* AudioUnit.framework in Frameworks */,
@@ -593,6 +613,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03DEF89D15EB3174001A1537 /* Security.framework in Frameworks */,
+				03DEF89215EB277F001A1537 /* libcommonCrypto.dylib in Frameworks */,
 				03EB016815E83F60001F3A02 /* MediaPlayer.framework in Frameworks */,
 				03FBECAF15E6F1B200A67DEE /* CoreMedia.framework in Frameworks */,
 				03F795BE15E474A400C9F652 /* CoreAudio.framework in Frameworks */,
@@ -662,6 +684,7 @@
 				03F795C315E47AB900C9F652 /* Categories */,
 				03F795C015E47A1F00C9F652 /* Common Headers */,
 				03F795DF15E48F2A00C9F652 /* Content Sources */,
+				03DEF88515EB1DEE001A1537 /* Other Services */,
 				03F795B115E473ED00C9F652 /* Audio Players */,
 				03F7955015E426A500C9F652 /* Protocols */,
 				0369949015E3F3D8003BCCBE /* External */,
@@ -750,6 +773,8 @@
 		0369924815E3F347003BCCBE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03DEF89C15EB3173001A1537 /* Security.framework */,
+				03DEF89115EB277E001A1537 /* libcommonCrypto.dylib */,
 				03EB016715E83F60001F3A02 /* MediaPlayer.framework */,
 				03FBECAE15E6F1B100A67DEE /* CoreMedia.framework */,
 				03F795BD15E474A400C9F652 /* CoreAudio.framework */,
@@ -763,6 +788,8 @@
 		0369924E15E3F38A003BCCBE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03DEF89A15EB3159001A1537 /* Security.framework */,
+				03DEF89315EB2795001A1537 /* libcommonCrypto.dylib */,
 				03FBECAC15E6F1A000A67DEE /* CoreMedia.framework */,
 				03F795B915E4748F00C9F652 /* AudioUnit.framework */,
 				03F795B715E4748B00C9F652 /* CoreAudio.framework */,
@@ -785,6 +812,7 @@
 		0369949015E3F3D8003BCCBE /* External */ = {
 			isa = PBXGroup;
 			children = (
+				03DEF88B15EB2473001A1537 /* SSKeychain */,
 				0369949115E3F3DD003BCCBE /* AFNetworking */,
 			);
 			name = External;
@@ -879,6 +907,24 @@
 				03FBECA915E6E49400A67DEE /* SMKManagedObjectContext.m */,
 			);
 			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		03DEF88515EB1DEE001A1537 /* Other Services */ = {
+			isa = PBXGroup;
+			children = (
+				03DEF88615EB1E43001A1537 /* SMKLastFMClient.h */,
+				03DEF88715EB1E43001A1537 /* SMKLastFMClient.m */,
+			);
+			name = "Other Services";
+			sourceTree = "<group>";
+		};
+		03DEF88B15EB2473001A1537 /* SSKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				03DEF89515EB2B76001A1537 /* SSKeychain.h */,
+				03DEF89615EB2B76001A1537 /* SSKeychain.m */,
+			);
+			name = SSKeychain;
 			sourceTree = "<group>";
 		};
 		03E22DDC15E4AF7F008351DD /* Machine Generated */ = {
@@ -1227,6 +1273,8 @@
 				03BDF4A715E9E840006CA8B1 /* SMKArtworkCache.h in Headers */,
 				03DEF86D15EA9F7F001A1537 /* SPToplist+SMKPlaylist.h in Headers */,
 				03DEF87315EAE525001A1537 /* SMKPlatformNativeImage+SMKAdditions.h in Headers */,
+				03DEF88815EB1E43001A1537 /* SMKLastFMClient.h in Headers */,
+				03DEF89715EB2B76001A1537 /* SSKeychain.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1564,6 +1612,8 @@
 				03BDF4A815E9E840006CA8B1 /* SMKArtworkCache.m in Sources */,
 				03DEF86E15EA9F7F001A1537 /* SPToplist+SMKPlaylist.m in Sources */,
 				03DEF87415EAE525001A1537 /* SMKPlatformNativeImage+SMKAdditions.m in Sources */,
+				03DEF88915EB1E43001A1537 /* SMKLastFMClient.m in Sources */,
+				03DEF89815EB2B76001A1537 /* SSKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1610,6 +1660,8 @@
 				03576BB515E961A000316930 /* SMKGlobalConstants.m in Sources */,
 				03BDF4A915E9E840006CA8B1 /* SMKArtworkCache.m in Sources */,
 				03DEF87515EAE525001A1537 /* SMKPlatformNativeImage+SMKAdditions.m in Sources */,
+				03DEF88A15EB1E43001A1537 /* SMKLastFMClient.m in Sources */,
+				03DEF89915EB2B76001A1537 /* SSKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1844,6 +1896,10 @@
 				INFOPLIST_FILE = "SNRMusicKitMac/SNRMusicKitMac-Info.plist";
 				INSTALL_PATH = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/lib/system\"",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
@@ -1864,6 +1920,10 @@
 				INFOPLIST_FILE = "SNRMusicKitMac/SNRMusicKitMac-Info.plist";
 				INSTALL_PATH = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/lib/system\"",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
@@ -1877,6 +1937,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SNRMusicKitiOS/SNRMusicKitiOS-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/lib/system\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -1891,6 +1955,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SNRMusicKitiOS/SNRMusicKitiOS-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/lib/system\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;

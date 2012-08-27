@@ -7,3 +7,6 @@
 [submodule "External/cocoalibspotify"]
 	path = External/cocoalibspotify
 	url = git://github.com/indragiek/cocoalibspotify.git
+[submodule "External/SSKeychain"]
+	path = External/SSKeychain
+	url = git://github.com/samsoffes/sskeychain.git

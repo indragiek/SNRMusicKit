@@ -13,4 +13,9 @@
  @return A normalized string by stripping out case and diacritic characters
  */
 - (NSString *)SMK_normalizedString;
+
+/**
+ @return The string's MD5 hash
+ */
+- (NSString *)SMK_MD5Hash;
 @end

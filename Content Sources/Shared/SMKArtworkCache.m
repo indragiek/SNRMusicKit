@@ -38,8 +38,10 @@ static NSString *_imageCacheDirectory;
         _outputQueue = dispatch_queue_create("com.indragie.SNRMusicKit.artworkOutputQueue", DISPATCH_QUEUE_SERIAL);
         _inputQueue = dispatch_queue_create("com.indragie.SNRMusicKit.artworkInputQueue", DISPATCH_QUEUE_SERIAL);
         [[NSFileManager defaultManager] createDirectoryAtPath:[self _imageCacheDirectory] withIntermediateDirectories:YES attributes:nil error:nil];
+        __weak SMKArtworkCache *weakSelf = self;
         dispatch_async(_inputQueue, ^{
-            [self _pruneDiskCache];
+            SMKArtworkCache *strongSelf = weakSelf;
+            [strongSelf _pruneDiskCache];
         });
     }
     return self;
