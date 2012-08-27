@@ -153,7 +153,11 @@ static NSString *_imageCacheDirectory;
 
 - (NSString *)_cachePathForKey:(NSString *)key
 {
+#if TARGET_OS_IPHONE
+    NSString *fileName = [NSString stringWithFormat:@"%u", [key hash]];
+#else
     NSString *fileName = [NSString stringWithFormat:@"%lu", [key hash]];
+#endif
     return [[self _imageCacheDirectory] stringByAppendingPathComponent:fileName];
 }
 

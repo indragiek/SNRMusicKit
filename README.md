@@ -23,7 +23,8 @@ cd <repository path>
 git submodule init
 git submodule update
 ```
-* The project currently won't compile on iOS (I'll make sure it compiles when some content sources that work on iOS have been added).
+
+#### Additional Instructions for Mac Framework only
 * **SFBAudioEngine** requires some additional frameworks and libraries to compile that are not included in the repository. Download [this](https://github.com/downloads/sbooth/SFBAudioEngine/Frameworks.tar.bz2) archive, extract it, and put the Frameworks folder inside the SFBAudioEngine folder.
 * **[mogenerator](https://github.com/rentzsch/mogenerator)** needs to be installed to successfully compile.
 

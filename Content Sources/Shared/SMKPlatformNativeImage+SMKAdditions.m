@@ -99,7 +99,7 @@
 #if TARGET_OS_IPHONE
     UIGraphicsBeginImageContextWithOptions(destRect.size, YES, 0.0); // 0.0 for scale means "correct scale for device's main screen".
     CGImageRef sourceImg = CGImageCreateWithImageInRect([self CGImage], sourceRect); // cropping happens here.
-    image = [UIImage imageWithCGImage:sourceImg scale:0.0 orientation:self.imageOrientation]; // create cropped UIImage.
+    UIImage *image = [UIImage imageWithCGImage:sourceImg scale:0.0 orientation:self.imageOrientation]; // create cropped UIImage.
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGContextSetInterpolationQuality(ctx, kCGInterpolationHigh);
     [image drawInRect:destRect]; // the actual scaling happens here, and orientation is taken care of automatically.

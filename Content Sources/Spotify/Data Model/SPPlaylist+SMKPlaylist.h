@@ -6,7 +6,12 @@
 //  Copyright (c) 2012 Indragie Karunaratne. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+#import "CocoaLibSpotify.h"
+#else
 #import <CocoaLibSpotify/CocoaLibSpotify.h>
+#endif
+
 #import "SMKPlaylist.h"
 #import "SMKWebObject.h"
 #import "SMKArtworkObject.h"

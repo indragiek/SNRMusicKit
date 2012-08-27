@@ -7,7 +7,12 @@
 //
 
 #import "NSObject+SMKSpotifyAdditions.h"
+
+#if TARGET_OS_IPHONE
+#import "CocoaLibSpotify.h"
+#else
 #import <CocoaLibSpotify/CocoaLibSpotify.h>
+#endif
 
 @implementation NSObject (SMKSpotifyAdditions)
 

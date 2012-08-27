@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>12</integer>
 		</dict>
+		<key>MPMediaLibraryExample.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
+		</dict>
 		<key>SNRMusicKit.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -37,6 +42,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>03157B2E15EBE3AC0048DB65</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>03576BB915E9695E00316930</key>
 		<dict>
 			<key>primary</key>

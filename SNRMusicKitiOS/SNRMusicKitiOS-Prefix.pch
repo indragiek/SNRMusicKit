@@ -4,6 +4,7 @@
 
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
     #import "SMKErrorCodes.h"
     #import "SMKConvenience.h"
     #import "SMKPlatformImports.h"
