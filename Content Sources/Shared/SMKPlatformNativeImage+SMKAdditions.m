@@ -22,15 +22,16 @@
 
 - (SMKPlatformNativeImage *)imageToFitSize:(CGSize)size method:(SMKImageResizingMethod)resizeMethod
 {
-    #if TARGET_OS_MAC
-    #else
-    UIGraphicsBeginImageContextWithOptions(size, YES, 0.0);
-    #endif
-    CGRect destRect = CGRectMake(0.f, 0.f, size.width, size.height);
-    CGFloat sourceWidth = [self size].width;
-    CGFloat sourceHeight = [self size].height;
-    CGFloat targetWidth = destRect.size.width;
-    CGFloat targetHeight = destRect.size.height;
+    CGFloat imageScaleFactor = 1.0;
+#if TARGET_OS_IPHONE
+    if ([self respondsToSelector:@selector(scale)]) {
+        imageScaleFactor = [self scale];
+    }
+#endif
+    CGFloat sourceWidth = [self size].width * imageScaleFactor;
+    CGFloat sourceHeight = [self size].height * imageScaleFactor;
+    CGFloat targetWidth = size.width;
+    CGFloat targetHeight = size.height;
     BOOL cropping = !(resizeMethod == SMKImageResizeScale);
     
     // Calculate aspect ratios
@@ -55,8 +56,9 @@
     }
     CGFloat scaleFactor = scaledHeight / sourceHeight;
     // Calculate compositing rectangles
-    CGRect sourceRect;
+    CGRect sourceRect, destRect;
     if (cropping) {
+        destRect = CGRectMake(0, 0, targetWidth, targetHeight);
         float destX, destY;
         if (resizeMethod == SMKImageResizeCrop) {
             // Crop center
