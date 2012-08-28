@@ -60,9 +60,6 @@ git submodule update
     <td>SFBAudioEngine</td><td>✔</td><td>✔</td><td>✔</td>
   </tr>
   <tr>
-    <td>MPMusicPlayerController</td><td>✔</td><td>✘</td><td>✘</td>
-  </tr>
-  <tr>
     <td>Spotify SDK</td><td>✔</td><td>✔</td><td>✔</td>
   </tr>
 </table>
@@ -72,7 +69,6 @@ git submodule update
 #### Short term
 
 * ~~iOS MPMediaLibrary content source implementation~~
-* MPMusicPlayerController wrapper
 * Queue controller for playing a queue of songs
 * ~~Cross platform artwork cache~~
 * Search protocols & implementation for MPMediaLibrary and Spotify

@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0304299E15ED470C002C4CA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0304299915ED470C002C4CA2 /* AppDelegate.m */; };
+		0304299F15ED470C002C4CA2 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0304299B15ED470C002C4CA2 /* DetailViewController.m */; };
+		030429A015ED470C002C4CA2 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0304299D15ED470C002C4CA2 /* MasterViewController.m */; };
+		030429A515ED4716002C4CA2 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 030429A115ED4716002C4CA2 /* MainStoryboard_iPad.storyboard */; };
+		030429A615ED4716002C4CA2 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 030429A315ED4716002C4CA2 /* MainStoryboard_iPhone.storyboard */; };
+		030429AA15ED4722002C4CA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 030429A715ED4722002C4CA2 /* main.m */; };
+		030429AB15ED4722002C4CA2 /* MPMediaLibraryExample-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 030429A815ED4722002C4CA2 /* MPMediaLibraryExample-Info.plist */; };
+		030429AE15ED4728002C4CA2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 030429AC15ED4728002C4CA2 /* InfoPlist.strings */; };
 		0306DB6915EC198500D6409B /* SMKMPMediaAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 0306DB6615EC170000D6409B /* SMKMPMediaAlbum.m */; };
 		0306DB6A15EC198B00D6409B /* SMKMPMediaPlaylist.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 032BAE8F15EC053B003E3135 /* SMKMPMediaPlaylist.h */; };
 		0306DB6B15EC199800D6409B /* SMKMPMediaTrack.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 032BAEA815EC0E5E003E3135 /* SMKMPMediaTrack.h */; };
@@ -34,13 +42,6 @@
 		03157B3215EBE3AC0048DB65 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03157B3115EBE3AC0048DB65 /* UIKit.framework */; };
 		03157B3315EBE3AC0048DB65 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0369923A15E3EB44003BCCBE /* Foundation.framework */; };
 		03157B3515EBE3AC0048DB65 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03157B3415EBE3AC0048DB65 /* CoreGraphics.framework */; };
-		03157B3B15EBE3AC0048DB65 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03157B3915EBE3AC0048DB65 /* InfoPlist.strings */; };
-		03157B3D15EBE3AC0048DB65 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03157B3C15EBE3AC0048DB65 /* main.m */; };
-		03157B4115EBE3AC0048DB65 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03157B4015EBE3AC0048DB65 /* AppDelegate.m */; };
-		03157B4415EBE3AC0048DB65 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03157B4215EBE3AC0048DB65 /* MainStoryboard_iPhone.storyboard */; };
-		03157B4715EBE3AC0048DB65 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03157B4515EBE3AC0048DB65 /* MainStoryboard_iPad.storyboard */; };
-		03157B4A15EBE3AC0048DB65 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03157B4915EBE3AC0048DB65 /* MasterViewController.m */; };
-		03157B4D15EBE3AC0048DB65 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03157B4C15EBE3AC0048DB65 /* DetailViewController.m */; };
 		03157B5415EBE3CB0048DB65 /* libSNRMusicKitiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0369923915E3EB44003BCCBE /* libSNRMusicKitiOS.a */; };
 		03157B5515EBE3E00048DB65 /* SPLoginResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 03157B1315EBE35C0048DB65 /* SPLoginResources.bundle */; };
 		03157B5715EBE42A0048DB65 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03157B5615EBE42A0048DB65 /* UIKit.framework */; };
@@ -432,6 +433,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0304299815ED470C002C4CA2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "Example Apps/MPMediaLibraryExample/AppDelegate.h"; sourceTree = SOURCE_ROOT; };
+		0304299915ED470C002C4CA2 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "Example Apps/MPMediaLibraryExample/AppDelegate.m"; sourceTree = SOURCE_ROOT; };
+		0304299A15ED470C002C4CA2 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = "Example Apps/MPMediaLibraryExample/DetailViewController.h"; sourceTree = SOURCE_ROOT; };
+		0304299B15ED470C002C4CA2 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = "Example Apps/MPMediaLibraryExample/DetailViewController.m"; sourceTree = SOURCE_ROOT; };
+		0304299C15ED470C002C4CA2 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasterViewController.h; path = "Example Apps/MPMediaLibraryExample/MasterViewController.h"; sourceTree = SOURCE_ROOT; };
+		0304299D15ED470C002C4CA2 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasterViewController.m; path = "Example Apps/MPMediaLibraryExample/MasterViewController.m"; sourceTree = SOURCE_ROOT; };
+		030429A215ED4716002C4CA2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = "Example Apps/MPMediaLibraryExample/en.lproj/MainStoryboard_iPad.storyboard"; sourceTree = SOURCE_ROOT; };
+		030429A415ED4716002C4CA2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = "Example Apps/MPMediaLibraryExample/en.lproj/MainStoryboard_iPhone.storyboard"; sourceTree = SOURCE_ROOT; };
+		030429A715ED4722002C4CA2 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Example Apps/MPMediaLibraryExample/main.m"; sourceTree = SOURCE_ROOT; };
+		030429A815ED4722002C4CA2 /* MPMediaLibraryExample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "MPMediaLibraryExample-Info.plist"; path = "Example Apps/MPMediaLibraryExample/MPMediaLibraryExample-Info.plist"; sourceTree = SOURCE_ROOT; };
+		030429A915ED4722002C4CA2 /* MPMediaLibraryExample-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MPMediaLibraryExample-Prefix.pch"; path = "Example Apps/MPMediaLibraryExample/MPMediaLibraryExample-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		030429AD15ED4728002C4CA2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "Example Apps/MPMediaLibraryExample/en.lproj/InfoPlist.strings"; sourceTree = SOURCE_ROOT; };
 		0306DB6515EC170000D6409B /* SMKMPMediaAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKMPMediaAlbum.h; path = "Content Sources/MPMediaLibrary/Data Model/SMKMPMediaAlbum.h"; sourceTree = "<group>"; };
 		0306DB6615EC170000D6409B /* SMKMPMediaAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKMPMediaAlbum.m; path = "Content Sources/MPMediaLibrary/Data Model/SMKMPMediaAlbum.m"; sourceTree = "<group>"; };
 		0306DB6E15EC243100D6409B /* SMKMPMediaArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKMPMediaArtist.h; path = "Content Sources/MPMediaLibrary/Data Model/SMKMPMediaArtist.h"; sourceTree = "<group>"; };
@@ -455,18 +468,6 @@
 		03157B2F15EBE3AC0048DB65 /* MPMediaLibraryExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPMediaLibraryExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03157B3115EBE3AC0048DB65 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		03157B3415EBE3AC0048DB65 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		03157B3815EBE3AC0048DB65 /* MPMediaLibraryExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MPMediaLibraryExample-Info.plist"; sourceTree = "<group>"; };
-		03157B3A15EBE3AC0048DB65 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		03157B3C15EBE3AC0048DB65 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		03157B3E15EBE3AC0048DB65 /* MPMediaLibraryExample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MPMediaLibraryExample-Prefix.pch"; sourceTree = "<group>"; };
-		03157B3F15EBE3AC0048DB65 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		03157B4015EBE3AC0048DB65 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		03157B4315EBE3AC0048DB65 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		03157B4615EBE3AC0048DB65 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		03157B4815EBE3AC0048DB65 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		03157B4915EBE3AC0048DB65 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		03157B4B15EBE3AC0048DB65 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		03157B4C15EBE3AC0048DB65 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		03157B5615EBE42A0048DB65 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		032BAE8C15EBFEC8003E3135 /* SMKMPMediaPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKMPMediaPredicate.h; path = "Content Sources/MPMediaLibrary/Data Model/SMKMPMediaPredicate.h"; sourceTree = "<group>"; };
 		032BAE8D15EBFEC8003E3135 /* SMKMPMediaPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKMPMediaPredicate.m; path = "Content Sources/MPMediaLibrary/Data Model/SMKMPMediaPredicate.m"; sourceTree = "<group>"; };
@@ -749,14 +750,14 @@
 		03157B3615EBE3AC0048DB65 /* MPMediaLibraryExample */ = {
 			isa = PBXGroup;
 			children = (
-				03157B3F15EBE3AC0048DB65 /* AppDelegate.h */,
-				03157B4015EBE3AC0048DB65 /* AppDelegate.m */,
-				03157B4215EBE3AC0048DB65 /* MainStoryboard_iPhone.storyboard */,
-				03157B4515EBE3AC0048DB65 /* MainStoryboard_iPad.storyboard */,
-				03157B4815EBE3AC0048DB65 /* MasterViewController.h */,
-				03157B4915EBE3AC0048DB65 /* MasterViewController.m */,
-				03157B4B15EBE3AC0048DB65 /* DetailViewController.h */,
-				03157B4C15EBE3AC0048DB65 /* DetailViewController.m */,
+				0304299815ED470C002C4CA2 /* AppDelegate.h */,
+				0304299915ED470C002C4CA2 /* AppDelegate.m */,
+				0304299A15ED470C002C4CA2 /* DetailViewController.h */,
+				0304299B15ED470C002C4CA2 /* DetailViewController.m */,
+				0304299C15ED470C002C4CA2 /* MasterViewController.h */,
+				0304299D15ED470C002C4CA2 /* MasterViewController.m */,
+				030429A115ED4716002C4CA2 /* MainStoryboard_iPad.storyboard */,
+				030429A315ED4716002C4CA2 /* MainStoryboard_iPhone.storyboard */,
 				03157B3715EBE3AC0048DB65 /* Supporting Files */,
 			);
 			path = MPMediaLibraryExample;
@@ -765,10 +766,10 @@
 		03157B3715EBE3AC0048DB65 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				03157B3815EBE3AC0048DB65 /* MPMediaLibraryExample-Info.plist */,
-				03157B3915EBE3AC0048DB65 /* InfoPlist.strings */,
-				03157B3C15EBE3AC0048DB65 /* main.m */,
-				03157B3E15EBE3AC0048DB65 /* MPMediaLibraryExample-Prefix.pch */,
+				030429A715ED4722002C4CA2 /* main.m */,
+				030429AC15ED4728002C4CA2 /* InfoPlist.strings */,
+				030429A815ED4722002C4CA2 /* MPMediaLibraryExample-Info.plist */,
+				030429A915ED4722002C4CA2 /* MPMediaLibraryExample-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -809,7 +810,6 @@
 				0369949015E3F3D8003BCCBE /* External */,
 				0369921915E3EB0B003BCCBE /* SNRMusicKitMac */,
 				0369923C15E3EB44003BCCBE /* SNRMusicKitiOS */,
-				03157B3615EBE3AC0048DB65 /* MPMediaLibraryExample */,
 				036991F115E3EAE1003BCCBE /* Frameworks */,
 				036991EF15E3EAE1003BCCBE /* Products */,
 				03FBECCD15E700C200A67DEE /* CocoaLibSpotify iOS Library.xcodeproj */,
@@ -982,6 +982,7 @@
 		03927DFB15E69EBD00E6483E /* Example Apps */ = {
 			isa = PBXGroup;
 			children = (
+				03157B3615EBE3AC0048DB65 /* MPMediaLibraryExample */,
 				03576BBD15E9695E00316930 /* SpotifyExampleMac */,
 				03FBED3E15E70FA400A67DEE /* 8tracksExample */,
 				03927E0315E69ED700E6483E /* iTunesExample */,
@@ -1617,9 +1618,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				03157B5515EBE3E00048DB65 /* SPLoginResources.bundle in Resources */,
-				03157B3B15EBE3AC0048DB65 /* InfoPlist.strings in Resources */,
-				03157B4415EBE3AC0048DB65 /* MainStoryboard_iPhone.storyboard in Resources */,
-				03157B4715EBE3AC0048DB65 /* MainStoryboard_iPad.storyboard in Resources */,
+				030429A515ED4716002C4CA2 /* MainStoryboard_iPad.storyboard in Resources */,
+				030429A615ED4716002C4CA2 /* MainStoryboard_iPhone.storyboard in Resources */,
+				030429AB15ED4722002C4CA2 /* MPMediaLibraryExample-Info.plist in Resources */,
+				030429AE15ED4728002C4CA2 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1685,10 +1687,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03157B3D15EBE3AC0048DB65 /* main.m in Sources */,
-				03157B4115EBE3AC0048DB65 /* AppDelegate.m in Sources */,
-				03157B4A15EBE3AC0048DB65 /* MasterViewController.m in Sources */,
-				03157B4D15EBE3AC0048DB65 /* DetailViewController.m in Sources */,
+				0304299E15ED470C002C4CA2 /* AppDelegate.m in Sources */,
+				0304299F15ED470C002C4CA2 /* DetailViewController.m in Sources */,
+				030429A015ED470C002C4CA2 /* MasterViewController.m in Sources */,
+				030429AA15ED4722002C4CA2 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1874,28 +1876,28 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		03157B3915EBE3AC0048DB65 /* InfoPlist.strings */ = {
+		030429A115ED4716002C4CA2 /* MainStoryboard_iPad.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				03157B3A15EBE3AC0048DB65 /* en */,
+				030429A215ED4716002C4CA2 /* en */,
 			);
-			name = InfoPlist.strings;
+			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
 		};
-		03157B4215EBE3AC0048DB65 /* MainStoryboard_iPhone.storyboard */ = {
+		030429A315ED4716002C4CA2 /* MainStoryboard_iPhone.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				03157B4315EBE3AC0048DB65 /* en */,
+				030429A415ED4716002C4CA2 /* en */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
-		03157B4515EBE3AC0048DB65 /* MainStoryboard_iPad.storyboard */ = {
+		030429AC15ED4728002C4CA2 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				03157B4615EBE3AC0048DB65 /* en */,
+				030429AD15ED4728002C4CA2 /* en */,
 			);
-			name = MainStoryboard_iPad.storyboard;
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		03576BD515E9697E00316930 /* MainMenu.xib */ = {
@@ -1991,8 +1993,8 @@
 					"\"$(SYSTEM_APPS_DIR)/Xcode45-DP4.app/Contents/Developer/Library/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MPMediaLibraryExample/MPMediaLibraryExample-Prefix.pch";
-				INFOPLIST_FILE = "MPMediaLibraryExample/MPMediaLibraryExample-Info.plist";
+				GCC_PREFIX_HEADER = "Example Apps/MPMediaLibraryExample/MPMediaLibraryExample-Prefix.pch";
+				INFOPLIST_FILE = "Example Apps/MPMediaLibraryExample/MPMediaLibraryExample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -2011,8 +2013,8 @@
 					"\"$(SYSTEM_APPS_DIR)/Xcode45-DP4.app/Contents/Developer/Library/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MPMediaLibraryExample/MPMediaLibraryExample-Prefix.pch";
-				INFOPLIST_FILE = "MPMediaLibraryExample/MPMediaLibraryExample-Info.plist";
+				GCC_PREFIX_HEADER = "Example Apps/MPMediaLibraryExample/MPMediaLibraryExample-Prefix.pch";
+				INFOPLIST_FILE = "Example Apps/MPMediaLibraryExample/MPMediaLibraryExample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
