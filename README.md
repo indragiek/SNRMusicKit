@@ -40,7 +40,7 @@ git submodule update
     <td>iTunes</td><td>✘</td><td>✔</td><td>✔</td>
   </tr>
   <tr>
-    <td>MPMediaLibrary</td><td>✔</td><td>✘</td><td>✘</td>
+    <td>MPMediaLibrary</td><td>✔</td><td>✘</td><td>✔</td>
   </tr>
   <tr>
     <td>Spotify</td><td>✔</td><td>✔</td><td>✔</td>
@@ -71,7 +71,9 @@ git submodule update
 
 #### Short term
 
-* iOS MPMediaLibrary content source implementation
+* ~~iOS MPMediaLibrary content source implementation~~
+* MPMusicPlayerController wrapper
+* Queue controller for playing a queue of songs
 * ~~Cross platform artwork cache~~
 * Search protocols & implementation for MPMediaLibrary and Spotify
 * ~~Last.fm engine for scrobbling (basically a polished version of SNRLastFMEngine built on AFNetworking)~~
