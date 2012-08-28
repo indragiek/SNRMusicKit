@@ -37,11 +37,6 @@
 - (id<SMKTrack>)currentTrack;
 
 /**
- @return The player volume from 0.0 to 1.0
- */
-@property (nonatomic, assign) float volume;
-
-/**
  Play the specified track.
  @param track The track to play.
  @param handler Completion handler called with an NSError if playing failed and nil if successful.
@@ -71,6 +66,11 @@
 - (NSTimeInterval)playbackTime;
 
 @optional
+
+/**
+ @return The player volume from 0.0 to 1.0
+ */
+@property (nonatomic, assign) float volume;
 
 /**
  Seek to the specified time if the player supports seeking.

@@ -29,12 +29,12 @@
 
 - (NSString *)uniqueIdentifier
 {
-    return [self.representedObject valueForKey:MPMediaPlaylistPropertyPersistentID];
+    return [self.representedObject valueForProperty:MPMediaPlaylistPropertyPersistentID];
 }
 
 - (NSString *)name
 {
-    return [self.representedObject valueForKey:MPMediaPlaylistPropertyName];
+    return [self.representedObject valueForProperty:MPMediaPlaylistPropertyName];
 }
 
 + (NSSet *)supportedSortKeys

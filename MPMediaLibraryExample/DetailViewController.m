@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 #import "SNRMusicKitiOS.h"
 #import "SMKMPMediaContentSource.h"
+#import "SMKAVQueuePlayer.h"
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -16,7 +17,9 @@
 - (void)configureView;
 @end
 
-@implementation DetailViewController
+@implementation DetailViewController {
+    SMKAVQueuePlayer *_player;
+}
 
 #pragma mark - Managing the detail item
 
@@ -38,8 +41,8 @@
         DetailViewController *strongSelf = weakSelf;
         strongSelf.tracks = tracks;
         [self.tableView reloadData];
-        
     }];
+    _player = [SMKAVQueuePlayer new];
 }
 
 - (void)viewDidLoad
@@ -66,15 +69,15 @@
     SMKMPMediaTrack *object = self.tracks[indexPath.row];
     cell.textLabel.text = [object name];
     cell.detailTextLabel.text = [object artistName];
-    [[object album] fetchTracksWithSortDescriptors:nil predicate:nil completionHandler:^(NSArray *tracks, NSError *error) {
-        NSLog(@"%@", [tracks valueForKey:@"name"]);
-    }];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   
+    SMKMPMediaTrack *object = self.tracks[indexPath.row];
+    [_player playTrack:object completionHandler:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
 }
 
 #pragma mark - Split view

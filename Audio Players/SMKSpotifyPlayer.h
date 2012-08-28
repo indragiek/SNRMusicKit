@@ -21,6 +21,7 @@
 @property (nonatomic, assign) NSTimeInterval seekTimeInterval;
 @property (nonatomic, assign, readonly) NSTimeInterval playbackTime;
 @property (nonatomic, assign, readonly) BOOL playing;
+@property (assign, nonatomic) double volume;
 
 // Seeking (SMKPlayer @optional)
 @property (nonatomic, strong, readonly) id<SMKTrack> preloadedTrack;

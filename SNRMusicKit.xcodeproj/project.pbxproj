@@ -59,6 +59,8 @@
 		0335CC3215E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0335CC3015E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.h */; };
 		0335CC3315E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0335CC3115E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.m */; };
 		0335CC3415E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0335CC3115E8AA6400E4F9DF /* NSMutableArray+SMKAdditions.m */; };
+		03457AC015EC949100645547 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0369924615E3F341003BCCBE /* AVFoundation.framework */; };
+		03457AC115EC94D900645547 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FBECAE15E6F1B100A67DEE /* CoreMedia.framework */; };
 		03576BAE15E95C1B00316930 /* SMKSpotifyPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 03576BAC15E95C1B00316930 /* SMKSpotifyPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		03576BAF15E95C1B00316930 /* SMKSpotifyPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 03576BAD15E95C1B00316930 /* SMKSpotifyPlayer.m */; };
 		03576BB015E95C1B00316930 /* SMKSpotifyPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 03576BAD15E95C1B00316930 /* SMKSpotifyPlayer.m */; };
@@ -653,6 +655,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03457AC115EC94D900645547 /* CoreMedia.framework in Frameworks */,
+				03457AC015EC949100645547 /* AVFoundation.framework in Frameworks */,
 				032BAE8115EBF8EC003E3135 /* MediaPlayer.framework in Frameworks */,
 				03157B5415EBE3CB0048DB65 /* libSNRMusicKitiOS.a in Frameworks */,
 				03157B3215EBE3AC0048DB65 /* UIKit.framework in Frameworks */,

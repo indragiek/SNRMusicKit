@@ -29,12 +29,12 @@
 
 - (NSString *)uniqueIdentifier
 {
-    return [self.representedObject valueForKey:MPMediaItemPropertyPersistentID];
+    return [self.representedObject valueForProperty:MPMediaItemPropertyPersistentID];
 }
 
 - (NSString *)name
 {
-    return [self.representedObject valueForKey:MPMediaItemPropertyTitle];
+    return [self.representedObject valueForProperty:MPMediaItemPropertyTitle];
 }
 
 + (NSSet *)supportedSortKeys
@@ -70,61 +70,61 @@
 
 - (NSString *)artistName
 {
-    return [self.representedObject valueForKey:MPMediaItemPropertyArtist];
+    return [self.representedObject valueForProperty:MPMediaItemPropertyArtist];
 }
 
 - (NSString *)albumArtistName
 {
-    return [self.representedObject valueForKey:MPMediaItemPropertyAlbumArtist];
+    return [self.representedObject valueForProperty:MPMediaItemPropertyAlbumArtist];
 }
 
 - (NSTimeInterval)duration
 {
-    return [[self.representedObject valueForKey:MPMediaItemPropertyPlaybackDuration] doubleValue];
+    return [[self.representedObject valueForProperty:MPMediaItemPropertyPlaybackDuration] doubleValue];
 }
 
 - (NSString *)composer
 {
-    return [self.representedObject valueForKey:MPMediaItemPropertyComposer];
+    return [self.representedObject valueForProperty:MPMediaItemPropertyComposer];
 }
 
 - (NSUInteger)trackNumber
 {
-    return [[self.representedObject valueForKey:MPMediaItemPropertyAlbumTrackNumber] unsignedIntegerValue];
+    return [[self.representedObject valueForProperty:MPMediaItemPropertyAlbumTrackNumber] unsignedIntegerValue];
 }
 
 - (NSUInteger)discNumber
 {
-    return [[self.representedObject valueForKey:MPMediaItemPropertyDiscNumber] unsignedIntegerValue];
+    return [[self.representedObject valueForProperty:MPMediaItemPropertyDiscNumber] unsignedIntegerValue];
 }
 
 - (NSUInteger)playCount
 {
-    return [[self.representedObject valueForKey:MPMediaItemPropertyPlayCount] unsignedIntegerValue];
+    return [[self.representedObject valueForProperty:MPMediaItemPropertyPlayCount] unsignedIntegerValue];
 }
 
 - (NSString *)lyrics
 {
-    return [self.representedObject valueForKey:MPMediaItemPropertyLyrics];
+    return [self.representedObject valueForProperty:MPMediaItemPropertyLyrics];
 }
 
 - (NSString *)genre
 {
-    return [self.representedObject valueForKey:MPMediaItemPropertyGenre];
+    return [self.representedObject valueForProperty:MPMediaItemPropertyGenre];
 }
 
 - (NSUInteger)rating
 {
-    return [[self.representedObject valueForKey:MPMediaItemPropertyRating] unsignedIntegerValue];
+    return [[self.representedObject valueForProperty:MPMediaItemPropertyRating] unsignedIntegerValue];
 }
 
 - (NSDate *)lastPlayedDate
 {
-    return [self.representedObject valueForKey:MPMediaItemPropertyLastPlayedDate];
+    return [self.representedObject valueForProperty:MPMediaItemPropertyLastPlayedDate];
 }
 
 - (NSURL *)playbackURL
 {
-    return [self.representedObject valueForKey:MPMediaItemPropertyAssetURL];
+    return [self.representedObject valueForProperty:MPMediaItemPropertyAssetURL];
 }
 @end
