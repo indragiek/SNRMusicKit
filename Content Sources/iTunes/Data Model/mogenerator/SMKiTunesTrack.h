@@ -8,6 +8,6 @@
 @property (nonatomic, assign, readonly) NSUInteger rating;
 @property (nonatomic, assign, readonly) BOOL isExplicit;
 @property (nonatomic, assign, readonly) BOOL isClean;
-@property (nonatomic, strong) NSString *genre;
+@property (nonatomic, strong, readonly) NSString *genre;
 @property (nonatomic, strong, readonly) NSURL *playbackURL;
 @end

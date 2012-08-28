@@ -29,7 +29,7 @@
 {
     if ((self = [super init])) {
         self.audioPlayer = [AVQueuePlayer queuePlayerWithItems:nil];
-        [self addObserver:self forKeyPath:@"audioPlayer.rate" options:NSKeyValueObservingOptionNew context:NULL];
+        [self.audioPlayer addObserver:self forKeyPath:@"rate" options:NSKeyValueObservingOptionNew context:NULL];
         __weak SMKAVQueuePlayer *weakSelf = self;
         [self.audioPlayer addPeriodicTimeObserverForInterval:CMTimeMakeWithSeconds(1.f, 1.f) queue:NULL usingBlock:^(CMTime time) {
             SMKAVQueuePlayer *strongSelf = weakSelf;
@@ -44,7 +44,7 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [_audioPlayer removeTimeObserver:self];
-    [self removeObserver:self forKeyPath:@"audioPlayer.rate"];
+    [_audioPlayer removeObserver:self forKeyPath:@"rate"];
 }
 
 #pragma mark - SMKPlayer
@@ -144,6 +144,11 @@
 {
     return self.audioPlayer.volume;
 }
+
++ (NSSet *)keyPathsForValuesAffectingVolume
+{
+    return [NSSet setWithObject:@"audioPlayer.volume"];
+}
 #endif
 
 #pragma mark - Private
@@ -192,7 +197,8 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    if (object == self && [keyPath isEqualToString:@"audioPlayer.rate"]) {
+    if (object != self.audioPlayer) { return; }
+    if ([keyPath isEqualToString:@"rate"]) {
         float newValue = [[change valueForKey:NSKeyValueChangeNewKey] floatValue];
         [self willChangeValueForKey:@"playing"];
         _playing = newValue >= 1.0;
