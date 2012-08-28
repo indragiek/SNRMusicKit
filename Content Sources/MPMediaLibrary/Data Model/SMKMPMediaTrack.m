@@ -46,19 +46,15 @@
 
 - (id<SMKAlbum>)album
 {
-    NSString *albumTitle = [self.representedObject valueForKey:MPMediaItemPropertyAlbumTitle];
-    if (![albumTitle length])
-        return nil;
-    MPMediaQuery *albumQuery = [MPMediaQuery albumsQuery];
-    MPMediaPropertyPredicate *albumPredicate = [MPMediaPropertyPredicate predicateWithValue:albumTitle forProperty:MPMediaItemPropertyAlbumTitle];
-    NSMutableSet *predicates = [NSMutableSet setWithObject:albumPredicate];
-    MPMediaPropertyPredicate *artistPredicate = [SMKMPMediaHelpers predicateForArtistNameOfItem:self.representedObject];
-    if (artistPredicate)
-        [predicates addObject:artistPredicate];
-    albumQuery.filterPredicates = [NSSet setWithObjects:albumPredicate, artistPredicate, nil];
-    NSArray *collections = albumQuery.collections;
-    if ([collections count]) {
-        return [[SMKMPMediaAlbum alloc] initWithRepresentedObject:[collections objectAtIndex:0] contentSource:self.contentSource];
+    NSNumber *albumPersistentID = [self.representedObject valueForProperty:MPMediaItemPropertyAlbumPersistentID];
+    if (albumPersistentID) {
+        MPMediaQuery *albumQuery = [MPMediaQuery albumsQuery];
+        MPMediaPropertyPredicate *albumPredicate = [MPMediaPropertyPredicate predicateWithValue:albumPersistentID forProperty:MPMediaItemPropertyAlbumPersistentID];
+        albumQuery.filterPredicates = [NSSet setWithObject:albumPredicate];
+        NSArray *collections = albumQuery.collections;
+        if ([collections count]) {
+            return [[SMKMPMediaAlbum alloc] initWithRepresentedObject:[collections objectAtIndex:0] contentSource:self.contentSource];
+        }
     }
     return nil;
 }

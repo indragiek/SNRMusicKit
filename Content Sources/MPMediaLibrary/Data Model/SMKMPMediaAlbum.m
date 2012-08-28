@@ -91,7 +91,7 @@
     MPMediaQuery *artistQuery = [MPMediaQuery artistsQuery];
     MPMediaPropertyPredicate *artistPredicate = [SMKMPMediaHelpers predicateForArtistNameOfItem:representativeItem];
     if (artistPredicate) {
-        artistQuery.filterPredicates = [NSSet setWithObjects:artistPredicate, nil];
+        artistQuery.filterPredicates = [NSSet setWithObject:artistPredicate];
         NSArray *collections = artistQuery.collections;
         if ([collections count]) {
             return [[SMKMPMediaArtist alloc] initWithRepresentedObject:[collections objectAtIndex:0] contentSource:self.contentSource];

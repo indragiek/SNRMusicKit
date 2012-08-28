@@ -20,7 +20,9 @@
 @property (nonatomic, strong, readwrite) AVQueuePlayer *audioPlayer;
 @end
 
-@implementation SMKAVQueuePlayer
+@implementation SMKAVQueuePlayer {
+    id _timeObserver;
+}
 #if !TARGET_OS_IPHONE
 @synthesize volume = _volume;
 #endif
@@ -29,9 +31,8 @@
 {
     if ((self = [super init])) {
         self.audioPlayer = [AVQueuePlayer queuePlayerWithItems:nil];
-        [self.audioPlayer addObserver:self forKeyPath:@"rate" options:NSKeyValueObservingOptionNew context:NULL];
         __weak SMKAVQueuePlayer *weakSelf = self;
-        [self.audioPlayer addPeriodicTimeObserverForInterval:CMTimeMakeWithSeconds(1.f, 1.f) queue:NULL usingBlock:^(CMTime time) {
+        _timeObserver = [self.audioPlayer addPeriodicTimeObserverForInterval:CMTimeMakeWithSeconds(1.f, 1.f) queue:NULL usingBlock:^(CMTime time) {
             SMKAVQueuePlayer *strongSelf = weakSelf;
             strongSelf.playbackTime = (NSTimeInterval)CMTimeGetSeconds(time);
         }];
@@ -43,8 +44,7 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [_audioPlayer removeTimeObserver:self];
-    [_audioPlayer removeObserver:self forKeyPath:@"rate"];
+    [_audioPlayer removeTimeObserver:_timeObserver];
 }
 
 #pragma mark - SMKPlayer
@@ -67,6 +67,16 @@
 - (BOOL)supportsSeeking
 {
     return YES;
+}
+
+- (BOOL)playing
+{
+    return self.audioPlayer.rate >= 1.0;
+}
+
++ (NSSet *)keyPathsForValuesAffectingPlaying
+{
+    return [NSSet setWithObject:@"audioPlayer.rate"];
 }
 
 - (id<SMKTrack>)currentTrack
@@ -192,18 +202,4 @@
         self.finishedTrackBlock(self, track, error);
     }
 }
-
-#pragma mark - KVO
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    if (object != self.audioPlayer) { return; }
-    if ([keyPath isEqualToString:@"rate"]) {
-        float newValue = [[change valueForKey:NSKeyValueChangeNewKey] floatValue];
-        [self willChangeValueForKey:@"playing"];
-        _playing = newValue >= 1.0;
-        [self didChangeValueForKey:@"playing"];
-    }
-}
-
 @end

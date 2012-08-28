@@ -29,7 +29,7 @@
 
 - (NSString *)uniqueIdentifier
 {
-    return [self.representedObject valueForProperty:MPMediaPlaylistPropertyPersistentID];
+    return [[self.representedObject valueForProperty:MPMediaPlaylistPropertyPersistentID] stringValue];
 }
 
 - (NSString *)name
