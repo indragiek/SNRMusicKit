@@ -59,11 +59,6 @@
     return YES;
 }
 
-+ (BOOL)supportsAirPlay
-{
-    return NO;
-}
-
 - (BOOL)supportsSeeking
 {
     return YES;

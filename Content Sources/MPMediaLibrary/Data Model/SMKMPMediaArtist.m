@@ -8,6 +8,7 @@
 
 #import "SMKMPMediaArtist.h"
 #import "SMKMPMediaContentSource.h"
+#import "SMKMPMediaHelpers.h"
 
 @interface SMKMPMediaAlbum (SMKInternal)
 - (id)initWithRepresentedObject:(MPMediaItemCollection *)object contentSource:(id<SMKContentSource>)contentSource;
@@ -28,12 +29,14 @@
 
 - (NSString *)uniqueIdentifier
 {
-    return [self.representedObject valueForKey:MPMediaItemPropertyPersistentID];
+    return [self.representedObject valueForProperty:MPMediaItemPropertyPersistentID];
 }
 
 - (NSString *)name
 {
-    return [self.representedObject.representativeItem valueForKey:MPMediaItemPropertyAlbumArtist];
+    NSString *albumArtist = [self.representedObject.representativeItem valueForProperty:MPMediaItemPropertyAlbumArtist];
+    NSString *artist = [self.representedObject.representativeItem valueForProperty:MPMediaItemPropertyArtist];
+    return albumArtist ?: artist;
 }
 
 + (NSSet *)supportedSortKeys
@@ -51,14 +54,8 @@
     dispatch_async([(SMKMPMediaContentSource*)self.contentSource queryQueue], ^{
         SMKMPMediaArtist *strongSelf = weakSelf;
         MPMediaQuery *albumsQuery = [MPMediaQuery albumsQuery];
-        MPMediaPropertyPredicate *artistPredicate = nil;
-        NSString *albumArtistName = [strongSelf name];
-        NSString *artistName = [strongSelf.representedObject.representativeItem valueForKey:MPMediaItemPropertyArtist];
-        if ([albumArtistName length]) {
-            artistPredicate = [MPMediaPropertyPredicate predicateWithValue:albumArtistName forProperty:MPMediaItemPropertyAlbumArtist];
-        } else {
-            artistPredicate = [MPMediaPropertyPredicate predicateWithValue:artistName forProperty:MPMediaItemPropertyArtist];
-        }
+        MPMediaItem *item = strongSelf.representedObject.representativeItem;
+        MPMediaPropertyPredicate *artistPredicate = [SMKMPMediaHelpers predicateForArtistNameOfItem:item];
         if (artistPredicate) {
             NSMutableSet *predicates = [NSMutableSet setWithObject:artistPredicate];
             if (predicate)

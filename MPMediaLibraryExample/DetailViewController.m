@@ -69,8 +69,7 @@
     SMKMPMediaTrack *object = self.tracks[indexPath.row];
     cell.textLabel.text = [object name];
     cell.detailTextLabel.text = [object artistName];
-    [object album];
-    NSLog(@"%@", [[object album] name]);
+    NSLog(@"%@", [[[object album] artist] name]);
     return cell;
 }
 

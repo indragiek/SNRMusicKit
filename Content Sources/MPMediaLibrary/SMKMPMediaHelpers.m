@@ -11,13 +11,12 @@
 @implementation SMKMPMediaHelpers
 + (MPMediaPropertyPredicate *)predicateForArtistNameOfItem:(MPMediaItem *)item
 {
-    NSString *albumArtistName = [item valueForKey:MPMediaItemPropertyAlbumArtist];
-    NSString *artistName = [item valueForKey:MPMediaItemPropertyArtist];
-    if ([albumArtistName length]) {
-        return [MPMediaPropertyPredicate predicateWithValue:albumArtistName forProperty:MPMediaItemPropertyAlbumArtist];
+    NSNumber *albumArtist = [item valueForProperty:MPMediaItemPropertyAlbumArtistPersistentID];
+    NSString *artist = [item valueForProperty:MPMediaItemPropertyArtistPersistentID];
+    if (albumArtist) {
+        return [MPMediaPropertyPredicate predicateWithValue:albumArtist forProperty:MPMediaItemPropertyAlbumArtistPersistentID];
     } else {
-        return [MPMediaPropertyPredicate predicateWithValue:artistName forProperty:MPMediaItemPropertyArtist];
+        return [MPMediaPropertyPredicate predicateWithValue:artist forProperty:MPMediaItemPropertyArtistPersistentID];
     }
-    return nil;
 }
 @end

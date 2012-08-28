@@ -22,11 +22,6 @@
 + (BOOL)supportsPreloading;
 
 /**
- @return Whether the play supports streaming via AirPlay.
- */
-+ (BOOL)supportsAirPlay;
-
-/**
  @return Whether the player supports seeking.
  */
 - (BOOL)supportsSeeking;
@@ -113,11 +108,6 @@
  Skips to the track that the player has preloaded.
  */
 - (void)skipToPreloadedTrack;
-
-/**
- @return Whether AirPlay is enabled (assuming the player supports it)
- */
-@property (nonatomic, assign) BOOL airPlayEnabled;
 
 /**
  A block called when the current track finishes playing

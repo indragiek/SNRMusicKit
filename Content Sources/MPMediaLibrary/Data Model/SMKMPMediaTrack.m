@@ -47,14 +47,12 @@
 - (id<SMKAlbum>)album
 {
     NSNumber *albumPersistentID = [self.representedObject valueForProperty:MPMediaItemPropertyAlbumPersistentID];
-    if (albumPersistentID) {
-        MPMediaQuery *albumQuery = [MPMediaQuery albumsQuery];
-        MPMediaPropertyPredicate *albumPredicate = [MPMediaPropertyPredicate predicateWithValue:albumPersistentID forProperty:MPMediaItemPropertyAlbumPersistentID];
-        albumQuery.filterPredicates = [NSSet setWithObject:albumPredicate];
-        NSArray *collections = albumQuery.collections;
-        if ([collections count]) {
-            return [[SMKMPMediaAlbum alloc] initWithRepresentedObject:[collections objectAtIndex:0] contentSource:self.contentSource];
-        }
+    MPMediaQuery *albumQuery = [MPMediaQuery albumsQuery];
+    MPMediaPropertyPredicate *albumPredicate = [MPMediaPropertyPredicate predicateWithValue:albumPersistentID forProperty:MPMediaItemPropertyAlbumPersistentID];
+    albumQuery.filterPredicates = [NSSet setWithObject:albumPredicate];
+    NSArray *collections = albumQuery.collections;
+    if ([collections count]) {
+        return [[SMKMPMediaAlbum alloc] initWithRepresentedObject:[collections objectAtIndex:0] contentSource:self.contentSource];
     }
     return nil;
 }

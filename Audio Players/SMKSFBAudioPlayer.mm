@@ -123,11 +123,6 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
     return YES;
 }
 
-+ (BOOL)supportsAirPlay
-{
-    return NO;
-}
-
 - (BOOL)supportsSeeking
 {
     return (BOOL)_player->SupportsSeeking();

@@ -33,12 +33,12 @@
 
 - (NSString *)uniqueIdentifier
 {
-    return [self.representedObject valueForKey:MPMediaItemPropertyPersistentID];
+    return [[self.representedObject valueForProperty:MPMediaItemPropertyPersistentID] stringValue];
 }
 
 - (NSString *)name
 {
-    return [self.representedObject.representativeItem valueForKey:MPMediaItemPropertyAlbumTitle];
+    return [self.representedObject.representativeItem valueForProperty:MPMediaItemPropertyAlbumTitle];
 }
 
 + (NSSet *)supportedSortKeys
@@ -75,7 +75,7 @@
     __weak SMKMPMediaAlbum *weakSelf = self;
     dispatch_async([(SMKMPMediaContentSource*)self.contentSource queryQueue], ^{
         SMKMPMediaAlbum *strongSelf = weakSelf;
-        MPMediaItemArtwork *artwork = [strongSelf.representedObject.representativeItem valueForKey:MPMediaItemPropertyArtwork];
+        MPMediaItemArtwork *artwork = [strongSelf.representedObject.representativeItem valueForProperty:MPMediaItemPropertyArtwork];
         UIImage *image = [artwork imageWithSize:size];
         dispatch_async(dispatch_get_main_queue(), ^{
             if (handler) handler(image, nil);
@@ -90,19 +90,17 @@
     MPMediaItem *representativeItem = self.representedObject.representativeItem;
     MPMediaQuery *artistQuery = [MPMediaQuery artistsQuery];
     MPMediaPropertyPredicate *artistPredicate = [SMKMPMediaHelpers predicateForArtistNameOfItem:representativeItem];
-    if (artistPredicate) {
-        artistQuery.filterPredicates = [NSSet setWithObject:artistPredicate];
-        NSArray *collections = artistQuery.collections;
-        if ([collections count]) {
-            return [[SMKMPMediaArtist alloc] initWithRepresentedObject:[collections objectAtIndex:0] contentSource:self.contentSource];
-        }
+    artistQuery.filterPredicates = [NSSet setWithObject:artistPredicate];
+    NSArray *collections = artistQuery.collections;
+    if ([collections count]) {
+        return [[SMKMPMediaArtist alloc] initWithRepresentedObject:[collections objectAtIndex:0] contentSource:self.contentSource];
     }
     return nil;
 }
 
 - (NSUInteger)releaseYear
 {
-    NSDate *releaseDate = [self.representedObject.representativeItem valueForKey:MPMediaItemPropertyReleaseDate];
+    NSDate *releaseDate = [self.representedObject.representativeItem valueForProperty:MPMediaItemPropertyReleaseDate];
     if (releaseDate) {
         NSDateComponents *components = [[NSCalendar currentCalendar] components:NSYearCalendarUnit fromDate:releaseDate];
         return [components year];
@@ -112,14 +110,14 @@
 
 - (NSUInteger)rating
 {
-    return [[self.representedObject.representativeItem valueForKey:MPMediaItemPropertyRating] unsignedIntegerValue];
+    return [[self.representedObject.representativeItem valueForProperty:MPMediaItemPropertyRating] unsignedIntegerValue];
 }
 
 - (NSTimeInterval)duration
 {
     NSTimeInterval totalDuration = 0.0;
     for (MPMediaItem *item in self.representedObject.items) {
-        totalDuration += [[item valueForKey:MPMediaItemPropertyPlaybackDuration] doubleValue];
+        totalDuration += [[item valueForProperty:MPMediaItemPropertyPlaybackDuration] doubleValue];
     }
     return totalDuration;
 }
@@ -135,13 +133,10 @@
         NSArray *items = nil;
         if (!predicate) {
             items = strongSelf.representedObject.items;
-        } else if ([strongSelf name]) {
+        } else {
             MPMediaQuery *songsQuery = [MPMediaQuery songsQuery];
-            MPMediaPropertyPredicate *albumPredicate = [MPMediaPropertyPredicate predicateWithValue:[strongSelf name] forProperty:MPMediaItemPropertyAlbumTitle];
+            MPMediaPropertyPredicate *albumPredicate = [MPMediaPropertyPredicate predicateWithValue:[strongSelf.representedObject valueForProperty:MPMediaItemPropertyPersistentID] forProperty:MPMediaItemPropertyAlbumPersistentID];
             NSMutableSet *predicates = [NSMutableSet setWithObject:albumPredicate];
-            MPMediaPropertyPredicate *artistPredicate = [SMKMPMediaHelpers predicateForArtistNameOfItem:strongSelf.representedObject.representativeItem];
-            if (artistPredicate)
-                [predicates addObject:artistPredicate];
             if (predicate)
                 [predicates addObjectsFromArray:[[(SMKMPMediaPredicate *)predicate predicates] allObjects]];
             items = songsQuery.items;
