@@ -24,9 +24,9 @@
 @property (nonatomic, assign, readonly) NSTimeInterval playbackTime;
 @property (nonatomic, assign, readonly) BOOL playing;
 @property (nonatomic, assign) float volume;
+@property (nonatomic, strong, readonly) id<SMKTrack> currentTrack;
 
 - (id)initWithPlaybackSession:(SPSession *)aSession;
-- (id<SMKTrack>)currentTrack;
 
 // Seeking (SMKPlayer @optional)
 - (void)seekToPlaybackTime:(NSTimeInterval)time;

@@ -23,8 +23,6 @@
     if ((self = [super init])) {
         self.audioPlayer = [[SPPlaybackManager alloc] initWithPlaybackSession:aSession];
         self.seekTimeInterval = SMKPlayerDefaultSeekTimeInterval;
-        [self.audioPlayer addObserver:self forKeyPath:@"playbackSession.playing" options:NSKeyValueObservingOptionNew context:NULL];
-        [self.audioPlayer addObserver:self forKeyPath:@"trackPosition" options:NSKeyValueObservingOptionNew context:NULL];
         [self.audioPlayer addObserver:self forKeyPath:@"currentTrack" options:NSKeyValueObservingOptionNew context:NULL];
     }
     return self;
@@ -32,8 +30,6 @@
 
 - (void)dealloc
 {
-    [_audioPlayer removeObserver:self forKeyPath:@"playbackSession.playing"];
-    [_audioPlayer removeObserver:self forKeyPath:@"trackPosition"];
     [_audioPlayer removeObserver:self forKeyPath:@"currentTrack"];
 }
 
@@ -41,20 +37,8 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    if (object != self.audioPlayer) { return; }
-    id newValue = [change valueForKey:NSKeyValueChangeNewKey];
-    if ([keyPath isEqualToString:@"playbackSession.playing"]) {
-        [self willChangeValueForKey:@"playing"];
-        _playing = [newValue boolValue];
-        [self didChangeValueForKey:@"playing"];
-        if (context != NULL)
-            [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-    } else if ([keyPath isEqualToString:@"trackPosition"]) {
-        [self willChangeValueForKey:@"playbackTime"];
-        _playbackTime = [newValue doubleValue];
-        [self didChangeValueForKey:@"playbackTime"];
-    } else if ([keyPath isEqualToString:@"currentTrack"]) {
-        if (!SMKObjectIsValid(newValue)) {
+    if ([keyPath isEqualToString:@"currentTrack"] && object == self.audioPlayer) {
+        if (!SMKObjectIsValid([change valueForKey:NSKeyValueChangeNewKey])) {
             if (self.finishedTrackBlock)
                 self.finishedTrackBlock(self, self.oldCurrentTrack, nil);
             self.oldCurrentTrack = nil;
@@ -157,5 +141,20 @@
 + (NSSet *)keyPathsForValuesAffectingVolume
 {
     return [NSSet setWithObject:@"audioPlayer.volume"];
+}
+
++ (NSSet *)keyPathsForValuesAffectingPlaying
+{
+    return [NSSet setWithObject:@"audioPlayer.playbackSession.playing"];
+}
+
++ (NSSet *)keyPathsForValuesAffectingPlaybackTime
+{
+    return [NSSet setWithObject:@"audioPlayer.trackPosition"];
+}
+
++ (NSSet *)keyPathsForValuesAffectingCurrentTrack
+{
+    return [NSSet setWithObject:@"audioPlayer.currentTrack"];
 }
 @end

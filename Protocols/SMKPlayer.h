@@ -11,6 +11,7 @@
 
 @protocol SMKPlayerDelegate;
 @protocol SMKPlayer <NSObject>
+@required
 /**
  @return An set of class names containing the names of content sources that this player can play.
  */
@@ -68,20 +69,14 @@
 @property (nonatomic, assign) float volume;
 
 /**
+ The seek time interval for the -seekBackward and -seekForward methods.
+ */
+@property (nonatomic, assign) NSTimeInterval seekTimeInterval;
+
+/**
  Seek to the specified time if the player supports seeking.
  */
 - (void)seekToPlaybackTime:(NSTimeInterval)time;
-
-/**
- Return the seek time interval for the -seekBackward and -seekForward methods.
- */
-- (NSTimeInterval)seekTimeInterval;
-
-/**
- Set the seek time interval for the -seekBackward and -seekForward methods.
- @param interval The seek time interval.
- */
-- (void)setSeekTimeInterval:(NSTimeInterval)interval;
 
 /**
  Seek backward (-seekTimeInterval) seconds
@@ -113,4 +108,10 @@
  A block called when the current track finishes playing
  */
 @property (nonatomic, copy) void (^finishedTrackBlock)(id<SMKPlayer> player, id<SMKTrack> track, NSError *error);
+
+/**
+ Returns the underlying player object that does all the real work.
+ Useful if you want to do customization beyond SMKPlayer's API
+ */
+- (id)audioPlayer;
 @end

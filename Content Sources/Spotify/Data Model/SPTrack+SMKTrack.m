@@ -47,7 +47,7 @@
     return [NSSet setWithObjects:@"artist", @"artistName", @"albumArtistName", @"duration", @"trackNumber", @"discNumber", @"name", @"popularity", nil];
 }
 
-+ (Class)playerClass
+- (Class)playerClass
 {
     return NSClassFromString(@"SMKSpotifyPlayer");
 }

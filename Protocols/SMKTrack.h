@@ -43,7 +43,7 @@
 /**
  @return The player class used to play this track
  */
-+ (Class)playerClass;
+- (Class)playerClass;
 
 @optional
 

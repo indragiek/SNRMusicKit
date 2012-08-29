@@ -57,6 +57,9 @@ git submodule update
     <td>AVQueuePlayer</td><td>✔</td><td>✔</td><td>✔</td>
   </tr>
   <tr>
+    <td>MPMusicPlayerController</td><td>✔</td><td>✘</td><td>✔</td>
+  </tr>
+  <tr>
     <td>SFBAudioEngine</td><td>✔</td><td>✔</td><td>✔</td>
   </tr>
   <tr>

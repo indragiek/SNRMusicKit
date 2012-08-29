@@ -13,12 +13,10 @@
 		030429A515ED4716002C4CA2 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 030429A115ED4716002C4CA2 /* MainStoryboard_iPad.storyboard */; };
 		030429A615ED4716002C4CA2 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 030429A315ED4716002C4CA2 /* MainStoryboard_iPhone.storyboard */; };
 		030429AA15ED4722002C4CA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 030429A715ED4722002C4CA2 /* main.m */; };
-		030429AB15ED4722002C4CA2 /* MPMediaLibraryExample-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 030429A815ED4722002C4CA2 /* MPMediaLibraryExample-Info.plist */; };
 		030429AE15ED4728002C4CA2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 030429AC15ED4728002C4CA2 /* InfoPlist.strings */; };
 		0306DB6915EC198500D6409B /* SMKMPMediaAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 0306DB6615EC170000D6409B /* SMKMPMediaAlbum.m */; };
 		0306DB6A15EC198B00D6409B /* SMKMPMediaPlaylist.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 032BAE8F15EC053B003E3135 /* SMKMPMediaPlaylist.h */; };
 		0306DB6B15EC199800D6409B /* SMKMPMediaTrack.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 032BAEA815EC0E5E003E3135 /* SMKMPMediaTrack.h */; };
-		0306DB6C15EC199B00D6409B /* SMKMPMediaAlbum.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0306DB6615EC170000D6409B /* SMKMPMediaAlbum.m */; };
 		0306DB6D15EC199D00D6409B /* SMKMPMediaPredicate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 032BAE8C15EBFEC8003E3135 /* SMKMPMediaPredicate.h */; };
 		0306DB7015EC243100D6409B /* SMKMPMediaArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = 0306DB6F15EC243100D6409B /* SMKMPMediaArtist.m */; };
 		0306DB7715EC3A4B00D6409B /* SMKMPMediaHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 0306DB7615EC3A4B00D6409B /* SMKMPMediaHelpers.m */; };
@@ -150,6 +148,11 @@
 		037010E215E5751800FEAF6F /* SMKiTunesPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 037010D615E5751800FEAF6F /* SMKiTunesPlaylist.m */; };
 		037010E315E5751800FEAF6F /* SMKiTunesTrack.h in Headers */ = {isa = PBXBuildFile; fileRef = 037010D715E5751800FEAF6F /* SMKiTunesTrack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		037010E415E5751800FEAF6F /* SMKiTunesTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 037010D815E5751800FEAF6F /* SMKiTunesTrack.m */; };
+		0371CF9215EDDF8800B304CC /* SMKMPMusicPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0371CF9115EDDF8800B304CC /* SMKMPMusicPlayer.m */; };
+		0371CF9315EDE44C00B304CC /* SMKMPMusicPlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0371CF9015EDDF8800B304CC /* SMKMPMusicPlayer.h */; };
+		0371CF9415EDE46F00B304CC /* SMKMPMediaArtist.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0306DB6E15EC243100D6409B /* SMKMPMediaArtist.h */; };
+		0371CF9515EDE47700B304CC /* SMKMPMediaAlbum.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0306DB6515EC170000D6409B /* SMKMPMediaAlbum.h */; };
+		0371CF9715EDE4E500B304CC /* NSError+SMKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F795C515E47AD300C9F652 /* NSError+SMKAdditions.m */; };
 		037A599615E6B0910092C6B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 037A599315E6B0910092C6B9 /* AppDelegate.m */; };
 		037A599715E6B0910092C6B9 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037A599415E6B0910092C6B9 /* MainMenu.xib */; };
 		037A599A15E6B09C0092C6B9 /* InsetTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 037A599915E6B09C0092C6B9 /* InsetTextField.m */; };
@@ -231,7 +234,6 @@
 		03F795C215E47A3C00C9F652 /* SMKErrorCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F795C115E47A3C00C9F652 /* SMKErrorCodes.h */; };
 		03F795C615E47AD300C9F652 /* NSError+SMKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F795C415E47AD300C9F652 /* NSError+SMKAdditions.h */; };
 		03F795C715E47AD300C9F652 /* NSError+SMKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F795C515E47AD300C9F652 /* NSError+SMKAdditions.m */; };
-		03F795C815E47AD300C9F652 /* NSError+SMKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F795C515E47AD300C9F652 /* NSError+SMKAdditions.m */; };
 		03F795CA15E47BC400C9F652 /* SMKErrorCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F795C915E47BC400C9F652 /* SMKErrorCodes.m */; };
 		03F795CB15E47BC400C9F652 /* SMKErrorCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F795C915E47BC400C9F652 /* SMKErrorCodes.m */; };
 		03FBEC9F15E6E0C200A67DEE /* SMKAVQueuePlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 03FBEC9D15E6E0C100A67DEE /* SMKAVQueuePlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -381,11 +383,11 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
-				0306DB6B15EC199800D6409B /* SMKMPMediaTrack.h in CopyFiles */,
 				032BAE8015EBF36C003E3135 /* SMKSpotifyContentSource.h in CopyFiles */,
 				032BAE7F15EBF366003E3135 /* SMKSpotifyConstants.h in CopyFiles */,
 				032BAE7915EBF361003E3135 /* SPUser+SMKUser.h in CopyFiles */,
 				032BAE7A15EBF361003E3135 /* SPPlaylist+SMKPlaylist.h in CopyFiles */,
+				0371CF9415EDE46F00B304CC /* SMKMPMediaArtist.h in CopyFiles */,
 				032BAE7B15EBF361003E3135 /* SPTrack+SMKTrack.h in CopyFiles */,
 				032BAE7C15EBF361003E3135 /* SPAlbum+SMKAlbum.h in CopyFiles */,
 				032BAE7D15EBF361003E3135 /* SPArtist+SMKArtist.h in CopyFiles */,
@@ -394,8 +396,10 @@
 				03EB016915E840D5001F3A02 /* SMKErrorCodes.h in CopyFiles */,
 				0306DB6D15EC199D00D6409B /* SMKMPMediaPredicate.h in CopyFiles */,
 				03EB016A15E840DB001F3A02 /* SMKMPMediaContentSource.h in CopyFiles */,
-				0306DB6C15EC199B00D6409B /* SMKMPMediaAlbum.m in CopyFiles */,
 				0306DB6A15EC198B00D6409B /* SMKMPMediaPlaylist.h in CopyFiles */,
+				0306DB6B15EC199800D6409B /* SMKMPMediaTrack.h in CopyFiles */,
+				0371CF9515EDE47700B304CC /* SMKMPMediaAlbum.h in CopyFiles */,
+				0371CF9315EDE44C00B304CC /* SMKMPMusicPlayer.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,6 +563,8 @@
 		037010D615E5751800FEAF6F /* SMKiTunesPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKiTunesPlaylist.m; path = "Content Sources/iTunes/Data Model/mogenerator/SMKiTunesPlaylist.m"; sourceTree = "<group>"; };
 		037010D715E5751800FEAF6F /* SMKiTunesTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKiTunesTrack.h; path = "Content Sources/iTunes/Data Model/mogenerator/SMKiTunesTrack.h"; sourceTree = "<group>"; };
 		037010D815E5751800FEAF6F /* SMKiTunesTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKiTunesTrack.m; path = "Content Sources/iTunes/Data Model/mogenerator/SMKiTunesTrack.m"; sourceTree = "<group>"; };
+		0371CF9015EDDF8800B304CC /* SMKMPMusicPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKMPMusicPlayer.h; path = "Audio Players/SMKMPMusicPlayer.h"; sourceTree = "<group>"; };
+		0371CF9115EDDF8800B304CC /* SMKMPMusicPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKMPMusicPlayer.m; path = "Audio Players/SMKMPMusicPlayer.m"; sourceTree = "<group>"; };
 		037A599215E6B0910092C6B9 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "Example Apps/iTunesExample/AppDelegate.h"; sourceTree = SOURCE_ROOT; };
 		037A599315E6B0910092C6B9 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "Example Apps/iTunesExample/AppDelegate.m"; sourceTree = SOURCE_ROOT; };
 		037A599515E6B0910092C6B9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "Example Apps/iTunesExample/en.lproj/MainMenu.xib"; sourceTree = SOURCE_ROOT; };
@@ -1185,6 +1191,8 @@
 				03FBECA315E6E2EB00A67DEE /* SMKAVPlayerItem.m */,
 				03576BAC15E95C1B00316930 /* SMKSpotifyPlayer.h */,
 				03576BAD15E95C1B00316930 /* SMKSpotifyPlayer.m */,
+				0371CF9015EDDF8800B304CC /* SMKMPMusicPlayer.h */,
+				0371CF9115EDDF8800B304CC /* SMKMPMusicPlayer.m */,
 			);
 			name = "Audio Players";
 			sourceTree = "<group>";
@@ -1620,7 +1628,6 @@
 				03157B5515EBE3E00048DB65 /* SPLoginResources.bundle in Resources */,
 				030429A515ED4716002C4CA2 /* MainStoryboard_iPad.storyboard in Resources */,
 				030429A615ED4716002C4CA2 /* MainStoryboard_iPhone.storyboard in Resources */,
-				030429AB15ED4722002C4CA2 /* MPMediaLibraryExample-Info.plist in Resources */,
 				030429AE15ED4728002C4CA2 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1782,7 +1789,6 @@
 				036994C715E3F3EB003BCCBE /* AFURLConnectionOperation.m in Sources */,
 				036994CB15E3F3EB003BCCBE /* AFXMLRequestOperation.m in Sources */,
 				036994CF15E3F3EB003BCCBE /* UIImageView+AFNetworking.m in Sources */,
-				03F795C815E47AD300C9F652 /* NSError+SMKAdditions.m in Sources */,
 				037010A615E5700100FEAF6F /* NSURL+SMKAdditions.m in Sources */,
 				037010B315E572E000FEAF6F /* NSBundle+SMKAdditions.m in Sources */,
 				030CE89915E579EC00AC12BE /* NSManagedObjectContext+SMKAdditions.m in Sources */,
@@ -1804,6 +1810,7 @@
 				03576BB015E95C1B00316930 /* SMKSpotifyPlayer.m in Sources */,
 				03576BB515E961A000316930 /* SMKGlobalConstants.m in Sources */,
 				03BDF4A915E9E840006CA8B1 /* SMKArtworkCache.m in Sources */,
+				0371CF9715EDE4E500B304CC /* NSError+SMKAdditions.m in Sources */,
 				03DEF87515EAE525001A1537 /* SMKPlatformNativeImage+SMKAdditions.m in Sources */,
 				03DEF88A15EB1E43001A1537 /* SMKLastFMClient.m in Sources */,
 				03DEF89915EB2B76001A1537 /* SSKeychain.m in Sources */,
@@ -1813,6 +1820,7 @@
 				032BAEAA15EC0E5E003E3135 /* SMKMPMediaTrack.m in Sources */,
 				0306DB7015EC243100D6409B /* SMKMPMediaArtist.m in Sources */,
 				0306DB7715EC3A4B00D6409B /* SMKMPMediaHelpers.m in Sources */,
+				0371CF9215EDDF8800B304CC /* SMKMPMusicPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

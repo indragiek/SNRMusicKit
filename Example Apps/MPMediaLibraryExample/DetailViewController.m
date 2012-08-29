@@ -9,7 +9,7 @@
 #import "DetailViewController.h"
 #import "SNRMusicKitiOS.h"
 #import "SMKMPMediaContentSource.h"
-#import "SMKAVQueuePlayer.h"
+#import "SMKMPMusicPlayer.h"
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -18,7 +18,7 @@
 @end
 
 @implementation DetailViewController {
-    SMKAVQueuePlayer *_player;
+    SMKMPMusicPlayer *_player;
 }
 
 #pragma mark - Managing the detail item
@@ -42,7 +42,7 @@
         strongSelf.tracks = tracks;
         [self.tableView reloadData];
     }];
-    _player = [SMKAVQueuePlayer new];
+    _player = [SMKMPMusicPlayer new];
 }
 
 - (void)viewDidLoad
@@ -75,6 +75,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SMKMPMediaTrack *object = self.tracks[indexPath.row];
+    NSLog(@"%@", [object playbackURL]);
     [_player playTrack:object completionHandler:^(NSError *error) {
         NSLog(@"%@", error);
     }];
