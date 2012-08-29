@@ -23,6 +23,7 @@
     if ((self = [super init])) {
         self.audioPlayer = [[SPPlaybackManager alloc] initWithPlaybackSession:aSession];
         self.seekTimeInterval = SMKPlayerDefaultSeekTimeInterval;
+        self.volume = 1.0;
         [self.audioPlayer addObserver:self forKeyPath:@"currentTrack" options:NSKeyValueObservingOptionNew context:NULL];
     }
     return self;
