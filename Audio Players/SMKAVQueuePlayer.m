@@ -11,6 +11,7 @@
 #import "SMKAVPlayerItem.h"
 #import "SMKTrack.h"
 #import "SMKErrorCodes.h"
+#import "NSError+SMKAdditions.h"
 
 #import <CoreMedia/CoreMedia.h>
 
@@ -124,9 +125,13 @@
         [self.audioPlayer removeItem:preloadedItem];
     }
     SMKAVPlayerItem *item = [self _playerItemForTrack:track];
-    if (item)
+    if ([self.audioPlayer canInsertItem:item afterItem:self.audioPlayer.currentItem] && item) {
         [self.audioPlayer insertItem:item afterItem:self.audioPlayer.currentItem];
-    if (handler) { handler(self.audioPlayer.error); }
+        if (handler) { handler(self.audioPlayer.error); }
+    } else if (handler) {
+        NSError *error = [NSError SMK_errorWithCode:SMKPlayerErrorItemAlreadyExists description:@"This item already exists in the queue, and AVQueuePlayer doesn't support having multiple items in more than one position in the queue"];
+        handler(error);
+    }
 }
 
 - (id<SMKTrack>)preloadedTrack

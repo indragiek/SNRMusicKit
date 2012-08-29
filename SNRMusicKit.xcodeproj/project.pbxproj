@@ -153,6 +153,9 @@
 		0371CF9415EDE46F00B304CC /* SMKMPMediaArtist.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0306DB6E15EC243100D6409B /* SMKMPMediaArtist.h */; };
 		0371CF9515EDE47700B304CC /* SMKMPMediaAlbum.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0306DB6515EC170000D6409B /* SMKMPMediaAlbum.h */; };
 		0371CF9715EDE4E500B304CC /* NSError+SMKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F795C515E47AD300C9F652 /* NSError+SMKAdditions.m */; };
+		0371CF9B15EDECF200B304CC /* SMKQueueController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0371CF9915EDECF200B304CC /* SMKQueueController.h */; };
+		0371CF9C15EDECF200B304CC /* SMKQueueController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0371CF9A15EDECF200B304CC /* SMKQueueController.m */; };
+		0371CF9D15EDECF200B304CC /* SMKQueueController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0371CF9A15EDECF200B304CC /* SMKQueueController.m */; };
 		037A599615E6B0910092C6B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 037A599315E6B0910092C6B9 /* AppDelegate.m */; };
 		037A599715E6B0910092C6B9 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037A599415E6B0910092C6B9 /* MainMenu.xib */; };
 		037A599A15E6B09C0092C6B9 /* InsetTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 037A599915E6B09C0092C6B9 /* InsetTextField.m */; };
@@ -565,6 +568,8 @@
 		037010D815E5751800FEAF6F /* SMKiTunesTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKiTunesTrack.m; path = "Content Sources/iTunes/Data Model/mogenerator/SMKiTunesTrack.m"; sourceTree = "<group>"; };
 		0371CF9015EDDF8800B304CC /* SMKMPMusicPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKMPMusicPlayer.h; path = "Audio Players/SMKMPMusicPlayer.h"; sourceTree = "<group>"; };
 		0371CF9115EDDF8800B304CC /* SMKMPMusicPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKMPMusicPlayer.m; path = "Audio Players/SMKMPMusicPlayer.m"; sourceTree = "<group>"; };
+		0371CF9915EDECF200B304CC /* SMKQueueController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMKQueueController.h; path = "Master API/SMKQueueController.h"; sourceTree = "<group>"; };
+		0371CF9A15EDECF200B304CC /* SMKQueueController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMKQueueController.m; path = "Master API/SMKQueueController.m"; sourceTree = "<group>"; };
 		037A599215E6B0910092C6B9 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "Example Apps/iTunesExample/AppDelegate.h"; sourceTree = SOURCE_ROOT; };
 		037A599315E6B0910092C6B9 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "Example Apps/iTunesExample/AppDelegate.m"; sourceTree = SOURCE_ROOT; };
 		037A599515E6B0910092C6B9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "Example Apps/iTunesExample/en.lproj/MainMenu.xib"; sourceTree = SOURCE_ROOT; };
@@ -806,6 +811,7 @@
 		036991E315E3EAE1003BCCBE = {
 			isa = PBXGroup;
 			children = (
+				0371CF9815EDECD900B304CC /* Master API */,
 				03927DFB15E69EBD00E6483E /* Example Apps */,
 				03F795C315E47AB900C9F652 /* Categories */,
 				03F795C015E47A1F00C9F652 /* Common Headers */,
@@ -974,6 +980,15 @@
 				036994A615E3F3EB003BCCBE /* UIImageView+AFNetworking.m */,
 			);
 			name = AFNetworking;
+			sourceTree = "<group>";
+		};
+		0371CF9815EDECD900B304CC /* Master API */ = {
+			isa = PBXGroup;
+			children = (
+				0371CF9915EDECF200B304CC /* SMKQueueController.h */,
+				0371CF9A15EDECF200B304CC /* SMKQueueController.m */,
+			);
+			name = "Master API";
 			sourceTree = "<group>";
 		};
 		037A598E15E6ADF90092C6B9 /* User Interface */ = {
@@ -1393,6 +1408,7 @@
 				03DEF88815EB1E43001A1537 /* SMKLastFMClient.h in Headers */,
 				03DEF89715EB2B76001A1537 /* SSKeychain.h in Headers */,
 				03DEF8A015EB3262001A1537 /* SMKLastFMClient+SMKTrack.h in Headers */,
+				0371CF9B15EDECF200B304CC /* SMKQueueController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1771,6 +1787,7 @@
 				03DEF88915EB1E43001A1537 /* SMKLastFMClient.m in Sources */,
 				03DEF89815EB2B76001A1537 /* SSKeychain.m in Sources */,
 				03DEF8A115EB3262001A1537 /* SMKLastFMClient+SMKTrack.m in Sources */,
+				0371CF9C15EDECF200B304CC /* SMKQueueController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1821,6 +1838,7 @@
 				0306DB7015EC243100D6409B /* SMKMPMediaArtist.m in Sources */,
 				0306DB7715EC3A4B00D6409B /* SMKMPMediaHelpers.m in Sources */,
 				0371CF9215EDDF8800B304CC /* SMKMPMusicPlayer.m in Sources */,
+				0371CF9D15EDECF200B304CC /* SMKQueueController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
