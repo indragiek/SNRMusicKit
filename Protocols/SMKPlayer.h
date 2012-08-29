@@ -61,13 +61,6 @@
  */
 - (NSTimeInterval)playbackTime;
 
-@optional
-
-/**
- @return The player volume from 0.0 to 1.0
- */
-@property (nonatomic, assign) float volume;
-
 /**
  The seek time interval for the -seekBackward and -seekForward methods.
  */
@@ -87,6 +80,13 @@
  Seek forward (-seekTimeInterval) seconds
  */
 - (void)seekForward;
+
+@optional
+
+/**
+ @return The player volume from 0.0 to 1.0
+ */
+@property (nonatomic, assign) float volume;
 
 /**
  Preload the specified track (if the player supports preloading)

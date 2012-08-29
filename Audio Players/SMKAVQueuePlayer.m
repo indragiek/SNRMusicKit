@@ -143,7 +143,8 @@
 
 - (void)skipToPreloadedTrack
 {
-    [self.audioPlayer advanceToNextItem];
+    if ([self.audioPlayer.items count] == 2)
+        [self.audioPlayer advanceToNextItem];
 }
 
 #if !TARGET_OS_IPHONE

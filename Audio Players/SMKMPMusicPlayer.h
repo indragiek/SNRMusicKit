@@ -28,9 +28,4 @@
 
 - (void)pause;
 - (void)play;
-
-// Seeking (SMKPlayer @optional)
-- (void)seekToPlaybackTime:(NSTimeInterval)time;
-- (void)seekBackward;
-- (void)seekForward;
 @end

@@ -23,9 +23,9 @@ typedef NSUInteger SMKQueueControllerRepeatMode;
 
 @property (nonatomic, retain, readonly) NSArray *tracks;
 - (id)initWithTracks:(NSArray *)tracks;
-+ (instancetype)queueControllerWithItems:(NSArray *)tracks;
++ (instancetype)queueControllerWithTracks:(NSArray *)tracks;
 
-- (void)insertTrack:(id<SMKTrack>)track afterTrack:(id<SMKTrack>)track;
+- (void)insertTrack:(id<SMKTrack>)newTrack afterTrack:(id<SMKTrack>)track;
 - (void)removeAllTracks;
 - (void)removeTrack:(id<SMKTrack>)track;
 
@@ -34,9 +34,10 @@ typedef NSUInteger SMKQueueControllerRepeatMode;
 @property (nonatomic, strong, readonly) id<SMKPlayer> currentPlayer;
 @property (nonatomic, strong, readonly) id<SMKTrack> currentTrack;
 @property (nonatomic, assign, readonly) NSUInteger indexOfCurrentTrack;
+@property (nonatomic, assign, readonly) BOOL playing;
 @property (nonatomic, assign) BOOL shuffle;
 @property (nonatomic, assign) SMKQueueControllerRepeatMode repeatMode;
-#if TARGET_OS_IPHONE
+#if !TARGET_OS_IPHONE
 @property (nonatomic, assign) float volume;
 #endif
 

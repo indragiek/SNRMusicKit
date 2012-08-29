@@ -34,11 +34,6 @@
 - (void)pause;
 - (void)play;
 
-// Seeking (SMKPlayer @optional)
-- (void)seekToPlaybackTime:(NSTimeInterval)time;
-- (void)seekBackward;
-- (void)seekForward;
-
 // Preloading (SMKPlayer @optional)
 @property (nonatomic, strong, readonly) id<SMKTrack> preloadedTrack;
 - (void)preloadTrack:(id<SMKTrack>)track completionHandler:(void(^)(NSError *error))handler;

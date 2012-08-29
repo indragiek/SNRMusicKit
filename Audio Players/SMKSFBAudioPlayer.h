@@ -27,13 +27,8 @@
 @property (nonatomic, assign, readonly) BOOL playing;
 @property (nonatomic, strong, readonly) id<SMKTrack> currentTrack;
 
-// Seeking (SMKPlayer @optional)
-@property (nonatomic, strong, readonly) id<SMKTrack> preloadedTrack;
-- (void)seekToPlaybackTime:(NSTimeInterval)time;
-- (void)seekBackward;
-- (void)seekForward;
-
 // Preloading (SMKPlayer @optional)
+@property (nonatomic, strong, readonly) id<SMKTrack> preloadedTrack;
 - (void)preloadTrack:(id<SMKTrack>)track completionHandler:(void(^)(NSError *error))handler;
 - (id<SMKTrack>)preloadedTrack;
 - (void)skipToPreloadedTrack;
