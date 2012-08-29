@@ -9,6 +9,8 @@
 #import "SMKMPMediaTrack.h"
 #import "SMKMPMediaAlbum.h"
 #import "SMKMPMediaHelpers.h"
+#import "SMKAVQueuePlayer.h"
+#import "SMKMPMusicPlayer.h"
 
 @interface SMKMPMediaAlbum (SMKInternal)
 - (id)initWithRepresentedObject:(MPMediaItem*)object contentSource:(id<SMKContentSource>)contentSource;
@@ -44,7 +46,7 @@
 
 - (Class)playerClass
 {
-    return NSClassFromString((self.playbackURL != nil) ? @"SMKAVQueuePlayer" : @"SMKMPMusicPlayer");
+    return (self.playbackURL != nil) ? [SMKAVQueuePlayer class] : [SMKMPMusicPlayer class];
 }
 
 #pragma mark - SMKTrack

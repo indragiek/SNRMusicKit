@@ -15,10 +15,10 @@
 @interface SMKQueueController ()
 @property (nonatomic, strong) NSMutableArray *items;
 @property (nonatomic, strong, readwrite) id<SMKPlayer> currentPlayer;
+@property (nonatomic, assign, readwrite) NSUInteger indexOfCurrentTrack;
 @end
 
 @implementation SMKQueueController
-
 - (id)init
 {
     if ((self = [super init])) {
@@ -72,16 +72,6 @@
 }
 
 #pragma mark - Accessors
-
-- (NSUInteger)indexOfCurrentTrack
-{
-    return [self.items indexOfObject:self.currentTrack];
-}
-
-+ (NSSet *)keyPathsForValuesAffectingIndexOfCurrentTrack
-{
-    return [NSSet setWithObject:@"currentTrack"];
-}
 
 - (NSTimeInterval)playbackTime
 {
@@ -177,7 +167,15 @@
 
 - (IBAction)next:(id)sender
 {
-    
+    if ([[self.currentPlayer class] supportsPreloading] && [self.currentPlayer preloadedTrack]) {
+        [self.currentPlayer skipToPreloadedTrack];
+        self.indexOfCurrentTrack++;
+    } else {
+        NSUInteger nextIndex = self.indexOfCurrentTrack + 1;
+        if (nextIndex < [self countOfItems])
+            [self _beginPlayingItemAtIndex:nextIndex];
+    }
+    [self _recalculateIndexOfCurrentTrack];
 }
 
 - (IBAction)previous:(id)sender
@@ -187,12 +185,12 @@
 
 - (IBAction)seekForward:(id)sender
 {
-    
+    [self.currentPlayer seekForward];
 }
 
 - (IBAction)seekBackward:(id)sender
 {
-    
+    [self.currentPlayer seekBackward];
 }
 
 #pragma mark - Private
@@ -223,17 +221,33 @@
 - (void)_beginPlayingItemAtIndex:(NSUInteger)index
 {
     id<SMKTrack> track = [[self.items objectAtIndex:index] track];
-    self.currentPlayer = [[track playerClass] new];
+    id<SMKPlayer> player = [[track playerClass] new];
+    NSLog(@"now playing %@ with %@", [track name], player);
+    self.currentPlayer = player;
     __weak SMKQueueController *weakSelf = self;
-    [self.currentPlayer playTrack:track completionHandler:^(NSError *error) {
+    [player playTrack:track completionHandler:^(NSError *error) {
+        SMKQueueController *strongSelf = weakSelf;
         if (error) {
-            SMKQueueController *strongSelf = weakSelf;
             SMKGenericErrorLog([NSString stringWithFormat:@"Error playing track %@", track], error);
             [strongSelf removeObjectFromItemsAtIndex:index];
             strongSelf.currentPlayer = nil;
-            if (index < [self.items count])
-                [self _beginPlayingItemAtIndex:index];
+            if (index < [strongSelf countOfItems])
+                [strongSelf _beginPlayingItemAtIndex:index];
+        } else {
+            [strongSelf _recalculateIndexOfCurrentTrack];
         }
     }];
+    [player setFinishedTrackBlock:^(id<SMKPlayer> player, id<SMKTrack> track, NSError *error) {
+        SMKQueueController *strongSelf = weakSelf;
+        [strongSelf next:nil];
+    }];
 }
+
+- (void)_recalculateIndexOfCurrentTrack
+{
+    self.indexOfCurrentTrack = [self _indexOfTrack:self.currentTrack];
+}
+@end
+
+@implementation SMKQueueItem
 @end

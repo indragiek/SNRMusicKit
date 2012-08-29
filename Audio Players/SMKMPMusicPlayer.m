@@ -8,6 +8,8 @@
 
 #import "SMKMPMusicPlayer.h"
 #import "SMKMPMediaTrack.h"
+
+#import "SMKErrorCodes.h"
 #import "NSError+SMKAdditions.h"
 
 @interface SMKMPMusicPlayer ()
@@ -29,6 +31,7 @@
         [self.audioPlayer beginGeneratingPlaybackNotifications];
         self.audioPlayer.repeatMode = MPMusicRepeatModeNone;
         self.audioPlayer.shuffleMode = MPMusicShuffleModeOff;
+        self.seekTimeInterval = SMKPlayerDefaultSeekTimeInterval;
     }
     return self;
 }

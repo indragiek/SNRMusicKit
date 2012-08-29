@@ -56,7 +56,13 @@
                             <outlet property="delegate" destination="k1S-Fw-fPT" id="NJm-jj-izg"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Tracks" id="xYw-DX-WhN"/>
+                    <navigationItem key="navigationItem" title="Tracks" id="xYw-DX-WhN">
+                        <barButtonItem key="rightBarButtonItem" title="Seek Forward" id="df0-Kk-nhT">
+                            <connections>
+                                <action selector="seekForward:" destination="k1S-Fw-fPT" id="HfE-WB-NFW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="view" destination="jqB-za-Asj" id="yMr-mm-BhV"/>
                     </connections>
@@ -143,6 +149,7 @@
         <class className="DetailViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailViewController.h"/>
             <relationships>
+                <relationship kind="action" name="seekForward:"/>
                 <relationship kind="outlet" name="detailDescriptionLabel" candidateClass="UILabel"/>
             </relationships>
         </class>

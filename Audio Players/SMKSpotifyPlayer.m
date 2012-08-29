@@ -43,6 +43,9 @@
             if (self.finishedTrackBlock)
                 self.finishedTrackBlock(self, self.oldCurrentTrack, nil);
             self.oldCurrentTrack = nil;
+            if (self.preloadedTrack) {
+                [self skipToPreloadedTrack];
+            }
         } else {
             self.preloadedTrack = nil;
         }
@@ -124,7 +127,8 @@
 
 - (void)skipToPreloadedTrack
 {
-    [self playTrack:self.preloadedTrack completionHandler:nil];
+    if (self.preloadedTrack) 
+        [self playTrack:self.preloadedTrack completionHandler:nil];
 }
 
 #pragma mark - Accessors

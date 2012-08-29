@@ -9,7 +9,6 @@
 extern NSInteger const SMKPlayerErrorFailedToCreateInputSource;
 extern NSInteger const SMKPlayerErrorFailedToCreateDecoder;
 extern NSInteger const SMKPlayerErrorFailedToEnqueueTrack;
-extern NSInteger const SMKPlayerErrorTrackAlreadyPreloaded;
 extern NSInteger const SMKPlayerErrorItemAlreadyExists;
 
 extern NSInteger const SMKCoreDataErrorDataStoreNotAFolder;

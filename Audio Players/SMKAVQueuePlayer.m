@@ -30,7 +30,7 @@
 - (id)init
 {
     if ((self = [super init])) {
-        self.audioPlayer = [AVQueuePlayer queuePlayerWithItems:nil];
+        self.audioPlayer = [AVQueuePlayer queuePlayerWithItems:[NSArray array]];
         __weak SMKAVQueuePlayer *weakSelf = self;
         _timeObserver = [self.audioPlayer addPeriodicTimeObserverForInterval:CMTimeMakeWithSeconds(1.f, 1.f) queue:NULL usingBlock:^(CMTime time) {
             SMKAVQueuePlayer *strongSelf = weakSelf;

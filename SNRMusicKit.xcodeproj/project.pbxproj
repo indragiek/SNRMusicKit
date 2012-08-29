@@ -118,6 +118,8 @@
 		036994CF15E3F3EB003BCCBE /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 036994A615E3F3EB003BCCBE /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		036994D015E3F461003BCCBE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036991F615E3EAE1003BCCBE /* CoreData.framework */; };
 		036994D215E3F475003BCCBE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036994D115E3F475003BCCBE /* CoreData.framework */; };
+		036F857515EEC45100DF72B9 /* SMKQueueController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0371CF9915EDECF200B304CC /* SMKQueueController.h */; };
+		036F857615EEC54500DF72B9 /* SMKAVQueuePlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03FBEC9D15E6E0C100A67DEE /* SMKAVQueuePlayer.h */; };
 		0370109C15E5535500FEAF6F /* SMKiTunesSyncOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 0370109A15E5535500FEAF6F /* SMKiTunesSyncOperation.h */; };
 		0370109D15E5535500FEAF6F /* SMKiTunesSyncOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0370109B15E5535500FEAF6F /* SMKiTunesSyncOperation.m */; };
 		037010A015E5630000FEAF6F /* SMKiTunesConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 0370109E15E5630000FEAF6F /* SMKiTunesConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -403,6 +405,8 @@
 				0306DB6B15EC199800D6409B /* SMKMPMediaTrack.h in CopyFiles */,
 				0371CF9515EDE47700B304CC /* SMKMPMediaAlbum.h in CopyFiles */,
 				0371CF9315EDE44C00B304CC /* SMKMPMusicPlayer.h in CopyFiles */,
+				036F857515EEC45100DF72B9 /* SMKQueueController.h in CopyFiles */,
+				036F857615EEC54500DF72B9 /* SMKAVQueuePlayer.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

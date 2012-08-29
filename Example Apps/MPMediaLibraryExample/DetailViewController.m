@@ -10,6 +10,7 @@
 #import "SNRMusicKitiOS.h"
 #import "SMKMPMediaContentSource.h"
 #import "SMKMPMusicPlayer.h"
+#import "SMKQueueController.h"
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -18,7 +19,7 @@
 @end
 
 @implementation DetailViewController {
-    SMKMPMusicPlayer *_player;
+    SMKQueueController *_controller;
 }
 
 #pragma mark - Managing the detail item
@@ -42,7 +43,6 @@
         strongSelf.tracks = tracks;
         [self.tableView reloadData];
     }];
-    _player = [SMKMPMusicPlayer new];
 }
 
 - (void)viewDidLoad
@@ -74,11 +74,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SMKMPMediaTrack *object = self.tracks[indexPath.row];
-    NSLog(@"%@", [object playbackURL]);
-    [_player playTrack:object completionHandler:^(NSError *error) {
-        NSLog(@"%@", error);
-    }];
+    NSArray *array = [self.tracks subarrayWithRange:NSMakeRange(indexPath.row, [self.tracks count] - indexPath.row)];
+    NSLog(@"%@", array);
+    _controller = [SMKQueueController queueControllerWithTracks:array];
+    [_controller play:nil];
 }
 
 #pragma mark - Split view
@@ -95,6 +94,11 @@
     // Called when the view is shown again in the split view, invalidating the button and popover controller.
     [self.navigationItem setLeftBarButtonItem:nil animated:YES];
     self.masterPopoverController = nil;
+}
+
+- (IBAction)seekForward:(id)sender
+{
+    [_controller seekForward:nil];
 }
 
 @end
