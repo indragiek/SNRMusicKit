@@ -9,7 +9,6 @@
 #import "SMKMPMusicPlayer.h"
 #import "SMKMPMediaTrack.h"
 #import "NSError+SMKAdditions.h"
-#import <AVFoundation/AVFoundation.h>
 
 @interface SMKMPMusicPlayer ()
 @property (nonatomic, strong, readwrite) MPMusicPlayerController *audioPlayer;
@@ -28,8 +27,6 @@
         [self.audioPlayer beginGeneratingPlaybackNotifications];
         self.audioPlayer.repeatMode = MPMusicRepeatModeNone;
         self.audioPlayer.shuffleMode = MPMusicShuffleModeOff;
-        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
-        [[AVAudioSession sharedInstance] setActive:YES error:nil];
     }
     return self;
 }
