@@ -188,9 +188,8 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
 
 - (void)preloadTrack:(id<SMKTrack>)track completionHandler:(void (^)(NSError *))handler
 {
-    if (_preloadedTrack) {
-        handler([NSError SMK_errorWithCode:SMKPlayerErrorTrackAlreadyPreloaded description:[NSString stringWithFormat:@"The following track is already preloaded: %@. This track must begin playing before you can preload another one.", _preloadedTrack]]);
-    }
+    _player->ClearQueuedDecoders();
+    _preloadedTrack = nil;
     [self _enqueueTrack:track completionHandler:^(NSError *error) {
         if (!error) {
             _preloadedTrack = track;

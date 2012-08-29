@@ -11,7 +11,6 @@
 #import "SMKAVPlayerItem.h"
 #import "SMKTrack.h"
 #import "SMKErrorCodes.h"
-#import "NSError+SMKAdditions.h"
 
 #import <CoreMedia/CoreMedia.h>
 
@@ -121,8 +120,8 @@
 - (void)preloadTrack:(id<SMKTrack>)track completionHandler:(void (^)(NSError *))handler
 {
     if ([self.audioPlayer.items count] == 2) {
-        id<SMKTrack> preloadedTrack = [(SMKAVPlayerItem *)[self.audioPlayer.items objectAtIndex:1] SMK_track];
-        handler([NSError SMK_errorWithCode:SMKPlayerErrorTrackAlreadyPreloaded description:[NSString stringWithFormat:@"The following track is already preloaded: %@. This track must begin playing before you can preload another one.", preloadedTrack]]);
+        AVPlayerItem *preloadedItem = [self.audioPlayer.items objectAtIndex:1];
+        [self.audioPlayer removeItem:preloadedItem];
     }
     SMKAVPlayerItem *item = [self _playerItemForTrack:track];
     if (item)

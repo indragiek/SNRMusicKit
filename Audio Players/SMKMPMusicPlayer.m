@@ -12,8 +12,10 @@
 
 @interface SMKMPMusicPlayer ()
 @property (nonatomic, strong, readwrite) MPMusicPlayerController *audioPlayer;
+@property (nonatomic, strong, readwrite) MPMusicPlayerController *preloadAudioPlayer;
 @property (nonatomic, assign, readwrite) BOOL playing;
 @property (nonatomic, strong) id<SMKTrack> oldCurrentTrack;
+@property (nonatomic, strong) id<SMKTrack> preloadedTrack;
 @end
 
 @implementation SMKMPMusicPlayer
@@ -68,7 +70,7 @@
         [self.audioPlayer play];
         if (handler) { handler(nil); }
     } else if (handler) {
-        NSError *error = [NSError SMK_errorWithCode:SMKPlayerErrorFailedToEnqueueTrack description:@"MPMusicPlayerController failed to enqueue the track"];
+        NSError *error = [NSError SMK_errorWithCode:SMKPlayerErrorFailedToEnqueueTrack description:@"MPMusicPlayerController failed to play the track because the object was of the wrong type. Expected SMKMPMediaTrack"];
         handler(error);
     }
 }

@@ -10,8 +10,6 @@
 
 NSInteger const SMKPlayerErrorFailedToCreateInputSource     = 0;
 NSInteger const SMKPlayerErrorFailedToCreateDecoder         = 1;
-NSInteger const SMKPlayerErrorFailedToEnqueueTrack          = 2;
-NSInteger const SMKPlayerErrorTrackAlreadyPreloaded         = 3;
 
 NSInteger const SMKCoreDataErrorDataStoreNotAFolder         = 4;
 NSInteger const SMKCoreDataErrorFailedToInitializeStore     = 5;
