@@ -47,6 +47,11 @@
     return [NSSet setWithObjects:@"artist", @"artistName", @"albumArtistName", @"duration", @"trackNumber", @"discNumber", @"name", @"popularity", nil];
 }
 
++ (Class)playerClass
+{
+    return NSClassFromString(@"SMKSpotifyPlayer");
+}
+
 #pragma mark - SMKWebObject
 
 - (NSURL *)webURL

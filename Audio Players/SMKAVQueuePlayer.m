@@ -94,8 +94,10 @@
     [self.audioPlayer pause];
     [self.audioPlayer removeAllItems];
     SMKAVPlayerItem *item = [self _playerItemForTrack:track];
-    [self.audioPlayer insertItem:item afterItem:nil];
-    [self.audioPlayer play];
+    if (item) {
+        [self.audioPlayer insertItem:item afterItem:nil];
+        [self.audioPlayer play];
+    }
     if (handler) handler(self.audioPlayer.error);
 }
 
@@ -123,7 +125,8 @@
         handler([NSError SMK_errorWithCode:SMKPlayerErrorTrackAlreadyPreloaded description:[NSString stringWithFormat:@"The following track is already preloaded: %@. This track must begin playing before you can preload another one.", preloadedTrack]]);
     }
     SMKAVPlayerItem *item = [self _playerItemForTrack:track];
-    [self.audioPlayer insertItem:item afterItem:self.audioPlayer.currentItem];
+    if (item)
+        [self.audioPlayer insertItem:item afterItem:self.audioPlayer.currentItem];
     if (handler) { handler(self.audioPlayer.error); }
 }
 

@@ -58,4 +58,9 @@
 {
     return [NSSet setWithObjects:@"album", @"duration", @"composer", @"trackNumber", @"discNumber", @"isExplicit", @"isClean", @"genre", @"rating", nil];
 }
+
++ (Class)playerClass
+{
+    return NSClassFromString(@"SMKAVQueuePlayer");
+}
 @end

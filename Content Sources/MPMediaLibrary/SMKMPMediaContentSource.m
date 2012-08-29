@@ -51,7 +51,5 @@
     });
 }
 
-+ (Class)defaultPlayerClass { return nil; }
-
 + (Class)predicateClass { return [SMKMPMediaPredicate class]; }
 @end

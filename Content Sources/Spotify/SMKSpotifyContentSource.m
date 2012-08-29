@@ -21,8 +21,6 @@
 
 - (NSString *)name { return @"Spotify"; }
 
-+ (Class)defaultPlayerClass { return [SMKSpotifyPlayer class]; }
-
 + (Class)predicateClass { return [NSPredicate class]; }
 
 - (void)fetchPlaylistsWithSortDescriptors:(NSArray *)sortDescriptors

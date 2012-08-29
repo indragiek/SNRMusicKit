@@ -22,11 +22,6 @@
                         completionHandler:(void(^)(NSArray *playlists, NSError *error))handler;
 
 /**
- @return The class of the default player for this content source
- */
-+ (Class)defaultPlayerClass;
-
-/**
  @return The class of the predicate used to sort objects from this content source
  */
 + (Class)predicateClass;

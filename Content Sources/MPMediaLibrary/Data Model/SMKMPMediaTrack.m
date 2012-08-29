@@ -42,6 +42,11 @@
     return [NSSet setWithObjects:@"name", @"artistName", @"albumArtistName", @"duration", @"composer", @"trackNumber", @"discNumber", @"playCount", @"lyrics", @"genre", @"rating", @"lastPlayedDate", nil];
 }
 
++ (Class)playerClass
+{
+    return NSClassFromString(@"SMKAVQueuePlayer");
+}
+
 #pragma mark - SMKTrack
 
 - (id<SMKAlbum>)album
