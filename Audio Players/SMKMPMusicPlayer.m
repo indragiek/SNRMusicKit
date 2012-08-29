@@ -9,6 +9,7 @@
 #import "SMKMPMusicPlayer.h"
 #import "SMKMPMediaTrack.h"
 #import "NSError+SMKAdditions.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface SMKMPMusicPlayer ()
 @property (nonatomic, strong, readwrite) MPMusicPlayerController *audioPlayer;
@@ -20,13 +21,15 @@
 - (id)init
 {
     if ((self = [super init])) {
-        self.audioPlayer = [MPMusicPlayerController applicationMusicPlayer];
+        self.audioPlayer = [MPMusicPlayerController iPodMusicPlayer];
         NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
         [nc addObserver:self selector:@selector(_playbackStateDidChange:) name:MPMusicPlayerControllerPlaybackStateDidChangeNotification object:self.audioPlayer];
         [nc addObserver:self selector:@selector(_nowPlayingItemDidChange:) name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification object:self.audioPlayer];
         [self.audioPlayer beginGeneratingPlaybackNotifications];
         self.audioPlayer.repeatMode = MPMusicRepeatModeNone;
         self.audioPlayer.shuffleMode = MPMusicShuffleModeOff;
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+        [[AVAudioSession sharedInstance] setActive:YES error:nil];
     }
     return self;
 }
@@ -119,6 +122,7 @@
 {
     if (!self.audioPlayer.nowPlayingItem && self.finishedTrackBlock) {
         self.finishedTrackBlock(self, self.oldCurrentTrack, nil);
+        self.oldCurrentTrack = nil;
     }
 }
 @end
