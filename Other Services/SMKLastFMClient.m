@@ -45,8 +45,8 @@ static NSString* const SMKLastFMServiceName = @"Last.fm";
 - (NSMutableURLRequest *)requestWithMethod:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:parameters];
-    params[@"api_key"] = self.APIKey;
-    params[@"sk"] = _sessionKey;
+    if (self.APIKey) params[@"api_key"] = self.APIKey;
+    if (_sessionKey) params[@"sk"] = _sessionKey;
     params[@"api_sig"] = [self _methodSignatureWithParameters:parameters];
     params[@"format"] = @"json";
     return [super requestWithMethod:method path:path parameters:params];
@@ -103,8 +103,8 @@ static NSString* const SMKLastFMServiceName = @"Last.fm";
 {
     NSString *authToken = [[NSString stringWithFormat:@"%@%@", [username lowercaseString], [password SMK_MD5Hash]] SMK_MD5Hash];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    parameters[@"username"] = username;
-    parameters[@"authToken"] = authToken;
+    if (username) parameters[@"username"] = username;
+    if (authToken) parameters[@"authToken"] = authToken;
     parameters[@"method"] = @"auth.getMobileSession";
     [self getPath:nil parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSError *error = nil;
@@ -122,7 +122,7 @@ static NSString* const SMKLastFMServiceName = @"Last.fm";
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"method"] = @"auth.getSession";
-    parameters[@"token"] = token;
+    if (token) parameters[@"token"] = token;
     [self getPath:nil parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSError *error = nil;
         NSDictionary *session = responseObject[@"session"];
@@ -162,10 +162,10 @@ static NSString* const SMKLastFMServiceName = @"Last.fm";
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"method"] = @"track.scrobble";
-    parameters[@"track"] = name;
-    parameters[@"album"] = album;
-    parameters[@"artist"] = artist;
-    parameters[@"albumArtist"] = albumArtist;
+    if (name) parameters[@"track"] = name;
+    if (album) parameters[@"album"] = album;
+    if (artist) parameters[@"artist"] = artist;
+    if (albumArtist) parameters[@"albumArtist"] = albumArtist;
     parameters[@"trackNumber"] = @(trackNumber);
     parameters[@"duration"] = @(duration);
     parameters[@"timestamp"] = @(timestamp);
@@ -186,10 +186,10 @@ static NSString* const SMKLastFMServiceName = @"Last.fm";
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"method"] = @"track.updateNowPlaying";
-    parameters[@"track"] = name;
-    parameters[@"album"] = album;
-    parameters[@"artist"] = artist;
-    parameters[@"albumArtist"] = albumArtist;
+    if (name) parameters[@"track"] = name;
+    if (album) parameters[@"album"] = album;
+    if (artist) parameters[@"artist"] = artist;
+    if (albumArtist) parameters[@"albumArtist"] = albumArtist;
     parameters[@"trackNumber"] = @(trackNumber);
     parameters[@"duration"] = @(duration);
     [self postPath:nil parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -205,7 +205,7 @@ static NSString* const SMKLastFMServiceName = @"Last.fm";
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"method"] = @"track.love";
-    parameters[@"track"] = name;
+    if (name) parameters[@"track"] = name;
     parameters[@"artist"] = artist;
     [self postPath:nil parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (handler) handler(responseObject, nil);
